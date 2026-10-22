@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="8 2 116 73">
+  <defs>
+    <linearGradient id="b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5b5fd0"/><stop offset=".55" stop-color="#3f42a3"/><stop offset="1" stop-color="#2a2c78"/></linearGradient>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4a4dc0"/><stop offset=".55" stop-color="#7477d8"/><stop offset="1" stop-color="#393b8d"/></linearGradient>
+    <linearGradient id="l" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a3a5ee"/><stop offset="1" stop-color="#4b4fbf"/></linearGradient>
+    <linearGradient id="r" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff7a7a"/><stop offset=".6" stop-color="#e3262b"/><stop offset="1" stop-color="#b8121a"/></linearGradient>
+    <mask id="m" maskUnits="userSpaceOnUse" x="0" y="0" width="140" height="80">
+      <rect width="140" height="80" fill="#fff"/>
+      <g stroke="#000" stroke-width="2.4"><path d="M26.05 48.8 49.45 75.2M67.85 48.8 45.65 75.2M64.2 48.8 85.8 75.2M84.9 24.9 65.2 49M83.1 24.9 103 49"/></g>
+    </mask>
+  </defs>
+  <g mask="url(#m)">
+    <polygon fill="url(#g)" points="47,26 84,26 66,48 28,48"/>
+    <polygon fill="url(#l)" points="84,26 102,48 66,48"/>
+    <polygon fill="url(#b)" points="84,26 122,26 102,48"/>
+    <polygon fill="url(#b)" points="28,51 47.5,73 10,73"/>
+    <polygon fill="url(#b)" points="28,51 66,51 47.5,73"/>
+    <polygon fill="url(#b)" points="66,51 84,73 47.5,73"/>
+    <polygon fill="url(#b)" points="66,51 102,51 84,73"/>
+  </g>
+  <polygon fill="url(#r)" points="105,4 122,24 88,24"/>
+</svg>
