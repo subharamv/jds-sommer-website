@@ -61,6 +61,8 @@
     var header = $('[data-header]');
     if (!header) return;
     var lastY = window.scrollY;
+    // Desktop (full nav visible): header stays pinned; it only auto-hides on smaller screens
+    var desktop = window.matchMedia('(min-width: 921px)');
     var fab = $('[data-fab-top]');
     if (fab) fab.addEventListener('click', function () { if (animate) gsap.fromTo($('svg', fab), { y: 0 }, { y: -24, duration: 0.35, ease: 'power2.in', yoyo: true, repeat: 1 }); });
     function onScroll() {
@@ -68,7 +70,8 @@
       header.classList.toggle('is-scrolled', y > 24);
       if (fab) fab.classList.toggle('is-visible', y > 700);
       var goingDown = y > lastY + 4, goingUp = y < lastY - 4;
-      if (!root.classList.contains('menu-open')) {
+      if (desktop.matches) header.classList.remove('is-hidden');
+      else if (!root.classList.contains('menu-open')) {
         if (goingDown && y > 500) header.classList.add('is-hidden');
         else if (goingUp || y < 200) header.classList.remove('is-hidden');
       }
@@ -467,7 +470,7 @@
         ctx.beginPath(); ctx.moveTo(A[0], A[1]); ctx.lineTo(A[0] + (B[0] - A[0]) * t, A[1] + (B[1] - A[1]) * t); ctx.stroke();
       }
       if (meter) meter.style.width = (p * 100).toFixed(1) + '%';
-      if (label) label.textContent = p < 0.5 ? 'Point cloud · 2.4 M points' : p < 0.98 ? 'Modeling · ' + Math.round(p * 100) + '%' : 'CAD model · fully structured';
+      if (label) label.textContent = p < 0.5 ? 'Point cloud · 2.4 M points' : p < 0.98 ? 'Modelling · ' + Math.round(p * 100) + '%' : 'CAD model · fully structured';
     }
     function tick() { if (visible) { state.a += 0.0035; draw(); } }
 
@@ -723,6 +726,134 @@
     });
   }
 
+  /* ---------- All-services slider: one slide at a time, infinite, autoplay, swipe ---------- */
+  function initSvcSlider(scope) {
+    var root = $('[data-svc-slider]', scope);
+    if (!root || root.classList.contains('is-live')) return;
+    var card = root.closest('.rebuild__card') || scope;
+    var vp = $('[data-svc-viewport]', root), track = $('[data-svc-track]', root);
+    var slides = $$('[data-svc-slide]', track), n = slides.length;
+    if (n < 2) return;
+    var ctrl = $('[data-svc-ctrl]', card), cur = $('[data-svc-current]', card);
+    var bar = $('[data-svc-progress]', card), pauseBtn = $('[data-svc-pause]', card);
+
+    // one clone at each end makes last → first keep moving forward
+    var head = slides[n - 1].cloneNode(true), tail = slides[0].cloneNode(true);
+    [head, tail].forEach(function (k) {
+      k.removeAttribute('data-svc-slide'); k.setAttribute('aria-hidden', 'true');
+      $$('a, button', k).forEach(function (a) { a.tabIndex = -1; });
+      $$('img', k).forEach(function (i) { i.removeAttribute('loading'); });
+    });
+    track.insertBefore(head, slides[0]); track.appendChild(tail);
+    var all = $$('.svc-slide', track);
+    root.classList.add('is-live'); if (ctrl) ctrl.classList.add('is-live');
+
+    var DUR = reduceMotion ? 0 : 700, AUTO = 5500;
+    var pos = 1, moving = false, elapsed = 0, drag = null, suppressClick = false;
+    var userPaused = reduceMotion, hovering = false, focused = false, visible = true;
+    if (pauseBtn && userPaused) { pauseBtn.setAttribute('aria-pressed', 'true'); pauseBtn.setAttribute('aria-label', 'Play the slider'); }
+
+    function setPos(p, animate, dx) {
+      pos = p;
+      track.style.transition = animate && DUR ? 'transform ' + DUR + 'ms cubic-bezier(.2,.7,.1,1)' : 'none';
+      track.style.transform = 'translate3d(calc(' + (-p * 100) + '% + ' + (dx || 0) + 'px),0,0)';
+      if (dx) return;
+      var real = ((p - 1) % n + n) % n;
+      all.forEach(function (s, i) { s.classList.toggle('is-active', i === p); });
+      slides.forEach(function (s, i) {
+        s.setAttribute('aria-hidden', i === real ? 'false' : 'true');
+        $$('a, button', s).forEach(function (a) { a.tabIndex = i === real ? 0 : -1; });
+      });
+      if (cur) cur.textContent = String(real + 1).padStart(2, '0');
+    }
+    function settle() {
+      moving = false;
+      if (pos !== 0 && pos !== n + 1) return;
+      // jump from a clone to its real slide without any visible transition
+      root.classList.add('no-anim');
+      setPos(pos === 0 ? n : 1, false);
+      void track.offsetWidth;
+      root.classList.remove('no-anim');
+    }
+    function go(d) {
+      if (moving) return;
+      elapsed = 0;
+      moving = DUR > 0;
+      setPos(pos + d, true);
+      if (!DUR) settle();
+    }
+    track.addEventListener('transitionend', function (e) { if (e.target === track && e.propertyName === 'transform') settle(); });
+
+    $('[data-svc-next]', card).addEventListener('click', function () { go(1); });
+    $('[data-svc-prev]', card).addEventListener('click', function () { go(-1); });
+    if (pauseBtn) pauseBtn.addEventListener('click', function () {
+      userPaused = !userPaused;
+      pauseBtn.setAttribute('aria-pressed', String(userPaused));
+      pauseBtn.setAttribute('aria-label', userPaused ? 'Play the slider' : 'Pause the slider');
+    });
+    root.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1); }
+    });
+    root.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') hovering = true; });
+    root.addEventListener('pointerleave', function () { hovering = false; });
+    card.addEventListener('focusin', function () { focused = true; });
+    card.addEventListener('focusout', function (e) { if (!card.contains(e.relatedTarget)) focused = false; });
+
+    // swipe / drag
+    vp.addEventListener('pointerdown', function (e) {
+      if (e.button !== 0 || moving) return;
+      suppressClick = false;
+      drag = { x: e.clientX, y: e.clientY, id: e.pointerId, axis: null, dx: 0, t: performance.now() };
+    });
+    vp.addEventListener('pointermove', function (e) {
+      if (!drag || e.pointerId !== drag.id) return;
+      var dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+      if (!drag.axis) {
+        if (Math.abs(dx) < 6 && Math.abs(dy) < 6) return;
+        drag.axis = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
+        if (drag.axis === 'y') { drag = null; return; }
+        vp.setPointerCapture(e.pointerId);
+        root.classList.add('is-dragging');
+        suppressClick = true;
+      }
+      drag.dx = dx;
+      setPos(pos, false, dx);
+    });
+    function endDrag(e) {
+      if (!drag || (e && e.pointerId !== drag.id)) return;
+      var d = drag; drag = null;
+      root.classList.remove('is-dragging');
+      if (d.axis !== 'x') return;
+      var fast = Math.abs(d.dx) / Math.max(1, performance.now() - d.t) > 0.5;
+      if (Math.abs(d.dx) > vp.clientWidth * 0.18 || (fast && Math.abs(d.dx) > 30)) go(d.dx < 0 ? 1 : -1);
+      else setPos(pos, true);
+    }
+    vp.addEventListener('pointerup', endDrag);
+    vp.addEventListener('pointercancel', endDrag);
+    vp.addEventListener('lostpointercapture', endDrag);
+    vp.addEventListener('click', function (e) { if (suppressClick) { e.preventDefault(); e.stopPropagation(); suppressClick = false; } }, true);
+    vp.addEventListener('dragstart', function (e) { e.preventDefault(); });
+
+    // autoplay clock drives the progress bar
+    var last = 0, raf = 0;
+    function frame(now) {
+      var dt = last ? Math.min(100, now - last) : 0; last = now;
+      if (!(userPaused || hovering || focused || !visible || drag || moving)) {
+        elapsed += dt;
+        if (elapsed >= AUTO) go(1);
+      }
+      if (bar) bar.style.width = Math.min(100, elapsed / AUTO * 100).toFixed(2) + '%';
+      raf = requestAnimationFrame(frame);
+    }
+    raf = requestAnimationFrame(frame);
+    var io = 'IntersectionObserver' in window ? new IntersectionObserver(function (en) { visible = en[0].isIntersecting; }) : null;
+    if (io) io.observe(root);
+
+    setPos(1, false);
+    pageCleanups.push(function () { cancelAnimationFrame(raf); if (io) io.disconnect(); });
+  }
+
   /* ---------- FAQ accordion (native <details>, animated when GSAP is on) ---------- */
   function initFaq(scope) {
     if (!animate) return;
@@ -911,7 +1042,7 @@
         '',
         'Privacy policy accepted: yes'
       ];
-      var subject = 'Website inquiry: ' + g('reference') + ' (' + g('first_name') + ' ' + g('last_name') + ')';
+      var subject = 'Website enquiry: ' + g('reference') + ' (' + g('first_name') + ' ' + g('last_name') + ')';
       window.location.href = 'mailto:info@jds-sommer.de?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
 
       success.hidden = false;
@@ -933,6 +1064,7 @@
     initCloud(container);
     initFaq(container);
     initIndustries(container);
+    initSvcSlider(container);
 
     if (!animate) return;
     pageCtx = gsap.context(function () {
@@ -941,6 +1073,18 @@
     }, container);
     initPointer(container);
     ScrollTrigger.refresh();
+    refreshOnImageLoad(container);
+  }
+
+  // Lazy images change the page height after triggers are measured; re-measure once they land.
+  function refreshOnImageLoad(container) {
+    var timer;
+    function queue() { clearTimeout(timer); timer = setTimeout(function () { ScrollTrigger.refresh(); }, 150); }
+    $$('img', container).forEach(function (img) {
+      if (img.complete) return;
+      img.addEventListener('load', queue, { once: true });
+    });
+    pageCleanups.push(function () { clearTimeout(timer); });
   }
 
   function destroyPage() {
@@ -954,7 +1098,8 @@
     var pre = $('.preloader');
     if (!animate || !root.classList.contains('show-preloader') || !pre) { if (pre) pre.remove(); done(); return; }
     try { sessionStorage.setItem('jdsSeen', '1'); } catch (e) {}
-    var tris = $$('.pl-t', pre);
+    // blue tiles fly in; the red triangle gets its own tween so it lands exactly in place
+    var tris = $$('.pl-t:not(.pl-red)', pre);
     var tl = gsap.timeline({
       onComplete: function () { pre.remove(); root.classList.remove('show-preloader'); }
     });
@@ -965,7 +1110,7 @@
       rotation: function () { return gsap.utils.random(-90, 90); },
       duration: 0.8, stagger: 0.06, ease: 'power3.out'
     })
-      .from('.pl-red', { y: -30, duration: 0.5, ease: 'back.out(3)' }, '-=0.3')
+      .fromTo('.pl-red', { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, ease: 'power3.out' }, '-=0.3')
       .from('.preloader__word', { opacity: 0, letterSpacing: '0.6em', duration: 0.6, ease: 'power2.out' }, '-=0.5')
       .to(pre, { clipPath: 'inset(0 0 100% 0)', duration: 0.8, ease: 'power4.inOut', onStart: done }, '+=0.15');
     gsap.set(pre, { clipPath: 'inset(0 0 0% 0)' });
@@ -992,20 +1137,31 @@
             .fromTo(mark, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.35, ease: 'back.out(2)' }, '-=0.2')
             .then();
         },
-        beforeEnter: function () {
+        beforeEnter: function (data) {
           destroyPage();
+          // Barba keeps the old page in the DOM until the transition ends. Take it out of
+          // the layout now, or every ScrollTrigger (and hash scroll) is offset by its height.
+          data.current.container.style.display = 'none';
           if (lenis) lenis.scrollTo(0, { immediate: true }); else window.scrollTo(0, 0);
         },
         enter: function (data) {
           initPage(data.next.container, { deferHero: true });
-          var hashTarget = location.hash ? document.getElementById(location.hash.slice(1)) : null;
-          if (hashTarget) scrollToTarget(hashTarget, true);
+          // Barba strips the #fragment before navigating; read it from the clicked link instead
+          var linkHref = data.trigger && data.trigger.href;
+          var hash = (linkHref ? new URL(linkHref, location.href).hash.slice(1) : '') ||
+            (data.next.url && data.next.url.hash) || '';
+          var hashTarget = hash ? document.getElementById(hash) : null;
+          if (hashTarget) {
+            scrollToTarget(hashTarget, true);
+            if (history.replaceState) history.replaceState(history.state, '', '#' + hash);
+          }
           return gsap.timeline()
             .to(mark, { opacity: 0, scale: 1.1, duration: 0.25 })
             .to(curtain, { clipPath: 'inset(0 0 100% 0)', duration: 0.7, ease: 'power4.inOut' }, '-=0.05')
             .add(function () { if (pageCtx) pageCtx.add(function () { heroIntro(data.next.container); }); }, '-=0.45')
             .then();
-        }
+        },
+        after: function () { ScrollTrigger.refresh(); }
       }]
     });
   }
@@ -1016,6 +1172,8 @@
     initHeader();
     initMenu();
     initNavDropdowns();
+    // Social links are placeholders until the profile URLs are set: "#" should do nothing
+    document.addEventListener('click', function (e) { var a = e.target.closest('a[data-social]'); if (a && a.getAttribute('href') === '#') e.preventDefault(); });
     var main = $('[data-barba="container"]');
     if (!main) return;
     initPage(main, { deferHero: true });

@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>2D CAD Digitization &amp; Vectorization | JDS Sommer</title>
+  <title>2D CAD Digitisation &amp; Vectorisation | JDS Sommer</title>
   <meta name="description" content="Paper plans and scans to exact CAD files: AutoCAD DWG/DXF, MicroStation DGN, Allplan. From €49 per A0 drawing, express delivery in 24 hours. JDS Sommer, Frankfurt am Main.">
   <meta name="theme-color" content="#393B8D">
   <link rel="icon" type="image/svg+xml" href="assets/img/jds-mark.svg">
-  <meta property="og:title" content="2D CAD Digitization &amp; Vectorization | JDS Sommer">
+  <meta property="og:title" content="2D CAD Digitisation &amp; Vectorisation | JDS Sommer">
   <meta property="og:description" content="Paper plans and scans to exact CAD files: AutoCAD DWG/DXF, MicroStation DGN, Allplan. From €49 per A0 drawing, express delivery in 24 hours. JDS Sommer, Frankfurt am Main.">
   <meta property="og:type" content="website">
 
@@ -15,6 +15,8 @@
     // Hide animated elements only when JS runs; give them back if the libraries never arrive.
     (function (d) {
       d.classList.add('js');
+      // Pages still in review only show on local/dev hosts (html.is-local)
+      if (location.protocol === 'file:' || /^(localhost|127\.0\.0\.1|\[::1\]|.+\.local|192\.168\.\d+\.\d+|10\.\d+\.\d+\.\d+)$/.test(location.hostname)) d.classList.add('is-local');
       try { if (localStorage.getItem('jdsNoticeClosed')) d.classList.add('notice-closed'); } catch (e) {}
       var seen = false;
       try { seen = !!sessionStorage.getItem('jdsSeen'); } catch (e) {}
@@ -36,7 +38,7 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Which drawing sizes can you digitize?",
+      "name": "Which drawing sizes can you digitise?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Anything from DIN A4 to A0, and also drawings that are a multiple of A0. Yellowed, folded and oversized originals are no problem."
@@ -71,7 +73,7 @@
       "name": "Our drawings are already scanned. Can you work from image files?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. If scans are already available, for example as PDF, TIFF or JPEG, we digitize them into CAD directly without scanning them again."
+        "text": "Yes. If scans are already available, for example as PDF, TIFF or JPEG, we digitise them into CAD directly without scanning them again."
       }
     },
     {
@@ -87,7 +89,7 @@
       "name": "How do you make sure the CAD files are accurate?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "A high rate of automatic vectorization is followed by on-screen post-processing by CAD experts and quality control by our draftsmen or engineers. The results are 99% equivalent to drawings redrawn from scratch by a qualified CAD expert."
+        "text": "A high rate of automatic vectorisation is followed by on-screen post-processing by CAD experts and quality control by our draftsmen or engineers. The results are 99% equivalent to drawings redrawn from scratch by a qualified CAD expert."
       }
     },
     {
@@ -130,19 +132,24 @@
         </g>
         <polygon fill="url(#jdsR)" points="105,4 122,24 88,24"/>
       </symbol>
+      <!-- Social icons -->
+      <symbol id="i-facebook" viewBox="0 0 24 24"><path fill="currentColor" d="M13.5 21v-7.5H16l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H8v3h2.5V21z"/></symbol>
+      <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M6.9 8.8H3.6V20h3.3zM5.25 3.5a1.95 1.95 0 1 0 0 3.9 1.95 1.95 0 0 0 0-3.9zM20.4 13.6c0-3-1.6-5-4.4-5-1.4 0-2.4.8-2.8 1.5V8.8H10V20h3.3v-5.6c0-1.5.3-2.9 2.1-2.9s1.8 1.7 1.8 3V20h3.3z"/></symbol>
+      <symbol id="i-youtube" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4a2.5 2.5 0 0 0-1.8 1.8A26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8c1.6.4 7.8.4 7.8.4s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15V9l5.2 3z"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><path fill="currentColor" d="M17.8 3h3.1l-6.8 7.8 8 10.2h-6.3l-4.9-6.4L5.3 21H2.2l7.3-8.3L1.9 3h6.4l4.4 5.8zm-1.1 16.2h1.7L7.4 4.7H5.6z"/></symbol>
     </defs>
   </svg>
 
   <!-- First-visit preloader: the mark assembles from its triangles -->
   <div class="preloader" aria-hidden="true">
     <svg class="preloader__mark" viewBox="8 2 116 73">
-      <polygon class="pl-t" fill="url(#jdsB)" points="28,51 47.5,73 10,73"/>
-      <polygon class="pl-t" fill="url(#jdsB)" points="28,51 66,51 47.5,73"/>
-      <polygon class="pl-t" fill="url(#jdsB)" points="66,51 84,73 47.5,73"/>
-      <polygon class="pl-t" fill="url(#jdsB)" points="66,51 102,51 84,73"/>
-      <polygon class="pl-t" fill="url(#jdsG)" points="47,26 84,26 66,48 28,48"/>
-      <polygon class="pl-t" fill="url(#jdsL)" points="84,26 102,48 66,48"/>
-      <polygon class="pl-t" fill="url(#jdsB)" points="84,26 122,26 102,48"/>
+      <polygon class="pl-t" fill="url(#jdsB)" points="27.23,51.94 45.9,73 10,73"/>
+      <polygon class="pl-t" fill="url(#jdsB)" points="29.6,51 64.43,51 47.48,71.16"/>
+      <polygon class="pl-t" fill="url(#jdsB)" points="65.99,52.88 82.45,73 49.07,73"/>
+      <polygon class="pl-t" fill="url(#jdsB)" points="67.55,51 102,51 84.78,72.05"/>
+      <polygon class="pl-t" fill="url(#jdsG)" points="47,26 82.45,26 64.45,48 28,48"/>
+      <polygon class="pl-t" fill="url(#jdsL)" points="84,27.9 100.45,48 67.55,48"/>
+      <polygon class="pl-t" fill="url(#jdsB)" points="85.55,26 122,26 102.82,47.1"/>
       <polygon class="pl-t pl-red" fill="url(#jdsR)" points="105,4 122,24 88,24"/>
     </svg>
     <div class="preloader__word">JDS SOMMER</div>
@@ -161,7 +168,7 @@
       <div class="container notice-bar__inner">
         <span class="pulse-dot" aria-hidden="true"></span>
         <p><strong>Our website is being redeveloped.</strong> <span class="hide-sm">Our core services and contact details stay fully available here in the meantime.</span></p>
-        <a href="index.html#rebuild" class="notice-bar__link">What's new <span aria-hidden="true">→</span></a>
+        <a href="index.html#all-services" class="notice-bar__link">What's new <span aria-hidden="true">→</span></a>
         <button class="notice-bar__close" type="button" aria-label="Close notice" data-notice-close>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
         </button>
@@ -187,33 +194,82 @@
               <div class="nav-dd__col">
                 <a href="2d-cad-digitizing.html" class="nav-dd__head" data-nav="2d">
                   <span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 12h6v8M10 4v4M14 12h6M10 12a4 4 0 0 1 4-4"/></svg></span>
-                  <span><strong>2D CAD Digitization</strong><small>Paper plans and scans to editable CAD</small></span>
+                  <span><strong>2D CAD Digitisation</strong><small>Paper plans and scans to editable CAD</small></span>
                 </a>
                 <ul class="nav-dd__list">
                   <li><a href="2d-cad-digitizing.html#paper-to-cad">Paper to CAD</a></li>
                   <li><a href="2d-cad-digitizing.html#pricing">Scan to CAD</a></li>
                   <li><a href="2d-cad-digitizing.html">BIM to CAD</a></li>
+                  <li><span class="nav-dd__soon">CAD restructuring <small>Soon</small></span></li>
                 </ul>
               </div>
               <div class="nav-dd__col">
                 <a href="3d-cad-digitizing.html" class="nav-dd__head" data-nav="3d">
                   <span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></svg></span>
-                  <span><strong>3D Modeling</strong><small>BIM models of buildings and parts</small></span>
+                  <span><strong>3D &amp; BIM Modelling</strong><small>From point clouds, CAD files and parts</small></span>
                 </a>
                 <ul class="nav-dd__list">
                   <li><a href="3d-cad-digitizing.html#scan-to-bim">Scan to BIM</a></li>
                   <li><a href="3d-cad-digitizing.html#cad-to-bim">CAD to BIM</a></li>
+                  <li><span class="nav-dd__soon">As-built BIM <small>Soon</small></span></li>
+                  <li><a href="3d-cad-digitizing.html#reverse-engineering">Reverse engineering (parts)</a></li>
                 </ul>
+              </div>
+              <div class="nav-dd__col">
+                <div class="nav-dd__head nav-dd__head--static">
+                  <span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 21V9l8-5 8 5v12"/><path d="M9 21v-6h6v6M3 21h18M12 4v5"/></svg></span>
+                  <span><strong>Modelling by discipline</strong><small>Architecture, structure and building services</small></span>
+                </div>
+                <ul class="nav-dd__list">
+                  <li><span class="nav-dd__soon">Architectural modelling <small>Soon</small></span></li>
+                  <li><span class="nav-dd__soon">Structural modelling <small>Soon</small></span></li>
+                  <li><span class="nav-dd__soon">MEP modelling <small>Soon</small></span></li>
+                  <li><span class="nav-dd__soon">HVAC modelling <small>Soon</small></span></li>
+                  <li><span class="nav-dd__soon">Plant modelling <small>Soon</small></span></li>
+                </ul>
+              </div>
+              <div class="nav-dd__col">
+                <div class="nav-dd__head nav-dd__head--static">
+                  <span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l9 4.5-9 4.5-9-4.5z"/><path d="M3 12l9 4.5 9-4.5M3 16.5L12 21l9-4.5"/></svg></span>
+                  <span><strong>Coordination &amp; documentation</strong><small>BIM coordination, FM and GIS</small></span>
+                </div>
+                <ul class="nav-dd__list">
+                  <li><span class="nav-dd__soon">BIM coordination <small>Soon</small></span></li>
+                  <li><span class="nav-dd__soon">Clash detection <small>Soon</small></span></li>
+                  <li><span class="nav-dd__soon">As-built &amp; FM documentation <small>Soon</small></span></li>
+                  <li><span class="nav-dd__soon">GIS digitising <small>Soon</small></span></li>
+                </ul>
+              </div>
+              <div class="nav-dd__foot">
+                <a href="index.html#contact" class="nav-dd__cta">
+                  <strong>Not sure which service fits?</strong>
+                  <small>Send us your plans for free advice and a free quote <span aria-hidden="true">&rarr;</span></small>
+                </a>
+                <div class="nav-dd__contact">
+                  <a href="mailto:info@jds-sommer.de"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5L12 13l8.5-6.5"/></svg>info@jds-sommer.de</a>
+                  <a href="tel:+49699054690"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>+49 (0)69 / 905 469-0</a>
+                </div>
+                <div class="nav-dd__follow">
+                  <span>Follow us</span>
+                  <ul class="social social--dd" aria-label="JDS Sommer on social media">
+                    <li><a href="https://www.facebook.com/jdssommer/" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer on Facebook"><svg aria-hidden="true"><use href="#i-facebook"/></svg></a></li>
+                    <li><a href="https://www.linkedin.com/company/jds-sommer-gmbh" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer on LinkedIn"><svg aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+                    <li><a href="https://x.com/JDS_Sommer" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer on X (Twitter)"><svg aria-hidden="true"><use href="#i-x"/></svg></a></li>
+                    <!-- YouTube: replace href="#" with the channel URL, and add target="_blank" rel="noopener" -->
+                    <li><a href="#" class="social__link" data-social aria-label="JDS Sommer on YouTube"><svg aria-hidden="true"><use href="#i-youtube"/></svg></a></li>
+                  </ul>
+                </div>
               </div>
             </div>
           </li>
           <li class="nav__item" data-dd>
-            <button class="nav__link nav__trigger" type="button" aria-expanded="false" aria-controls="dd-about">
+            <button class="nav__link nav__trigger" type="button" aria-expanded="false" aria-controls="dd-about" data-nav-group="about">
               About us <svg class="nav__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
             </button>
             <div class="nav-dd" id="dd-about">
               <ul class="nav-dd__list">
-                <li><a href="index.html#about">About JDS Sommer</a></li>
+                <li data-local-only><a href="about-us.html" data-nav="about">About JDS Sommer</a></li>
+                <li data-public-only><a href="index.html#about">About JDS Sommer</a></li>
                 <li><span class="nav-dd__soon">Partners <small>Soon</small></span></li>
                 <li><a href="index.html#industries">Industries</a></li>
               </ul>
@@ -257,13 +313,27 @@
           <details class="m-nav">
             <summary><span>01</span>Services</summary>
             <div class="m-nav__sub">
-              <a href="2d-cad-digitizing.html" class="m-nav__head" data-nav="2d">2D CAD Digitization</a>
+              <a href="2d-cad-digitizing.html" class="m-nav__head" data-nav="2d">2D CAD Digitisation</a>
               <a href="2d-cad-digitizing.html#paper-to-cad">Paper to CAD</a>
               <a href="2d-cad-digitizing.html#pricing">Scan to CAD</a>
               <a href="2d-cad-digitizing.html">BIM to CAD</a>
-              <a href="3d-cad-digitizing.html" class="m-nav__head" data-nav="3d">3D Modeling</a>
+              <span class="m-nav__soon">CAD restructuring <small>Soon</small></span>
+              <a href="3d-cad-digitizing.html" class="m-nav__head" data-nav="3d">3D &amp; BIM Modelling</a>
               <a href="3d-cad-digitizing.html#scan-to-bim">Scan to BIM</a>
               <a href="3d-cad-digitizing.html#cad-to-bim">CAD to BIM</a>
+              <span class="m-nav__soon">As-built BIM <small>Soon</small></span>
+              <a href="3d-cad-digitizing.html#reverse-engineering">Reverse engineering (parts)</a>
+              <span class="m-nav__head">Modelling by discipline</span>
+              <span class="m-nav__soon">Architectural modelling <small>Soon</small></span>
+              <span class="m-nav__soon">Structural modelling <small>Soon</small></span>
+              <span class="m-nav__soon">MEP modelling <small>Soon</small></span>
+              <span class="m-nav__soon">HVAC modelling <small>Soon</small></span>
+              <span class="m-nav__soon">Plant modelling <small>Soon</small></span>
+              <span class="m-nav__head">Coordination &amp; documentation</span>
+              <span class="m-nav__soon">BIM coordination <small>Soon</small></span>
+              <span class="m-nav__soon">Clash detection <small>Soon</small></span>
+              <span class="m-nav__soon">As-built &amp; FM documentation <small>Soon</small></span>
+              <span class="m-nav__soon">GIS digitising <small>Soon</small></span>
             </div>
           </details>
         </li>
@@ -271,7 +341,8 @@
           <details class="m-nav">
             <summary><span>02</span>About us</summary>
             <div class="m-nav__sub">
-              <a href="index.html#about">About JDS Sommer</a>
+              <a href="about-us.html" data-nav="about" data-local-only>About JDS Sommer</a>
+              <a href="index.html#about" data-public-only>About JDS Sommer</a>
               <span class="m-nav__soon">Partners <small>Soon</small></span>
               <a href="index.html#industries">Industries</a>
             </div>
@@ -294,6 +365,13 @@
     <div class="mobile-menu__foot">
       <a href="tel:+49699054690">+49 (0)69 / 905 469-0</a>
       <a href="mailto:info@jds-sommer.de">info@jds-sommer.de</a>
+      <ul class="social social--menu" aria-label="JDS Sommer on social media">
+        <li><a href="https://www.facebook.com/jdssommer/" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer on Facebook"><svg aria-hidden="true"><use href="#i-facebook"/></svg></a></li>
+        <li><a href="https://www.linkedin.com/company/jds-sommer-gmbh" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer on LinkedIn"><svg aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+        <li><a href="https://x.com/JDS_Sommer" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer on X (Twitter)"><svg aria-hidden="true"><use href="#i-x"/></svg></a></li>
+        <!-- YouTube: replace href="#" with the channel URL, and add target="_blank" rel="noopener" -->
+        <li><a href="#" class="social__link" data-social aria-label="JDS Sommer on YouTube"><svg aria-hidden="true"><use href="#i-youtube"/></svg></a></li>
+      </ul>
     </div>
   </div>
 
@@ -307,18 +385,18 @@
       <div class="container page-hero__inner">
         <div class="page-hero__copy">
           <nav class="crumbs" aria-label="Breadcrumb" data-hero-fade>
-            <a href="index.html">Home</a><span aria-hidden="true">/</span><span aria-current="page">2D CAD Digitization</span>
+            <a href="index.html">Home</a><span aria-hidden="true">/</span><span aria-current="page">2D CAD Digitisation</span>
           </nav>
-          <p class="eyebrow" data-hero-fade><span class="eyebrow__line"></span>Core service 01 · 2D CAD digitizing</p>
-          <h1 class="hero__title page-hero__title" data-split>CAD vectorization, <em>now so easy!</em></h1>
+          <p class="eyebrow" data-hero-fade><span class="eyebrow__line"></span>Core service 01 · 2D CAD digitising</p>
+          <h1 class="hero__title page-hero__title" data-split>CAD vectorisation, <em>now so easy!</em></h1>
           <p class="hero__lead" data-hero-fade>
-            We digitize your plans into exact CAD files, inexpensively and fast. Yellowed, folded or
+            We digitise your plans into exact CAD files, inexpensively and fast. Yellowed, folded or
             oversized drawings become to-scale CAD drawings with correct symbols, text, dimensions,
             line types and a professional layer structure.
           </p>
           <div class="hero__ctas" data-hero-fade>
-            <a href="index.html#contact" class="btn btn--primary magnetic" data-prefill="2D CAD digitization">
-              Start inquiry <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            <a href="index.html#contact" class="btn btn--primary magnetic" data-prefill="2D CAD digitisation">
+              Start enquiry <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
             <a href="#pricing" class="btn btn--ghost">See prices &amp; variants</a>
           </div>
@@ -423,7 +501,7 @@
         <ol class="steps5">
           <li data-reveal-item><span class="steps5__n">01</span><h3>Send plans</h3><p>Send us your plans by mail, or already scanned via email or upload.</p></li>
           <li data-reveal-item><span class="steps5__n">02</span><h3>Offer</h3><p>We create a personal offer for you, free of charge.</p></li>
-          <li data-reveal-item><span class="steps5__n">03</span><h3>Digitizing</h3><p>We digitize your plans into accurate CAD files according to your specifications.</p></li>
+          <li data-reveal-item><span class="steps5__n">03</span><h3>Digitising</h3><p>We digitise your plans into accurate CAD files according to your specifications.</p></li>
           <li data-reveal-item><span class="steps5__n">04</span><h3>Get file</h3><p>You receive the CAD file(s) on time, by download or by mail.</p></li>
           <li data-reveal-item><span class="steps5__n">05</span><h3>Invoice</h3><p>We send your originals back and invoice you according to the offer.</p></li>
         </ol>
@@ -435,7 +513,7 @@
       <div class="container">
         <header class="section-head section-head--center" data-reveal>
           <p class="eyebrow"><span class="eyebrow__line"></span>Scope of service</p>
-          <h2 class="h2">Overview of our CAD <em>digitizing</em> service.</h2>
+          <h2 class="h2">Overview of our CAD <em>digitising</em> service.</h2>
           <p class="section-head__lead">Prices per A0 drawing, plus VAT. Pick the variant that matches the CAD standard you need.</p>
         </header>
 
@@ -451,7 +529,7 @@
               <div><dt>Layers</dt><dd>JDS Basic layer: graphics, dimensions, text, grid, drawing frame &amp; header</dd></div>
               <div><dt>Quality control</dt><dd>JDS specialist draftsmen</dd></div>
             </dl>
-            <a href="index.html#contact" class="btn btn--ghost btn--block" data-prefill="2D CAD digitization">Request Basic</a>
+            <a href="index.html#contact" class="btn btn--ghost btn--block" data-prefill="2D CAD digitisation">Request Basic</a>
           </article>
 
           <article class="tier tier--featured" data-reveal-item>
@@ -460,12 +538,12 @@
               <p class="tier__price"><small>A0 drawing</small>€75<small>plus VAT</small></p>
             </header>
             <dl class="tier__list">
-              <div><dt>Applied fields</dt><dd>Architecture, engineering, plant construction, shipbuilding, cadaster, others on request</dd></div>
+              <div><dt>Applied fields</dt><dd>Architecture, engineering, plant construction, shipbuilding, cadastre, others on request</dd></div>
               <div><dt>CAD output</dt><dd>AutoCAD DWG or DXF, MicroStation DGN, Nemetschek Allplan FT, others on request</dd></div>
               <div><dt>Layers</dt><dd>JDS Premium layer with up to 56 layers, or your individual layers (unlimited)</dd></div>
               <div><dt>Quality control</dt><dd>JDS engineers</dd></div>
             </dl>
-            <a href="index.html#contact" class="btn btn--primary btn--block" data-prefill="2D CAD digitization">Request Premium</a>
+            <a href="index.html#contact" class="btn btn--primary btn--block" data-prefill="2D CAD digitisation">Request Premium</a>
           </article>
 
           <article class="tier tier--dark" data-reveal-item>
@@ -478,7 +556,7 @@
               <div><dt>Your CAD specification</dt><dd>Line weights, fonts, dimension styles, layout borders, title block layouts, plot style tables, etc.</dd></div>
               <div><dt>Additional services</dt><dd>Plausibility checks across multiple plans using reference points, e.g. axes of stacked floors, or sections and elevations against floor plans</dd></div>
             </dl>
-            <a href="index.html#contact" class="btn btn--light btn--block" data-prefill="2D CAD digitization">Request Premium Plus</a>
+            <a href="index.html#contact" class="btn btn--light btn--block" data-prefill="2D CAD digitisation">Request Premium Plus</a>
           </article>
         </div>
 
@@ -496,7 +574,7 @@
         <div class="delivery" data-reveal>
           <div class="delivery__intro">
             <h3>Choose your delivery time</h3>
-            <p>For small to medium quantities, three delivery times are available depending on the urgency of your inquiry.</p>
+            <p>For small to medium quantities, three delivery times are available depending on the urgency of your enquiry.</p>
           </div>
           <ul class="delivery__opts">
             <li><span>Standard</span><strong>5 days</strong></li>
@@ -519,9 +597,9 @@
             widths. Fast and inexpensive.
           </p>
           <p>
-            JDS CAD digitizing combines the most advanced digital methods with on-screen post-processing by
+            JDS CAD digitising combines the most advanced digital methods with on-screen post-processing by
             CAD experts and quality assurance by engineers who understand the content of your drawings.
-            A high rate of automatic vectorization keeps the price low; post-processing and checks by
+            A high rate of automatic vectorisation keeps the price low; post-processing and checks by
             experienced engineers keep the quality high. In the shortest time, in any volume.
           </p>
         </div>
@@ -549,9 +627,9 @@
       <div class="container about__grid">
         <div class="about__copy" data-reveal>
           <p class="eyebrow eyebrow--light"><span class="eyebrow__line"></span>Why JDS Sommer</p>
-          <h2 class="h2 h2--light">Scanning, digitizing and <em>engineering</em> know-how in one place.</h2>
+          <h2 class="h2 h2--light">Scanning, digitising and <em>engineering</em> know-how in one place.</h2>
           <p>
-            JDS SOMMER combines scanning, computerized CAD digitizing and profound engineering know-how to
+            JDS SOMMER combines scanning, computerised CAD digitising and profound engineering know-how to
             deliver the most cost-effective, fastest and highest-quality conversion from paper to CAD.
             Even complex construction, engineering and land register drawings become CAD models of
             professional quality.
@@ -586,7 +664,7 @@
         <figure class="quote" data-reveal>
           <svg class="quote__mark" viewBox="0 0 48 36" aria-hidden="true"><path d="M0 36V20C0 8 7 1 19 0v7c-6 1-9 5-9 11h9v18zm29 0V20C29 8 36 1 48 0v7c-6 1-9 5-9 11h9v18z"/></svg>
           <blockquote>
-            <p>The results of the JDS CAD digitizing service really convinced us! We would already have saved a lot of time and money had we known of JDS SOMMER GmbH earlier. We can recommend JDS CAD digitizing to all CAD users who want nearly completely exact and complete conversions of existing plans and details into CAD files for very favourable prices!</p>
+            <p>The results of the JDS CAD digitising service really convinced us! We would already have saved a lot of time and money had we known of JDS SOMMER GmbH earlier. We can recommend JDS CAD digitising to all CAD users who want nearly completely exact and complete conversions of existing plans and details into CAD files for very favourable prices!</p>
           </blockquote>
           <figcaption><strong>Engineering Bureau Martin Stephan</strong><span>Customer</span></figcaption>
         </figure>
@@ -597,8 +675,8 @@
     <section class="section faq" id="faq">
       <div class="container faq__grid">
         <header class="faq__head" data-reveal>
-          <p class="eyebrow"><span class="eyebrow__line"></span>FAQ · 2D CAD digitizing</p>
-          <h2 class="h2">Questions about <em>2D CAD</em> digitizing.</h2>
+          <p class="eyebrow"><span class="eyebrow__line"></span>FAQ · 2D CAD digitising</p>
+          <h2 class="h2">Questions about <em>2D CAD</em> digitising.</h2>
           <p class="section-head__lead">What to expect when you send us paper plans or scans.</p>
           <div class="faq__help">
             <svg aria-hidden="true"><use href="#jds-mark"/></svg>
@@ -607,7 +685,7 @@
         </header>
         <div class="faq__list" data-reveal>
             <details class="faq__item" open>
-              <summary><span>Which drawing sizes can you digitize?</span><i class="faq__icon" aria-hidden="true"></i></summary>
+              <summary><span>Which drawing sizes can you digitise?</span><i class="faq__icon" aria-hidden="true"></i></summary>
               <div class="faq__a"><p>Anything from DIN A4 to A0, and also drawings that are a multiple of A0. Yellowed, folded and oversized originals are no problem.</p></div>
             </details>
             <details class="faq__item">
@@ -624,7 +702,7 @@
             </details>
             <details class="faq__item">
               <summary><span>Our drawings are already scanned. Can you work from image files?</span><i class="faq__icon" aria-hidden="true"></i></summary>
-              <div class="faq__a"><p>Yes. If scans are already available, for example as PDF, TIFF or JPEG, we digitize them into CAD directly without scanning them again.</p></div>
+              <div class="faq__a"><p>Yes. If scans are already available, for example as PDF, TIFF or JPEG, we digitise them into CAD directly without scanning them again.</p></div>
             </details>
             <details class="faq__item">
               <summary><span>How fast can you deliver?</span><i class="faq__icon" aria-hidden="true"></i></summary>
@@ -632,7 +710,7 @@
             </details>
             <details class="faq__item">
               <summary><span>How do you make sure the CAD files are accurate?</span><i class="faq__icon" aria-hidden="true"></i></summary>
-              <div class="faq__a"><p>A high rate of automatic vectorization is followed by on-screen post-processing by CAD experts and quality control by our draftsmen or engineers. The results are 99% equivalent to drawings redrawn from scratch by a qualified CAD expert.</p></div>
+              <div class="faq__a"><p>A high rate of automatic vectorisation is followed by on-screen post-processing by CAD experts and quality control by our draftsmen or engineers. The results are 99% equivalent to drawings redrawn from scratch by a qualified CAD expert.</p></div>
             </details>
             <details class="faq__item">
               <summary><span>Do I get my paper originals back?</span><i class="faq__icon" aria-hidden="true"></i></summary>
@@ -665,11 +743,11 @@
           <div>
             <p class="eyebrow"><span class="eyebrow__line"></span>Test us!</p>
             <h2 class="h2">See the quality for yourself: a test CAD file, <em>free of charge</em>.</h2>
-            <p>Send us a section of your plan for a test digitization by mail or email, with no obligation. We'll advise you and prepare an individual offer based on the number of your originals.</p>
+            <p>Send us a section of your plan for a test digitisation by mail or email, with no obligation. We'll advise you and prepare an individual offer based on the number of your originals.</p>
           </div>
           <div class="test-us__ctas">
             <a href="index.html#contact" class="btn btn--primary magnetic" data-prefill="Free test file">Request a free test</a>
-            <a href="mailto:info@jds-sommer.de?subject=Test%20digitization" class="btn btn--ghost">info@jds-sommer.de</a>
+            <a href="mailto:info@jds-sommer.de?subject=Test%20digitisation" class="btn btn--ghost">info@jds-sommer.de</a>
           </div>
         </div>
       </div>
@@ -690,13 +768,20 @@
           </span>
         </a>
         <p>From existing drawings and point clouds to usable engineering data.</p>
+        <ul class="social social--footer" aria-label="JDS Sommer on social media">
+          <li><a href="https://www.facebook.com/jdssommer/" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer on Facebook"><svg aria-hidden="true"><use href="#i-facebook"/></svg></a></li>
+          <li><a href="https://www.linkedin.com/company/jds-sommer-gmbh" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer on LinkedIn"><svg aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+          <li><a href="https://x.com/JDS_Sommer" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer on X (Twitter)"><svg aria-hidden="true"><use href="#i-x"/></svg></a></li>
+          <!-- YouTube: replace href="#" with the channel URL, and add target="_blank" rel="noopener" -->
+          <li><a href="#" class="social__link" data-social aria-label="JDS Sommer on YouTube"><svg aria-hidden="true"><use href="#i-youtube"/></svg></a></li>
+        </ul>
       </div>
 
       <div class="footer__col">
         <h4>Services</h4>
         <ul>
-          <li><a href="2d-cad-digitizing.html">2D CAD Digitization</a></li>
-          <li><a href="3d-cad-digitizing.html">3D Modeling</a></li>
+          <li><a href="2d-cad-digitizing.html">2D CAD Digitisation</a></li>
+          <li><a href="3d-cad-digitizing.html">3D &amp; BIM Modelling</a></li>
           <li><a href="index.html#contact">Request a quote</a></li>
         </ul>
       </div>

@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>3D CAD Modeling &amp; Scan to BIM | JDS Sommer</title>
+  <title>3D CAD Modelling &amp; Scan to BIM | JDS Sommer</title>
   <meta name="description" content="Point clouds, STL data and 2D plans to fully structured 3D CAD and BIM models in Revit, IFC, Allplan, Archicad, IGES and STEP. LOD 100 to 500. JDS Sommer, Frankfurt am Main.">
   <meta name="theme-color" content="#393B8D">
   <link rel="icon" type="image/svg+xml" href="assets/img/jds-mark.svg">
-  <meta property="og:title" content="3D CAD Modeling &amp; Scan to BIM | JDS Sommer">
+  <meta property="og:title" content="3D CAD Modelling &amp; Scan to BIM | JDS Sommer">
   <meta property="og:description" content="Point clouds, STL data and 2D plans to fully structured 3D CAD and BIM models in Revit, IFC, Allplan, Archicad, IGES and STEP. LOD 100 to 500. JDS Sommer, Frankfurt am Main.">
   <meta property="og:type" content="website">
 
@@ -15,6 +15,8 @@
     // Hide animated elements only when JS runs; give them back if the libraries never arrive.
     (function (d) {
       d.classList.add('js');
+      // Pages still in review only show on local/dev hosts (html.is-local)
+      if (location.protocol === 'file:' || /^(localhost|127\.0\.0\.1|\[::1\]|.+\.local|192\.168\.\d+\.\d+|10\.\d+\.\d+\.\d+)$/.test(location.hostname)) d.classList.add('is-local');
       try { if (localStorage.getItem('jdsNoticeClosed')) d.classList.add('notice-closed'); } catch (e) {}
       var seen = false;
       try { seen = !!sessionStorage.getItem('jdsSeen'); } catch (e) {}
@@ -84,10 +86,10 @@
     },
     {
       "@type": "Question",
-      "name": "What does 3D modeling cost?",
+      "name": "What does 3D modelling cost?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "3D CAD modeling of a machine part up to 40 cm edge length starts at €250 plus VAT. Buildings, terminals and plant halls are quoted individually. The consultation and the offer are free of charge."
+        "text": "3D CAD modelling of a machine part up to 40 cm edge length starts at €250 plus VAT. Buildings, terminals and plant halls are quoted individually. The consultation and the offer are free of charge."
       }
     }
   ]
@@ -122,19 +124,24 @@
         </g>
         <polygon fill="url(#jdsR)" points="105,4 122,24 88,24"/>
       </symbol>
+      <!-- Social icons -->
+      <symbol id="i-facebook" viewBox="0 0 24 24"><path fill="currentColor" d="M13.5 21v-7.5H16l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H8v3h2.5V21z"/></symbol>
+      <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M6.9 8.8H3.6V20h3.3zM5.25 3.5a1.95 1.95 0 1 0 0 3.9 1.95 1.95 0 0 0 0-3.9zM20.4 13.6c0-3-1.6-5-4.4-5-1.4 0-2.4.8-2.8 1.5V8.8H10V20h3.3v-5.6c0-1.5.3-2.9 2.1-2.9s1.8 1.7 1.8 3V20h3.3z"/></symbol>
+      <symbol id="i-youtube" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4a2.5 2.5 0 0 0-1.8 1.8A26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8c1.6.4 7.8.4 7.8.4s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15V9l5.2 3z"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><path fill="currentColor" d="M17.8 3h3.1l-6.8 7.8 8 10.2h-6.3l-4.9-6.4L5.3 21H2.2l7.3-8.3L1.9 3h6.4l4.4 5.8zm-1.1 16.2h1.7L7.4 4.7H5.6z"/></symbol>
     </defs>
   </svg>
 
   <!-- First-visit preloader: the mark assembles from its triangles -->
   <div class="preloader" aria-hidden="true">
     <svg class="preloader__mark" viewBox="8 2 116 73">
-      <polygon class="pl-t" fill="url(#jdsB)" points="28,51 47.5,73 10,73"/>
-      <polygon class="pl-t" fill="url(#jdsB)" points="28,51 66,51 47.5,73"/>
-      <polygon class="pl-t" fill="url(#jdsB)" points="66,51 84,73 47.5,73"/>
-      <polygon class="pl-t" fill="url(#jdsB)" points="66,51 102,51 84,73"/>
-      <polygon class="pl-t" fill="url(#jdsG)" points="47,26 84,26 66,48 28,48"/>
-      <polygon class="pl-t" fill="url(#jdsL)" points="84,26 102,48 66,48"/>
-      <polygon class="pl-t" fill="url(#jdsB)" points="84,26 122,26 102,48"/>
+      <polygon class="pl-t" fill="url(#jdsB)" points="27.23,51.94 45.9,73 10,73"/>
+      <polygon class="pl-t" fill="url(#jdsB)" points="29.6,51 64.43,51 47.48,71.16"/>
+      <polygon class="pl-t" fill="url(#jdsB)" points="65.99,52.88 82.45,73 49.07,73"/>
+      <polygon class="pl-t" fill="url(#jdsB)" points="67.55,51 102,51 84.78,72.05"/>
+      <polygon class="pl-t" fill="url(#jdsG)" points="47,26 82.45,26 64.45,48 28,48"/>
+      <polygon class="pl-t" fill="url(#jdsL)" points="84,27.9 100.45,48 67.55,48"/>
+      <polygon class="pl-t" fill="url(#jdsB)" points="85.55,26 122,26 102.82,47.1"/>
       <polygon class="pl-t pl-red" fill="url(#jdsR)" points="105,4 122,24 88,24"/>
     </svg>
     <div class="preloader__word">JDS SOMMER</div>
@@ -153,7 +160,7 @@
       <div class="container notice-bar__inner">
         <span class="pulse-dot" aria-hidden="true"></span>
         <p><strong>Our website is being redeveloped.</strong> <span class="hide-sm">Our core services and contact details stay fully available here in the meantime.</span></p>
-        <a href="index.html#rebuild" class="notice-bar__link">What's new <span aria-hidden="true">→</span></a>
+        <a href="index.html#all-services" class="notice-bar__link">What's new <span aria-hidden="true">→</span></a>
         <button class="notice-bar__close" type="button" aria-label="Close notice" data-notice-close>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
         </button>
@@ -179,33 +186,82 @@
               <div class="nav-dd__col">
                 <a href="2d-cad-digitizing.html" class="nav-dd__head" data-nav="2d">
                   <span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 12h6v8M10 4v4M14 12h6M10 12a4 4 0 0 1 4-4"/></svg></span>
-                  <span><strong>2D CAD Digitization</strong><small>Paper plans and scans to editable CAD</small></span>
+                  <span><strong>2D CAD Digitisation</strong><small>Paper plans and scans to editable CAD</small></span>
                 </a>
                 <ul class="nav-dd__list">
                   <li><a href="2d-cad-digitizing.html#paper-to-cad">Paper to CAD</a></li>
                   <li><a href="2d-cad-digitizing.html#pricing">Scan to CAD</a></li>
                   <li><a href="2d-cad-digitizing.html">BIM to CAD</a></li>
+                  <li><span class="nav-dd__soon">CAD restructuring <small>Soon</small></span></li>
                 </ul>
               </div>
               <div class="nav-dd__col">
                 <a href="3d-cad-digitizing.html" class="nav-dd__head" data-nav="3d">
                   <span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></svg></span>
-                  <span><strong>3D Modeling</strong><small>BIM models of buildings and parts</small></span>
+                  <span><strong>3D &amp; BIM Modelling</strong><small>From point clouds, CAD files and parts</small></span>
                 </a>
                 <ul class="nav-dd__list">
                   <li><a href="3d-cad-digitizing.html#scan-to-bim">Scan to BIM</a></li>
                   <li><a href="3d-cad-digitizing.html#cad-to-bim">CAD to BIM</a></li>
+                  <li><span class="nav-dd__soon">As-built BIM <small>Soon</small></span></li>
+                  <li><a href="3d-cad-digitizing.html#reverse-engineering">Reverse engineering (parts)</a></li>
                 </ul>
+              </div>
+              <div class="nav-dd__col">
+                <div class="nav-dd__head nav-dd__head--static">
+                  <span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 21V9l8-5 8 5v12"/><path d="M9 21v-6h6v6M3 21h18M12 4v5"/></svg></span>
+                  <span><strong>Modelling by discipline</strong><small>Architecture, structure and building services</small></span>
+                </div>
+                <ul class="nav-dd__list">
+                  <li><span class="nav-dd__soon">Architectural modelling <small>Soon</small></span></li>
+                  <li><span class="nav-dd__soon">Structural modelling <small>Soon</small></span></li>
+                  <li><span class="nav-dd__soon">MEP modelling <small>Soon</small></span></li>
+                  <li><span class="nav-dd__soon">HVAC modelling <small>Soon</small></span></li>
+                  <li><span class="nav-dd__soon">Plant modelling <small>Soon</small></span></li>
+                </ul>
+              </div>
+              <div class="nav-dd__col">
+                <div class="nav-dd__head nav-dd__head--static">
+                  <span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l9 4.5-9 4.5-9-4.5z"/><path d="M3 12l9 4.5 9-4.5M3 16.5L12 21l9-4.5"/></svg></span>
+                  <span><strong>Coordination &amp; documentation</strong><small>BIM coordination, FM and GIS</small></span>
+                </div>
+                <ul class="nav-dd__list">
+                  <li><span class="nav-dd__soon">BIM coordination <small>Soon</small></span></li>
+                  <li><span class="nav-dd__soon">Clash detection <small>Soon</small></span></li>
+                  <li><span class="nav-dd__soon">As-built &amp; FM documentation <small>Soon</small></span></li>
+                  <li><span class="nav-dd__soon">GIS digitising <small>Soon</small></span></li>
+                </ul>
+              </div>
+              <div class="nav-dd__foot">
+                <a href="index.html#contact" class="nav-dd__cta">
+                  <strong>Not sure which service fits?</strong>
+                  <small>Send us your plans for free advice and a free quote <span aria-hidden="true">&rarr;</span></small>
+                </a>
+                <div class="nav-dd__contact">
+                  <a href="mailto:info@jds-sommer.de"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5L12 13l8.5-6.5"/></svg>info@jds-sommer.de</a>
+                  <a href="tel:+49699054690"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>+49 (0)69 / 905 469-0</a>
+                </div>
+                <div class="nav-dd__follow">
+                  <span>Follow us</span>
+                  <ul class="social social--dd" aria-label="JDS Sommer on social media">
+                    <li><a href="https://www.facebook.com/jdssommer/" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer on Facebook"><svg aria-hidden="true"><use href="#i-facebook"/></svg></a></li>
+                    <li><a href="https://www.linkedin.com/company/jds-sommer-gmbh" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer on LinkedIn"><svg aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+                    <li><a href="https://x.com/JDS_Sommer" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer on X (Twitter)"><svg aria-hidden="true"><use href="#i-x"/></svg></a></li>
+                    <!-- YouTube: replace href="#" with the channel URL, and add target="_blank" rel="noopener" -->
+                    <li><a href="#" class="social__link" data-social aria-label="JDS Sommer on YouTube"><svg aria-hidden="true"><use href="#i-youtube"/></svg></a></li>
+                  </ul>
+                </div>
               </div>
             </div>
           </li>
           <li class="nav__item" data-dd>
-            <button class="nav__link nav__trigger" type="button" aria-expanded="false" aria-controls="dd-about">
+            <button class="nav__link nav__trigger" type="button" aria-expanded="false" aria-controls="dd-about" data-nav-group="about">
               About us <svg class="nav__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
             </button>
             <div class="nav-dd" id="dd-about">
               <ul class="nav-dd__list">
-                <li><a href="index.html#about">About JDS Sommer</a></li>
+                <li data-local-only><a href="about-us.html" data-nav="about">About JDS Sommer</a></li>
+                <li data-public-only><a href="index.html#about">About JDS Sommer</a></li>
                 <li><span class="nav-dd__soon">Partners <small>Soon</small></span></li>
                 <li><a href="index.html#industries">Industries</a></li>
               </ul>
@@ -249,13 +305,27 @@
           <details class="m-nav">
             <summary><span>01</span>Services</summary>
             <div class="m-nav__sub">
-              <a href="2d-cad-digitizing.html" class="m-nav__head" data-nav="2d">2D CAD Digitization</a>
+              <a href="2d-cad-digitizing.html" class="m-nav__head" data-nav="2d">2D CAD Digitisation</a>
               <a href="2d-cad-digitizing.html#paper-to-cad">Paper to CAD</a>
               <a href="2d-cad-digitizing.html#pricing">Scan to CAD</a>
               <a href="2d-cad-digitizing.html">BIM to CAD</a>
-              <a href="3d-cad-digitizing.html" class="m-nav__head" data-nav="3d">3D Modeling</a>
+              <span class="m-nav__soon">CAD restructuring <small>Soon</small></span>
+              <a href="3d-cad-digitizing.html" class="m-nav__head" data-nav="3d">3D &amp; BIM Modelling</a>
               <a href="3d-cad-digitizing.html#scan-to-bim">Scan to BIM</a>
               <a href="3d-cad-digitizing.html#cad-to-bim">CAD to BIM</a>
+              <span class="m-nav__soon">As-built BIM <small>Soon</small></span>
+              <a href="3d-cad-digitizing.html#reverse-engineering">Reverse engineering (parts)</a>
+              <span class="m-nav__head">Modelling by discipline</span>
+              <span class="m-nav__soon">Architectural modelling <small>Soon</small></span>
+              <span class="m-nav__soon">Structural modelling <small>Soon</small></span>
+              <span class="m-nav__soon">MEP modelling <small>Soon</small></span>
+              <span class="m-nav__soon">HVAC modelling <small>Soon</small></span>
+              <span class="m-nav__soon">Plant modelling <small>Soon</small></span>
+              <span class="m-nav__head">Coordination &amp; documentation</span>
+              <span class="m-nav__soon">BIM coordination <small>Soon</small></span>
+              <span class="m-nav__soon">Clash detection <small>Soon</small></span>
+              <span class="m-nav__soon">As-built &amp; FM documentation <small>Soon</small></span>
+              <span class="m-nav__soon">GIS digitising <small>Soon</small></span>
             </div>
           </details>
         </li>
@@ -263,7 +333,8 @@
           <details class="m-nav">
             <summary><span>02</span>About us</summary>
             <div class="m-nav__sub">
-              <a href="index.html#about">About JDS Sommer</a>
+              <a href="about-us.html" data-nav="about" data-local-only>About JDS Sommer</a>
+              <a href="index.html#about" data-public-only>About JDS Sommer</a>
               <span class="m-nav__soon">Partners <small>Soon</small></span>
               <a href="index.html#industries">Industries</a>
             </div>
@@ -286,6 +357,13 @@
     <div class="mobile-menu__foot">
       <a href="tel:+49699054690">+49 (0)69 / 905 469-0</a>
       <a href="mailto:info@jds-sommer.de">info@jds-sommer.de</a>
+      <ul class="social social--menu" aria-label="JDS Sommer on social media">
+        <li><a href="https://www.facebook.com/jdssommer/" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer on Facebook"><svg aria-hidden="true"><use href="#i-facebook"/></svg></a></li>
+        <li><a href="https://www.linkedin.com/company/jds-sommer-gmbh" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer on LinkedIn"><svg aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+        <li><a href="https://x.com/JDS_Sommer" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer on X (Twitter)"><svg aria-hidden="true"><use href="#i-x"/></svg></a></li>
+        <!-- YouTube: replace href="#" with the channel URL, and add target="_blank" rel="noopener" -->
+        <li><a href="#" class="social__link" data-social aria-label="JDS Sommer on YouTube"><svg aria-hidden="true"><use href="#i-youtube"/></svg></a></li>
+      </ul>
     </div>
   </div>
 
@@ -299,10 +377,10 @@
       <div class="container page-hero__inner">
         <div class="page-hero__copy">
           <nav class="crumbs" aria-label="Breadcrumb" data-hero-fade>
-            <a href="index.html">Home</a><span aria-hidden="true">/</span><span aria-current="page">3D Modeling</span>
+            <a href="index.html">Home</a><span aria-hidden="true">/</span><span aria-current="page">3D &amp; BIM Modelling</span>
           </nav>
           <p class="eyebrow" data-hero-fade><span class="eyebrow__line"></span>Core service 02 · 3D CAD &amp; BIM</p>
-          <h1 class="hero__title page-hero__title" data-split>3D CAD modeling, <em>now so easy!</em></h1>
+          <h1 class="hero__title page-hero__title" data-split>3D CAD modelling, <em>now so easy!</em></h1>
           <p class="hero__lead" data-hero-fade>
             We convert scan data into 3D CAD models: your objects in high-quality 3D CAD with geometric
             shapes, symbols, text and exact dimensions. Ready for planning, design and building survey,
@@ -310,7 +388,7 @@
           </p>
           <div class="hero__ctas" data-hero-fade>
             <a href="index.html#contact" class="btn btn--primary magnetic" data-prefill="3D models for BIM">
-              Start inquiry <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              Start enquiry <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
             <a href="#applications" class="btn btn--ghost">Buildings or components?</a>
           </div>
@@ -328,13 +406,16 @@
               <span class="sheet__dots" aria-hidden="true"><i></i><i></i><i></i></span>
               <span class="sheet__file">site_scan.e57 <b>→</b> building_LOD300.rvt</span>
             </div>
-            <div class="cloud-card__stage">
-              <canvas class="cloud" data-cloud aria-label="Animation: a laser-scan point cloud of a building resolving into a structured 3D CAD model" role="img"></canvas>
+            <div class="cloud-card__stage cloud-card__stage--media">
+              <picture>
+                <source srcset="assets/img/work/navvis-as-built-documentation-still.webp" media="(prefers-reduced-motion: reduce)">
+                <img src="assets/img/work/navvis-as-built-documentation-animation1-1.gif" width="1200" height="622" fetchpriority="high"
+                  alt="Animation: an as-built 3D model of an industrial hall being built up from a laser scan, with roof, skylight, pipework and shelving">
+              </picture>
               <div class="cloud-card__hud" aria-hidden="true">
-                <span class="tag tag--raster" data-cloud-label>Point cloud · 2.4 M points</span>
+                <span class="tag tag--raster">Point cloud → as-built model</span>
                 <span class="tag tag--vector">Revit · IFC</span>
               </div>
-              <div class="cloud-card__meter" aria-hidden="true"><span data-cloud-meter></span></div>
             </div>
           </div>
         </div>
@@ -382,28 +463,14 @@
       <div class="container">
         <header class="section-head" data-reveal>
           <p class="eyebrow"><span class="eyebrow__line"></span>Practical applications</p>
-          <h2 class="h2">We specialize in <em>two</em> applications.</h2>
+          <h2 class="h2">We specialise in <em>two</em> applications.</h2>
         </header>
 
         <div class="apps">
           <!-- Components -->
-          <article class="app-card" data-reveal data-tilt>
-            <div class="app-card__media" aria-hidden="true">
-              <svg viewBox="0 0 320 200">
-                <rect width="320" height="200" fill="url(#bpGrid)"/>
-                <g transform="translate(160 100)" fill="none" stroke-linecap="round">
-                  <path d="M-110 0H110M0 -90V90" stroke="#cc0000" stroke-width="1" stroke-dasharray="10 4 2 4"/>
-                  <circle class="draw" r="74" stroke="#393B8D" stroke-width="3"/>
-                  <circle class="draw" r="30" stroke="#393B8D" stroke-width="3"/>
-                  <circle class="draw" r="52" stroke="#4749AF" stroke-width="1" stroke-dasharray="4 4"/>
-                  <g stroke="#393B8D" stroke-width="2.2">
-                    <circle class="draw" cx="52" cy="0" r="8"/><circle class="draw" cx="26" cy="45" r="8"/><circle class="draw" cx="-26" cy="45" r="8"/>
-                    <circle class="draw" cx="-52" cy="0" r="8"/><circle class="draw" cx="-26" cy="-45" r="8"/><circle class="draw" cx="26" cy="-45" r="8"/>
-                  </g>
-                  <path d="M74 -74L104 -96H140" stroke="#cc0000" stroke-width="1.2"/>
-                </g>
-                <text x="268" y="0" dy="8" font-family="Arial" font-size="11" font-weight="700" fill="#cc0000">Ø148</text>
-              </svg>
+          <article class="app-card" id="reverse-engineering" data-reveal data-tilt>
+            <div class="app-card__media app-card__media--photo">
+              <img src="assets/img/work/app-reverse-engineering.webp" width="1200" height="682" loading="lazy" alt="3D CAD cutaway model of an electric motor showing housing, rotor and shaft">
               <span class="service-card__num">01</span>
             </div>
             <div class="app-card__body">
@@ -427,7 +494,7 @@
                   <ul class="ticks">
                     <li><b>CAD models</b> from scan data or 2D engineering drawings</li>
                     <li><b>Reproduction &amp; repair</b> of existing machine parts</li>
-                    <li><b>Optimization:</b> adapt and improve designs for higher efficiency</li>
+                    <li><b>Optimisation:</b> adapt and improve designs for higher efficiency</li>
                   </ul>
                 </div>
               </div>
@@ -438,21 +505,8 @@
 
           <!-- Buildings -->
           <article class="app-card" id="scan-to-bim" data-reveal data-tilt>
-            <div class="app-card__media" aria-hidden="true">
-              <svg viewBox="0 0 320 200">
-                <rect width="320" height="200" fill="url(#bpGrid)"/>
-                <g transform="translate(36 22)" fill="none" stroke="#393B8D" stroke-width="2" stroke-linejoin="round">
-                  <polygon points="52.85,49 129.1,93 129.1,137 52.85,93" fill="#4749AF" fill-opacity=".1"/>
-                  <polygon points="129.1,93 186.2,60 186.2,104 129.1,137" fill="#4749AF" fill-opacity=".2"/>
-                  <path class="draw" d="M110 16L186.2 60L129.1 93L52.85 49ZM52.85 49V93M129.1 93V137M186.2 60V104M52.85 93L129.1 137L186.2 104"/>
-                  <path class="draw" d="M52.85 71L129.1 115L186.2 82" stroke="#cc0000" stroke-width="1.4"/>
-                  <path class="draw" d="M70 66v14l12 7V73zM96 81v14l12 7V88zM145 97v14l10-6V91zM166 85v14l10-6V79z" stroke-width="1.4"/>
-                </g>
-                <g fill="#4749AF" opacity=".45">
-                  <circle cx="24" cy="40" r="1.6"/><circle cx="36" cy="80" r="1.3"/><circle cx="18" cy="120" r="1.6"/><circle cx="40" cy="160" r="1.2"/>
-                  <circle cx="276" cy="36" r="1.4"/><circle cx="296" cy="76" r="1.6"/><circle cx="282" cy="120" r="1.2"/><circle cx="300" cy="160" r="1.5"/>
-                </g>
-              </svg>
+            <div class="app-card__media app-card__media--photo">
+              <img src="assets/img/work/app-scan-to-bim.webp" width="1092" height="683" loading="lazy" alt="Laser-scan point cloud of a corner building next to the finished 3D BIM model">
               <span class="service-card__num">02</span>
             </div>
             <div class="app-card__body">
@@ -568,9 +622,9 @@
             digital twin.
           </p>
           <p>
-            The hurdle is capturing existing buildings and modeling them, which takes time and money. With the
-            long experience of our CAD team, we specialize in precise, cost-effective and fast 3D BIM
-            modeling, in native Revit, Allplan and Archicad.
+            The hurdle is capturing existing buildings and modelling them, which takes time and money. With the
+            long experience of our CAD team, we specialise in precise, cost-effective and fast 3D BIM
+            modelling, in native Revit, Allplan and Archicad.
           </p>
         </div>
 
@@ -583,7 +637,7 @@
           <li data-reveal-item>
             <span class="benefits__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20h16M6 20V8l6-4 6 4v12M10 20v-6h4v6"/></svg></span>
             <h3>For engineering offices</h3>
-            <p>Save time and cost: we take over the time-intensive modeling step with optimized methods.</p>
+            <p>Save time and cost: we take over the time-intensive modelling step with optimised methods.</p>
           </li>
           <li data-reveal-item>
             <span class="benefits__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h10l6 6v10H4z"/><path d="M14 4v6h6"/></svg></span>
@@ -606,8 +660,8 @@
           <p class="eyebrow"><span class="eyebrow__line"></span>Indicative prices</p>
           <h2 class="h2">3D CAD services, <em>at a glance</em>.</h2>
           <ul class="price-rows">
-            <li><span>3D CAD modeling of a machine part up to 40 cm edge length</span><strong>from €250</strong></li>
-            <li><span>3D modeling of a residential or office building for survey</span><strong>on request</strong></li>
+            <li><span>3D CAD modelling of a machine part up to 40 cm edge length</span><strong>from €250</strong></li>
+            <li><span>3D modelling of a residential or office building for survey</span><strong>on request</strong></li>
             <li><span>3D model of a transportation terminal, e.g. a subway station</span><strong>on request</strong></li>
             <li><span>3D model of a power station hall with piping</span><strong>on request</strong></li>
           </ul>
@@ -636,8 +690,8 @@
     <section class="section faq" id="faq">
       <div class="container faq__grid">
         <header class="faq__head" data-reveal>
-          <p class="eyebrow"><span class="eyebrow__line"></span>FAQ · 3D modeling</p>
-          <h2 class="h2">Questions about <em>3D</em> &amp; BIM modeling.</h2>
+          <p class="eyebrow"><span class="eyebrow__line"></span>FAQ · 3D modelling</p>
+          <h2 class="h2">Questions about <em>3D</em> &amp; BIM modelling.</h2>
           <p class="section-head__lead">What we need from you, and what you get back.</p>
           <div class="faq__help">
             <svg aria-hidden="true"><use href="#jds-mark"/></svg>
@@ -670,8 +724,8 @@
               <div class="faq__a"><p>Yes. Views, sections, floor plans and perspectives can all be derived from our volume-oriented 3D models, which contain exact dimensions, areas and volumes.</p></div>
             </details>
             <details class="faq__item">
-              <summary><span>What does 3D modeling cost?</span><i class="faq__icon" aria-hidden="true"></i></summary>
-              <div class="faq__a"><p>3D CAD modeling of a machine part up to 40 cm edge length starts at €250 plus VAT. Buildings, terminals and plant halls are quoted individually. The consultation and the offer are free of charge.</p></div>
+              <summary><span>What does 3D modelling cost?</span><i class="faq__icon" aria-hidden="true"></i></summary>
+              <div class="faq__a"><p>3D CAD modelling of a machine part up to 40 cm edge length starts at €250 plus VAT. Buildings, terminals and plant halls are quoted individually. The consultation and the offer are free of charge.</p></div>
             </details>
         </div>
       </div>
@@ -684,8 +738,8 @@
         <a href="2d-cad-digitizing.html" class="crosslink" data-reveal>
           <div>
             <p class="eyebrow"><span class="eyebrow__line"></span>Also: core service 01</p>
-            <h2 class="h2">Starting from <em>paper</em>? 2D CAD digitization.</h2>
-            <p>Exact digitization of large-format drawings and as-built plans into DWG, DXF, DGN or Allplan, from €49 per A0 drawing.</p>
+            <h2 class="h2">Starting from <em>paper</em>? 2D CAD digitisation.</h2>
+            <p>Exact digitisation of large-format drawings and as-built plans into DWG, DXF, DGN or Allplan, from €49 per A0 drawing.</p>
           </div>
           <span class="crosslink__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </a>
@@ -700,10 +754,10 @@
           <div>
             <p class="eyebrow"><span class="eyebrow__line"></span>Free consultation!</p>
             <h2 class="h2">Tell us about your object or building. <em>We'll advise you.</em></h2>
-            <p>Call us or send us an email with your inquiry. We'll prepare an individual offer free of charge.</p>
+            <p>Call us or send us an email with your enquiry. We'll prepare an individual offer free of charge.</p>
           </div>
           <div class="test-us__ctas">
-            <a href="index.html#contact" class="btn btn--primary magnetic" data-prefill="3D models for BIM">Start inquiry</a>
+            <a href="index.html#contact" class="btn btn--primary magnetic" data-prefill="3D models for BIM">Start enquiry</a>
             <a href="tel:+49699054690" class="btn btn--ghost">+49 (0)69 / 905 469-0</a>
           </div>
         </div>
@@ -725,13 +779,20 @@
           </span>
         </a>
         <p>From existing drawings and point clouds to usable engineering data.</p>
+        <ul class="social social--footer" aria-label="JDS Sommer on social media">
+          <li><a href="https://www.facebook.com/jdssommer/" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer on Facebook"><svg aria-hidden="true"><use href="#i-facebook"/></svg></a></li>
+          <li><a href="https://www.linkedin.com/company/jds-sommer-gmbh" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer on LinkedIn"><svg aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+          <li><a href="https://x.com/JDS_Sommer" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer on X (Twitter)"><svg aria-hidden="true"><use href="#i-x"/></svg></a></li>
+          <!-- YouTube: replace href="#" with the channel URL, and add target="_blank" rel="noopener" -->
+          <li><a href="#" class="social__link" data-social aria-label="JDS Sommer on YouTube"><svg aria-hidden="true"><use href="#i-youtube"/></svg></a></li>
+        </ul>
       </div>
 
       <div class="footer__col">
         <h4>Services</h4>
         <ul>
-          <li><a href="2d-cad-digitizing.html">2D CAD Digitization</a></li>
-          <li><a href="3d-cad-digitizing.html">3D Modeling</a></li>
+          <li><a href="2d-cad-digitizing.html">2D CAD Digitisation</a></li>
+          <li><a href="3d-cad-digitizing.html">3D &amp; BIM Modelling</a></li>
           <li><a href="index.html#contact">Request a quote</a></li>
         </ul>
       </div>
