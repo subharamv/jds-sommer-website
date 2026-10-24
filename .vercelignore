@@ -1,2 +1,9 @@
 # Pages still in review: kept out of deployments, viewable on localhost only
 about-us.html
+de/ueber-uns.html
+
+# Build tooling for the German pages, not part of the site
+tools/
+
+# Local secrets (Vercel OIDC token): never upload
+.env*

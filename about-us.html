@@ -1,21 +1,108 @@
 <!doctype html>
-<html lang="en-GB">
+<html lang="en-GB" translate="no" class="notice-closed">
 <head>
   <meta charset="utf-8">
+  <!-- English and German versions exist, so browsers should not machine-translate -->
+  <meta name="google" content="notranslate">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About us | JDS Sommer</title>
-  <meta name="description" content="JDS Sommer GmbH, founded 1984 in Frankfurt am Main: your service partner for digitisation, CAD conversion, scanning and data capture, with around 2,000 customers.">
+  <title>About JDS Sommer GmbH | CAD Digitalisation since 1984</title>
+  <meta name="description" content="JDS Sommer GmbH, founded 1984 in Frankfurt am Main: your partner for digitalisation, CAD conversion, scanning and data capture, with around 2,000 customers.">
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#393B8D">
   <link rel="icon" type="image/svg+xml" href="assets/img/jds-mark.svg">
-  <meta property="og:title" content="About us | JDS Sommer">
-  <meta property="og:description" content="JDS Sommer GmbH, founded 1984 in Frankfurt am Main: your service partner for digitisation, CAD conversion, scanning and data capture, with around 2,000 customers.">
+  <meta property="og:title" content="About JDS Sommer GmbH | CAD Digitalisation since 1984">
+  <meta property="og:description" content="JDS Sommer GmbH, founded 1984 in Frankfurt am Main: your partner for digitalisation, CAD conversion, scanning and data capture, with around 2,000 customers.">
   <meta property="og:type" content="website">
+  <!-- seo: written by tools/seo/build_seo.py, edit it there -->
+  <link rel="canonical" href="https://www.jds-sommer.de/about-us">
+  <link rel="alternate" hreflang="en" href="https://www.jds-sommer.de/about-us">
+  <link rel="alternate" hreflang="de" href="https://www.jds-sommer.de/de/ueber-uns">
+  <link rel="alternate" hreflang="x-default" href="https://www.jds-sommer.de/about-us">
+  <meta property="og:url" content="https://www.jds-sommer.de/about-us">
+  <meta property="og:site_name" content="JDS Sommer">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta property="og:image" content="https://www.jds-sommer.de/assets/img/og/jds-sommer-en.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="JDS Sommer: engineering data and BIM conversion from Frankfurt am Main">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@JDS_Sommer">
+  <link rel="icon" type="image/png" sizes="48x48" href="assets/img/favicon-48.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebSite",
+   "@id": "https://www.jds-sommer.de/#website",
+   "url": "https://www.jds-sommer.de/",
+   "name": "JDS Sommer",
+   "alternateName": "JDS SOMMER GmbH",
+   "inLanguage": [
+    "en-GB",
+    "de"
+   ],
+   "publisher": {
+    "@id": "https://www.jds-sommer.de/#organization"
+   }
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://www.jds-sommer.de/about-us#webpage",
+   "url": "https://www.jds-sommer.de/about-us",
+   "name": "About JDS Sommer GmbH | CAD Digitalisation since 1984",
+   "inLanguage": "en-GB",
+   "isPartOf": {
+    "@id": "https://www.jds-sommer.de/#website"
+   },
+   "primaryImageOfPage": "https://www.jds-sommer.de/assets/img/og/jds-sommer-en.png",
+   "description": "JDS Sommer GmbH, founded 1984 in Frankfurt am Main: your partner for digitalisation, CAD conversion, scanning and data capture, with around 2,000 customers.",
+   "breadcrumb": {
+    "@id": "https://www.jds-sommer.de/about-us#breadcrumb"
+   }
+  },
+  {
+   "@type": "ProfessionalService",
+   "@id": "https://www.jds-sommer.de/#organization",
+   "name": "JDS SOMMER GmbH",
+   "url": "https://www.jds-sommer.de/",
+   "logo": "https://www.jds-sommer.de/assets/img/jds-logo-512.png"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "@id": "https://www.jds-sommer.de/about-us#breadcrumb",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://www.jds-sommer.de/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "About us",
+     "item": "https://www.jds-sommer.de/about-us"
+    }
+   ]
+  }
+ ]
+}
+  </script>
+  <!-- /seo -->
 
   <script>
     // Hide animated elements only when JS runs; give them back if the libraries never arrive.
     (function (d) {
       d.classList.add('js');
+      // Final design: Header V1 and Hero V4 (the review switcher is gone); choices saved during the review are cleared
+      d.setAttribute('data-header-design', 'v1');
+      try { localStorage.removeItem('jdsHeader'); localStorage.removeItem('jdsHero'); } catch (e) {}
+      // Old review links (?header=…, ?hero=…) no longer do anything: take them out of the address bar
+      try { var u = new URL(location.href); if (u.searchParams.has('header') || u.searchParams.has('hero')) { u.searchParams.delete('header'); u.searchParams.delete('hero'); history.replaceState(history.state, '', u.pathname + u.search + u.hash); } } catch (e) {}
       // Pages still in review only show on local/dev hosts (html.is-local)
       if (location.protocol === 'file:' || /^(localhost|127\.0\.0\.1|\[::1\]|.+\.local|192\.168\.\d+\.\d+|10\.\d+\.\d+\.\d+)$/.test(location.hostname)) d.classList.add('is-local');
       // Not public yet: visitors on the live site go to the homepage
@@ -25,6 +112,7 @@
       try { seen = !!sessionStorage.getItem('jdsSeen'); } catch (e) {}
       if (!seen && !matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('show-preloader');
       setTimeout(function () { if (!window.gsap) d.classList.remove('js', 'show-preloader'); }, 2500);
+      d.setAttribute('data-hero', 'v4');
     })(document.documentElement);
   </script>
   <link rel="stylesheet" href="assets/css/style.css">
@@ -116,7 +204,7 @@
       </a>
 
       <nav class="nav" aria-label="Main navigation">
-        <ul class="nav__list">
+        <ul class="nav__list" data-header-variant="v2">
           <li class="nav__item" data-dd>
             <button class="nav__link nav__trigger" type="button" aria-expanded="false" aria-controls="dd-services" data-nav-group="2d 3d">
               Services <svg class="nav__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
@@ -125,38 +213,38 @@
               <div class="nav-dd__col">
                 <a href="2d-cad-digitizing.html" class="nav-dd__head" data-nav="2d">
                   <span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 12h6v8M10 4v4M14 12h6M10 12a4 4 0 0 1 4-4"/></svg></span>
-                  <span><strong>2D CAD Digitisation</strong><small>Paper plans and scans to editable CAD</small></span>
+                  <span><strong>2D CAD Digitalisation</strong><small>Plans, drawings and scans to editable DWG</small></span>
                 </a>
                 <ul class="nav-dd__list">
-                  <li><a href="2d-cad-digitizing.html#paper-to-cad">Paper to CAD</a></li>
-                  <li><a href="2d-cad-digitizing.html#pricing">Scan to CAD</a></li>
-                  <li><a href="2d-cad-digitizing.html">BIM to CAD</a></li>
-                  <li><span class="nav-dd__soon">CAD restructuring <small>Soon</small></span></li>
+                  <li><a href="2d-cad-digitizing.html#drawing-to-cad-conversion">Drawing-to-CAD conversion</a></li>
+                  <li><a href="2d-cad-digitizing.html#scan-to-cad">Scan-to-CAD</a></li>
+                  <li><a href="2d-cad-digitizing.html#cad-restructuring">CAD restructuring &amp; standardisation</a></li>
                 </ul>
               </div>
               <div class="nav-dd__col">
-                <a href="3d-cad-digitizing.html" class="nav-dd__head" data-nav="3d">
+                <a href="3d-bim-modeling.html" class="nav-dd__head" data-nav="3d">
                   <span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></svg></span>
                   <span><strong>3D &amp; BIM Modelling</strong><small>From point clouds, CAD files and parts</small></span>
                 </a>
                 <ul class="nav-dd__list">
-                  <li><a href="3d-cad-digitizing.html#scan-to-bim">Scan to BIM</a></li>
-                  <li><a href="3d-cad-digitizing.html#cad-to-bim">CAD to BIM</a></li>
-                  <li><span class="nav-dd__soon">As-built BIM <small>Soon</small></span></li>
-                  <li><a href="3d-cad-digitizing.html#reverse-engineering">Reverse engineering (parts)</a></li>
+                  <li><a href="3d-bim-modeling.html#scan-to-bim">Scan-to-BIM</a></li>
+                  <li><a href="3d-bim-modeling.html#cad-to-bim">CAD-to-BIM modelling</a></li>
+                  <li><a href="3d-bim-modeling.html#as-built-bim">As-built BIM modelling</a></li>
+                  <li><a href="3d-bim-modeling.html#3d-cad-modelling">3D CAD &amp; reverse engineering</a></li>
+                  <li><a href="3d-bim-modeling.html#industrial-facility-modelling">Industrial facility modelling</a></li>
                 </ul>
               </div>
               <div class="nav-dd__col">
-                <div class="nav-dd__head nav-dd__head--static">
+                <a href="3d-bim-modeling.html#modelling-by-discipline" class="nav-dd__head">
                   <span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 21V9l8-5 8 5v12"/><path d="M9 21v-6h6v6M3 21h18M12 4v5"/></svg></span>
                   <span><strong>Modelling by discipline</strong><small>Architecture, structure and building services</small></span>
-                </div>
+                </a>
                 <ul class="nav-dd__list">
-                  <li><span class="nav-dd__soon">Architectural modelling <small>Soon</small></span></li>
-                  <li><span class="nav-dd__soon">Structural modelling <small>Soon</small></span></li>
-                  <li><span class="nav-dd__soon">MEP modelling <small>Soon</small></span></li>
-                  <li><span class="nav-dd__soon">HVAC modelling <small>Soon</small></span></li>
-                  <li><span class="nav-dd__soon">Plant modelling <small>Soon</small></span></li>
+                  <li><a href="3d-bim-modeling.html#architectural-modelling">Architectural modelling</a></li>
+                  <li><a href="3d-bim-modeling.html#structural-modelling">Structural modelling</a></li>
+                  <li><a href="3d-bim-modeling.html#mep-modelling">MEP modelling</a></li>
+                  <li><a href="3d-bim-modeling.html#hvac-modelling">HVAC modelling</a></li>
+                  <li><a href="3d-bim-modeling.html#plant-modelling">Plant modelling</a></li>
                 </ul>
               </div>
               <div class="nav-dd__col">
@@ -221,14 +309,30 @@
           </li>
           <li class="nav__item"><a href="index.html#contact" class="nav__link" data-nav="contact">Contact us</a></li>
         </ul>
+        <ul class="nav__list" data-header-variant="v1">
+          <li class="nav__item"><a href="2d-cad-digitizing.html" class="nav__link" data-nav="2d">2D CAD Digitalisation</a></li>
+          <li class="nav__item"><a href="3d-bim-modeling.html" class="nav__link" data-nav="3d">3D &amp; BIM Modelling</a></li>
+          <li class="nav__item"><a href="index.html#contact" class="nav__link" data-nav="contact">Contact us</a></li>
+        </ul>
       </nav>
 
       <div class="header__actions">
+        <!-- lang -->
+        <div class="lang" data-lang>
+          <button class="lang__btn" type="button" aria-expanded="false" aria-controls="lang-menu" aria-label="Select language" title="Select language" data-lang-btn>
+            <svg class="lang__globe" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9M12 3c-2.5 2.6-3.8 5.6-3.8 9s1.3 6.4 3.8 9"/></svg><span class="lang__code">EN</span>
+          </button>
+          <ul class="lang__menu" id="lang-menu" data-lang-menu>
+            <li><a href="about-us.html" hreflang="en-GB" lang="en-GB" data-no-barba aria-current="true"><span>English (UK)</span><svg class="lang__check" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></a></li>
+            <li><a href="de/ueber-uns.html" hreflang="de" lang="en-GB" data-no-barba><span>German</span></a></li>
+          </ul>
+        </div>
+        <!-- /lang -->
         <a href="tel:+49699054690" class="header__phone">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
           <span>+49 (0)69 / 905 469-0</span>
         </a>
-        <a href="index.html#contact" class="btn btn--primary btn--sm magnetic">Request a quote</a>
+        <a href="index.html#contact" class="btn btn--primary btn--sm">Request a quote</a>
         <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" data-burger>
           <span></span><span></span>
         </button>
@@ -239,27 +343,27 @@
   <!-- Mobile menu -->
   <div class="mobile-menu" id="mobile-menu" aria-hidden="true" data-mobile-menu>
     <nav aria-label="Mobile navigation">
-      <ul>
+      <ul data-header-variant="v2">
         <li>
           <details class="m-nav">
             <summary><span>01</span>Services</summary>
             <div class="m-nav__sub">
-              <a href="2d-cad-digitizing.html" class="m-nav__head" data-nav="2d">2D CAD Digitisation</a>
-              <a href="2d-cad-digitizing.html#paper-to-cad">Paper to CAD</a>
-              <a href="2d-cad-digitizing.html#pricing">Scan to CAD</a>
-              <a href="2d-cad-digitizing.html">BIM to CAD</a>
-              <span class="m-nav__soon">CAD restructuring <small>Soon</small></span>
-              <a href="3d-cad-digitizing.html" class="m-nav__head" data-nav="3d">3D &amp; BIM Modelling</a>
-              <a href="3d-cad-digitizing.html#scan-to-bim">Scan to BIM</a>
-              <a href="3d-cad-digitizing.html#cad-to-bim">CAD to BIM</a>
-              <span class="m-nav__soon">As-built BIM <small>Soon</small></span>
-              <a href="3d-cad-digitizing.html#reverse-engineering">Reverse engineering (parts)</a>
-              <span class="m-nav__head">Modelling by discipline</span>
-              <span class="m-nav__soon">Architectural modelling <small>Soon</small></span>
-              <span class="m-nav__soon">Structural modelling <small>Soon</small></span>
-              <span class="m-nav__soon">MEP modelling <small>Soon</small></span>
-              <span class="m-nav__soon">HVAC modelling <small>Soon</small></span>
-              <span class="m-nav__soon">Plant modelling <small>Soon</small></span>
+              <a href="2d-cad-digitizing.html" class="m-nav__head" data-nav="2d">2D CAD Digitalisation</a>
+              <a href="2d-cad-digitizing.html#drawing-to-cad-conversion">Drawing-to-CAD conversion</a>
+              <a href="2d-cad-digitizing.html#scan-to-cad">Scan-to-CAD</a>
+              <a href="2d-cad-digitizing.html#cad-restructuring">CAD restructuring &amp; standardisation</a>
+              <a href="3d-bim-modeling.html" class="m-nav__head" data-nav="3d">3D &amp; BIM Modelling</a>
+              <a href="3d-bim-modeling.html#scan-to-bim">Scan-to-BIM</a>
+              <a href="3d-bim-modeling.html#cad-to-bim">CAD-to-BIM modelling</a>
+              <a href="3d-bim-modeling.html#as-built-bim">As-built BIM modelling</a>
+              <a href="3d-bim-modeling.html#3d-cad-modelling">3D CAD &amp; reverse engineering</a>
+              <a href="3d-bim-modeling.html#industrial-facility-modelling">Industrial facility modelling</a>
+              <a href="3d-bim-modeling.html#modelling-by-discipline" class="m-nav__head">Modelling by discipline</a>
+              <a href="3d-bim-modeling.html#architectural-modelling">Architectural modelling</a>
+              <a href="3d-bim-modeling.html#structural-modelling">Structural modelling</a>
+              <a href="3d-bim-modeling.html#mep-modelling">MEP modelling</a>
+              <a href="3d-bim-modeling.html#hvac-modelling">HVAC modelling</a>
+              <a href="3d-bim-modeling.html#plant-modelling">Plant modelling</a>
               <span class="m-nav__head">Coordination &amp; documentation</span>
               <span class="m-nav__soon">BIM coordination <small>Soon</small></span>
               <span class="m-nav__soon">Clash detection <small>Soon</small></span>
@@ -292,8 +396,16 @@
         </li>
         <li><a href="index.html#contact" data-nav="contact"><span>04</span>Contact us</a></li>
       </ul>
+      <ul data-header-variant="v1">
+        <li><a href="2d-cad-digitizing.html" data-nav="2d"><span>01</span>2D CAD Digitalisation</a></li>
+        <li><a href="3d-bim-modeling.html" data-nav="3d"><span>02</span>3D &amp; BIM Modelling</a></li>
+        <li><a href="index.html#contact" data-nav="contact"><span>03</span>Contact us</a></li>
+      </ul>
     </nav>
     <div class="mobile-menu__foot">
+      <!-- m-lang -->
+      <p class="m-lang" aria-label="Language"><svg class="lang__globe" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9M12 3c-2.5 2.6-3.8 5.6-3.8 9s1.3 6.4 3.8 9"/></svg><a href="about-us.html" hreflang="en-GB" lang="en-GB" data-no-barba aria-current="true">English (UK)</a><a href="de/ueber-uns.html" hreflang="de" lang="en-GB" data-no-barba>German</a></p>
+      <!-- /m-lang -->
       <a href="tel:+49699054690">+49 (0)69 / 905 469-0</a>
       <a href="mailto:info@jds-sommer.de">info@jds-sommer.de</a>
       <ul class="social social--menu" aria-label="JDS Sommer on social media">
@@ -321,18 +433,18 @@
           <p class="eyebrow" data-hero-fade><span class="eyebrow__line"></span>About JDS Sommer · Frankfurt am Main</p>
           <h1 class="hero__title page-hero__title" data-split>Your service partner for <em>digitalization</em>.</h1>
           <p class="hero__lead" data-hero-fade>
-            Your reliable service partner for all areas of digitalization for 30 years. Expect excellent
+            Your reliable service partner for all areas of digitalization for 42 years. Expect excellent
             expertise, high-performance capabilities, and affordable, fast service.
           </p>
           <div class="hero__ctas" data-hero-fade>
-            <a href="index.html#contact" class="btn btn--primary magnetic">
+            <a href="index.html#contact" class="btn btn--primary">
               Start enquiry <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
             <a href="index.html#all-services" class="btn btn--ghost">Our services</a>
           </div>
           <ul class="facts" data-hero-fade>
-            <li><strong><span data-count="30">30</span></strong><span>years of digital services</span></li>
-            <li><strong>≈<span data-count="2000" data-format="thousands">2,000</span></strong><span>customers</span></li>
+            <li><strong><span data-count="42">42</span></strong><span>years of digital services</span></li>
+            <li><strong><span data-count="2000" data-format="thousands">2,000</span>+</strong><span>customers</span></li>
             <li><strong><span data-count="1000" data-format="thousands">1,000</span>+</strong><span>drawings converted per month</span></li>
           </ul>
         </div>
@@ -398,9 +510,9 @@
       <div class="container about__grid">
         <div class="about__copy" data-reveal>
           <p class="eyebrow eyebrow--light"><span class="eyebrow__line"></span>Know-how</p>
-          <h2 class="h2 h2--light">Scanning &amp; <em>computer-aided</em> digitisation.</h2>
+          <h2 class="h2 h2--light">Scanning &amp; <em>computer-aided</em> digitalisation.</h2>
           <p>
-            JDS combines optimal scanning, computer-aided digitisation and sound engineering expertise to
+            JDS combines optimal scanning, computer-aided digitalisation and sound engineering expertise to
             offer cost-effective, fast and high-quality paper-to-CAD and paper-to-text conversion. About
             75% of drawings and documents are converted automatically, with dimensions and text largely
             interpreted correctly. That keeps our prices very competitive.
@@ -419,7 +531,7 @@
         </div>
 
         <div class="expertise" data-reveal>
-          <h3>Our expertise in digitisation for</h3>
+          <h3>Our expertise in digitalisation for</h3>
           <ul class="expertise__chips">
             <li>CAD</li>
             <li>GIS</li>
@@ -440,7 +552,7 @@
       <div class="container">
         <header class="section-head" data-reveal>
           <p class="eyebrow"><span class="eyebrow__line"></span>Our goal</p>
-          <h2 class="h2">Optimal services in digitisation, data acquisition, design <em>and</em> visualisation.</h2>
+          <h2 class="h2">Optimal services in digitalisation, data acquisition, design <em>and</em> visualisation.</h2>
           <p class="section-head__lead">We want to be a true service partner for our customers, at unbeatable prices. We achieve this through:</p>
         </header>
         <ol class="steps5 steps5--4">
@@ -472,11 +584,11 @@
           <svg class="test-us__mark" aria-hidden="true"><use href="#jds-mark"/></svg>
           <div>
             <p class="eyebrow"><span class="eyebrow__line"></span>Our promise</p>
-            <h2 class="h2">Precise digitisation of the <em>highest quality</em>.</h2>
-            <p>Continuous optimisation of our processes lets us offer precise digitisation at very reasonable prices. Let our performance convince you: we guarantee high quality, reasonable prices and on-time delivery.</p>
+            <h2 class="h2">Precise digitalisation of the <em>highest quality</em>.</h2>
+            <p>Continuous optimisation of our processes lets us offer precise digitalisation at very reasonable prices. Let our performance convince you: we guarantee high quality, reasonable prices and on-time delivery.</p>
           </div>
           <div class="test-us__ctas">
-            <a href="index.html#contact" class="btn btn--primary magnetic">Start enquiry</a>
+            <a href="index.html#contact" class="btn btn--primary">Start enquiry</a>
             <a href="mailto:info@jds-sommer.de" class="btn btn--ghost">info@jds-sommer.de</a>
           </div>
         </div>
@@ -510,9 +622,26 @@
       <div class="footer__col">
         <h4>Services</h4>
         <ul>
-          <li><a href="2d-cad-digitizing.html">2D CAD Digitisation</a></li>
-          <li><a href="3d-cad-digitizing.html">3D &amp; BIM Modelling</a></li>
+          <li><a href="2d-cad-digitizing.html">2D CAD Digitalisation</a></li>
+          <li><a href="3d-bim-modeling.html">3D &amp; BIM Modelling</a></li>
           <li><a href="index.html#contact">Request a quote</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col footer__col--v2">
+        <h4>About us</h4>
+        <ul>
+          <li data-local-only><a href="about-us.html">About JDS Sommer</a></li>
+          <li data-public-only><a href="index.html#about">About JDS Sommer</a></li>
+          <li><a href="index.html#industries">Industries</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col footer__col--v2">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="index.html#faq">FAQs</a></li>
+          <li><a href="index.html#references">References</a></li>
         </ul>
       </div>
 
@@ -529,11 +658,12 @@
     <div class="container footer__bottom">
       <p>© <span data-year>2026</span> JDS Sommer GmbH</p>
       <ul class="footer__legal">
-        <li><a href="https://www.jds-sommer.de/en/faq/" target="_blank" rel="noopener">FAQ</a></li>
-        <li><a href="https://www.jds-sommer.de/en/references/" target="_blank" rel="noopener">References</a></li>
-        <li><a href="https://www.jds-sommer.de/en/terms-conditions/" target="_blank" rel="noopener">Terms &amp; Conditions</a></li>
-        <li><a href="https://www.jds-sommer.de/impressum/" target="_blank" rel="noopener">Imprint</a></li>
-        <li><a href="https://www.jds-sommer.de/en/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+        <li><a href="index.html#references">References</a></li>
+        <li><a href="terms-and-conditions.html">Terms &amp; Conditions</a></li>
+        <li><a href="imprint.html">Imprint</a></li>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li class="footer__cookie-item"><button type="button" class="footer__cookie" data-cookie-settings>Cookie settings</button></li>
       </ul>
     </div>
   </footer>
@@ -545,6 +675,8 @@
       <path d="M105 19.5V12.5M101.8 15.4 105 12.2 108.2 15.4" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </a>
+
+  <!-- Review only: switch between the hero and header designs. Remove once they are chosen. -->
 
 </body>
 </html>

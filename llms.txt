@@ -1,0 +1,36 @@
+# JDS Sommer GmbH
+
+> JDS Sommer GmbH in Frankfurt am Main, Germany (founded 1984), turns existing drawings, scans and point clouds into usable CAD and BIM data: 2D CAD digitalisation and vectorisation, 3D CAD modelling, Scan to BIM and reverse engineering. Around 2,000 customers across industries; more than 1,000 drawings converted per month. Quotes and advice are free of charge.
+
+The website is in English (site root) and German (/de/). Prices are net, plus VAT.
+
+## Services
+
+Five service areas: 2D digitalisation, 3D modelling, as-built documentation and facility management, GIS and infrastructure data digitalisation, and Scan-to-CAD modelling.
+
+- [2D CAD Digitalisation](https://www.jds-sommer.de/2d-cad-digitizing): paper plans, PDFs and scanned technical drawings (A4 up to multiples of A0) turned into structured, editable CAD files with agreed layers, dimensions, text and output formats. Prices from €49 per A0 drawing (DWG-Basic), €75 (DWG-Premium), from €99 (DWG-Premium Plus); delivery in 5 days (standard), 3 days (urgent) or 24 hours (express).
+  - [Drawing-to-CAD conversion](https://www.jds-sommer.de/2d-cad-digitizing#drawing-to-cad-conversion): paper drawings, PDFs and raster images to editable 2D CAD in AutoCAD DWG, DXF, MicroStation DGN or, where agreed, Allplan.
+  - [Scan-to-CAD](https://www.jds-sommer.de/2d-cad-digitizing#scan-to-cad): registered point clouds and laser scans to 2D floor plans, sections and elevations of existing buildings (DWG, DXF, DGN).
+  - [CAD restructuring and standardisation](https://www.jds-sommer.de/2d-cad-digitizing#cad-restructuring): existing DWG, DXF or DGN files aligned with the client's CAD guidelines, layer standards, line styles, fonts and dimensions.
+- [3D CAD and BIM Modelling](https://www.jds-sommer.de/3d-bim-modeling): 3D CAD and BIM models from point clouds, laser scans, STL data and existing plans, at LOD 100 to 500. Objects up to 150 cm are scanned in-house. 3D scanning from €65 per point cloud; 3D CAD modelling of a machine part from €250.
+  - [Scan-to-BIM](https://www.jds-sommer.de/3d-bim-modeling#scan-to-bim): registered point clouds and terrestrial laser scans to 3D BIM models (Revit RVT, IFC, Allplan, Archicad).
+  - [CAD-to-BIM modelling](https://www.jds-sommer.de/3d-bim-modeling#cad-to-bim): existing 2D CAD drawings and building plans to structured 3D BIM models.
+  - [As-built BIM modelling](https://www.jds-sommer.de/3d-bim-modeling#as-built-bim): BIM models of a building or facility as it exists today, from survey data, point clouds and existing documentation.
+  - [3D CAD modelling and reverse engineering](https://www.jds-sommer.de/3d-bim-modeling#3d-cad-modelling): components and technical objects from scan data, STL meshes or engineering drawings to 3D CAD (STEP, IGES).
+  - [Industrial facility and technical installation modelling](https://www.jds-sommer.de/3d-bim-modeling#industrial-facility-modelling): 3D CAD/BIM models of industrial facilities, equipment and piping from scans and drawings.
+- As-built documentation and facility management: as-built drawings and facility documentation created and updated from agreed site information and existing building records. Quoted on request.
+- GIS and infrastructure data digitalisation: infrastructure plans and spatial information turned into structured data for mapping, asset records and GIS workflows. Quoted on request.
+
+## Company
+
+- [Homepage](https://www.jds-sommer.de/): overview of all services, industries served and frequently asked questions.
+- Contact: JDS SOMMER GmbH, August-Schanz-Straße 28, 60433 Frankfurt am Main, Germany. Phone +49 69 905469-0, email info@jds-sommer.de. Office hours Monday to Friday, 08:30 to 17:00.
+- [Imprint](https://www.jds-sommer.de/imprint) ([Impressum](https://www.jds-sommer.de/de/impressum)): company details, commercial register and VAT ID.
+- [Terms and Conditions](https://www.jds-sommer.de/terms-and-conditions)
+- [Privacy Policy](https://www.jds-sommer.de/privacy-policy)
+
+## German pages
+
+- [Startseite](https://www.jds-sommer.de/de/)
+- [2D-CAD-Digitalisierung](https://www.jds-sommer.de/de/2d-cad-digitalisierung)
+- [3D-CAD-Modellierung & Scan to BIM](https://www.jds-sommer.de/de/3d-bim-modellierung)

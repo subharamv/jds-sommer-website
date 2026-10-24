@@ -1,0 +1,1670 @@
+<!doctype html>
+<html lang="de" translate="no" class="notice-closed">
+<head>
+  <meta charset="utf-8">
+  <!-- English and German versions exist, so browsers should not machine-translate -->
+  <meta name="google" content="notranslate">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2D-CAD-Digitalisierung, 3D-Modellierung &amp; BIM | JDS Sommer</title>
+  <meta name="description" content="Aus Bestandszeichnungen, Scans und Punktwolken werden exakte CAD- und BIM-Modelle. JDS Sommer, Frankfurt: 42 Jahre Digitalisierung, rund 2.000 Kunden.">
+  <meta name="theme-color" content="#393B8D">
+  <link rel="icon" type="image/svg+xml" href="../assets/img/jds-mark.svg">
+  <meta property="og:title" content="JDS Sommer | Engineering-Daten &amp; BIM-Konvertierung">
+  <meta property="og:description" content="Von Bestandszeichnungen und Punktwolken zu nutzbaren Engineering-Daten. 2D-CAD-Digitalisierung und 3D-Modellierung aus Frankfurt am Main.">
+  <meta property="og:type" content="website">
+  <!-- seo: written by tools/seo/build_seo.py, edit it there -->
+  <link rel="canonical" href="https://www.jds-sommer.de/de/">
+  <link rel="alternate" hreflang="en" href="https://www.jds-sommer.de/">
+  <link rel="alternate" hreflang="de" href="https://www.jds-sommer.de/de/">
+  <link rel="alternate" hreflang="x-default" href="https://www.jds-sommer.de/">
+  <meta property="og:url" content="https://www.jds-sommer.de/de/">
+  <meta property="og:site_name" content="JDS Sommer">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:locale:alternate" content="en_GB">
+  <meta property="og:image" content="https://www.jds-sommer.de/assets/img/og/jds-sommer-de.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="JDS Sommer: Engineering-Daten und BIM-Konvertierung aus Frankfurt am Main">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@JDS_Sommer">
+  <link rel="icon" type="image/png" sizes="48x48" href="../assets/img/favicon-48.png">
+  <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+  <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebSite",
+   "@id": "https://www.jds-sommer.de/#website",
+   "url": "https://www.jds-sommer.de/",
+   "name": "JDS Sommer",
+   "alternateName": "JDS SOMMER GmbH",
+   "inLanguage": [
+    "en-GB",
+    "de"
+   ],
+   "publisher": {
+    "@id": "https://www.jds-sommer.de/#organization"
+   }
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://www.jds-sommer.de/de/#webpage",
+   "url": "https://www.jds-sommer.de/de/",
+   "name": "2D-CAD-Digitalisierung, 3D-Modellierung & BIM | JDS Sommer",
+   "inLanguage": "de",
+   "isPartOf": {
+    "@id": "https://www.jds-sommer.de/#website"
+   },
+   "primaryImageOfPage": "https://www.jds-sommer.de/assets/img/og/jds-sommer-de.png",
+   "description": "Aus Bestandszeichnungen, Scans und Punktwolken werden exakte CAD- und BIM-Modelle. JDS Sommer, Frankfurt: 42 Jahre Digitalisierung, rund 2.000 Kunden.",
+   "about": {
+    "@id": "https://www.jds-sommer.de/#organization"
+   }
+  }
+ ]
+}
+  </script>
+  <!-- /seo -->
+
+  <script>
+    // Hide animated elements only when JS runs; give them back if the libraries never arrive.
+    (function (d) {
+      d.classList.add('js');
+      // Final design: Header V1 and Hero V4 (the review switcher is gone); choices saved during the review are cleared
+      d.setAttribute('data-header-design', 'v1');
+      try { localStorage.removeItem('jdsHeader'); localStorage.removeItem('jdsHero'); } catch (e) {}
+      // Old review links (?header=…, ?hero=…) no longer do anything: take them out of the address bar
+      try { var u = new URL(location.href); if (u.searchParams.has('header') || u.searchParams.has('hero')) { u.searchParams.delete('header'); u.searchParams.delete('hero'); history.replaceState(history.state, '', u.pathname + u.search + u.hash); } } catch (e) {}
+      // Pages still in review only show on local/dev hosts (html.is-local)
+      if (location.protocol === 'file:' || /^(localhost|127\.0\.0\.1|\[::1\]|.+\.local|192\.168\.\d+\.\d+|10\.\d+\.\d+\.\d+)$/.test(location.hostname)) d.classList.add('is-local');
+      try { if (localStorage.getItem('jdsNoticeClosed')) d.classList.add('notice-closed'); } catch (e) {}
+      var seen = false;
+      try { seen = !!sessionStorage.getItem('jdsSeen'); } catch (e) {}
+      if (!seen && !matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('show-preloader');
+      setTimeout(function () { if (!window.gsap) d.classList.remove('js', 'show-preloader'); }, 2500);
+      d.setAttribute('data-hero', 'v4');
+    })(document.documentElement);
+  </script>
+  <link rel="stylesheet" href="../assets/css/style.css">
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@barba/core@2.10.3/dist/barba.umd.js"></script>
+  <script defer src="../assets/js/main.js"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "@id": "https://www.jds-sommer.de/#organization",
+    "name": "JDS SOMMER GmbH",
+    "description": "2D-CAD-Digitalisierung, 3D-CAD-Modellierung und BIM-Konvertierung.",
+    "url": "https://www.jds-sommer.de/de/",
+    "logo": "https://www.jds-sommer.de/assets/img/jds-logo-512.png",
+    "image": "https://www.jds-sommer.de/assets/img/og/jds-sommer-de.png",
+    "foundingDate": "1984",
+    "telephone": "+49 69 905469-0",
+    "faxNumber": "+49 69 905469-29",
+    "email": "info@jds-sommer.de",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "August-Schanz-Straße 28",
+      "postalCode": "60433",
+      "addressLocality": "Frankfurt am Main",
+      "addressCountry": "DE"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 50.16397,
+      "longitude": 8.68806
+    },
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=JDS+Sommer+GmbH+August-Schanz-Stra%C3%9Fe+28+60433+Frankfurt+am+Main",
+    "openingHours": "Mo-Fr 08:30-17:00",
+    "sameAs": [
+      "https://www.linkedin.com/company/jds-sommer-gmbh",
+      "https://www.facebook.com/jdssommer/",
+      "https://x.com/JDS_Sommer"
+    ]
+  }
+  </script>
+  <script type="application/ld+json" data-faq>
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Arbeitet JDS Sommer während der Neugestaltung der Website wie gewohnt weiter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Nur die Website wird neu aufgebaut. Projekte, Angebote und Beratung laufen wie gewohnt weiter. Sie erreichen uns telefonisch unter +49 (0)69 / 905 469-0, per E-Mail an info@jds-sommer.de oder über das Kontaktformular auf dieser Seite."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Welche Leistungen bieten Sie an?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Unsere beiden Kernleistungen sind die 2D-CAD-Digitalisierung von Plänen, Zeichnungen und Scans sowie die 3D-Modellierung: Scan to BIM für Gebäude und Industrieanlagen und 3D-CAD-Modelle von Maschinenteilen. Außerdem bieten wir GIS-Digitalisierung und FM-Bestandspläne an. Seiten zu diesen Leistungen folgen auf der neuen Website."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie erhalte ich einen Preis für mein Projekt?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Rufen Sie uns an oder senden Sie uns Ihre Anfrage. Wir beraten Sie kostenlos und erstellen ein individuelles Angebot auf Basis von Anzahl und Art Ihrer Vorlagen. Als Orientierung: Die 2D-CAD-Digitalisierung beginnt bei 49 € pro A0-Zeichnung, die 3D-Modellierung eines Maschinenteils bei 250 €, jeweils zzgl. MwSt."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kann ich die Qualität vor der Bestellung testen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Wir prüfen eine Auswahl Ihrer Zeichnungen oder Daten und können aus einem Ausschnitt Ihres Plans eine Muster-CAD-Datei erstellen, kostenlos und unverbindlich."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie sende ich Ihnen Zeichnungen oder Daten?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Originalzeichnungen können Sie per Post senden; nach Projektabschluss schicken wir sie kostenlos zurück. Scans und digitale Daten können Sie per E-Mail senden. Bei großen Mengen sprechen Sie uns an, und wir vereinbaren den besten Weg für die Datenübertragung."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wer sind Ihre Kunden?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Wir betreuen rund 2.000 Kunden aus Industrie, Energieversorgung, öffentlicher Hand, Bauwesen und vielen weiteren Branchen, und das seit 42 Jahren."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wo befinden Sie sich?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "JDS SOMMER GmbH, August-Schanz-Straße 28, D-60433 Frankfurt am Main. Wir sind montags bis freitags von 8:30 bis 17:00 Uhr für Sie erreichbar, und Sie sind herzlich eingeladen, uns persönlich zu besuchen."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+  <!-- Shared SVG defs: the JDS mark, reused by <use> everywhere -->
+  <svg class="svg-defs" aria-hidden="true" focusable="false">
+    <defs>
+      <pattern id="bpGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+        <path d="M20 0H0V20" fill="none" stroke="#4749AF" stroke-opacity=".08" stroke-width="1"/>
+      </pattern>
+      <linearGradient id="jdsB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5b5fd0"/><stop offset=".55" stop-color="#3f42a3"/><stop offset="1" stop-color="#2a2c78"/></linearGradient>
+      <linearGradient id="jdsG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4a4dc0"/><stop offset=".55" stop-color="#7477d8"/><stop offset="1" stop-color="#393b8d"/></linearGradient>
+      <linearGradient id="jdsL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a3a5ee"/><stop offset="1" stop-color="#4b4fbf"/></linearGradient>
+      <linearGradient id="jdsR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff7a7a"/><stop offset=".6" stop-color="#e3262b"/><stop offset="1" stop-color="#b8121a"/></linearGradient>
+      <mask id="jdsCut" maskUnits="userSpaceOnUse" x="0" y="0" width="140" height="80">
+        <rect width="140" height="80" fill="#fff"/>
+        <path stroke="#000" stroke-width="2.4" d="M26.05 48.8 49.45 75.2M67.85 48.8 45.65 75.2M64.2 48.8 85.8 75.2M84.9 24.9 65.2 49M83.1 24.9 103 49"/>
+      </mask>
+      <symbol id="jds-mark" viewBox="8 2 116 73">
+        <g mask="url(#jdsCut)">
+          <polygon fill="url(#jdsG)" points="47,26 84,26 66,48 28,48"/>
+          <polygon fill="url(#jdsL)" points="84,26 102,48 66,48"/>
+          <polygon fill="url(#jdsB)" points="84,26 122,26 102,48"/>
+          <polygon fill="url(#jdsB)" points="28,51 47.5,73 10,73"/>
+          <polygon fill="url(#jdsB)" points="28,51 66,51 47.5,73"/>
+          <polygon fill="url(#jdsB)" points="66,51 84,73 47.5,73"/>
+          <polygon fill="url(#jdsB)" points="66,51 102,51 84,73"/>
+        </g>
+        <polygon fill="url(#jdsR)" points="105,4 122,24 88,24"/>
+      </symbol>
+      <!-- Social icons -->
+      <symbol id="i-facebook" viewBox="0 0 24 24"><path fill="currentColor" d="M13.5 21v-7.5H16l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H8v3h2.5V21z"/></symbol>
+      <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M6.9 8.8H3.6V20h3.3zM5.25 3.5a1.95 1.95 0 1 0 0 3.9 1.95 1.95 0 0 0 0-3.9zM20.4 13.6c0-3-1.6-5-4.4-5-1.4 0-2.4.8-2.8 1.5V8.8H10V20h3.3v-5.6c0-1.5.3-2.9 2.1-2.9s1.8 1.7 1.8 3V20h3.3z"/></symbol>
+      <symbol id="i-youtube" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4a2.5 2.5 0 0 0-1.8 1.8A26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8c1.6.4 7.8.4 7.8.4s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15V9l5.2 3z"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><path fill="currentColor" d="M17.8 3h3.1l-6.8 7.8 8 10.2h-6.3l-4.9-6.4L5.3 21H2.2l7.3-8.3L1.9 3h6.4l4.4 5.8zm-1.1 16.2h1.7L7.4 4.7H5.6z"/></symbol>
+    </defs>
+  </svg>
+
+  <!-- First-visit preloader: the mark assembles from its triangles -->
+  <div class="preloader" aria-hidden="true">
+    <svg class="preloader__mark" viewBox="8 2 116 73">
+      <polygon class="pl-t" fill="url(#jdsB)" points="27.23,51.94 45.9,73 10,73"/>
+      <polygon class="pl-t" fill="url(#jdsB)" points="29.6,51 64.43,51 47.48,71.16"/>
+      <polygon class="pl-t" fill="url(#jdsB)" points="65.99,52.88 82.45,73 49.07,73"/>
+      <polygon class="pl-t" fill="url(#jdsB)" points="67.55,51 102,51 84.78,72.05"/>
+      <polygon class="pl-t" fill="url(#jdsG)" points="47,26 82.45,26 64.45,48 28,48"/>
+      <polygon class="pl-t" fill="url(#jdsL)" points="84,27.9 100.45,48 67.55,48"/>
+      <polygon class="pl-t" fill="url(#jdsB)" points="85.55,26 122,26 102.82,47.1"/>
+      <polygon class="pl-t pl-red" fill="url(#jdsR)" points="105,4 122,24 88,24"/>
+    </svg>
+    <div class="preloader__word">JDS SOMMER</div>
+  </div>
+
+  <!-- Page transition curtain (Barba) -->
+  <div class="curtain" aria-hidden="true">
+    <svg class="curtain__mark"><use href="#jds-mark"/></svg>
+  </div>
+
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header" data-header>
+    <div class="notice-bar" role="status">
+      <div class="container notice-bar__inner">
+        <span class="pulse-dot" aria-hidden="true"></span>
+        <p><strong>Unsere Website wird neu entwickelt.</strong> <span class="hide-sm">Unsere Kernleistungen und Kontaktdaten bleiben hier in der Zwischenzeit vollständig verfügbar.</span></p>
+        <a href="index.html#all-services" class="notice-bar__link">Neuigkeiten <span aria-hidden="true">→</span></a>
+        <button class="notice-bar__close" type="button" aria-label="Hinweis schließen" data-notice-close>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="container header__inner">
+      <a href="index.html" class="brand" aria-label="JDS Sommer, zurück zur Startseite">
+        <svg class="brand__mark" role="img" aria-hidden="true"><use href="#jds-mark"/></svg>
+        <span class="brand__text">
+          <span class="brand__name">JDS SOMMER</span>
+          <span class="brand__tag">Engineering-Daten &amp; BIM-Konvertierung</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Hauptnavigation">
+        <ul class="nav__list" data-header-variant="v2">
+          <li class="nav__item" data-dd>
+            <button class="nav__link nav__trigger" type="button" aria-expanded="false" aria-controls="dd-services" data-nav-group="2d 3d">
+              Leistungen <svg class="nav__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="nav-dd nav-dd--mega" id="dd-services">
+              <div class="nav-dd__col">
+                <a href="2d-cad-digitalisierung.html" class="nav-dd__head" data-nav="2d">
+                  <span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 12h6v8M10 4v4M14 12h6M10 12a4 4 0 0 1 4-4"/></svg></span>
+                  <span><strong>2D-CAD-Digitalisierung</strong><small>Pläne, Zeichnungen und Scans zu bearbeitbarem DWG</small></span>
+                </a>
+                <ul class="nav-dd__list">
+                  <li><a href="2d-cad-digitalisierung.html#drawing-to-cad-conversion">Zeichnungen zu CAD</a></li>
+                  <li><a href="2d-cad-digitalisierung.html#scan-to-cad">Scan-to-CAD</a></li>
+                  <li><a href="2d-cad-digitalisierung.html#cad-restructuring">CAD-Umstrukturierung &amp; Standardisierung</a></li>
+                </ul>
+              </div>
+              <div class="nav-dd__col">
+                <a href="3d-bim-modellierung.html" class="nav-dd__head" data-nav="3d">
+                  <span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></svg></span>
+                  <span><strong>3D- &amp; BIM-Modellierung</strong><small>Aus Punktwolken, CAD-Dateien und Bauteilen</small></span>
+                </a>
+                <ul class="nav-dd__list">
+                  <li><a href="3d-bim-modellierung.html#scan-to-bim">Scan-to-BIM</a></li>
+                  <li><a href="3d-bim-modellierung.html#cad-to-bim">CAD-to-BIM-Modellierung</a></li>
+                  <li><a href="3d-bim-modellierung.html#as-built-bim">Bestands-BIM-Modellierung</a></li>
+                  <li><a href="3d-bim-modellierung.html#3d-cad-modelling">3D-CAD &amp; Reverse Engineering</a></li>
+                  <li><a href="3d-bim-modellierung.html#industrial-facility-modelling">Modellierung von Industrieanlagen</a></li>
+                </ul>
+              </div>
+              <div class="nav-dd__col">
+                <a href="3d-bim-modellierung.html#modelling-by-discipline" class="nav-dd__head">
+                  <span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 21V9l8-5 8 5v12"/><path d="M9 21v-6h6v6M3 21h18M12 4v5"/></svg></span>
+                  <span><strong>Modellierung nach Fachdisziplin</strong><small>Architektur, Tragwerk und Gebäudetechnik</small></span>
+                </a>
+                <ul class="nav-dd__list">
+                  <li><a href="3d-bim-modellierung.html#architectural-modelling">Architekturmodellierung</a></li>
+                  <li><a href="3d-bim-modellierung.html#structural-modelling">Tragwerksmodellierung</a></li>
+                  <li><a href="3d-bim-modellierung.html#mep-modelling">TGA-Modellierung (MEP)</a></li>
+                  <li><a href="3d-bim-modellierung.html#hvac-modelling">HLK-Modellierung</a></li>
+                  <li><a href="3d-bim-modellierung.html#plant-modelling">Anlagenmodellierung</a></li>
+                </ul>
+              </div>
+              <div class="nav-dd__col">
+                <div class="nav-dd__head nav-dd__head--static">
+                  <span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l9 4.5-9 4.5-9-4.5z"/><path d="M3 12l9 4.5 9-4.5M3 16.5L12 21l9-4.5"/></svg></span>
+                  <span><strong>Koordination &amp; Dokumentation</strong><small>BIM-Koordination, FM und GIS</small></span>
+                </div>
+                <ul class="nav-dd__list">
+                  <li><span class="nav-dd__soon">BIM-Koordination <small>Bald</small></span></li>
+                  <li><span class="nav-dd__soon">Kollisionsprüfung <small>Bald</small></span></li>
+                  <li><span class="nav-dd__soon">Bestands- &amp; FM-Dokumentation <small>Bald</small></span></li>
+                  <li><span class="nav-dd__soon">GIS-Digitalisierung <small>Bald</small></span></li>
+                </ul>
+              </div>
+              <div class="nav-dd__foot">
+                <a href="index.html#contact" class="nav-dd__cta">
+                  <strong>Unsicher, welche Leistung passt?</strong>
+                  <small>Senden Sie uns Ihre Pläne für eine kostenlose Beratung und ein kostenloses Angebot <span aria-hidden="true">&rarr;</span></small>
+                </a>
+                <div class="nav-dd__contact">
+                  <a href="mailto:info@jds-sommer.de"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5L12 13l8.5-6.5"/></svg>info@jds-sommer.de</a>
+                  <a href="tel:+49699054690"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>+49 (0)69 / 905 469-0</a>
+                </div>
+                <div class="nav-dd__follow">
+                  <span>Folgen Sie uns</span>
+                  <ul class="social social--dd" aria-label="JDS Sommer in den sozialen Medien">
+                    <li><a href="https://www.facebook.com/jdssommer/" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer auf Facebook"><svg aria-hidden="true"><use href="#i-facebook"/></svg></a></li>
+                    <li><a href="https://www.linkedin.com/company/jds-sommer-gmbh" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer auf LinkedIn"><svg aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+                    <li><a href="https://x.com/JDS_Sommer" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer auf X (Twitter)"><svg aria-hidden="true"><use href="#i-x"/></svg></a></li>
+                    <!-- YouTube: replace href="#" with the channel URL, and add target="_blank" rel="noopener" -->
+                    <li><a href="#" class="social__link" data-social aria-label="JDS Sommer auf YouTube"><svg aria-hidden="true"><use href="#i-youtube"/></svg></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="nav__item" data-dd>
+            <button class="nav__link nav__trigger" type="button" aria-expanded="false" aria-controls="dd-about" data-nav-group="about">
+              Über uns <svg class="nav__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="nav-dd" id="dd-about">
+              <ul class="nav-dd__list">
+                <li data-local-only><a href="ueber-uns.html" data-nav="about">Über JDS Sommer</a></li>
+                <li data-public-only><a href="index.html#about">Über JDS Sommer</a></li>
+                <li><span class="nav-dd__soon">Partner <small>Bald</small></span></li>
+                <li><a href="index.html#industries">Branchen</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav__item" data-dd>
+            <button class="nav__link nav__trigger" type="button" aria-expanded="false" aria-controls="dd-resources">
+              Ressourcen <svg class="nav__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="nav-dd" id="dd-resources">
+              <ul class="nav-dd__list">
+                <li><span class="nav-dd__soon">Blog <small>Bald</small></span></li>
+                <li><span class="nav-dd__soon">Fallstudien <small>Bald</small></span></li>
+                <li><a href="index.html#faq">FAQ</a></li>
+                <li><span class="nav-dd__soon">Broschüren <small>Bald</small></span></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav__item"><a href="index.html#contact" class="nav__link" data-nav="contact">Kontakt</a></li>
+        </ul>
+        <ul class="nav__list" data-header-variant="v1">
+          <li class="nav__item"><a href="2d-cad-digitalisierung.html" class="nav__link" data-nav="2d">2D-CAD-Digitalisierung</a></li>
+          <li class="nav__item"><a href="3d-bim-modellierung.html" class="nav__link" data-nav="3d">3D- &amp; BIM-Modellierung</a></li>
+          <li class="nav__item"><a href="index.html#contact" class="nav__link" data-nav="contact">Kontakt</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <!-- lang -->
+        <div class="lang" data-lang>
+          <button class="lang__btn" type="button" aria-expanded="false" aria-controls="lang-menu" aria-label="Sprache wählen" title="Sprache wählen" data-lang-btn>
+            <svg class="lang__globe" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9M12 3c-2.5 2.6-3.8 5.6-3.8 9s1.3 6.4 3.8 9"/></svg><span class="lang__code">DE</span>
+          </button>
+          <ul class="lang__menu" id="lang-menu" data-lang-menu>
+            <li><a href="../index.html" hreflang="en-GB" lang="en-GB" data-no-barba><span>English (UK)</span></a></li>
+            <li><a href="index.html" hreflang="de" lang="de" data-no-barba aria-current="true"><span>Deutsch</span><svg class="lang__check" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></a></li>
+          </ul>
+        </div>
+        <!-- /lang -->
+        <a href="tel:+49699054690" class="header__phone">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
+          <span>+49 (0)69 / 905 469-0</span>
+        </a>
+        <a href="index.html#contact" class="btn btn--primary btn--sm">Angebot anfordern</a>
+        <button class="burger" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu" data-burger>
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true" data-mobile-menu>
+    <nav aria-label="Mobile Navigation">
+      <ul data-header-variant="v2">
+        <li>
+          <details class="m-nav">
+            <summary><span>01</span>Leistungen</summary>
+            <div class="m-nav__sub">
+              <a href="2d-cad-digitalisierung.html" class="m-nav__head" data-nav="2d">2D-CAD-Digitalisierung</a>
+              <a href="2d-cad-digitalisierung.html#drawing-to-cad-conversion">Zeichnungen zu CAD</a>
+              <a href="2d-cad-digitalisierung.html#scan-to-cad">Scan-to-CAD</a>
+              <a href="2d-cad-digitalisierung.html#cad-restructuring">CAD-Umstrukturierung &amp; Standardisierung</a>
+              <a href="3d-bim-modellierung.html" class="m-nav__head" data-nav="3d">3D- &amp; BIM-Modellierung</a>
+              <a href="3d-bim-modellierung.html#scan-to-bim">Scan-to-BIM</a>
+              <a href="3d-bim-modellierung.html#cad-to-bim">CAD-to-BIM-Modellierung</a>
+              <a href="3d-bim-modellierung.html#as-built-bim">Bestands-BIM-Modellierung</a>
+              <a href="3d-bim-modellierung.html#3d-cad-modelling">3D-CAD &amp; Reverse Engineering</a>
+              <a href="3d-bim-modellierung.html#industrial-facility-modelling">Modellierung von Industrieanlagen</a>
+              <a href="3d-bim-modellierung.html#modelling-by-discipline" class="m-nav__head">Modellierung nach Fachdisziplin</a>
+              <a href="3d-bim-modellierung.html#architectural-modelling">Architekturmodellierung</a>
+              <a href="3d-bim-modellierung.html#structural-modelling">Tragwerksmodellierung</a>
+              <a href="3d-bim-modellierung.html#mep-modelling">TGA-Modellierung (MEP)</a>
+              <a href="3d-bim-modellierung.html#hvac-modelling">HLK-Modellierung</a>
+              <a href="3d-bim-modellierung.html#plant-modelling">Anlagenmodellierung</a>
+              <span class="m-nav__head">Koordination &amp; Dokumentation</span>
+              <span class="m-nav__soon">BIM-Koordination <small>Bald</small></span>
+              <span class="m-nav__soon">Kollisionsprüfung <small>Bald</small></span>
+              <span class="m-nav__soon">Bestands- &amp; FM-Dokumentation <small>Bald</small></span>
+              <span class="m-nav__soon">GIS-Digitalisierung <small>Bald</small></span>
+            </div>
+          </details>
+        </li>
+        <li>
+          <details class="m-nav">
+            <summary><span>02</span>Über uns</summary>
+            <div class="m-nav__sub">
+              <a href="ueber-uns.html" data-nav="about" data-local-only>Über JDS Sommer</a>
+              <a href="index.html#about" data-public-only>Über JDS Sommer</a>
+              <span class="m-nav__soon">Partner <small>Bald</small></span>
+              <a href="index.html#industries">Branchen</a>
+            </div>
+          </details>
+        </li>
+        <li>
+          <details class="m-nav">
+            <summary><span>03</span>Ressourcen</summary>
+            <div class="m-nav__sub">
+              <span class="m-nav__soon">Blog <small>Bald</small></span>
+              <span class="m-nav__soon">Fallstudien <small>Bald</small></span>
+              <a href="index.html#faq">FAQ</a>
+              <span class="m-nav__soon">Broschüren <small>Bald</small></span>
+            </div>
+          </details>
+        </li>
+        <li><a href="index.html#contact" data-nav="contact"><span>04</span>Kontakt</a></li>
+      </ul>
+      <ul data-header-variant="v1">
+        <li><a href="2d-cad-digitalisierung.html" data-nav="2d"><span>01</span>2D-CAD-Digitalisierung</a></li>
+        <li><a href="3d-bim-modellierung.html" data-nav="3d"><span>02</span>3D- &amp; BIM-Modellierung</a></li>
+        <li><a href="index.html#contact" data-nav="contact"><span>03</span>Kontakt</a></li>
+      </ul>
+    </nav>
+    <div class="mobile-menu__foot">
+      <!-- m-lang -->
+      <p class="m-lang" aria-label="Sprache"><svg class="lang__globe" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9M12 3c-2.5 2.6-3.8 5.6-3.8 9s1.3 6.4 3.8 9"/></svg><a href="../index.html" hreflang="en-GB" lang="en-GB" data-no-barba>English (UK)</a><a href="index.html" hreflang="de" lang="de" data-no-barba aria-current="true">Deutsch</a></p>
+      <!-- /m-lang -->
+      <a href="tel:+49699054690">+49 (0)69 / 905 469-0</a>
+      <a href="mailto:info@jds-sommer.de">info@jds-sommer.de</a>
+      <ul class="social social--menu" aria-label="JDS Sommer in den sozialen Medien">
+        <li><a href="https://www.facebook.com/jdssommer/" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer auf Facebook"><svg aria-hidden="true"><use href="#i-facebook"/></svg></a></li>
+        <li><a href="https://www.linkedin.com/company/jds-sommer-gmbh" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer auf LinkedIn"><svg aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+        <li><a href="https://x.com/JDS_Sommer" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer auf X (Twitter)"><svg aria-hidden="true"><use href="#i-x"/></svg></a></li>
+        <!-- YouTube: replace href="#" with the channel URL, and add target="_blank" rel="noopener" -->
+        <li><a href="#" class="social__link" data-social aria-label="JDS Sommer auf YouTube"><svg aria-hidden="true"><use href="#i-youtube"/></svg></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============ BARBA ============ -->
+  <div data-barba="wrapper">
+  <main id="main" data-barba="container" data-barba-namespace="home">
+
+    <!-- HERO V1: full-bleed video, copy in a glass panel -->
+    <!-- Only the final hero (v4) carries the page h1; the other variants use h2 (main.js promotes the chosen one). Swap if another variant becomes the default. -->
+    <section class="hero hero--video" data-hero-variant="v1">
+      <div class="hero-video" aria-hidden="true">
+        <video class="hero-video__media" muted loop playsinline preload="none"
+          poster="../assets/video/hero-frankfurt-aerial-poster.webp"
+          data-src="../assets/video/hero-frankfurt-aerial.mp4"></video>
+        <div class="hero-video__shade"></div>
+      </div>
+
+      <div class="container hero-video__inner">
+        <div class="hero-glass" data-hero-fade>
+          <p class="eyebrow eyebrow--light">
+            <span class="eyebrow__line"></span>
+            <span><em>Digital</em> statt auf Papier</span>
+          </p>
+          <h2 class="hero__title hero__title--light" data-split>
+            Machen Sie aus Bestandszeichnungen und Scandaten <em>nutzbare</em> Engineering-Modelle.
+          </h2>
+          <p class="hero__lead">
+            Wandeln Sie alte Zeichnungen, PDFs und Punktwolken in strukturierte CAD-, BIM- und technische Dokumentation um, die Ingenieurteams, Gebäudeeigentümer und die Industrie in heutigen Projekten nutzen können.
+          </p>
+        </div>
+
+        <div class="hero-video__side" data-hero-fade>
+          <dl class="hero-video__stats">
+            <div><dt><span data-count="42">42</span></dt><dd>Jahre digitale Dienstleistungen</dd></div>
+            <div><dt><span data-count="2000" data-format="thousands">2,000</span>+</dt><dd>Kunden branchenübergreifend</dd></div>
+            <div><dt><span data-count="1000" data-format="thousands">1,000</span>+</dt><dd>konvertierte Zeichnungen pro Monat</dd></div>
+          </dl>
+          <div class="hero__ctas hero-video__ctas">
+            <a href="#contact" class="btn btn--primary">
+              Projektangebot anfordern
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="#contact" class="btn btn--glass" data-prefill="Dateiprüfung">Dateien zur Prüfung senden</a>
+          </div>
+        </div>
+      </div>
+
+      <button class="hero-video__toggle" type="button" aria-label="Hintergrundvideo pausieren" data-video-toggle>
+        <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg>
+        <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5l12 7-12 7z"/></svg>
+      </button>
+    </section>
+
+    <!-- HERO V4: full-bleed video, copy directly on the video (no panel) -->
+    <section class="hero hero--video hero--bare" data-hero-variant="v4">
+      <div class="hero-video" aria-hidden="true">
+        <video class="hero-video__media" muted loop playsinline preload="none"
+          poster="../assets/video/hero-frankfurt-aerial-poster.webp"
+          data-src="../assets/video/hero-frankfurt-aerial.mp4"></video>
+        <div class="hero-video__shade"></div>
+      </div>
+
+      <div class="container hero-video__inner">
+        <div class="hero-bare" data-hero-fade>
+          <p class="eyebrow eyebrow--light">
+            <span class="eyebrow__line"></span>
+            <span><em>Digital</em> statt auf Papier</span>
+          </p>
+          <h1 class="hero__title hero__title--light" data-split>
+            Machen Sie aus Bestandszeichnungen und Scandaten <em>nutzbare</em> Engineering-Modelle.
+          </h1>
+          <p class="hero__lead">
+            Wandeln Sie alte Zeichnungen, PDFs und Punktwolken in strukturierte CAD-, BIM- und technische Dokumentation um, die Ingenieurteams, Gebäudeeigentümer und die Industrie in heutigen Projekten nutzen können.
+          </p>
+        </div>
+
+        <div class="hero-video__side" data-hero-fade>
+          <dl class="hero-video__stats">
+            <div><dt><span data-count="42">42</span></dt><dd>Jahre digitale Dienstleistungen</dd></div>
+            <div><dt><span data-count="2000" data-format="thousands">2,000</span>+</dt><dd>Kunden branchenübergreifend</dd></div>
+            <div><dt><span data-count="1000" data-format="thousands">1,000</span>+</dt><dd>konvertierte Zeichnungen pro Monat</dd></div>
+          </dl>
+          <div class="hero__ctas hero-video__ctas">
+            <a href="#contact" class="btn btn--primary">
+              Projektangebot anfordern
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="#contact" class="btn btn--glass" data-prefill="Dateiprüfung">Dateien zur Prüfung senden</a>
+          </div>
+        </div>
+      </div>
+
+      <button class="hero-video__toggle" type="button" aria-label="Hintergrundvideo pausieren" data-video-toggle>
+        <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg>
+        <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5l12 7-12 7z"/></svg>
+      </button>
+    </section>
+
+    <!-- HERO V2: copy left, CAD plan and BIM model comparison right, stat cards below -->
+    <section class="hero hero--compare" data-hero-variant="v2">
+      <div class="container hero-cmp__inner">
+        <div class="hero__copy">
+          <p class="eyebrow" data-hero-fade>
+            <span class="eyebrow__line"></span>
+            <span><em>Digital</em> statt auf Papier</span>
+          </p>
+          <h2 class="hero__title" data-split>
+            Machen Sie aus Bestandszeichnungen und Scandaten <em>nutzbare</em> Engineering-Modelle.
+          </h2>
+          <p class="hero__lead" data-hero-fade>
+            Wandeln Sie alte Zeichnungen, PDFs und Punktwolken in strukturierte CAD-, BIM- und technische Dokumentation um. JDS Sommer hilft Ingenieurteams, Gebäudeeigentümern und Industrieunternehmen, ihre vorhandenen Daten für heutige Projekte nutzbar zu machen.
+          </p>
+          <div class="hero__ctas" data-hero-fade>
+            <a href="#contact" class="btn btn--primary">
+              Projektangebot anfordern
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="#contact" class="link-arrow hero-cmp__link" data-prefill="Dateiprüfung">Dateien zur Prüfung senden <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+
+        <div class="hero__visual hero-cmp__visual" data-hero-visual>
+          <figure class="hero-slider" aria-labelledby="cad-bim-caption">
+            <div class="compare compare--hero" data-compare style="--pos: 50%">
+              <div class="compare__bar">
+                <span class="sheet__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="sheet__file">Zum Vergleichen ziehen: grundriss.dwg ⟷ gebaeudemodell.rvt</span>
+              </div>
+              <div class="compare__stage">
+                <img class="compare__layer compare__layer--before" src="../assets/img/work/hero-cad-plan.webp" width="810" height="760" fetchpriority="high" draggable="false" alt="2D-CAD-Grundriss mit roten Leitungsführungen der Gebäudetechnik">
+                <img class="compare__layer compare__layer--after" src="../assets/img/work/hero-bim-model.webp" width="810" height="760" draggable="false" alt="Dasselbe Geschoss als 3D-BIM-Modell mit Räumen, Wänden und roten Leitungsführungen der Gebäudetechnik">
+                <span class="compare__label compare__label--before" aria-hidden="true">CAD-Plan · DWG</span>
+                <span class="compare__label compare__label--after" aria-hidden="true">BIM-Modell · RVT / IFC</span>
+                <span class="compare__handle" aria-hidden="true"><span><svg viewBox="0 0 24 24"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span></span>
+                <input class="compare__range" type="range" min="0" max="100" value="50" aria-label="2D-CAD-Plan mit dem 3D-BIM-Modell vergleichen">
+              </div>
+            </div>
+            <figcaption id="cad-bim-caption">Vom koordinierten 2D-CAD-Plan zum informationsreichen 3D-BIM-Modell.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="container">
+        <dl class="hero-cmp__stats" data-hero-fade>
+          <div><dt><span data-count="42">42</span></dt><dd>Jahre digitale Dienstleistungen</dd></div>
+          <div><dt><span data-count="2000" data-format="thousands">2,000</span>+</dt><dd>Kunden branchenübergreifend</dd></div>
+          <div><dt><span data-count="1000" data-format="thousands">1,000</span>+</dt><dd>konvertierte Zeichnungen pro Monat</dd></div>
+          <div><dt>100–500</dt><dd>LOD für 3D-BIM-Modelle</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- HERO V3: original design -->
+    <section class="hero" data-hero-variant="v3">
+      <div class="hero__bg" aria-hidden="true">
+        <div class="hero__grid"></div>
+        <div class="hero__glow"></div>
+      </div>
+
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <p class="eyebrow" data-hero-fade>
+            <span class="eyebrow__line"></span>
+            <span><em>Digital</em> statt auf Papier</span>
+          </p>
+
+          <h2 class="hero__title" data-split>
+            Machen Sie aus Bestandszeichnungen und Scandaten <em>nutzbare</em> Engineering-Modelle.
+          </h2>
+
+          <p class="hero__lead" data-hero-fade>
+            Wandeln Sie alte Zeichnungen, PDFs und Punktwolken in strukturierte CAD-, BIM- und technische Dokumentation um. JDS Sommer hilft Ingenieurteams, Gebäudeeigentümern und Industrieunternehmen, ihre vorhandenen Daten für heutige Projekte nutzbar zu machen.
+          </p>
+
+          <div class="hero__ctas" data-hero-fade>
+            <a href="#contact" class="btn btn--primary">
+              Projektangebot anfordern
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="#contact" class="btn btn--ghost" data-prefill="Dateiprüfung">Dateien zur Prüfung senden</a>
+          </div>
+
+          <dl class="hero__stats" data-hero-fade>
+            <div><dt><span data-count="42">42</span></dt><dd>Jahre digitale Dienstleistungen</dd></div>
+            <div><dt><span data-count="2000" data-format="thousands">2,000</span>+</dt><dd>Kunden branchenübergreifend</dd></div>
+            <div><dt><span data-count="1000" data-format="thousands">1,000</span>+</dt><dd>konvertierte Zeichnungen pro Monat</dd></div>
+          </dl>
+        </div>
+
+        <!-- Visual: Scan to BIM (point cloud → 3D model), plus a small paper → CAD card -->
+        <div class="hero__visual" data-hero-visual aria-label="Die Punktwolke eines Gebäudes neben dem fertigen 3D-BIM-Modell und ein gescannter Grundriss, der in eine CAD-Zeichnung umgewandelt wird" role="img">
+          <div class="sheet sheet--bim">
+            <div class="sheet__bar">
+              <span class="sheet__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="sheet__file">laserscan_2024.e57 <b>→</b> gebaeude_bestand.rvt</span>
+              <b class="sheet__badge">LOD 300</b>
+            </div>
+            <div class="sheet__media">
+              <img src="../assets/img/work/work-3d-scan-to-bim.webp" width="560" height="350" fetchpriority="high" alt="">
+              <div class="sheet__tags sheet__tags--top" aria-hidden="true">
+                <span class="tag tag--raster">Punktwolke · E57 / RCP</span>
+                <span class="tag tag--vector">BIM · RVT / IFC / PLN</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2D paper → CAD card (scan beam animation) -->
+          <div class="model-card model-card--plan" data-float>
+            <div class="model-card__head">
+              <span>2D CAD</span>
+              <b>DWG</b>
+            </div>
+            <div class="model-card__plan">
+            <svg class="plan" viewBox="0 0 600 420" aria-hidden="true">
+              <defs>
+                <filter id="paperWobble" x="-5%" y="-5%" width="110%" height="110%">
+                  <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4"/>
+                  <feDisplacementMap in="SourceGraphic" scale="4"/>
+                  <feGaussianBlur stdDeviation=".55"/>
+                </filter>
+                <clipPath id="clipVector"><rect class="clip-vector" x="0" y="0" width="0" height="420"/></clipPath>
+                <clipPath id="clipRaster"><rect class="clip-raster" x="0" y="0" width="600" height="420"/></clipPath>
+
+                <g id="planGeom">
+                  <!-- outer walls -->
+                  <path d="M70 60H110M170 60H300M380 60H470V340H70V60"/>
+                  <!-- interior walls -->
+                  <path d="M250 60V200M250 240V340M70 200H180M220 200H250M250 180H380M420 180H470M360 180V260M360 300V340"/>
+                </g>
+              </defs>
+
+              <!-- Raster side: scanned paper -->
+              <g clip-path="url(#clipRaster)">
+                <rect width="600" height="420" fill="#f4f1ea"/>
+                <g filter="url(#paperWobble)" fill="none" stroke="#7d8094" stroke-linecap="square">
+                  <use href="#planGeom" stroke-width="7" opacity=".75"/>
+                  <path d="M110 60H170M300 60H380" stroke-width="2" opacity=".6"/>
+                  <path d="M220 200A40 40 0 0 0 180 160M380 180A40 40 0 0 0 420 220M360 300A40 40 0 0 0 400 260" stroke-width="1.5" opacity=".55"/>
+                  <path d="M70 28H470M70 20V36M470 20V36M36 60V340M28 60H44M28 340H44" stroke-width="1.2" opacity=".5"/>
+                </g>
+                <g font-family="Georgia, serif" font-style="italic" fill="#7d8094" opacity=".7" filter="url(#paperWobble)">
+                  <text x="250" y="22" font-size="14">12,40</text>
+                  <text x="130" y="130" font-size="13">Büro</text>
+                  <text x="320" y="270" font-size="13">Archiv</text>
+                </g>
+                <rect x="0" y="0" width="600" height="420" fill="url(#bpGrid)" opacity=".25"/>
+              </g>
+
+              <!-- Vector side: clean CAD -->
+              <g clip-path="url(#clipVector)">
+                <rect width="600" height="420" fill="#fff"/>
+                <rect width="600" height="420" fill="url(#bpGrid)"/>
+                <g fill="none" stroke-linecap="square">
+                  <use href="#planGeom" stroke="#393B8D" stroke-width="6" class="draw"/>
+                  <!-- windows -->
+                  <path class="draw" d="M110 57H170M110 63H170M300 57H380M300 63H380" stroke="#4749AF" stroke-width="1.5"/>
+                  <!-- doors -->
+                  <path class="draw" d="M220 200A40 40 0 0 0 180 160M180 200V160M380 180A40 40 0 0 0 420 220M420 180V220M360 300A40 40 0 0 0 400 260M360 260H400" stroke="#4749AF" stroke-width="1.4"/>
+                  <!-- dimensions -->
+                  <path class="draw" d="M70 28H470M64 34L76 22M464 34L476 22M36 60V340M30 66L42 54M30 346L42 334M250 28V60" stroke="#cc0000" stroke-width="1.2"/>
+                </g>
+                <g font-family="Helvetica Neue, Arial, sans-serif" fill="#393B8D">
+                  <rect x="244" y="15" width="52" height="18" fill="#fff"/>
+                  <text x="250" y="29" font-size="13" font-weight="700" fill="#cc0000">12.40</text>
+                  <text x="20" y="208" font-size="13" font-weight="700" fill="#cc0000" transform="rotate(-90 20 208)">8.75</text>
+                  <text x="96" y="122" font-size="12" font-weight="700">BÜRO</text>
+                  <text x="96" y="138" font-size="11" fill="#5d6080">24,6 m²</text>
+                  <text x="276" y="256" font-size="12" font-weight="700">ARCHIV</text>
+                  <text x="276" y="272" font-size="11" fill="#5d6080">31,2 m²</text>
+                  <text x="384" y="106" font-size="12" font-weight="700">TECHNIK</text>
+                  <text x="384" y="122" font-size="11" fill="#5d6080">14,8 m²</text>
+                </g>
+                <!-- title block -->
+                <g font-family="Helvetica Neue, Arial, sans-serif">
+                  <rect x="400" y="358" width="180" height="48" fill="#fff" stroke="#393B8D" stroke-width="1"/>
+                  <path d="M400 376H580M490 376V406" stroke="#393B8D" stroke-width=".8"/>
+                  <text x="408" y="371" font-size="10" font-weight="700" fill="#393B8D">JDS SOMMER · BESTAND</text>
+                  <text x="408" y="394" font-size="9" fill="#5d6080">Layer A-WAND</text>
+                  <text x="498" y="394" font-size="9" fill="#5d6080">Maßstab 1:100</text>
+                </g>
+              </g>
+
+              <!-- Scan beam -->
+              <g class="scan-beam">
+                <rect x="-28" y="0" width="28" height="420" fill="url(#beamGrad)"/>
+                <line x1="0" y1="0" x2="0" y2="420" stroke="#cc0000" stroke-width="2"/>
+              </g>
+              <defs>
+                <linearGradient id="beamGrad" x1="0" x2="1"><stop offset="0" stop-color="#cc0000" stop-opacity="0"/><stop offset="1" stop-color="#cc0000" stop-opacity=".18"/></linearGradient>
+              </defs>
+            </svg>
+            </div>
+            <div class="model-card__foot">Scan TIFF → DWG · DXF · DGN</div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#all-services" class="scroll-cue" aria-label="Zum nächsten Abschnitt scrollen">
+        <span></span>
+      </a>
+    </section>
+
+    <!-- FORMAT MARQUEE -->
+    <div class="marquee" aria-label="Unterstützte Formate">
+      <div class="marquee__track" data-marquee>
+        <ul>
+          <li>AutoCAD DWG</li><li>DXF</li><li>MicroStation DGN</li><li>Nemetschek Allplan</li>
+          <li>Autodesk Revit RVT</li><li>IFC</li><li>Archicad PLN</li><li>PDF · TIFF · JPEG</li>
+          <li>Punktwolken</li><li>LOD 100 – 500</li><li>DIN A4 bis Vielfaches von A0</li>
+        </ul>
+        <ul aria-hidden="true">
+          <li>AutoCAD DWG</li><li>DXF</li><li>MicroStation DGN</li><li>Nemetschek Allplan</li>
+          <li>Autodesk Revit RVT</li><li>IFC</li><li>Archicad PLN</li><li>PDF · TIFF · JPEG</li>
+          <li>Punktwolken</li><li>LOD 100 – 500</li><li>DIN A4 bis Vielfaches von A0</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ALL SERVICES: rebuild-card layout, with a slider of every service -->
+    <section class="section rebuild rebuild--services" id="all-services">
+      <div class="container">
+        <div class="rebuild__card rebuild__card--services" data-reveal>
+          <div class="rebuild__intro">
+            <span class="chip"><span class="chip__dot" aria-hidden="true"></span>5 Leistungsbereiche · ein Partner</span>
+            <h2 class="h2">Alles, was wir <em>digitalisieren</em>, auf einen Blick.</h2>
+            <p>
+              Von der 2D-CAD-Digitalisierung und 3D-Modellierung bis zur Bestandsdokumentation und zu GIS-Daten: Entdecken Sie die Kernleistungen von JDS Sommer. Erzählen Sie uns von Ihrem Projekt – unser Team findet mit Ihnen die passende Lösung für Ihre Anforderungen.
+            </p>
+            <div class="svc-ctrl" data-svc-ctrl>
+              <span class="svc-ctrl__count" aria-hidden="true"><b data-svc-current>01</b> / 05</span>
+              <div class="svc-ctrl__bar" aria-hidden="true"><span data-svc-progress></span></div>
+              <div class="svc-ctrl__btns">
+                <button type="button" class="ind-btn" data-svc-prev aria-label="Vorherige Leistung">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+                </button>
+                <button type="button" class="ind-btn ind-btn--pause" data-svc-pause aria-label="Slider pausieren" aria-pressed="false">
+                  <svg class="ind-btn__pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg>
+                  <svg class="ind-btn__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+                </button>
+                <button type="button" class="ind-btn" data-svc-next aria-label="Nächste Leistung">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </button>
+              </div>
+            </div>
+            <a href="#contact" class="link-arrow" data-prefill="Angebot / Kostenvoranschlag">Angebot für jede Leistung anfordern <span aria-hidden="true">→</span></a>
+          </div>
+
+          <div class="svc-slider" data-svc-slider role="region" aria-roledescription="Karussell" aria-label="Alle Leistungen von JDS Sommer">
+            <div class="svc-slider__viewport" data-svc-viewport>
+              <ul class="svc-slider__track" data-svc-track>
+                <li class="svc-slide" data-svc-slide role="group" aria-roledescription="Folie" aria-label="1 von 5: Bestandsdokumentation & Facility Management">
+                  <div class="svc-slide__media">
+                    <img src="../assets/img/services/svc-as-built-facility-management.webp" width="1400" height="1050" draggable="false" alt="Bestandsgrundriss mit Raumbezeichnungen sowie Tür- und Fensterlisten">
+                    <span class="svc-slide__state">Fachleistung</span>
+                  </div>
+                  <div class="svc-slide__body">
+                    <span class="svc-slide__num">01 <i>/ 05</i></span>
+                    <h3>Bestandsdokumentation &amp; Facility Management</h3>
+                    <p>Erstellen und aktualisieren Sie Bestandspläne und Gebäudedokumentationen auf Grundlage abgestimmter Standortinformationen und vorhandener Gebäudedaten.</p>
+                    <div class="svc-slide__foot">
+                      <span class="svc-slide__price svc-slide__price--quote">Anforderungen besprechen</span>
+                      <a href="index.html#contact" class="link-arrow" data-prefill="Sonstiges">Fragen Sie uns <span aria-hidden="true">→</span></a>
+                    </div>
+                  </div>
+                </li>
+                <li class="svc-slide" data-svc-slide role="group" aria-roledescription="Folie" aria-label="2 von 5: GIS & Digitalisierung von Infrastrukturdaten">
+                  <div class="svc-slide__media">
+                    <img src="../assets/img/services/svc-gis-infrastructure-data.webp" width="1400" height="788" loading="lazy" draggable="false" alt="Digitalisierter Leitungsplan über dem Luftbild eines Wohngebiets">
+                    <span class="svc-slide__state">Fachleistung</span>
+                  </div>
+                  <div class="svc-slide__body">
+                    <span class="svc-slide__num">02 <i>/ 05</i></span>
+                    <h3>GIS &amp; Digitalisierung von Infrastrukturdaten</h3>
+                    <p>Überführen Sie Infrastrukturpläne und räumliche Informationen in strukturierte digitale Daten für Kartierung, Anlagenverwaltung und GIS-Anwendungen.</p>
+                    <div class="svc-slide__foot">
+                      <span class="svc-slide__price svc-slide__price--quote">Anforderungen besprechen</span>
+                      <a href="index.html#contact" class="link-arrow" data-prefill="Sonstiges">Fragen Sie uns <span aria-hidden="true">→</span></a>
+                    </div>
+                  </div>
+                </li>
+                <li class="svc-slide" data-svc-slide role="group" aria-roledescription="Folie" aria-label="3 von 5: Scan-to-CAD-Modellierung">
+                  <div class="svc-slide__media">
+                    <img src="../assets/img/services/svc-scan-to-cad-modelling.webp" width="1400" height="933" loading="lazy" draggable="false" alt="Aus Laserscan-Daten gezeichneter 2D-CAD-Grundriss eines Hauses auf dunklem Hintergrund">
+                    <span class="svc-slide__state">Fachleistung</span>
+                  </div>
+                  <div class="svc-slide__body">
+                    <span class="svc-slide__num">03 <i>/ 05</i></span>
+                    <h3>Scan-to-CAD-Modellierung</h3>
+                    <p class="svc-slide__sub">Von der Punktwolke zur präzisen CAD-Zeichnung</p>
+                    <p>Wandeln Sie Punktwolken und Laserscans in präzise 2D-CAD-Zeichnungen um, einschließlich Grundrissen, Ansichten und Schnitten, abgestimmt auf die jeweiligen Projektanforderungen.</p>
+                    <div class="svc-slide__foot">
+                      <span class="svc-slide__price svc-slide__price--quote">Projektbezogenes Angebot</span>
+                      <a href="2d-cad-digitalisierung.html#scan-to-cad" class="link-arrow">Scan-to-CAD entdecken <span aria-hidden="true">→</span></a>
+                    </div>
+                  </div>
+                </li>
+                <li class="svc-slide" data-svc-slide role="group" aria-roledescription="Folie" aria-label="4 von 5: 2D-CAD-Digitalisierung">
+                  <div class="svc-slide__media">
+                    <img src="../assets/img/services/svc-2d-digitalisation.webp" width="1400" height="933" loading="lazy" draggable="false" alt="Handgezeichneter Grundriss neben demselben Plan als saubere 2D-CAD-Zeichnung">
+                    <span class="svc-slide__area">2D</span>
+                    <span class="svc-slide__state is-live">Leistungsseite online</span>
+                  </div>
+                  <div class="svc-slide__body">
+                    <span class="svc-slide__num">04 <i>/ 05</i></span>
+                    <h3>2D-CAD-Digitalisierung</h3>
+                    <p class="svc-slide__sub">Scan-to-CAD und Konvertierung technischer Zeichnungen</p>
+                    <p>Überführen Sie Papierpläne, PDFs und gescannte technische Zeichnungen in strukturierte, editierbare CAD-Dateien – mit abgestimmten Layern, Bemaßungen, Texten und Ausgabeformaten.</p>
+                    <div class="svc-slide__foot">
+                      <span class="svc-slide__price svc-slide__price--quote">Projektbezogenes Angebot</span>
+                      <a href="2d-cad-digitalisierung.html" class="link-arrow">2D-CAD entdecken <span aria-hidden="true">→</span></a>
+                    </div>
+                  </div>
+                </li>
+                <li class="svc-slide" data-svc-slide role="group" aria-roledescription="Folie" aria-label="5 von 5: 3D-Modellierung">
+                  <div class="svc-slide__media">
+                    <img src="../assets/img/services/svc-3d-modelling.webp" width="1400" height="788" loading="lazy" draggable="false" alt="Punktwolke eines Hauses neben dem daraus erstellten 3D-Modell">
+                    <span class="svc-slide__area">3D</span>
+                    <span class="svc-slide__state is-live">Leistungsseite online</span>
+                  </div>
+                  <div class="svc-slide__body">
+                    <span class="svc-slide__num">05 <i>/ 05</i></span>
+                    <h3>3D-Modellierung</h3>
+                    <p class="svc-slide__sub">Scan-to-BIM und Modellierung von Bestandsgebäuden</p>
+                    <p>Erstellen Sie 3D-CAD-/BIM-Modelle aus Punktwolken, Laserscans und Bestandsplänen – abgestimmt auf den benötigten Detaillierungsgrad und das Zielformat.</p>
+                    <div class="svc-slide__foot">
+                      <span class="svc-slide__price svc-slide__price--quote">Projektbezogenes Angebot</span>
+                      <a href="3d-bim-modellierung.html" class="link-arrow">3D-Modellierung entdecken <span aria-hidden="true">→</span></a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- REFERENCES: customer logo carousel -->
+    <section class="section refs" id="references" aria-labelledby="refs-title">
+      <div class="container">
+        <header class="section-head section-head--center" data-reveal>
+          <p class="eyebrow"><span class="eyebrow__line"></span>Referenzen</p>
+          <h2 class="h2" id="refs-title">Vertrauen von <em>Stadtwerken, Industrie</em> und öffentlicher Hand.</h2>
+        </header>
+      </div>
+      <div class="refs__viewport" data-reveal>
+        <div class="refs__track">
+          <ul>
+            <li><img src="../assets/img/references/ref-estw.webp" alt="Erlanger Stadtwerke (ESTW)" loading="lazy" decoding="async"></li>
+            <li><img src="../assets/img/references/ref-stella.webp" alt="STELLA Kunststofftechnik GmbH" loading="lazy" decoding="async"></li>
+            <li><img src="../assets/img/references/ref-stadtwerke-erkrath.webp" alt="Stadtwerke Erkrath GmbH" loading="lazy" decoding="async"></li>
+            <li><img src="../assets/img/references/ref-thales.webp" alt="Thales" loading="lazy" decoding="async"></li>
+            <li><img src="../assets/img/references/ref-eon-kraftwerke.webp" alt="E.ON Kraftwerke" loading="lazy" decoding="async"></li>
+            <li><img src="../assets/img/references/ref-enwag.webp" alt="enwag energie · wasser · gesellschaft" loading="lazy" decoding="async"></li>
+          </ul>
+          <ul aria-hidden="true">
+            <li><img src="../assets/img/references/ref-estw.webp" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="../assets/img/references/ref-stella.webp" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="../assets/img/references/ref-stadtwerke-erkrath.webp" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="../assets/img/references/ref-thales.webp" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="../assets/img/references/ref-eon-kraftwerke.webp" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="../assets/img/references/ref-enwag.webp" alt="" loading="lazy" decoding="async"></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE SERVICES: pinned horizontal scroll, one split card per service -->
+    <section class="section services hscroll" id="services" data-hscroll>
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow"><span class="eyebrow__line"></span>Kernleistungen</p>
+          <h2 class="h2">Von Zeichnungen und Punktwolken<br class="hide-sm"> zu <em>exaktem</em> CAD &amp; BIM.</h2>
+          <p class="section-head__lead">
+            Wir wandeln Scandaten in CAD-Modelle in 2D und 3D um, bereit für Planung, Konstruktion und Bauaufnahme.
+          </p>
+        </header>
+      </div>
+
+      <div class="hscroll__viewport" data-hscroll-viewport>
+        <div class="hscroll__track" data-hscroll-track>
+          <!-- 2D -->
+          <article class="hcard is-active" data-hscroll-card>
+            <div class="hcard__media">
+              <img src="../assets/img/work/core-2d-cad-digitalisation.webp" width="1400" height="933" loading="lazy" alt="Bemaßter 2D-CAD-Grundriss eines Bürogebäudes mit Möblierung, Türen, Fenstern und Treppen">
+            </div>
+            <div class="hcard__body">
+              <span class="service-card__num" aria-hidden="true">01</span>
+              <h3 class="h3">2D-CAD-Digitalisierung</h3>
+              <p>
+                Exakte Digitalisierung großformatiger technischer Zeichnungen und Bestandspläne, von A4 bis zu einem Vielfachen von A0. Wir scannen Originalzeichnungen bei Bedarf und vektorisieren sie anschließend zu CAD mit Maßen, Text, Symbolen und Layerstruktur, gemäß Ihrer CAD-Richtlinie.
+              </p>
+              <ul class="ticks">
+                <li>AutoCAD DWG / DXF, MicroStation DGN, Allplan</li>
+                <li>Nachbearbeitet und qualitätsgeprüft durch CAD-Zeichner</li>
+                <li>Bereits gescannt? Wir digitalisieren Ihre Bilddateien direkt</li>
+              </ul>
+              <div class="service-card__foot">
+                <p class="price"><small>ab</small> €49 <small>zzgl. MwSt.</small></p>
+                <a href="2d-cad-digitalisierung.html" class="btn btn--dark">2D-CAD entdecken <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3D -->
+          <article class="hcard" data-hscroll-card>
+            <div class="hcard__media">
+              <img src="../assets/img/work/core-3d-bim-modelling.webp" width="1400" height="790" loading="lazy" alt="3D-BIM-Modell eines großen mehrgeschossigen Gebäudes mit Glasdächern, Säulen und Terrassen">
+            </div>
+            <div class="hcard__body">
+              <span class="service-card__num" aria-hidden="true">02</span>
+              <h3 class="h3">3D-Modellierung für BIM &amp; Bauteile</h3>
+              <p>
+                Präzise 3D-Gebäudemodelle aus Laserscans oder Bestandsplänen; Maschinenteile bis 150&nbsp;cm rekonstruieren wir selbst.
+              </p>
+              <ul class="ticks">
+                <li>Scan to BIM in Revit (RVT / IFC), Allplan und Archicad (PLN)</li>
+                <li>Detaillierungsgrad: LOD 100 bis 500</li>
+                <li>Nach Ihren BIM-Richtlinien und Vorlagen</li>
+              </ul>
+              <div class="service-card__foot">
+                <p class="price"><small>Punktwolke zum 3D-Modell ab</small> €250 <small>zzgl. MwSt.</small></p>
+                <a href="3d-bim-modellierung.html" class="btn btn--dark">3D-Modellierung entdecken <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="hscroll__dots" role="group" aria-label="Kernleistungen">
+        <button type="button" class="is-active" data-hscroll-dot aria-label="2D-CAD-Digitalisierung" aria-current="true"></button>
+        <button type="button" data-hscroll-dot aria-label="3D-Modellierung für BIM und Bauteile"></button>
+      </div>
+    </section>
+
+    <!-- INDUSTRIES -->
+    <section class="section industries" id="industries">
+      <div class="container">
+        <header class="section-head industries__head" data-reveal>
+          <div>
+            <p class="eyebrow"><span class="eyebrow__line"></span>Unsere Branchen</p>
+            <h2 class="h2">Nutzbare Zeichnungen und Modelle für <em>jede</em> Art von Gebäude.</h2>
+          </div>
+          <p class="section-head__lead">
+            Seit 42 Jahren vertrauen uns rund 2.000 Kunden aus Industrie, Energieversorgung, öffentlicher Hand, Bauwesen und vielen weiteren Branchen, um ihre Bestandsunterlagen wieder nutzbar zu machen.
+          </p>
+        </header>
+
+        <div class="ind-carousel" data-ind-carousel data-reveal>
+          <div class="ind-carousel__viewport" data-ind-viewport role="region" aria-roledescription="Karussell" aria-label="Unsere Branchen" tabindex="-1">
+            <ul class="ind-carousel__track" data-ind-track>
+              <li class="industry" data-ind-item>
+                <div class="industry__media">
+                  <img src="../assets/img/industries/ind-industry.webp" width="1200" height="900" loading="lazy" draggable="false" alt="Portalroboter bei der Arbeit in einer großen Industriehalle">
+                </div>
+                <span class="industry__num">01</span>
+                <h3>Industrie &amp; Fertigung</h3>
+                <p>Fabriklayouts und Konstruktionszeichnungen digitalisiert; Maschinenteile aus unseren hauseigenen 3D-Scans modelliert.</p>
+              </li>
+              <li class="industry" data-ind-item>
+                <div class="industry__media">
+                  <img src="../assets/img/industries/ind-energy.webp" width="1200" height="900" loading="lazy" draggable="false" alt="Gaskraftwerk mit Abgaskamin und Stahlkonstruktionen">
+                </div>
+                <span class="industry__num">02</span>
+                <h3>Energie &amp; Versorgung</h3>
+                <p>Anlagen-, Netz- und Umspannwerksdokumentation für Betrieb und Instandhaltung in DWG oder DGN überführt.</p>
+              </li>
+              <li class="industry" data-ind-item>
+                <div class="industry__media">
+                  <img src="../assets/img/industries/ind-public.webp" width="1200" height="900" loading="lazy" draggable="false" alt="Archivregale voller gerollter Pläne und Dokumentenkartons">
+                </div>
+                <span class="industry__num">03</span>
+                <h3>Öffentliche Hand</h3>
+                <p>Pläne aus den Bauarchiven von Kommunen und Behörden in CAD überführt.</p>
+              </li>
+              <li class="industry" data-ind-item>
+                <div class="industry__media">
+                  <img src="../assets/img/industries/ind-construction.webp" width="1200" height="900" loading="lazy" draggable="false" alt="Turmkräne über dem Betonrohbau eines Gebäudes im Bau">
+                </div>
+                <span class="industry__num">04</span>
+                <h3>Bauwesen &amp; Architektur</h3>
+                <p>Bestandspläne und Scan-to-BIM-Modelle in Revit, Allplan oder Archicad als verlässliche Planungsgrundlage.</p>
+              </li>
+              <li class="industry" data-ind-item>
+                <div class="industry__media">
+                  <img src="../assets/img/industries/ind-realestate.webp" width="1200" height="900" loading="lazy" draggable="false" alt="Weiße Bandfassade eines modernen Bürogebäudes">
+                </div>
+                <span class="industry__num">05</span>
+                <h3>Immobilien &amp; Facility Management</h3>
+                <p>Grundrisse mit Flächen- und Raumdaten für FM, Vermietung und Portfoliomanagement.</p>
+              </li>
+              <li class="industry" data-ind-item>
+                <div class="industry__media">
+                  <img src="../assets/img/industries/ind-healthcare.webp" width="1200" height="900" loading="lazy" draggable="false" alt="Gläsernes Hauptgebäude eines Krankenhauses mit Rettungswagen davor">
+                </div>
+                <span class="industry__num">06</span>
+                <h3>Gesundheitswesen</h3>
+                <p>Aktuelle Pläne und BIM-Modelle von Krankenhäusern und Kliniken, komplexen Gebäuden, die nie stillstehen.</p>
+              </li>
+              <li class="industry" data-ind-item>
+                <div class="industry__media">
+                  <img src="../assets/img/industries/ind-education.webp" width="1200" height="900" loading="lazy" draggable="false" alt="Modernes Schulgebäude mit verglaster Eingangshalle">
+                </div>
+                <span class="industry__num">07</span>
+                <h3>Bildung &amp; Forschung</h3>
+                <p>Digitalisierte Gebäudeunterlagen für Hochschulen und Schulen, bereit für Sanierung und Campusplanung.</p>
+              </li>
+              <li class="industry" data-ind-item>
+                <div class="industry__media">
+                  <img src="../assets/img/industries/ind-transport.webp" width="1200" height="900" loading="lazy" draggable="false" alt="Moderner Bahnsteig mit einem Regionalzug">
+                </div>
+                <span class="industry__num">08</span>
+                <h3>Verkehr &amp; Infrastruktur</h3>
+                <p>Bahnhöfe, Brücken und Gleisanlagen: großformatige Pläne bis zu einem Vielfachen von A0, vektorisiert.</p>
+              </li>
+              <li class="industry" data-ind-item>
+                <div class="industry__media">
+                  <img src="../assets/img/industries/ind-heritage.webp" width="1200" height="900" loading="lazy" draggable="false" alt="Historisches Fachwerkhaus mit Schieferdach in Goslar">
+                </div>
+                <span class="industry__num">09</span>
+                <h3>Kulturerbe &amp; denkmalgeschützte Gebäude</h3>
+                <p>Historische Gebäude detailliert dokumentiert, aus alten Plänen und Laserscans bis LOD 400.</p>
+              </li>
+            </ul>
+          </div>
+          <div class="ind-carousel__ui">
+            <div class="ind-carousel__progress" aria-hidden="true"><span data-ind-progress></span></div>
+            <div class="ind-carousel__btns">
+              <button type="button" class="ind-btn" data-ind-prev aria-label="Vorherige Branche">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+              </button>
+              <button type="button" class="ind-btn ind-btn--pause" data-ind-pause aria-label="Karussell pausieren" aria-pressed="false">
+                <svg class="ind-btn__pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg>
+                <svg class="ind-btn__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+              </button>
+              <button type="button" class="ind-btn" data-ind-next aria-label="Nächste Branche">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <p class="industries__more" data-reveal>Ihre Branche ist nicht dabei? Wir arbeiten für viele weitere. <a href="#contact" class="link-arrow">Sprechen Sie uns an <span aria-hidden="true">→</span></a></p>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="section process">
+      <div class="container">
+        <header class="section-head section-head--center" data-reveal>
+          <p class="eyebrow"><span class="eyebrow__line"></span>So arbeiten wir</p>
+          <h2 class="h2">Ein klarer Weg von der <em>Vorlage</em> zum Ergebnis.</h2>
+        </header>
+
+        <div class="process__wrap">
+          <svg class="process__line" viewBox="0 0 1000 4" preserveAspectRatio="none" aria-hidden="true">
+            <line x1="0" y1="2" x2="1000" y2="2"/>
+          </svg>
+          <ol class="process__steps">
+            <li data-step>
+              <span class="process__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M4 4h10l6 6v10H4z"/><path d="M14 4v6h6"/></svg>
+              </span>
+              <h3>1 · Ihre Ausgangsdaten</h3>
+              <p>Pläne und Zeichnungen, PDFs, Bilddateien, CAD-Dateien oder registrierte Punktwolken.</p>
+            </li>
+            <li data-step>
+              <span class="process__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M3 7V4h3M21 7V4h-3M3 17v3h3M21 17v3h-3M3 12h18"/></svg>
+              </span>
+              <h3>2 · Scannen &amp; Erfassen</h3>
+              <p>Großformat-Scan von Plänen und Zeichnungen oder 3D-Erfassung von Objekten.</p>
+            </li>
+            <li data-step>
+              <span class="process__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></svg>
+              </span>
+              <h3>3 · CAD- &amp; BIM-Modellierung</h3>
+              <p>Vektorisierung und Modellierung nach Ihrer CAD-Richtlinie oder dem geforderten LOD.</p>
+            </li>
+            <li data-step>
+              <span class="process__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></svg>
+              </span>
+              <h3>4 · QS &amp; Lieferung</h3>
+              <p>Von CAD-Spezialisten nachbearbeitet und geprüft, geliefert in Ihrem Format.</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- BENEFITS / ABOUT -->
+    <section class="section about" id="about">
+      <div class="container about__grid">
+        <div class="about__copy" data-reveal>
+          <p class="eyebrow eyebrow--light"><span class="eyebrow__line"></span>Über JDS Sommer</p>
+          <h2 class="h2 h2--light">42 Jahre <em>„Digitale Dienstleistungen“</em>.</h2>
+          <p>
+            Die JDS SOMMER GmbH beweist seit 42 Jahren ausgezeichneten Service und Qualität bei digitalen Dienstleistungen. Wir betreuen rund 2.000 Kunden aus Industrie, Energieversorgung, öffentlicher Hand, Bauwesen und vielen weiteren Branchen und verschaffen Unternehmen wie Ihrem in kurzer Zeit und zu geringen Kosten echte Wettbewerbsvorteile.
+          </p>
+          <div class="about__counter">
+            <div><strong><span data-count="42">42</span></strong><small>Jahre</small></div>
+            <div><strong><span data-count="2000" data-format="thousands">2,000</span>+</strong><small>Kunden</small></div>
+          </div>
+        </div>
+
+        <ul class="benefits">
+          <li data-reveal-item>
+            <span class="benefits__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span>
+            <h3>Qualitätsgarantie</h3>
+            <p>Jede Datei wird von erfahrenen CAD-Zeichnern nachbearbeitet und qualitätsgeprüft.</p>
+          </li>
+          <li data-reveal-item>
+            <span class="benefits__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 12l-8 8-9-9V3h8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span>
+            <h3>Preisgarantie</h3>
+            <p>Ein kostenloses, individuelles Angebot auf Basis von Anzahl und Art Ihrer Vorlagen.</p>
+          </li>
+          <li data-reveal-item>
+            <span class="benefits__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+            <h3>Termingarantie</h3>
+            <p>Schnelle Bearbeitung, auch wenn Ihr Projekt kurzfristig bearbeitbares CAD benötigt.</p>
+          </li>
+          <li data-reveal-item>
+            <span class="benefits__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4z"/></svg></span>
+            <h3>Persönlicher Service</h3>
+            <p>Kostenlose Beratung am Telefon oder persönlich durch unser Team in Frankfurt am Main.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CLIENT FEEDBACK: quote carousel (quotes as published on the former jds-sommer.de references page) -->
+    <section class="section quotes" id="client-feedback" aria-labelledby="quotes-title">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow"><span class="eyebrow__line"></span>Kundenstimmen</p>
+          <h2 class="h2" id="quotes-title">Was unsere Kunden über die <em>Zusammenarbeit</em> sagen.</h2>
+          <p class="section-head__lead">Ingenieurbüros und Industrie berichten von ihren Erfahrungen mit der CAD-Digitalisierung und dem Scan-Service von JDS Sommer.</p>
+        </header>
+
+        <div class="quotes__slider" data-quotes role="region" aria-roledescription="Karussell" aria-label="Kundenstimmen">
+          <ul class="quotes__track" data-quotes-track tabindex="0" aria-label="Kundenstimmen, seitlich scrollen für mehr">
+            <li class="fb-card" data-quote role="group" aria-roledescription="Folie" aria-label="1 of 3">
+              <figure>
+                <span class="fb-card__tag">CAD-Digitalisierung</span>
+                <blockquote>
+                  <p>„Wir haben die JDS CAD Digitalisierung ausprobiert. Anfangs waren wir sehr skeptisch, da wir schon schlechte Erfahrungen mit der Vektorisierung anderer Anbieter gemacht hatten. <strong>Das Ergebnis der JDS CAD Digitalisierung hat uns wirklich überzeugt!</strong> Wir hätten schon viel Geld und Zeit gespart, wenn wir schon früher die Dienstleistung der JDS SOMMER GmbH gekannt hätten. Wir können die JDS CAD Digitalisierung jedem CAD Anwender empfehlen, der die exakte Digitalisierung vorhandener Pläne und Skizzen in CAD Dateien zu sehr günstigen Preisen haben möchte!“</p>
+                </blockquote>
+                <figcaption class="fb-card__by">
+                  <span class="fb-card__avatar" aria-hidden="true">MS</span>
+                  <span><strong>Martin Stephan</strong><small>Ingenieurbüro Martin Stephan · Spezialtiefbau, Rohrleitungsbau und Hochbau-Statik</small></span>
+                </figcaption>
+              </figure>
+            </li>
+            <li class="fb-card" data-quote role="group" aria-roledescription="Folie" aria-label="2 of 3">
+              <figure>
+                <span class="fb-card__tag">CAD-Digitalisierung</span>
+                <blockquote>
+                  <p>„Durch einen Werbebrief sind wir auf die Firma JDS SOMMER aufmerksam geworden und haben die JDS CAD Digitalisierung an einem Bauvorhaben ausprobiert. <strong>Wir waren begeistert!</strong> Die uns zur Verfügung gestellten CAD Dateien ergaben ohne weiteren Aufwand bearbeit- und plotbare CAD Zeichnungen.“</p>
+                </blockquote>
+                <figcaption class="fb-card__by">
+                  <span class="fb-card__avatar" aria-hidden="true">FK</span>
+                  <span><strong>Franz Philipp Kraus</strong><small>Ingenieurbüro A.W. Kraus · Tragwerksplanung und Bauphysik</small></span>
+                </figcaption>
+              </figure>
+            </li>
+            <li class="fb-card" data-quote role="group" aria-roledescription="Folie" aria-label="3 of 3">
+              <figure>
+                <span class="fb-card__tag">Scan-Service &amp; digitales Archiv</span>
+                <blockquote>
+                  <p>„…Das Arbeiten mit unserem digitalen Archiv möchte kein Mitarbeiter mehr missen. Die digitale Archivierung stellt sich bei uns immer mehr als voller Erfolg heraus. Die Zugriffszeiten auf alte Zeichnungen haben sich drastisch verringert und es fallen praktisch keine Fremdkosten mehr für Pauserei, etc. an. <strong>Das liegt aber sicherlich auch an der hervorragenden Qualität der Arbeiten des JDS SOMMER Teams.</strong> Ich werde Ihre Firma auch bei Geschäftspartnern und Freunden gerne weiterempfehlen…“</p>
+                </blockquote>
+                <figcaption class="fb-card__by">
+                  <span class="fb-card__logo"><img src="../assets/img/references/ref-thales.webp" width="438" height="62" loading="lazy" decoding="async" alt="Thales"></span>
+                  <span><strong>Zuständiger Abteilungsleiter</strong><small>Thales</small></span>
+                </figcaption>
+              </figure>
+            </li>
+          </ul>
+          <div class="quotes__ctrl">
+            <div class="quotes__dots" data-quotes-dots></div>
+            <div class="svc-ctrl__btns">
+              <button type="button" class="ind-btn" data-quotes-prev aria-label="Vorherige Kundenstimme">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+              </button>
+              <button type="button" class="ind-btn" data-quotes-next aria-label="Nächste Kundenstimme">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FREE AUDIT -->
+    <section class="section test-us">
+      <div class="container">
+        <div class="test-us__card" data-reveal>
+          <svg class="test-us__mark" aria-hidden="true"><use href="#jds-mark"/></svg>
+          <div>
+            <p class="eyebrow"><span class="eyebrow__line"></span>Kostenlose Prüfung</p>
+            <h2 class="h2">Senden Sie uns Ihre Zeichnungen oder Daten für eine <em>kostenlose Prüfung</em>, unverbindlich.</h2>
+            <p>Wir prüfen eine Auswahl Ihrer Dateien, sagen Ihnen, was für nutzbare CAD- oder BIM-Ergebnisse nötig ist, und erstellen Ihnen kostenlos ein individuelles Angebot auf Basis der Anzahl Ihrer Vorlagen.</p>
+          </div>
+          <div class="test-us__ctas">
+            <a href="#contact" class="btn btn--primary" data-prefill="Kostenlose Prüfung">Kostenlose Prüfung anfordern</a>
+            <a href="tel:+49699054690" class="btn btn--ghost">+49 (0)69 / 905 469-0</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq" id="faq">
+      <div class="container faq__grid">
+        <header class="faq__head" data-reveal>
+          <p class="eyebrow"><span class="eyebrow__line"></span>FAQ</p>
+          <h2 class="h2">Ihre Fragen, <em>beantwortet</em>.</h2>
+          <p class="section-head__lead">Das Wichtigste zur Zusammenarbeit mit JDS Sommer, während unsere neue Website entsteht.</p>
+          <div class="faq__help">
+            <svg aria-hidden="true"><use href="#jds-mark"/></svg>
+            <p><strong>Noch Fragen?</strong> Rufen Sie an: <a href="tel:+49699054690">+49 (0)69 / 905 469-0</a><br>oder<br>schreiben Sie an <a href="mailto:info@jds-sommer.de">info@jds-sommer.de</a>.</p>
+          </div>
+        </header>
+        <div class="faq__list" data-reveal>
+            <details class="faq__item" open>
+              <summary><span>Arbeitet JDS Sommer während der Neugestaltung der Website wie gewohnt weiter?</span><i class="faq__icon" aria-hidden="true"></i></summary>
+              <div class="faq__a"><p>Ja. Nur die Website wird neu aufgebaut. Projekte, Angebote und Beratung laufen wie gewohnt weiter. Sie erreichen uns telefonisch unter +49 (0)69 / 905 469-0, per E-Mail an info@jds-sommer.de oder über das Kontaktformular auf dieser Seite.</p></div>
+            </details>
+            <details class="faq__item">
+              <summary><span>Welche Leistungen bieten Sie an?</span><i class="faq__icon" aria-hidden="true"></i></summary>
+              <div class="faq__a"><p>Unsere beiden Kernleistungen sind die 2D-CAD-Digitalisierung von Plänen, Zeichnungen und Scans sowie die 3D-Modellierung: Scan to BIM für Gebäude und Industrieanlagen und 3D-CAD-Modelle von Maschinenteilen. Außerdem bieten wir GIS-Digitalisierung und FM-Bestandspläne an. Seiten zu diesen Leistungen folgen auf der neuen Website.</p></div>
+            </details>
+            <details class="faq__item">
+              <summary><span>Wie erhalte ich einen Preis für mein Projekt?</span><i class="faq__icon" aria-hidden="true"></i></summary>
+              <div class="faq__a"><p>Rufen Sie uns an oder senden Sie uns Ihre Anfrage. Wir beraten Sie kostenlos und erstellen ein individuelles Angebot auf Basis von Anzahl und Art Ihrer Vorlagen. Als Orientierung: Die 2D-CAD-Digitalisierung beginnt bei 49 € pro A0-Zeichnung, die 3D-Modellierung eines Maschinenteils bei 250 €, jeweils zzgl. MwSt.</p></div>
+            </details>
+            <details class="faq__item">
+              <summary><span>Kann ich die Qualität vor der Bestellung testen?</span><i class="faq__icon" aria-hidden="true"></i></summary>
+              <div class="faq__a"><p>Ja. Wir prüfen eine Auswahl Ihrer Zeichnungen oder Daten und können aus einem Ausschnitt Ihres Plans eine Muster-CAD-Datei erstellen, kostenlos und unverbindlich.</p></div>
+            </details>
+            <details class="faq__item">
+              <summary><span>Wie sende ich Ihnen Zeichnungen oder Daten?</span><i class="faq__icon" aria-hidden="true"></i></summary>
+              <div class="faq__a"><p>Originalzeichnungen können Sie per Post senden; nach Projektabschluss schicken wir sie kostenlos zurück. Scans und digitale Daten können Sie per E-Mail senden. Bei großen Mengen sprechen Sie uns an, und wir vereinbaren den besten Weg für die Datenübertragung.</p></div>
+            </details>
+            <details class="faq__item">
+              <summary><span>Wer sind Ihre Kunden?</span><i class="faq__icon" aria-hidden="true"></i></summary>
+              <div class="faq__a"><p>Wir betreuen rund 2.000 Kunden aus Industrie, Energieversorgung, öffentlicher Hand, Bauwesen und vielen weiteren Branchen, und das seit 42 Jahren.</p></div>
+            </details>
+            <details class="faq__item">
+              <summary><span>Wo befinden Sie sich?</span><i class="faq__icon" aria-hidden="true"></i></summary>
+              <div class="faq__a"><p>JDS SOMMER GmbH, August-Schanz-Straße 28, D-60433 Frankfurt am Main. Wir sind montags bis freitags von 8:30 bis 17:00 Uhr für Sie erreichbar, und Sie sind herzlich eingeladen, uns persönlich zu besuchen.</p></div>
+            </details>
+        </div>
+      </div>
+    </section>
+    <!-- /FAQ -->
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contact">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow"><span class="eyebrow__line"></span>Kontakt</p>
+          <h2 class="h2">Senden Sie uns Ihre <em>Anfrage</em>.</h2>
+          <p class="section-head__lead">Unser Team antwortet schnell und kompetent.</p>
+        </header>
+
+        <div class="contact__grid">
+          <form class="form" id="contact-form" novalidate data-reveal data-steps>
+            <div class="stepper" aria-hidden="true">
+              <ol class="stepper__list">
+                <li class="is-current" data-step-dot="1"><span class="stepper__n">1</span><span class="stepper__t">Ihre Anfrage</span></li>
+                <li data-step-dot="2"><span class="stepper__n">2</span><span class="stepper__t">Kontakt</span></li>
+                <li data-step-dot="3"><span class="stepper__n">3</span><span class="stepper__t">Adresse &amp; Senden</span></li>
+              </ol>
+              <div class="stepper__bar"><span data-step-progress></span></div>
+            </div>
+
+            <div class="form__viewport">
+              <!-- STEP 1 -->
+              <fieldset class="form-step is-active" data-form-step="1">
+                <legend class="form-step__title">Wobei können wir Ihnen helfen?</legend>
+
+                <div class="form__row form__row--2">
+                  <div class="field">
+                    <label for="f-ref">Betreff <span class="req">*</span></label>
+                    <select id="f-ref" name="reference" required>
+                      <option value="">Bitte auswählen</option>
+                      <option>2D-CAD-Digitalisierung</option>
+                      <option>3D-Modelle für BIM</option>
+                      <option>3D-Modelle für Bauteile</option>
+                      <option>Dateiprüfung</option>
+                      <option>Kostenlose Prüfung</option>
+                      <option>Angebot / Kostenvoranschlag</option>
+                      <option>Sonstiges</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label for="f-source">Wie haben Sie uns gefunden? <span class="req">*</span></label>
+                    <select id="f-source" name="source" required>
+                      <option value="">Bitte auswählen</option>
+                      <option>Suchmaschine</option>
+                      <option>Empfehlung</option>
+                      <option>Bestandskunde</option>
+                      <option>Messe / Veranstaltung</option>
+                      <option>Werbung</option>
+                      <option>Soziale Medien</option>
+                      <option>Sonstiges</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form__row">
+                  <div class="field field--full">
+                    <label for="f-msg">Anfrage <span class="req">*</span></label>
+                    <textarea id="f-msg" name="inquiry" rows="5" required placeholder="Beschreiben Sie Ihre Zeichnungen, Scandaten oder Ihr Projekt: Menge, Größen, Formate, Termin …"></textarea>
+                  </div>
+                </div>
+
+                <fieldset class="form__group form__group--inline">
+                  <legend>Ich wünsche <span class="req">*</span></legend>
+                  <label class="choice"><input type="radio" name="reply" value="Eine Antwort per E-Mail" checked><span>Eine Antwort per E-Mail</span></label>
+                  <label class="choice"><input type="radio" name="reply" value="Einen Rückruf" data-callback><span>Einen Rückruf</span></label>
+                </fieldset>
+              </fieldset>
+
+              <!-- STEP 2 -->
+              <fieldset class="form-step" data-form-step="2">
+                <legend class="form-step__title">Wie erreichen wir Sie?</legend>
+
+                <div class="form__row form__row--3">
+                  <div class="field">
+                    <label for="f-salutation">Anrede <span class="req">*</span></label>
+                    <select id="f-salutation" name="salutation" required>
+                      <option value="">Bitte auswählen</option>
+                      <option>Herr</option>
+                      <option>Frau</option>
+                      <option>Sonstiges</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label for="f-first">Vorname <span class="req">*</span></label>
+                    <input id="f-first" name="first_name" type="text" autocomplete="given-name" required>
+                  </div>
+                  <div class="field">
+                    <label for="f-last">Nachname <span class="req">*</span></label>
+                    <input id="f-last" name="last_name" type="text" autocomplete="family-name" required>
+                  </div>
+                </div>
+
+                <div class="form__row">
+                  <div class="field field--full">
+                    <label for="f-company">Firma</label>
+                    <input id="f-company" name="company" type="text" autocomplete="organization">
+                  </div>
+                </div>
+
+                <div class="form__row form__row--3">
+                  <div class="field">
+                    <label for="f-email">E-Mail <span class="req">*</span></label>
+                    <input id="f-email" name="email" type="email" autocomplete="email" required>
+                  </div>
+                  <div class="field">
+                    <label for="f-phone">Telefon <span class="req" data-phone-req hidden>*</span></label>
+                    <input id="f-phone" name="phone" type="tel" autocomplete="tel">
+                  </div>
+                  <div class="field">
+                    <label for="f-fax">Fax</label>
+                    <input id="f-fax" name="fax" type="tel">
+                  </div>
+                </div>
+              </fieldset>
+
+              <!-- STEP 3 -->
+              <fieldset class="form-step" data-form-step="3">
+                <legend class="form-step__title">Ihre Adresse</legend>
+
+                <div class="form__row">
+                  <div class="field field--full">
+                    <label for="f-street">Straße, Nr. <span class="req">*</span></label>
+                    <input id="f-street" name="street" type="text" autocomplete="street-address" required>
+                  </div>
+                </div>
+
+                <div class="form__row form__row--3">
+                  <div class="field">
+                    <label for="f-zip">PLZ <span class="req">*</span></label>
+                    <input id="f-zip" name="postal_code" type="text" autocomplete="postal-code" inputmode="numeric" required>
+                  </div>
+                  <div class="field">
+                    <label for="f-city">Ort <span class="req">*</span></label>
+                    <input id="f-city" name="location" type="text" autocomplete="address-level2" required>
+                  </div>
+                  <div class="field">
+                    <label for="f-country">Land <span class="req">*</span></label>
+                    <select id="f-country" name="country" autocomplete="country-name" required>
+                      <option selected>Deutschland</option>
+                      <option>Österreich</option>
+                      <option>Schweiz</option>
+                      <option>Niederlande</option>
+                      <option>Belgien</option>
+                      <option>Luxemburg</option>
+                      <option>Frankreich</option>
+                      <option>Italien</option>
+                      <option>Polen</option>
+                      <option>Vereinigtes Königreich</option>
+                      <option>Sonstiges</option>
+                    </select>
+                  </div>
+                </div>
+
+                <label class="consent">
+                  <input type="checkbox" name="privacy" id="f-privacy" required>
+                  <span>
+                    Ich stimme zu, dass meine Angaben aus dem Kontaktformular zur Beantwortung meiner Anfrage erhoben und verarbeitet werden. Die Daten werden nach abgeschlossener Bearbeitung Ihrer Anfrage gelöscht. Hinweis: Sie können Ihre Einwilligung jederzeit für die Zukunft per E-Mail an <a href="mailto:info@jds-sommer.de">info@jds-sommer.de</a> widerrufen. Detaillierte Informationen zum Umgang mit Nutzerdaten finden Sie in unserer <a href="datenschutz.html">Datenschutzerklärung</a>. <span class="req">*</span>
+                  </span>
+                </label>
+              </fieldset>
+            </div>
+
+            <!-- spam trap, hidden from people -->
+            <div class="hp" aria-hidden="true">
+              <label for="f-website">Leer lassen</label>
+              <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
+            </div>
+
+            <div class="form__nav">
+              <button type="button" class="btn btn--ghost form__back" data-step-prev>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Zurück
+              </button>
+              <p class="form__note"><span class="form__count">Schritt <b data-step-num>1</b> von 3 · </span>Mit <span class="req">*</span> gekennzeichnete Felder sind Pflichtfelder.</p>
+              <button type="button" class="btn btn--primary form__next" data-step-next>
+                Weiter <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+              <button type="submit" class="btn btn--primary form__send" data-step-submit>
+                Anfrage senden <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+
+            <div class="form__success" role="status" aria-live="polite" hidden>
+              <span class="form__success-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></svg></span>
+              <div>
+                <h3>Vielen Dank! Ihre Anfrage ist versandbereit.</h3>
+                <p>Ihr E-Mail-Programm wurde mit Ihren Angaben geöffnet. Bitte klicken Sie dort auf Senden. Falls sich nichts geöffnet hat, schreiben Sie an <a href="mailto:info@jds-sommer.de">info@jds-sommer.de</a> oder rufen Sie +49 (0)69 / 905 469-0 an.</p>
+              </div>
+            </div>
+          </form>
+
+          <aside class="contact-card" data-reveal>
+            <div class="contact-card__map">
+              <iframe title="Karte mit dem Standort der JDS Sommer GmbH, August-Schanz-Straße 28, Frankfurt am Main" src="https://www.openstreetmap.org/export/embed.html?bbox=8.67901%2C50.16087%2C8.69711%2C50.16707&amp;layer=mapnik" loading="lazy" tabindex="-1" aria-hidden="true"></iframe>
+              <span class="contact-card__tint" aria-hidden="true"></span>
+              <span class="contact-card__pin" aria-hidden="true"><span class="contact-card__pin-head"><svg><use href="#jds-mark"/></svg></span><span class="contact-card__pin-dot"></span></span>
+              <a class="contact-card__open" href="https://www.google.com/maps/search/?api=1&amp;query=August-Schanz-Stra%C3%9Fe+28+60433+Frankfurt+am+Main" target="_blank" rel="noopener">In Google Maps öffnen <span aria-hidden="true">↗</span></a>
+            </div>
+
+            <div class="contact-card__body">
+              <h3>JDS SOMMER GmbH</h3>
+              <address>
+                August-Schanz-Straße 28<br>
+                D-60433 Frankfurt am Main
+              </address>
+
+              <ul class="contact-list">
+                <li>
+                  <span class="contact-list__label">Telefon</span>
+                  <a href="tel:+49699054690">+49 (0)69 / 905 469-0</a>
+                </li>
+                <li>
+                  <span class="contact-list__label">Fax</span>
+                  <span>+49 (0)69 / 905 469-29</span>
+                </li>
+                <li>
+                  <span class="contact-list__label">E-Mail</span>
+                  <a href="mailto:info@jds-sommer.de">info@jds-sommer.de</a>
+                </li>
+                <li>
+                  <span class="contact-list__label">Geschäftszeiten</span>
+                  <span>Montag – Freitag, 8:30 – 17:00 Uhr</span>
+                </li>
+              </ul>
+
+              <p class="contact-card__visit">Sie sind auch herzlich eingeladen, uns persönlich zu besuchen. Wir freuen uns auf Sie.</p>
+              <p class="contact-card__sign"><em>Ihr JDS Sommer Team</em></p>
+
+              <a class="btn btn--dark btn--block" href="https://www.google.com/maps/search/?api=1&amp;query=August-Schanz-Stra%C3%9Fe+28+60433+Frankfurt+am+Main" target="_blank" rel="noopener">
+                Route planen <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  </div>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer__top">
+      <div class="footer__brand">
+        <a href="index.html" class="brand brand--light" aria-label="Startseite von JDS Sommer">
+          <svg class="brand__mark" aria-hidden="true"><use href="#jds-mark"/></svg>
+          <span class="brand__text">
+            <span class="brand__name">JDS SOMMER</span>
+            <span class="brand__tag">Engineering-Daten &amp; BIM-Konvertierung</span>
+          </span>
+        </a>
+        <p>Von Bestandszeichnungen und Punktwolken zu nutzbaren Engineering-Daten.</p>
+        <ul class="social social--footer" aria-label="JDS Sommer in den sozialen Medien">
+          <li><a href="https://www.facebook.com/jdssommer/" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer auf Facebook"><svg aria-hidden="true"><use href="#i-facebook"/></svg></a></li>
+          <li><a href="https://www.linkedin.com/company/jds-sommer-gmbh" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer auf LinkedIn"><svg aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+          <li><a href="https://x.com/JDS_Sommer" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer auf X (Twitter)"><svg aria-hidden="true"><use href="#i-x"/></svg></a></li>
+          <!-- YouTube: replace href="#" with the channel URL, and add target="_blank" rel="noopener" -->
+          <li><a href="#" class="social__link" data-social aria-label="JDS Sommer auf YouTube"><svg aria-hidden="true"><use href="#i-youtube"/></svg></a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Leistungen</h4>
+        <ul>
+          <li><a href="2d-cad-digitalisierung.html">2D-CAD-Digitalisierung</a></li>
+          <li><a href="3d-bim-modellierung.html">3D- &amp; BIM-Modellierung</a></li>
+          <li><a href="index.html#contact">Angebot anfordern</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col footer__col--v2">
+        <h4>Über uns</h4>
+        <ul>
+          <li data-local-only><a href="ueber-uns.html">Über JDS Sommer</a></li>
+          <li data-public-only><a href="index.html#about">Über JDS Sommer</a></li>
+          <li><a href="index.html#industries">Branchen</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col footer__col--v2">
+        <h4>Ressourcen</h4>
+        <ul>
+          <li><a href="index.html#faq">FAQ</a></li>
+          <li><a href="index.html#references">Referenzen</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Kontakt</h4>
+        <ul>
+          <li>August-Schanz-Straße 28<br>D-60433 Frankfurt am Main</li>
+          <li><a href="tel:+49699054690">+49 (0)69 / 905 469-0</a></li>
+          <li><a href="mailto:info@jds-sommer.de">info@jds-sommer.de</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer__bottom">
+      <p>© <span data-year>2026</span> JDS Sommer GmbH</p>
+      <ul class="footer__legal">
+        <li><a href="index.html#faq">FAQ</a></li>
+        <li><a href="index.html#references">Referenzen</a></li>
+        <li><a href="agb.html">AGB</a></li>
+        <li><a href="impressum.html">Impressum</a></li>
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+        <li class="footer__cookie-item"><button type="button" class="footer__cookie" data-cookie-settings>Cookie-Einstellungen</button></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- Floating back-to-top: the red triangle from the logo -->
+  <a href="#main" class="fab-top" aria-label="Nach oben" data-fab-top>
+    <svg viewBox="86 2 38 24" aria-hidden="true">
+      <polygon fill="url(#jdsR)" points="105,4 122,24 88,24"/>
+      <path d="M105 19.5V12.5M101.8 15.4 105 12.2 108.2 15.4" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+
+  <!-- Review only: switch between the hero and header designs. Remove once they are chosen. -->
+
+</body>
+</html>

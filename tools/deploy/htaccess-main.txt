@@ -1,0 +1,50 @@
+# JDS Sommer website (static files) on www.jds-sommer.de
+# Clean URLs: /imprint serves imprint.html; old .html addresses and old-site URLs redirect permanently.
+DirectoryIndex index.html
+Options -MultiViews
+# Our own error page (all its links are root-absolute, so it works at any depth)
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Renamed page
+  RewriteRule ^3d-cad-digitizing(\.html)?$ /3d-bim-modeling [R=301,L]
+  RewriteRule ^de/3d-cad-digitalisierung(\.html)?$ /de/3d-bim-modellierung [R=301,L]
+
+  # Addresses of the previous website (German at /, English under /en/)
+  RewriteRule ^impressum/?$ /de/impressum [R=301,L]
+  RewriteRule ^agb/?$ /de/agb [R=301,L]
+  RewriteRule ^datenschutzerklaerung/?$ /de/datenschutz [R=301,L]
+  RewriteRule ^referenzen/?$ /de/#references [R=301,L,NE]
+  RewriteRule ^faq(/.*)?$ /de/#faq [R=301,L,NE]
+  RewriteRule ^en/?$ / [R=301,L]
+  RewriteRule ^en/privacy-policy/?$ /privacy-policy [R=301,L]
+  RewriteRule ^en/terms-conditions/?$ /terms-and-conditions [R=301,L]
+  RewriteRule ^en/imprint/?$ /imprint [R=301,L]
+  RewriteRule ^en/2d-cad-digitizing(/.*)?$ /2d-cad-digitizing [R=301,L]
+  RewriteRule ^en/3d-cad-digitizing(/.*)?$ /3d-bim-modeling [R=301,L]
+  RewriteRule ^en/references/?$ /#references [R=301,L,NE]
+  RewriteRule ^en/faq(/.*)?$ /#faq [R=301,L,NE]
+  RewriteRule ^en/about-us/?$ /#about [R=301,L,NE]
+  RewriteRule ^en/(contact|offer)(/.*)?$ /#contact [R=301,L,NE]
+
+  # /index.html -> /  and  /page.html -> /page (only for requests typed with .html, not internal rewrites)
+  RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?]
+  RewriteRule ^ /%1 [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+([^\s?]+)\.html[\s?]
+  RewriteRule ^ /%1 [R=301,L]
+
+  # /page serves page.html
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^(.+)$ $1.html [L]
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(css|js|webp|png|jpg|svg|gif|mp4|ico)$">
+    Header set Cache-Control "public, max-age=604800"
+  </FilesMatch>
+</IfModule>

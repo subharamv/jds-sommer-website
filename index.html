@@ -1,20 +1,82 @@
 <!doctype html>
-<html lang="en-GB">
+<html lang="en-GB" translate="no" class="notice-closed">
 <head>
   <meta charset="utf-8">
+  <!-- English and German versions exist, so browsers should not machine-translate -->
+  <meta name="google" content="notranslate">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>JDS Sommer | 2D CAD Digitisation, 3D Modelling &amp; BIM Conversion</title>
-  <meta name="description" content="JDS Sommer GmbH, Frankfurt am Main: turning existing drawings, scans and point clouds into usable CAD and BIM models. 30 years of digital services for around 2,000 customers.">
+  <title>2D CAD Digitalisation, 3D Modelling &amp; BIM | JDS Sommer</title>
+  <meta name="description" content="Existing drawings, scans and point clouds turned into exact CAD and BIM models. JDS Sommer, Frankfurt: 42 years of digitalisation, around 2,000 customers.">
   <meta name="theme-color" content="#393B8D">
   <link rel="icon" type="image/svg+xml" href="assets/img/jds-mark.svg">
   <meta property="og:title" content="JDS Sommer | Engineering Data &amp; BIM Conversion">
-  <meta property="og:description" content="From existing drawings and point clouds to usable engineering data. 2D CAD digitisation and 3D modelling from Frankfurt am Main.">
+  <meta property="og:description" content="From existing drawings and point clouds to usable engineering data. 2D CAD digitalisation and 3D modelling from Frankfurt am Main.">
   <meta property="og:type" content="website">
+  <!-- seo: written by tools/seo/build_seo.py, edit it there -->
+  <link rel="canonical" href="https://www.jds-sommer.de/">
+  <link rel="alternate" hreflang="en" href="https://www.jds-sommer.de/">
+  <link rel="alternate" hreflang="de" href="https://www.jds-sommer.de/de/">
+  <link rel="alternate" hreflang="x-default" href="https://www.jds-sommer.de/">
+  <meta property="og:url" content="https://www.jds-sommer.de/">
+  <meta property="og:site_name" content="JDS Sommer">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta property="og:image" content="https://www.jds-sommer.de/assets/img/og/jds-sommer-en.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="JDS Sommer: engineering data and BIM conversion from Frankfurt am Main">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@JDS_Sommer">
+  <link rel="icon" type="image/png" sizes="48x48" href="assets/img/favicon-48.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebSite",
+   "@id": "https://www.jds-sommer.de/#website",
+   "url": "https://www.jds-sommer.de/",
+   "name": "JDS Sommer",
+   "alternateName": "JDS SOMMER GmbH",
+   "inLanguage": [
+    "en-GB",
+    "de"
+   ],
+   "publisher": {
+    "@id": "https://www.jds-sommer.de/#organization"
+   }
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://www.jds-sommer.de/#webpage",
+   "url": "https://www.jds-sommer.de/",
+   "name": "2D CAD Digitalisation, 3D Modelling & BIM | JDS Sommer",
+   "inLanguage": "en-GB",
+   "isPartOf": {
+    "@id": "https://www.jds-sommer.de/#website"
+   },
+   "primaryImageOfPage": "https://www.jds-sommer.de/assets/img/og/jds-sommer-en.png",
+   "description": "Existing drawings, scans and point clouds turned into exact CAD and BIM models. JDS Sommer, Frankfurt: 42 years of digitalisation, around 2,000 customers.",
+   "about": {
+    "@id": "https://www.jds-sommer.de/#organization"
+   }
+  }
+ ]
+}
+  </script>
+  <!-- /seo -->
 
   <script>
     // Hide animated elements only when JS runs; give them back if the libraries never arrive.
     (function (d) {
       d.classList.add('js');
+      // Final design: Header V1 and Hero V4 (the review switcher is gone); choices saved during the review are cleared
+      d.setAttribute('data-header-design', 'v1');
+      try { localStorage.removeItem('jdsHeader'); localStorage.removeItem('jdsHero'); } catch (e) {}
+      // Old review links (?header=…, ?hero=…) no longer do anything: take them out of the address bar
+      try { var u = new URL(location.href); if (u.searchParams.has('header') || u.searchParams.has('hero')) { u.searchParams.delete('header'); u.searchParams.delete('hero'); history.replaceState(history.state, '', u.pathname + u.search + u.hash); } } catch (e) {}
       // Pages still in review only show on local/dev hosts (html.is-local)
       if (location.protocol === 'file:' || /^(localhost|127\.0\.0\.1|\[::1\]|.+\.local|192\.168\.\d+\.\d+|10\.\d+\.\d+\.\d+)$/.test(location.hostname)) d.classList.add('is-local');
       try { if (localStorage.getItem('jdsNoticeClosed')) d.classList.add('notice-closed'); } catch (e) {}
@@ -22,10 +84,7 @@
       try { seen = !!sessionStorage.getItem('jdsSeen'); } catch (e) {}
       if (!seen && !matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('show-preloader');
       setTimeout(function () { if (!window.gsap) d.classList.remove('js', 'show-preloader'); }, 2500);
-      // Hero design under review: ?hero=v1|v2|v3|v4, remembered for the next visit
-      var hero = (location.search.match(/[?&]hero=(v[1-4])\b/) || [])[1];
-      try { if (hero) localStorage.setItem('jdsHero', hero); else hero = localStorage.getItem('jdsHero'); } catch (e) {}
-      d.setAttribute('data-hero', /^v[1-4]$/.test(hero) ? hero : 'v1');
+      d.setAttribute('data-hero', 'v4');
     })(document.documentElement);
   </script>
   <link rel="stylesheet" href="assets/css/style.css">
@@ -40,9 +99,13 @@
   {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
+    "@id": "https://www.jds-sommer.de/#organization",
     "name": "JDS SOMMER GmbH",
-    "description": "2D CAD digitisation, 3D CAD modelling and BIM conversion services.",
-    "url": "https://www.jds-sommer.de/en/",
+    "description": "2D CAD digitalisation, 3D CAD modelling and BIM conversion services.",
+    "url": "https://www.jds-sommer.de/",
+    "logo": "https://www.jds-sommer.de/assets/img/jds-logo-512.png",
+    "image": "https://www.jds-sommer.de/assets/img/og/jds-sommer-en.png",
+    "foundingDate": "1984",
     "telephone": "+49 69 905469-0",
     "faxNumber": "+49 69 905469-29",
     "email": "info@jds-sommer.de",
@@ -53,7 +116,18 @@
       "addressLocality": "Frankfurt am Main",
       "addressCountry": "DE"
     },
-    "openingHours": "Mo-Fr 08:30-17:00"
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 50.16397,
+      "longitude": 8.68806
+    },
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=JDS+Sommer+GmbH+August-Schanz-Stra%C3%9Fe+28+60433+Frankfurt+am+Main",
+    "openingHours": "Mo-Fr 08:30-17:00",
+    "sameAs": [
+      "https://www.linkedin.com/company/jds-sommer-gmbh",
+      "https://www.facebook.com/jdssommer/",
+      "https://x.com/JDS_Sommer"
+    ]
   }
   </script>
   <script type="application/ld+json" data-faq>
@@ -74,7 +148,7 @@
       "name": "Which services do you offer?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Our two core services are 2D CAD digitisation of paper plans and scans, and 3D modelling: Scan to BIM for buildings and industrial structures, and 3D CAD models of machine parts. We also offer GIS digitising and FM as-built drawings. Pages for these will follow on the new website."
+        "text": "Our two core services are 2D CAD digitalisation of plans, drawings and scans, and 3D modelling: Scan to BIM for buildings and industrial structures, and 3D CAD models of machine parts. We also offer GIS digitising and FM as-built drawings. Pages for these will follow on the new website."
       }
     },
     {
@@ -82,7 +156,7 @@
       "name": "How do I get a price for my project?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Call us or send us your enquiry. We advise you free of charge and prepare an individual offer based on the number and type of your originals. As a guide: 2D CAD digitisation starts at €49 per A0 drawing and 3D modelling of a machine part at €250, plus VAT."
+        "text": "Call us or send us your enquiry. We advise you free of charge and prepare an individual offer based on the number and type of your originals. As a guide: 2D CAD digitalisation starts at €49 per A0 drawing and 3D modelling of a machine part at €250, plus VAT."
       }
     },
     {
@@ -90,7 +164,7 @@
       "name": "Can I test the quality before ordering?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. We create a test scan or test CAD file from a section of your plan, free of charge and without any obligation."
+        "text": "Yes. We audit a sample of your drawings or data and can create a sample CAD file from a section of your plan, free of charge and without any obligation."
       }
     },
     {
@@ -98,7 +172,7 @@
       "name": "How do I send you drawings or data?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Paper originals can be sent by mail, and we return them free of charge after the project. Scans and digital data can be sent by email. For large volumes, get in touch and we will arrange the best way to transfer your files."
+        "text": "Original drawings can be sent by mail, and we return them free of charge after the project. Scans and digital data can be sent by email. For large volumes, get in touch and we will arrange the best way to transfer your files."
       }
     },
     {
@@ -106,7 +180,7 @@
       "name": "Who are your customers?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "We serve approximately 2,000 customers from industry, energy utilities, the public sector, construction and many other sectors, and have done so for 30 years."
+        "text": "We serve approximately 2,000 customers from industry, energy utilities, the public sector, construction and many other sectors, and have done so for 42 years."
       }
     },
     {
@@ -202,7 +276,7 @@
       </a>
 
       <nav class="nav" aria-label="Main navigation">
-        <ul class="nav__list">
+        <ul class="nav__list" data-header-variant="v2">
           <li class="nav__item" data-dd>
             <button class="nav__link nav__trigger" type="button" aria-expanded="false" aria-controls="dd-services" data-nav-group="2d 3d">
               Services <svg class="nav__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
@@ -211,38 +285,38 @@
               <div class="nav-dd__col">
                 <a href="2d-cad-digitizing.html" class="nav-dd__head" data-nav="2d">
                   <span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 12h6v8M10 4v4M14 12h6M10 12a4 4 0 0 1 4-4"/></svg></span>
-                  <span><strong>2D CAD Digitisation</strong><small>Paper plans and scans to editable CAD</small></span>
+                  <span><strong>2D CAD Digitalisation</strong><small>Plans, drawings and scans to editable DWG</small></span>
                 </a>
                 <ul class="nav-dd__list">
-                  <li><a href="2d-cad-digitizing.html#paper-to-cad">Paper to CAD</a></li>
-                  <li><a href="2d-cad-digitizing.html#pricing">Scan to CAD</a></li>
-                  <li><a href="2d-cad-digitizing.html">BIM to CAD</a></li>
-                  <li><span class="nav-dd__soon">CAD restructuring <small>Soon</small></span></li>
+                  <li><a href="2d-cad-digitizing.html#drawing-to-cad-conversion">Drawing-to-CAD conversion</a></li>
+                  <li><a href="2d-cad-digitizing.html#scan-to-cad">Scan-to-CAD</a></li>
+                  <li><a href="2d-cad-digitizing.html#cad-restructuring">CAD restructuring &amp; standardisation</a></li>
                 </ul>
               </div>
               <div class="nav-dd__col">
-                <a href="3d-cad-digitizing.html" class="nav-dd__head" data-nav="3d">
+                <a href="3d-bim-modeling.html" class="nav-dd__head" data-nav="3d">
                   <span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></svg></span>
                   <span><strong>3D &amp; BIM Modelling</strong><small>From point clouds, CAD files and parts</small></span>
                 </a>
                 <ul class="nav-dd__list">
-                  <li><a href="3d-cad-digitizing.html#scan-to-bim">Scan to BIM</a></li>
-                  <li><a href="3d-cad-digitizing.html#cad-to-bim">CAD to BIM</a></li>
-                  <li><span class="nav-dd__soon">As-built BIM <small>Soon</small></span></li>
-                  <li><a href="3d-cad-digitizing.html#reverse-engineering">Reverse engineering (parts)</a></li>
+                  <li><a href="3d-bim-modeling.html#scan-to-bim">Scan-to-BIM</a></li>
+                  <li><a href="3d-bim-modeling.html#cad-to-bim">CAD-to-BIM modelling</a></li>
+                  <li><a href="3d-bim-modeling.html#as-built-bim">As-built BIM modelling</a></li>
+                  <li><a href="3d-bim-modeling.html#3d-cad-modelling">3D CAD &amp; reverse engineering</a></li>
+                  <li><a href="3d-bim-modeling.html#industrial-facility-modelling">Industrial facility modelling</a></li>
                 </ul>
               </div>
               <div class="nav-dd__col">
-                <div class="nav-dd__head nav-dd__head--static">
+                <a href="3d-bim-modeling.html#modelling-by-discipline" class="nav-dd__head">
                   <span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 21V9l8-5 8 5v12"/><path d="M9 21v-6h6v6M3 21h18M12 4v5"/></svg></span>
                   <span><strong>Modelling by discipline</strong><small>Architecture, structure and building services</small></span>
-                </div>
+                </a>
                 <ul class="nav-dd__list">
-                  <li><span class="nav-dd__soon">Architectural modelling <small>Soon</small></span></li>
-                  <li><span class="nav-dd__soon">Structural modelling <small>Soon</small></span></li>
-                  <li><span class="nav-dd__soon">MEP modelling <small>Soon</small></span></li>
-                  <li><span class="nav-dd__soon">HVAC modelling <small>Soon</small></span></li>
-                  <li><span class="nav-dd__soon">Plant modelling <small>Soon</small></span></li>
+                  <li><a href="3d-bim-modeling.html#architectural-modelling">Architectural modelling</a></li>
+                  <li><a href="3d-bim-modeling.html#structural-modelling">Structural modelling</a></li>
+                  <li><a href="3d-bim-modeling.html#mep-modelling">MEP modelling</a></li>
+                  <li><a href="3d-bim-modeling.html#hvac-modelling">HVAC modelling</a></li>
+                  <li><a href="3d-bim-modeling.html#plant-modelling">Plant modelling</a></li>
                 </ul>
               </div>
               <div class="nav-dd__col">
@@ -307,14 +381,30 @@
           </li>
           <li class="nav__item"><a href="index.html#contact" class="nav__link" data-nav="contact">Contact us</a></li>
         </ul>
+        <ul class="nav__list" data-header-variant="v1">
+          <li class="nav__item"><a href="2d-cad-digitizing.html" class="nav__link" data-nav="2d">2D CAD Digitalisation</a></li>
+          <li class="nav__item"><a href="3d-bim-modeling.html" class="nav__link" data-nav="3d">3D &amp; BIM Modelling</a></li>
+          <li class="nav__item"><a href="index.html#contact" class="nav__link" data-nav="contact">Contact us</a></li>
+        </ul>
       </nav>
 
       <div class="header__actions">
+        <!-- lang -->
+        <div class="lang" data-lang>
+          <button class="lang__btn" type="button" aria-expanded="false" aria-controls="lang-menu" aria-label="Select language" title="Select language" data-lang-btn>
+            <svg class="lang__globe" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9M12 3c-2.5 2.6-3.8 5.6-3.8 9s1.3 6.4 3.8 9"/></svg><span class="lang__code">EN</span>
+          </button>
+          <ul class="lang__menu" id="lang-menu" data-lang-menu>
+            <li><a href="index.html" hreflang="en-GB" lang="en-GB" data-no-barba aria-current="true"><span>English (UK)</span><svg class="lang__check" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></a></li>
+            <li><a href="de/index.html" hreflang="de" lang="en-GB" data-no-barba><span>German</span></a></li>
+          </ul>
+        </div>
+        <!-- /lang -->
         <a href="tel:+49699054690" class="header__phone">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
           <span>+49 (0)69 / 905 469-0</span>
         </a>
-        <a href="index.html#contact" class="btn btn--primary btn--sm magnetic">Request a quote</a>
+        <a href="index.html#contact" class="btn btn--primary btn--sm">Request a quote</a>
         <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" data-burger>
           <span></span><span></span>
         </button>
@@ -325,27 +415,27 @@
   <!-- Mobile menu -->
   <div class="mobile-menu" id="mobile-menu" aria-hidden="true" data-mobile-menu>
     <nav aria-label="Mobile navigation">
-      <ul>
+      <ul data-header-variant="v2">
         <li>
           <details class="m-nav">
             <summary><span>01</span>Services</summary>
             <div class="m-nav__sub">
-              <a href="2d-cad-digitizing.html" class="m-nav__head" data-nav="2d">2D CAD Digitisation</a>
-              <a href="2d-cad-digitizing.html#paper-to-cad">Paper to CAD</a>
-              <a href="2d-cad-digitizing.html#pricing">Scan to CAD</a>
-              <a href="2d-cad-digitizing.html">BIM to CAD</a>
-              <span class="m-nav__soon">CAD restructuring <small>Soon</small></span>
-              <a href="3d-cad-digitizing.html" class="m-nav__head" data-nav="3d">3D &amp; BIM Modelling</a>
-              <a href="3d-cad-digitizing.html#scan-to-bim">Scan to BIM</a>
-              <a href="3d-cad-digitizing.html#cad-to-bim">CAD to BIM</a>
-              <span class="m-nav__soon">As-built BIM <small>Soon</small></span>
-              <a href="3d-cad-digitizing.html#reverse-engineering">Reverse engineering (parts)</a>
-              <span class="m-nav__head">Modelling by discipline</span>
-              <span class="m-nav__soon">Architectural modelling <small>Soon</small></span>
-              <span class="m-nav__soon">Structural modelling <small>Soon</small></span>
-              <span class="m-nav__soon">MEP modelling <small>Soon</small></span>
-              <span class="m-nav__soon">HVAC modelling <small>Soon</small></span>
-              <span class="m-nav__soon">Plant modelling <small>Soon</small></span>
+              <a href="2d-cad-digitizing.html" class="m-nav__head" data-nav="2d">2D CAD Digitalisation</a>
+              <a href="2d-cad-digitizing.html#drawing-to-cad-conversion">Drawing-to-CAD conversion</a>
+              <a href="2d-cad-digitizing.html#scan-to-cad">Scan-to-CAD</a>
+              <a href="2d-cad-digitizing.html#cad-restructuring">CAD restructuring &amp; standardisation</a>
+              <a href="3d-bim-modeling.html" class="m-nav__head" data-nav="3d">3D &amp; BIM Modelling</a>
+              <a href="3d-bim-modeling.html#scan-to-bim">Scan-to-BIM</a>
+              <a href="3d-bim-modeling.html#cad-to-bim">CAD-to-BIM modelling</a>
+              <a href="3d-bim-modeling.html#as-built-bim">As-built BIM modelling</a>
+              <a href="3d-bim-modeling.html#3d-cad-modelling">3D CAD &amp; reverse engineering</a>
+              <a href="3d-bim-modeling.html#industrial-facility-modelling">Industrial facility modelling</a>
+              <a href="3d-bim-modeling.html#modelling-by-discipline" class="m-nav__head">Modelling by discipline</a>
+              <a href="3d-bim-modeling.html#architectural-modelling">Architectural modelling</a>
+              <a href="3d-bim-modeling.html#structural-modelling">Structural modelling</a>
+              <a href="3d-bim-modeling.html#mep-modelling">MEP modelling</a>
+              <a href="3d-bim-modeling.html#hvac-modelling">HVAC modelling</a>
+              <a href="3d-bim-modeling.html#plant-modelling">Plant modelling</a>
               <span class="m-nav__head">Coordination &amp; documentation</span>
               <span class="m-nav__soon">BIM coordination <small>Soon</small></span>
               <span class="m-nav__soon">Clash detection <small>Soon</small></span>
@@ -378,8 +468,16 @@
         </li>
         <li><a href="index.html#contact" data-nav="contact"><span>04</span>Contact us</a></li>
       </ul>
+      <ul data-header-variant="v1">
+        <li><a href="2d-cad-digitizing.html" data-nav="2d"><span>01</span>2D CAD Digitalisation</a></li>
+        <li><a href="3d-bim-modeling.html" data-nav="3d"><span>02</span>3D &amp; BIM Modelling</a></li>
+        <li><a href="index.html#contact" data-nav="contact"><span>03</span>Contact us</a></li>
+      </ul>
     </nav>
     <div class="mobile-menu__foot">
+      <!-- m-lang -->
+      <p class="m-lang" aria-label="Language"><svg class="lang__globe" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9M12 3c-2.5 2.6-3.8 5.6-3.8 9s1.3 6.4 3.8 9"/></svg><a href="index.html" hreflang="en-GB" lang="en-GB" data-no-barba aria-current="true">English (UK)</a><a href="de/index.html" hreflang="de" lang="en-GB" data-no-barba>German</a></p>
+      <!-- /m-lang -->
       <a href="tel:+49699054690">+49 (0)69 / 905 469-0</a>
       <a href="mailto:info@jds-sommer.de">info@jds-sommer.de</a>
       <ul class="social social--menu" aria-label="JDS Sommer on social media">
@@ -397,6 +495,7 @@
   <main id="main" data-barba="container" data-barba-namespace="home">
 
     <!-- HERO V1: full-bleed video, copy in a glass panel -->
+    <!-- Only the final hero (v4) carries the page h1; the other variants use h2 (main.js promotes the chosen one). Swap if another variant becomes the default. -->
     <section class="hero hero--video" data-hero-variant="v1">
       <div class="hero-video" aria-hidden="true">
         <video class="hero-video__media" muted loop playsinline preload="none"
@@ -411,9 +510,9 @@
             <span class="eyebrow__line"></span>
             <span><em>Digital</em>, instead of on paper</span>
           </p>
-          <h1 class="hero__title hero__title--light" data-split>
+          <h2 class="hero__title hero__title--light" data-split>
             Turn existing drawings and scan data into <em>usable</em> engineering models.
-          </h1>
+          </h2>
           <p class="hero__lead">
             Convert legacy drawings, PDFs and point clouds into structured CAD, BIM and technical
             documentation, ready for engineering teams, building owners and industry to use in
@@ -423,12 +522,12 @@
 
         <div class="hero-video__side" data-hero-fade>
           <dl class="hero-video__stats">
-            <div><dt><span data-count="30">30</span></dt><dd>years of digital services</dd></div>
-            <div><dt>≈<span data-count="2000" data-format="thousands">2,000</span></dt><dd>customers across industries</dd></div>
+            <div><dt><span data-count="42">42</span></dt><dd>years of digital services</dd></div>
+            <div><dt><span data-count="2000" data-format="thousands">2,000</span>+</dt><dd>customers across industries</dd></div>
             <div><dt><span data-count="1000" data-format="thousands">1,000</span>+</dt><dd>drawings converted per month</dd></div>
           </dl>
           <div class="hero__ctas hero-video__ctas">
-            <a href="#contact" class="btn btn--primary magnetic">
+            <a href="#contact" class="btn btn--primary">
               Request a project quote
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
@@ -470,12 +569,12 @@
 
         <div class="hero-video__side" data-hero-fade>
           <dl class="hero-video__stats">
-            <div><dt><span data-count="30">30</span></dt><dd>years of digital services</dd></div>
-            <div><dt>≈<span data-count="2000" data-format="thousands">2,000</span></dt><dd>customers across industries</dd></div>
+            <div><dt><span data-count="42">42</span></dt><dd>years of digital services</dd></div>
+            <div><dt><span data-count="2000" data-format="thousands">2,000</span>+</dt><dd>customers across industries</dd></div>
             <div><dt><span data-count="1000" data-format="thousands">1,000</span>+</dt><dd>drawings converted per month</dd></div>
           </dl>
           <div class="hero__ctas hero-video__ctas">
-            <a href="#contact" class="btn btn--primary magnetic">
+            <a href="#contact" class="btn btn--primary">
               Request a project quote
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
@@ -498,16 +597,16 @@
             <span class="eyebrow__line"></span>
             <span><em>Digital</em>, instead of on paper</span>
           </p>
-          <h1 class="hero__title" data-split>
+          <h2 class="hero__title" data-split>
             Turn existing drawings and scan data into <em>usable</em> engineering models.
-          </h1>
+          </h2>
           <p class="hero__lead" data-hero-fade>
             Convert legacy drawings, PDFs and point clouds into structured CAD, BIM and technical
             documentation. JDS Sommer helps engineering teams, building owners and industrial
             organisations make their existing data usable for today's projects.
           </p>
           <div class="hero__ctas" data-hero-fade>
-            <a href="#contact" class="btn btn--primary magnetic">
+            <a href="#contact" class="btn btn--primary">
               Request a project quote
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
@@ -538,8 +637,8 @@
 
       <div class="container">
         <dl class="hero-cmp__stats" data-hero-fade>
-          <div><dt><span data-count="30">30</span></dt><dd>years of digital services</dd></div>
-          <div><dt>≈<span data-count="2000" data-format="thousands">2,000</span></dt><dd>customers across industries</dd></div>
+          <div><dt><span data-count="42">42</span></dt><dd>years of digital services</dd></div>
+          <div><dt><span data-count="2000" data-format="thousands">2,000</span>+</dt><dd>customers across industries</dd></div>
           <div><dt><span data-count="1000" data-format="thousands">1,000</span>+</dt><dd>drawings converted per month</dd></div>
           <div><dt>100–500</dt><dd>LOD for 3D BIM models</dd></div>
         </dl>
@@ -560,9 +659,9 @@
             <span><em>Digital</em>, instead of on paper</span>
           </p>
 
-          <h1 class="hero__title" data-split>
+          <h2 class="hero__title" data-split>
             Turn existing drawings and scan data into <em>usable</em> engineering models.
-          </h1>
+          </h2>
 
           <p class="hero__lead" data-hero-fade>
             Convert legacy drawings, PDFs and point clouds into structured CAD, BIM and technical
@@ -571,7 +670,7 @@
           </p>
 
           <div class="hero__ctas" data-hero-fade>
-            <a href="#contact" class="btn btn--primary magnetic">
+            <a href="#contact" class="btn btn--primary">
               Request a project quote
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
@@ -579,8 +678,8 @@
           </div>
 
           <dl class="hero__stats" data-hero-fade>
-            <div><dt><span data-count="30">30</span></dt><dd>years of digital services</dd></div>
-            <div><dt>≈<span data-count="2000" data-format="thousands">2,000</span></dt><dd>customers across industries</dd></div>
+            <div><dt><span data-count="42">42</span></dt><dd>years of digital services</dd></div>
+            <div><dt><span data-count="2000" data-format="thousands">2,000</span>+</dt><dd>customers across industries</dd></div>
             <div><dt><span data-count="1000" data-format="thousands">1,000</span>+</dt><dd>drawings converted per month</dd></div>
           </dl>
         </div>
@@ -719,15 +818,15 @@
       <div class="container">
         <div class="rebuild__card rebuild__card--services" data-reveal>
           <div class="rebuild__intro">
-            <span class="chip"><span class="chip__dot" aria-hidden="true"></span>9 services · one partner</span>
+            <span class="chip"><span class="chip__dot" aria-hidden="true"></span>5 service areas · one partner</span>
             <h2 class="h2">Everything we <em>digitise</em>, at a glance.</h2>
             <p>
-              From a single paper plan to a full BIM model of a plant: browse every JDS Sommer
-              service. Pages for the specialist services are being built; until then, our team
-              advises you directly and quotes free of charge.
+              From 2D CAD digitalisation and 3D modelling to as-built documentation and GIS data,
+              explore JDS Sommer's core service areas. Tell us about your project, and our team
+              will help identify the right solution for your requirements.
             </p>
             <div class="svc-ctrl" data-svc-ctrl>
-              <span class="svc-ctrl__count" aria-hidden="true"><b data-svc-current>01</b> / 9</span>
+              <span class="svc-ctrl__count" aria-hidden="true"><b data-svc-current>01</b> / 05</span>
               <div class="svc-ctrl__bar" aria-hidden="true"><span data-svc-progress></span></div>
               <div class="svc-ctrl__btns">
                 <button type="button" class="ind-btn" data-svc-prev aria-label="Previous service">
@@ -748,147 +847,83 @@
           <div class="svc-slider" data-svc-slider role="region" aria-roledescription="carousel" aria-label="All JDS Sommer services">
             <div class="svc-slider__viewport" data-svc-viewport>
               <ul class="svc-slider__track" data-svc-track>
-                <li class="svc-slide" data-svc-slide role="group" aria-roledescription="slide" aria-label="1 of 9: Paper to CAD vectorisation">
+                <li class="svc-slide" data-svc-slide role="group" aria-roledescription="slide" aria-label="1 of 5: As-Built Documentation & Facility Management">
                   <div class="svc-slide__media">
-                    <img src="assets/img/services/svc-vectorization.webp" width="1200" height="750" draggable="false" alt="Detailed 2D CAD floor plan of a historic building">
-                    <span class="svc-slide__area">2D</span>
-                    <span class="svc-slide__state is-live">Service page live</span>
+                    <img src="assets/img/services/svc-as-built-facility-management.webp" width="1400" height="1050" draggable="false" alt="As-built floor plan with room labels, door and window schedules">
+                    <span class="svc-slide__state">Specialist service</span>
                   </div>
                   <div class="svc-slide__body">
-                    <span class="svc-slide__num">01 <i>/ 9</i></span>
-                    <h3>Paper to CAD vectorisation</h3>
-                    <p>Scans and paper plans turned into exact DWG, DXF, DGN or Allplan files, with dimensions, text, symbols and a clean layer structure.</p>
+                    <span class="svc-slide__num">01 <i>/ 05</i></span>
+                    <h3>As-Built Documentation &amp; Facility Management</h3>
+                    <p>Create and update as-built drawings and facility documentation using agreed site information and existing building records.</p>
                     <div class="svc-slide__foot">
-                      <span class="svc-slide__price">from €49 per A0 drawing <small>plus VAT</small></span>
-                      <a href="2d-cad-digitizing.html#paper-to-cad" class="link-arrow">Explore <span aria-hidden="true">→</span></a>
-                    </div>
-                  </div>
-                </li>
-                <li class="svc-slide" data-svc-slide role="group" aria-roledescription="slide" aria-label="2 of 9: CAD restructuring">
-                  <div class="svc-slide__media">
-                    <img src="assets/img/services/svc-cad-restructure.webp" width="1200" height="750" loading="lazy" draggable="false" alt="Layered CAD floor plan with colour-coded layers on a dark background">
-                    <span class="svc-slide__area">2D</span>
-                    <span class="svc-slide__state">Page coming soon</span>
-                  </div>
-                  <div class="svc-slide__body">
-                    <span class="svc-slide__num">02 <i>/ 9</i></span>
-                    <h3>CAD restructuring</h3>
-                    <p>Existing CAD files converted to a new CAD specification, so plans from several suppliers share one uniform standard.</p>
-                    <div class="svc-slide__foot">
-                      <span class="svc-slide__price svc-slide__price--quote">Individual offer, free of charge</span>
+                      <span class="svc-slide__price svc-slide__price--quote">Discuss your requirements</span>
                       <a href="index.html#contact" class="link-arrow" data-prefill="Other">Ask us <span aria-hidden="true">→</span></a>
                     </div>
                   </div>
                 </li>
-                <li class="svc-slide" data-svc-slide role="group" aria-roledescription="slide" aria-label="3 of 9: GIS digitising">
+                <li class="svc-slide" data-svc-slide role="group" aria-roledescription="slide" aria-label="2 of 5: GIS & Infrastructure Data Digitalisation">
                   <div class="svc-slide__media">
-                    <img src="assets/img/services/svc-gis.webp" width="1200" height="750" loading="lazy" draggable="false" alt="Aerial map with building footprints digitised in green">
-                    <span class="svc-slide__area">2D</span>
-                    <span class="svc-slide__state">Page coming soon</span>
+                    <img src="assets/img/services/svc-gis-infrastructure-data.webp" width="1400" height="788" loading="lazy" draggable="false" alt="Utility network plan digitised over an aerial view of a residential area">
+                    <span class="svc-slide__state">Specialist service</span>
                   </div>
                   <div class="svc-slide__body">
-                    <span class="svc-slide__num">03 <i>/ 9</i></span>
-                    <h3>GIS digitising</h3>
-                    <p>Utility network maps and site plans digitised into structured CAD data, ready to bring into your GIS.</p>
+                    <span class="svc-slide__num">02 <i>/ 05</i></span>
+                    <h3>GIS &amp; Infrastructure Data Digitalisation</h3>
+                    <p>Transform infrastructure plans and spatial information into structured digital data for mapping, asset records and GIS workflows.</p>
                     <div class="svc-slide__foot">
-                      <span class="svc-slide__price svc-slide__price--quote">Individual offer, free of charge</span>
+                      <span class="svc-slide__price svc-slide__price--quote">Discuss your requirements</span>
                       <a href="index.html#contact" class="link-arrow" data-prefill="Other">Ask us <span aria-hidden="true">→</span></a>
                     </div>
                   </div>
                 </li>
-                <li class="svc-slide" data-svc-slide role="group" aria-roledescription="slide" aria-label="4 of 9: FM survey & as-built drawings">
+                <li class="svc-slide" data-svc-slide role="group" aria-roledescription="slide" aria-label="3 of 5: Scan-to-CAD Modelling">
                   <div class="svc-slide__media">
-                    <img src="assets/img/services/svc-fm.webp" width="1200" height="750" loading="lazy" draggable="false" alt="Point cloud of a warehouse next to its photo and its as-built floor plan">
+                    <img src="assets/img/services/svc-scan-to-cad-modelling.webp" width="1400" height="933" loading="lazy" draggable="false" alt="2D CAD floor plan of a house drawn from laser-scan data, on a dark background">
+                    <span class="svc-slide__state">Specialist service</span>
+                  </div>
+                  <div class="svc-slide__body">
+                    <span class="svc-slide__num">03 <i>/ 05</i></span>
+                    <h3>Scan-to-CAD Modelling</h3>
+                    <p class="svc-slide__sub">Point clouds to precise CAD drawings</p>
+                    <p>Convert point-cloud data and laser scans into accurate 2D CAD drawings, including floor plans, elevations and sections, based on project requirements.</p>
+                    <div class="svc-slide__foot">
+                      <span class="svc-slide__price svc-slide__price--quote">Project-specific quotation</span>
+                      <a href="2d-cad-digitizing.html#scan-to-cad" class="link-arrow">Explore Scan-to-CAD <span aria-hidden="true">→</span></a>
+                    </div>
+                  </div>
+                </li>
+                <li class="svc-slide" data-svc-slide role="group" aria-roledescription="slide" aria-label="4 of 5: 2D CAD Digitalisation">
+                  <div class="svc-slide__media">
+                    <img src="assets/img/services/svc-2d-digitalisation.webp" width="1400" height="933" loading="lazy" draggable="false" alt="Hand-drawn floor plan next to the same plan redrawn as a clean 2D CAD drawing">
                     <span class="svc-slide__area">2D</span>
-                    <span class="svc-slide__state">Page coming soon</span>
+                    <span class="svc-slide__state is-live">Service page live</span>
                   </div>
                   <div class="svc-slide__body">
-                    <span class="svc-slide__num">04 <i>/ 9</i></span>
-                    <h3>FM survey &amp; as-built drawings</h3>
-                    <p>Existing plans checked on site, measured and updated, so facility management works from accurate as-built drawings.</p>
+                    <span class="svc-slide__num">04 <i>/ 05</i></span>
+                    <h3>2D CAD Digitalisation</h3>
+                    <p class="svc-slide__sub">Scan-to-CAD and technical drawing conversion</p>
+                    <p>Turn paper plans, PDFs and scanned technical drawings into structured, editable CAD files, with agreed layers, dimensions, text and output formats.</p>
                     <div class="svc-slide__foot">
-                      <span class="svc-slide__price svc-slide__price--quote">Individual offer, free of charge</span>
-                      <a href="index.html#contact" class="link-arrow" data-prefill="Other">Ask us <span aria-hidden="true">→</span></a>
+                      <span class="svc-slide__price svc-slide__price--quote">Project-specific quotation</span>
+                      <a href="2d-cad-digitizing.html" class="link-arrow">Explore 2D CAD <span aria-hidden="true">→</span></a>
                     </div>
                   </div>
                 </li>
-                <li class="svc-slide" data-svc-slide role="group" aria-roledescription="slide" aria-label="5 of 9: 3D scanning">
+                <li class="svc-slide" data-svc-slide role="group" aria-roledescription="slide" aria-label="5 of 5: 3D Modelling">
                   <div class="svc-slide__media">
-                    <img src="assets/img/services/svc-3d-scan.webp" width="1200" height="750" loading="lazy" draggable="false" alt="Mobile laser scanners capturing an industrial structure as a point cloud">
+                    <img src="assets/img/services/svc-3d-modelling.webp" width="1400" height="788" loading="lazy" draggable="false" alt="Point cloud of a house beside the 3D model built from it">
                     <span class="svc-slide__area">3D</span>
                     <span class="svc-slide__state is-live">Service page live</span>
                   </div>
                   <div class="svc-slide__body">
-                    <span class="svc-slide__num">05 <i>/ 9</i></span>
-                    <h3>3D scanning</h3>
-                    <p>Machine parts and objects up to 150&nbsp;cm scanned in-house; buildings captured by our partner surveyors as point clouds.</p>
+                    <span class="svc-slide__num">05 <i>/ 05</i></span>
+                    <h3>3D Modelling</h3>
+                    <p class="svc-slide__sub">Scan-to-BIM and existing-building modelling</p>
+                    <p>Create 3D CAD/BIM models from point clouds, laser scans and existing plans, tailored to your required level of detail and model format.</p>
                     <div class="svc-slide__foot">
-                      <span class="svc-slide__price">from €65 per point cloud <small>plus VAT</small></span>
-                      <a href="3d-cad-digitizing.html#applications" class="link-arrow">Explore <span aria-hidden="true">→</span></a>
-                    </div>
-                  </div>
-                </li>
-                <li class="svc-slide" data-svc-slide role="group" aria-roledescription="slide" aria-label="6 of 9: CAD modelling from scan data">
-                  <div class="svc-slide__media">
-                    <img src="assets/img/services/svc-scan-cad.webp" width="1200" height="750" loading="lazy" draggable="false" alt="Point cloud of a residential building turned into a 3D model">
-                    <span class="svc-slide__area">3D</span>
-                    <span class="svc-slide__state is-live">Service page live</span>
-                  </div>
-                  <div class="svc-slide__body">
-                    <span class="svc-slide__num">06 <i>/ 9</i></span>
-                    <h3>CAD modelling from scan data</h3>
-                    <p>Point clouds and STL data turned into fully structured 3D CAD models with exact dimensions for edges, openings and drill holes.</p>
-                    <div class="svc-slide__foot">
-                      <span class="svc-slide__price svc-slide__price--quote">Individual offer, free of charge</span>
-                      <a href="3d-cad-digitizing.html" class="link-arrow">Explore <span aria-hidden="true">→</span></a>
-                    </div>
-                  </div>
-                </li>
-                <li class="svc-slide" data-svc-slide role="group" aria-roledescription="slide" aria-label="7 of 9: Scan to BIM">
-                  <div class="svc-slide__media">
-                    <img src="assets/img/services/svc-scan-bim.webp" width="1200" height="750" loading="lazy" draggable="false" alt="Laser-scan point cloud merging into a cut-away BIM model of a building">
-                    <span class="svc-slide__area">3D</span>
-                    <span class="svc-slide__state is-live">Service page live</span>
-                  </div>
-                  <div class="svc-slide__body">
-                    <span class="svc-slide__num">07 <i>/ 9</i></span>
-                    <h3>Scan to BIM</h3>
-                    <p>Laser scans and 2D as-built plans modelled in Revit (RVT / IFC), Allplan or Archicad, at the LOD 100 to 500 you define.</p>
-                    <div class="svc-slide__foot">
-                      <span class="svc-slide__price svc-slide__price--quote">Individual offer, free of charge</span>
-                      <a href="3d-cad-digitizing.html#scan-to-bim" class="link-arrow">Explore <span aria-hidden="true">→</span></a>
-                    </div>
-                  </div>
-                </li>
-                <li class="svc-slide" data-svc-slide role="group" aria-roledescription="slide" aria-label="8 of 9: Plant & MEP modelling">
-                  <div class="svc-slide__media">
-                    <img src="assets/img/services/svc-mep.webp" width="1200" height="750" loading="lazy" draggable="false" alt="BIM model of an industrial building with colour-coded pipes and ducts">
-                    <span class="svc-slide__area">3D</span>
-                    <span class="svc-slide__state is-live">Service page live</span>
-                  </div>
-                  <div class="svc-slide__body">
-                    <span class="svc-slide__num">08 <i>/ 9</i></span>
-                    <h3>Plant &amp; MEP modelling</h3>
-                    <p>Technical installations with equipment, fittings and piping modelled in 3D, including building services for detailed planning.</p>
-                    <div class="svc-slide__foot">
-                      <span class="svc-slide__price svc-slide__price--quote">Individual offer, free of charge</span>
-                      <a href="3d-cad-digitizing.html#scan-to-bim" class="link-arrow">Explore <span aria-hidden="true">→</span></a>
-                    </div>
-                  </div>
-                </li>
-                <li class="svc-slide" data-svc-slide role="group" aria-roledescription="slide" aria-label="9 of 9: Reverse engineering">
-                  <div class="svc-slide__media">
-                    <img src="assets/img/services/svc-reverse.webp" width="1200" height="750" loading="lazy" draggable="false" alt="Structured-light 3D scanner on a tripod scanning a small object">
-                    <span class="svc-slide__area">3D</span>
-                    <span class="svc-slide__state is-live">Service page live</span>
-                  </div>
-                  <div class="svc-slide__body">
-                    <span class="svc-slide__num">09 <i>/ 9</i></span>
-                    <h3>Reverse engineering</h3>
-                    <p>Machine parts rebuilt as precise 3D CAD from scans or 2D engineering drawings, for reproduction, repair and optimisation.</p>
-                    <div class="svc-slide__foot">
-                      <span class="svc-slide__price">from €250 per part <small>plus VAT</small></span>
-                      <a href="3d-cad-digitizing.html#reverse-engineering" class="link-arrow">Explore <span aria-hidden="true">→</span></a>
+                      <span class="svc-slide__price svc-slide__price--quote">Project-specific quotation</span>
+                      <a href="3d-bim-modeling.html" class="link-arrow">Explore 3D Modelling <span aria-hidden="true">→</span></a>
                     </div>
                   </div>
                 </li>
@@ -900,33 +935,63 @@
     </section>
 
 
-    <!-- CORE SERVICES -->
-    <section class="section services" id="services">
+    <!-- REFERENCES: customer logo carousel -->
+    <section class="section refs" id="references" aria-labelledby="refs-title">
+      <div class="container">
+        <header class="section-head section-head--center" data-reveal>
+          <p class="eyebrow"><span class="eyebrow__line"></span>References</p>
+          <h2 class="h2" id="refs-title">Trusted by <em>utilities, industry</em> and the public sector.</h2>
+        </header>
+      </div>
+      <div class="refs__viewport" data-reveal>
+        <div class="refs__track">
+          <ul>
+            <li><img src="assets/img/references/ref-estw.webp" alt="Erlanger Stadtwerke (ESTW)" loading="lazy" decoding="async"></li>
+            <li><img src="assets/img/references/ref-stella.webp" alt="STELLA Kunststofftechnik GmbH" loading="lazy" decoding="async"></li>
+            <li><img src="assets/img/references/ref-stadtwerke-erkrath.webp" alt="Stadtwerke Erkrath GmbH" loading="lazy" decoding="async"></li>
+            <li><img src="assets/img/references/ref-thales.webp" alt="Thales" loading="lazy" decoding="async"></li>
+            <li><img src="assets/img/references/ref-eon-kraftwerke.webp" alt="E.ON Kraftwerke" loading="lazy" decoding="async"></li>
+            <li><img src="assets/img/references/ref-enwag.webp" alt="enwag energie · wasser · gesellschaft" loading="lazy" decoding="async"></li>
+          </ul>
+          <ul aria-hidden="true">
+            <li><img src="assets/img/references/ref-estw.webp" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="assets/img/references/ref-stella.webp" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="assets/img/references/ref-stadtwerke-erkrath.webp" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="assets/img/references/ref-thales.webp" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="assets/img/references/ref-eon-kraftwerke.webp" alt="" loading="lazy" decoding="async"></li>
+            <li><img src="assets/img/references/ref-enwag.webp" alt="" loading="lazy" decoding="async"></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE SERVICES: pinned horizontal scroll, one split card per service -->
+    <section class="section services hscroll" id="services" data-hscroll>
       <div class="container">
         <header class="section-head" data-reveal>
           <p class="eyebrow"><span class="eyebrow__line"></span>Core services</p>
-          <h2 class="h2">From paper and point clouds<br class="hide-sm"> to <em>exact</em> CAD &amp; BIM.</h2>
+          <h2 class="h2">From drawings and point clouds<br class="hide-sm"> to <em>exact</em> CAD &amp; BIM.</h2>
           <p class="section-head__lead">
-            We convert scan data into CAD models in 2D and 3D. They reproduce your plans and objects
-            exactly, with graphics, geometric objects, symbols, text and dimensions, ready for planning,
-            engineering design and building survey.
+            We convert scan data into CAD models in 2D and 3D, ready for planning, engineering design and
+            building survey.
           </p>
         </header>
+      </div>
 
-        <div class="services__grid">
+      <div class="hscroll__viewport" data-hscroll-viewport>
+        <div class="hscroll__track" data-hscroll-track>
           <!-- 2D -->
-          <article class="service-card" data-reveal data-tilt>
-            <div class="service-card__media service-card__media--photo">
-              <img src="assets/img/work/work-2d-scan-cad.webp" width="1600" height="900" loading="lazy" alt="A scanned 1938 elevation drawing on yellowed paper, continuing on the right as clean CAD linework">
-              <span class="service-card__num" aria-hidden="true">01</span>
+          <article class="hcard is-active" data-hscroll-card>
+            <div class="hcard__media">
+              <img src="assets/img/work/core-2d-cad-digitalisation.webp" width="1400" height="933" loading="lazy" alt="Dimensioned 2D CAD floor plan of an office building with furniture, doors, windows and stairs">
             </div>
-            <div class="service-card__body">
-              <h3 class="h3">2D CAD Digitisation</h3>
+            <div class="hcard__body">
+              <span class="service-card__num" aria-hidden="true">01</span>
+              <h3 class="h3">2D CAD Digitalisation</h3>
               <p>
-                Exact digitisation of large-format technical drawings and as-built plans, from A4
-                to a multiple of A0. We scan paper originals where needed, then vectorise them into
-                CAD with dimensions, text, symbols and a layer structure, following your CAD
-                specification for fonts, line types and line weights.
+                Exact digitalisation of large-format technical drawings and as-built plans, from A4 to a
+                multiple of A0. We scan original drawings where needed, then vectorise them into CAD with
+                dimensions, text, symbols and a layer structure, following your CAD specification.
               </p>
               <ul class="ticks">
                 <li>AutoCAD DWG / DXF, MicroStation DGN, Allplan</li>
@@ -941,30 +1006,34 @@
           </article>
 
           <!-- 3D -->
-          <article class="service-card" data-reveal data-tilt>
-            <div class="service-card__media service-card__media--photo">
-              <img src="assets/img/work/work-3d-bim.webp" width="1200" height="657" loading="lazy" alt="3D BIM model of a large building complex with domes, terraces and colonnades">
-              <span class="service-card__num" aria-hidden="true">02</span>
+          <article class="hcard" data-hscroll-card>
+            <div class="hcard__media">
+              <img src="assets/img/work/core-3d-bim-modelling.webp" width="1400" height="790" loading="lazy" alt="3D BIM model of a large multi-storey building with glass roofs, columns and terraces">
             </div>
-            <div class="service-card__body">
+            <div class="hcard__body">
+              <span class="service-card__num" aria-hidden="true">02</span>
               <h3 class="h3">3D Modelling for BIM &amp; Components</h3>
               <p>
-                Precise 3D CAD building models for planners, architects and building owners, created
-                from laser scans and/or 2D as-built plans. We also reverse-engineer machine parts up
-                to 150&nbsp;cm from our in-house 3D scans or existing engineering drawings.
+                Precise 3D CAD building models from laser scans or 2D as-built plans; machine parts up
+                to 150&nbsp;cm reverse-engineered in-house.
               </p>
               <ul class="ticks">
                 <li>Scan to BIM in Revit (RVT / IFC), Allplan and Archicad (PLN)</li>
-                <li>Level of detail defined by you, LOD 100 to 500</li>
-                <li>Follows your BIM guidelines, Revit families and templates</li>
+                <li>Level of detail: LOD 100 to 500</li>
+                <li>Follows your BIM guidelines and templates</li>
               </ul>
               <div class="service-card__foot">
                 <p class="price"><small>point cloud to 3D model from</small> €250 <small>plus VAT</small></p>
-                <a href="3d-cad-digitizing.html" class="btn btn--dark">Explore 3D Modelling <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                <a href="3d-bim-modeling.html" class="btn btn--dark">Explore 3D Modelling <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
               </div>
             </div>
           </article>
         </div>
+      </div>
+
+      <div class="hscroll__dots" role="group" aria-label="Core services">
+        <button type="button" class="is-active" data-hscroll-dot aria-label="2D CAD Digitalisation" aria-current="true"></button>
+        <button type="button" data-hscroll-dot aria-label="3D Modelling for BIM and Components"></button>
       </div>
     </section>
 
@@ -977,7 +1046,7 @@
             <h2 class="h2">Usable drawings and models for <em>every</em> kind of building.</h2>
           </div>
           <p class="section-head__lead">
-            For 30 years, around 2,000 customers from industry, energy utilities, the public sector,
+            For 42 years, around 2,000 customers from industry, energy utilities, the public sector,
             construction and many other sectors have relied on us to make their existing documentation
             usable again.
           </p>
@@ -1056,7 +1125,7 @@
                 </div>
                 <span class="industry__num">09</span>
                 <h3>Heritage &amp; Listed Buildings</h3>
-                <p>Historic buildings documented in detail, from old paper plans and laser scans up to LOD 400.</p>
+                <p>Historic buildings documented in detail, from old plans and laser scans up to LOD 400.</p>
               </li>
             </ul>
           </div>
@@ -1099,14 +1168,14 @@
                 <svg viewBox="0 0 24 24"><path d="M4 4h10l6 6v10H4z"/><path d="M14 4v6h6"/></svg>
               </span>
               <h3>1 · Your source data</h3>
-              <p>Paper plans, PDFs, image files, CAD files or registered point clouds.</p>
+              <p>Plans and drawings, PDFs, image files, CAD files or registered point clouds.</p>
             </li>
             <li data-step>
               <span class="process__icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><path d="M3 7V4h3M21 7V4h-3M3 17v3h3M21 17v3h-3M3 12h18"/></svg>
               </span>
               <h3>2 · Scan &amp; capture</h3>
-              <p>Large-format scanning of paper plans, or 3D capture of objects.</p>
+              <p>Large-format scanning of plans and drawings, or 3D capture of objects.</p>
             </li>
             <li data-step>
               <span class="process__icon" aria-hidden="true">
@@ -1132,16 +1201,16 @@
       <div class="container about__grid">
         <div class="about__copy" data-reveal>
           <p class="eyebrow eyebrow--light"><span class="eyebrow__line"></span>About JDS Sommer</p>
-          <h2 class="h2 h2--light">30 years of <em>“Digital Services”</em>.</h2>
+          <h2 class="h2 h2--light">42 years of <em>“Digital Services”</em>.</h2>
           <p>
             JDS SOMMER GmbH has demonstrated excellent service and quality in digital services for
-            30 years. We serve approximately 2,000 customers from industry, energy utilities, the
+            42 years. We serve approximately 2,000 customers from industry, energy utilities, the
             public sector, construction and many other sectors, helping companies like yours
             gain a real competitive edge at low cost and in a short time.
           </p>
           <div class="about__counter">
-            <div><strong><span data-count="30">30</span></strong><small>years</small></div>
-            <div><strong>≈<span data-count="2000" data-format="thousands">2,000</span></strong><small>customers</small></div>
+            <div><strong><span data-count="42">42</span></strong><small>years</small></div>
+            <div><strong><span data-count="2000" data-format="thousands">2,000</span>+</strong><small>customers</small></div>
           </div>
         </div>
 
@@ -1170,18 +1239,81 @@
       </div>
     </section>
 
-    <!-- TEST US -->
+    <!-- CLIENT FEEDBACK: quote carousel (quotes as published on the former jds-sommer.de references page) -->
+    <section class="section quotes" id="client-feedback" aria-labelledby="quotes-title">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow"><span class="eyebrow__line"></span>Client feedback</p>
+          <h2 class="h2" id="quotes-title">What our clients <em>say</em> about working with us.</h2>
+          <p class="section-head__lead">Engineering offices and industry share their experience with JDS Sommer's CAD digitalisation and scan service.</p>
+        </header>
+
+        <div class="quotes__slider" data-quotes role="region" aria-roledescription="carousel" aria-label="Client feedback">
+          <ul class="quotes__track" data-quotes-track tabindex="0" aria-label="Client feedback, scroll sideways for more">
+            <li class="fb-card" data-quote role="group" aria-roledescription="slide" aria-label="1 of 3">
+              <figure>
+                <span class="fb-card__tag">CAD digitalisation</span>
+                <blockquote>
+                  <p>“We have tried the JDS CAD digitization. In the beginning, we were very sceptical because we had had some negative experiences with a competitive provider. <strong>The results of the JDS CAD digitization really convinced us!</strong> We would already have saved a lot of time and money had we known of JDS SOMMER GmbH earlier. We can recommend JDS CAD digitization to all CAD users who desire nearly completely exact and complete conversions of existing plans and details into CAD files for very favourable prices!”</p>
+                </blockquote>
+                <figcaption class="fb-card__by">
+                  <span class="fb-card__avatar" aria-hidden="true">MS</span>
+                  <span><strong>Martin Stephan</strong><small>Engineering Bureau Martin Stephan · underground, piping and structural engineering</small></span>
+                </figcaption>
+              </figure>
+            </li>
+            <li class="fb-card" data-quote role="group" aria-roledescription="slide" aria-label="2 of 3">
+              <figure>
+                <span class="fb-card__tag">CAD digitalisation</span>
+                <blockquote>
+                  <p>“We became aware of JDS SOMMER GmbH through a promotional letter and tried the JDS CAD digitization on a construction project. <strong>We were amazed!</strong> The files we got back resulted in drawings we could immediately edit and plot without any need for corrections.”</p>
+                </blockquote>
+                <figcaption class="fb-card__by">
+                  <span class="fb-card__avatar" aria-hidden="true">FK</span>
+                  <span><strong>Franz Philipp Kraus</strong><small>Engineering Bureau A.W. Kraus · structural planning and construction physics</small></span>
+                </figcaption>
+              </figure>
+            </li>
+            <li class="fb-card" data-quote role="group" aria-roledescription="slide" aria-label="3 of 3">
+              <figure>
+                <span class="fb-card__tag">Scan service &amp; digital archive</span>
+                <blockquote>
+                  <p>“…no member of our team would want to miss our digital archive at work. Digital archiving turns out with us ever more as a full success. The time necessary to access old drawings has been drastically reduced and there are practically no more external costs, like copying etc. <strong>That certainly is also due to the outstanding quality of the work performed by the JDS SOMMER team.</strong> I will gladly recommend your company also with business partners and friends…”</p>
+                </blockquote>
+                <figcaption class="fb-card__by">
+                  <span class="fb-card__logo"><img src="assets/img/references/ref-thales.webp" width="438" height="62" loading="lazy" decoding="async" alt="Thales"></span>
+                  <span><strong>Department manager</strong><small>Thales</small></span>
+                </figcaption>
+              </figure>
+            </li>
+          </ul>
+          <div class="quotes__ctrl">
+            <div class="quotes__dots" data-quotes-dots></div>
+            <div class="svc-ctrl__btns">
+              <button type="button" class="ind-btn" data-quotes-prev aria-label="Previous feedback">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+              </button>
+              <button type="button" class="ind-btn" data-quotes-next aria-label="Next feedback">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FREE AUDIT -->
     <section class="section test-us">
       <div class="container">
         <div class="test-us__card" data-reveal>
           <svg class="test-us__mark" aria-hidden="true"><use href="#jds-mark"/></svg>
           <div>
-            <p class="eyebrow"><span class="eyebrow__line"></span>Test us!</p>
-            <h2 class="h2">We create a test scan or CAD file, <em>free of charge</em> and with no obligation.</h2>
-            <p>Call us or send us an email with your enquiry. We're happy to advise and will prepare an individual offer, free of charge, based on the number of your originals.</p>
+            <p class="eyebrow"><span class="eyebrow__line"></span>Free audit</p>
+            <h2 class="h2">Send us your drawings or data for a <em>free audit</em>, with no obligation.</h2>
+            <p>We review a sample of your files, tell you what's needed for usable CAD or BIM output, and prepare an individual offer, free of charge, based on the number of your originals.</p>
           </div>
           <div class="test-us__ctas">
-            <a href="#contact" class="btn btn--primary magnetic" data-prefill="Free test file">Request a free test</a>
+            <a href="#contact" class="btn btn--primary" data-prefill="Free audit">Request a free audit</a>
             <a href="tel:+49699054690" class="btn btn--ghost">+49 (0)69 / 905 469-0</a>
           </div>
         </div>
@@ -1207,23 +1339,23 @@
             </details>
             <details class="faq__item">
               <summary><span>Which services do you offer?</span><i class="faq__icon" aria-hidden="true"></i></summary>
-              <div class="faq__a"><p>Our two core services are 2D CAD digitisation of paper plans and scans, and 3D modelling: Scan to BIM for buildings and industrial structures, and 3D CAD models of machine parts. We also offer GIS digitising and FM as-built drawings. Pages for these will follow on the new website.</p></div>
+              <div class="faq__a"><p>Our two core services are 2D CAD digitalisation of plans, drawings and scans, and 3D modelling: Scan to BIM for buildings and industrial structures, and 3D CAD models of machine parts. We also offer GIS digitising and FM as-built drawings. Pages for these will follow on the new website.</p></div>
             </details>
             <details class="faq__item">
               <summary><span>How do I get a price for my project?</span><i class="faq__icon" aria-hidden="true"></i></summary>
-              <div class="faq__a"><p>Call us or send us your enquiry. We advise you free of charge and prepare an individual offer based on the number and type of your originals. As a guide: 2D CAD digitisation starts at €49 per A0 drawing and 3D modelling of a machine part at €250, plus VAT.</p></div>
+              <div class="faq__a"><p>Call us or send us your enquiry. We advise you free of charge and prepare an individual offer based on the number and type of your originals. As a guide: 2D CAD digitalisation starts at €49 per A0 drawing and 3D modelling of a machine part at €250, plus VAT.</p></div>
             </details>
             <details class="faq__item">
               <summary><span>Can I test the quality before ordering?</span><i class="faq__icon" aria-hidden="true"></i></summary>
-              <div class="faq__a"><p>Yes. We create a test scan or test CAD file from a section of your plan, free of charge and without any obligation.</p></div>
+              <div class="faq__a"><p>Yes. We audit a sample of your drawings or data and can create a sample CAD file from a section of your plan, free of charge and without any obligation.</p></div>
             </details>
             <details class="faq__item">
               <summary><span>How do I send you drawings or data?</span><i class="faq__icon" aria-hidden="true"></i></summary>
-              <div class="faq__a"><p>Paper originals can be sent by mail, and we return them free of charge after the project. Scans and digital data can be sent by email. For large volumes, get in touch and we will arrange the best way to transfer your files.</p></div>
+              <div class="faq__a"><p>Original drawings can be sent by mail, and we return them free of charge after the project. Scans and digital data can be sent by email. For large volumes, get in touch and we will arrange the best way to transfer your files.</p></div>
             </details>
             <details class="faq__item">
               <summary><span>Who are your customers?</span><i class="faq__icon" aria-hidden="true"></i></summary>
-              <div class="faq__a"><p>We serve approximately 2,000 customers from industry, energy utilities, the public sector, construction and many other sectors, and have done so for 30 years.</p></div>
+              <div class="faq__a"><p>We serve approximately 2,000 customers from industry, energy utilities, the public sector, construction and many other sectors, and have done so for 42 years.</p></div>
             </details>
             <details class="faq__item">
               <summary><span>Where are you located?</span><i class="faq__icon" aria-hidden="true"></i></summary>
@@ -1264,11 +1396,11 @@
                     <label for="f-ref">Regarding <span class="req">*</span></label>
                     <select id="f-ref" name="reference" required>
                       <option value="">Please select</option>
-                      <option>2D CAD digitisation</option>
+                      <option>2D CAD digitalisation</option>
                       <option>3D models for BIM</option>
                       <option>3D models for components</option>
                       <option>File assessment</option>
-                      <option>Free test file</option>
+                      <option>Free audit</option>
                       <option>Offer / quotation</option>
                       <option>Other</option>
                     </select>
@@ -1298,7 +1430,7 @@
                 <fieldset class="form__group form__group--inline">
                   <legend>I would like <span class="req">*</span></legend>
                   <label class="choice"><input type="radio" name="reply" value="A reply via email" checked><span>A reply via email</span></label>
-                  <label class="choice"><input type="radio" name="reply" value="A callback"><span>A callback</span></label>
+                  <label class="choice"><input type="radio" name="reply" value="A callback" data-callback><span>A callback</span></label>
                 </fieldset>
               </fieldset>
 
@@ -1395,7 +1527,7 @@
                     revoke your consent at any time for the future by sending an email to
                     <a href="mailto:info@jds-sommer.de">info@jds-sommer.de</a>. Detailed information on how we
                     handle user data can be found in our
-                    <a href="https://www.jds-sommer.de/en/privacy-policy/" target="_blank" rel="noopener">privacy policy</a>. <span class="req">*</span>
+                    <a href="privacy-policy.html">privacy policy</a>. <span class="req">*</span>
                   </span>
                 </label>
               </fieldset>
@@ -1415,7 +1547,7 @@
               <button type="button" class="btn btn--primary form__next" data-step-next>
                 Continue <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
               </button>
-              <button type="submit" class="btn btn--primary magnetic form__send" data-step-submit>
+              <button type="submit" class="btn btn--primary form__send" data-step-submit>
                 Send enquiry <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
               </button>
             </div>
@@ -1502,9 +1634,26 @@
       <div class="footer__col">
         <h4>Services</h4>
         <ul>
-          <li><a href="2d-cad-digitizing.html">2D CAD Digitisation</a></li>
-          <li><a href="3d-cad-digitizing.html">3D &amp; BIM Modelling</a></li>
+          <li><a href="2d-cad-digitizing.html">2D CAD Digitalisation</a></li>
+          <li><a href="3d-bim-modeling.html">3D &amp; BIM Modelling</a></li>
           <li><a href="index.html#contact">Request a quote</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col footer__col--v2">
+        <h4>About us</h4>
+        <ul>
+          <li data-local-only><a href="about-us.html">About JDS Sommer</a></li>
+          <li data-public-only><a href="index.html#about">About JDS Sommer</a></li>
+          <li><a href="index.html#industries">Industries</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col footer__col--v2">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="index.html#faq">FAQs</a></li>
+          <li><a href="index.html#references">References</a></li>
         </ul>
       </div>
 
@@ -1521,11 +1670,12 @@
     <div class="container footer__bottom">
       <p>© <span data-year>2026</span> JDS Sommer GmbH</p>
       <ul class="footer__legal">
-        <li><a href="https://www.jds-sommer.de/en/faq/" target="_blank" rel="noopener">FAQ</a></li>
-        <li><a href="https://www.jds-sommer.de/en/references/" target="_blank" rel="noopener">References</a></li>
-        <li><a href="https://www.jds-sommer.de/en/terms-conditions/" target="_blank" rel="noopener">Terms &amp; Conditions</a></li>
-        <li><a href="https://www.jds-sommer.de/impressum/" target="_blank" rel="noopener">Imprint</a></li>
-        <li><a href="https://www.jds-sommer.de/en/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+        <li><a href="index.html#references">References</a></li>
+        <li><a href="terms-and-conditions.html">Terms &amp; Conditions</a></li>
+        <li><a href="imprint.html">Imprint</a></li>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li class="footer__cookie-item"><button type="button" class="footer__cookie" data-cookie-settings>Cookie settings</button></li>
       </ul>
     </div>
   </footer>
@@ -1538,14 +1688,7 @@
     </svg>
   </a>
 
-  <!-- Review only: switch between the hero designs. Remove once one is chosen. -->
-  <nav class="hero-switch" aria-label="Hero design variants">
-    <span class="hero-switch__label">Hero</span>
-    <a href="?hero=v1" data-hero-link="v1" data-no-barba>V1 <small>Video</small></a>
-    <a href="?hero=v2" data-hero-link="v2" data-no-barba>V2 <small>Compare</small></a>
-    <a href="?hero=v3" data-hero-link="v3" data-no-barba>V3 <small>Current</small></a>
-    <a href="?hero=v4" data-hero-link="v4" data-no-barba>V4 <small>Video bare</small></a>
-  </nav>
+  <!-- Review only: switch between the hero and header designs. Remove once they are chosen. -->
 
 </body>
 </html>

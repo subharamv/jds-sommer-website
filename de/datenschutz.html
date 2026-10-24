@@ -1,0 +1,744 @@
+<!doctype html>
+<html lang="de" translate="no" class="notice-closed">
+<head>
+  <meta charset="utf-8">
+  <!-- English and German versions exist, so browsers should not machine-translate -->
+  <meta name="google" content="notranslate">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Datenschutzerklärung (DSGVO) | JDS Sommer GmbH</title>
+  <meta name="description" content="Datenschutzerklärung der JDS Sommer GmbH: wie wir personenbezogene Daten nach der Datenschutz-Grundverordnung (DSGVO) erheben, nutzen und schützen.">
+  <meta name="theme-color" content="#393B8D">
+  <link rel="icon" type="image/svg+xml" href="../assets/img/jds-mark.svg">
+  <meta property="og:title" content="Datenschutzerklärung (DSGVO) | JDS Sommer GmbH">
+  <meta property="og:description" content="Wie die JDS Sommer GmbH personenbezogene Daten nach der Datenschutz-Grundverordnung (DSGVO) erhebt, nutzt und schützt.">
+  <meta property="og:type" content="website">
+  <!-- seo: written by tools/seo/build_seo.py, edit it there -->
+  <link rel="canonical" href="https://www.jds-sommer.de/de/datenschutz">
+  <link rel="alternate" hreflang="en" href="https://www.jds-sommer.de/privacy-policy">
+  <link rel="alternate" hreflang="de" href="https://www.jds-sommer.de/de/datenschutz">
+  <link rel="alternate" hreflang="x-default" href="https://www.jds-sommer.de/privacy-policy">
+  <meta property="og:url" content="https://www.jds-sommer.de/de/datenschutz">
+  <meta property="og:site_name" content="JDS Sommer">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:locale:alternate" content="en_GB">
+  <meta property="og:image" content="https://www.jds-sommer.de/assets/img/og/jds-sommer-de.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="JDS Sommer: Engineering-Daten und BIM-Konvertierung aus Frankfurt am Main">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@JDS_Sommer">
+  <link rel="icon" type="image/png" sizes="48x48" href="../assets/img/favicon-48.png">
+  <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+  <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebSite",
+   "@id": "https://www.jds-sommer.de/#website",
+   "url": "https://www.jds-sommer.de/",
+   "name": "JDS Sommer",
+   "alternateName": "JDS SOMMER GmbH",
+   "inLanguage": [
+    "en-GB",
+    "de"
+   ],
+   "publisher": {
+    "@id": "https://www.jds-sommer.de/#organization"
+   }
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://www.jds-sommer.de/de/datenschutz#webpage",
+   "url": "https://www.jds-sommer.de/de/datenschutz",
+   "name": "Datenschutzerklärung (DSGVO) | JDS Sommer GmbH",
+   "inLanguage": "de",
+   "isPartOf": {
+    "@id": "https://www.jds-sommer.de/#website"
+   },
+   "primaryImageOfPage": "https://www.jds-sommer.de/assets/img/og/jds-sommer-de.png",
+   "description": "Datenschutzerklärung der JDS Sommer GmbH: wie wir personenbezogene Daten nach der Datenschutz-Grundverordnung (DSGVO) erheben, nutzen und schützen.",
+   "breadcrumb": {
+    "@id": "https://www.jds-sommer.de/de/datenschutz#breadcrumb"
+   }
+  },
+  {
+   "@type": "ProfessionalService",
+   "@id": "https://www.jds-sommer.de/#organization",
+   "name": "JDS SOMMER GmbH",
+   "url": "https://www.jds-sommer.de/",
+   "logo": "https://www.jds-sommer.de/assets/img/jds-logo-512.png"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "@id": "https://www.jds-sommer.de/de/datenschutz#breadcrumb",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Startseite",
+     "item": "https://www.jds-sommer.de/de/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Datenschutzerklärung",
+     "item": "https://www.jds-sommer.de/de/datenschutz"
+    }
+   ]
+  }
+ ]
+}
+  </script>
+  <!-- /seo -->
+
+  <script>
+    // Hide animated elements only when JS runs; give them back if the libraries never arrive.
+    (function (d) {
+      d.classList.add('js');
+      // Final design: Header V1 and Hero V4 (the review switcher is gone); choices saved during the review are cleared
+      d.setAttribute('data-header-design', 'v1');
+      try { localStorage.removeItem('jdsHeader'); localStorage.removeItem('jdsHero'); } catch (e) {}
+      // Old review links (?header=…, ?hero=…) no longer do anything: take them out of the address bar
+      try { var u = new URL(location.href); if (u.searchParams.has('header') || u.searchParams.has('hero')) { u.searchParams.delete('header'); u.searchParams.delete('hero'); history.replaceState(history.state, '', u.pathname + u.search + u.hash); } } catch (e) {}
+      // Pages still in review only show on local/dev hosts (html.is-local)
+      if (location.protocol === 'file:' || /^(localhost|127\.0\.0\.1|\[::1\]|.+\.local|192\.168\.\d+\.\d+|10\.\d+\.\d+\.\d+)$/.test(location.hostname)) d.classList.add('is-local');
+      try { if (localStorage.getItem('jdsNoticeClosed')) d.classList.add('notice-closed'); } catch (e) {}
+      var seen = false;
+      try { seen = !!sessionStorage.getItem('jdsSeen'); } catch (e) {}
+      if (!seen && !matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('show-preloader');
+      setTimeout(function () { if (!window.gsap) d.classList.remove('js', 'show-preloader'); }, 2500);
+      d.setAttribute('data-hero', 'v4');
+    })(document.documentElement);
+  </script>
+  <link rel="stylesheet" href="../assets/css/style.css">
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@barba/core@2.10.3/dist/barba.umd.js"></script>
+  <script defer src="../assets/js/main.js"></script>
+</head>
+<body>
+
+  <!-- Shared SVG defs: the JDS mark, reused by <use> everywhere -->
+  <svg class="svg-defs" aria-hidden="true" focusable="false">
+    <defs>
+      <pattern id="bpGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+        <path d="M20 0H0V20" fill="none" stroke="#4749AF" stroke-opacity=".08" stroke-width="1"/>
+      </pattern>
+      <linearGradient id="jdsB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5b5fd0"/><stop offset=".55" stop-color="#3f42a3"/><stop offset="1" stop-color="#2a2c78"/></linearGradient>
+      <linearGradient id="jdsG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4a4dc0"/><stop offset=".55" stop-color="#7477d8"/><stop offset="1" stop-color="#393b8d"/></linearGradient>
+      <linearGradient id="jdsL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a3a5ee"/><stop offset="1" stop-color="#4b4fbf"/></linearGradient>
+      <linearGradient id="jdsR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff7a7a"/><stop offset=".6" stop-color="#e3262b"/><stop offset="1" stop-color="#b8121a"/></linearGradient>
+      <mask id="jdsCut" maskUnits="userSpaceOnUse" x="0" y="0" width="140" height="80">
+        <rect width="140" height="80" fill="#fff"/>
+        <path stroke="#000" stroke-width="2.4" d="M26.05 48.8 49.45 75.2M67.85 48.8 45.65 75.2M64.2 48.8 85.8 75.2M84.9 24.9 65.2 49M83.1 24.9 103 49"/>
+      </mask>
+      <symbol id="jds-mark" viewBox="8 2 116 73">
+        <g mask="url(#jdsCut)">
+          <polygon fill="url(#jdsG)" points="47,26 84,26 66,48 28,48"/>
+          <polygon fill="url(#jdsL)" points="84,26 102,48 66,48"/>
+          <polygon fill="url(#jdsB)" points="84,26 122,26 102,48"/>
+          <polygon fill="url(#jdsB)" points="28,51 47.5,73 10,73"/>
+          <polygon fill="url(#jdsB)" points="28,51 66,51 47.5,73"/>
+          <polygon fill="url(#jdsB)" points="66,51 84,73 47.5,73"/>
+          <polygon fill="url(#jdsB)" points="66,51 102,51 84,73"/>
+        </g>
+        <polygon fill="url(#jdsR)" points="105,4 122,24 88,24"/>
+      </symbol>
+      <!-- Social icons -->
+      <symbol id="i-facebook" viewBox="0 0 24 24"><path fill="currentColor" d="M13.5 21v-7.5H16l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H8v3h2.5V21z"/></symbol>
+      <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M6.9 8.8H3.6V20h3.3zM5.25 3.5a1.95 1.95 0 1 0 0 3.9 1.95 1.95 0 0 0 0-3.9zM20.4 13.6c0-3-1.6-5-4.4-5-1.4 0-2.4.8-2.8 1.5V8.8H10V20h3.3v-5.6c0-1.5.3-2.9 2.1-2.9s1.8 1.7 1.8 3V20h3.3z"/></symbol>
+      <symbol id="i-youtube" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4a2.5 2.5 0 0 0-1.8 1.8A26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8c1.6.4 7.8.4 7.8.4s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15V9l5.2 3z"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><path fill="currentColor" d="M17.8 3h3.1l-6.8 7.8 8 10.2h-6.3l-4.9-6.4L5.3 21H2.2l7.3-8.3L1.9 3h6.4l4.4 5.8zm-1.1 16.2h1.7L7.4 4.7H5.6z"/></symbol>
+    </defs>
+  </svg>
+
+  <!-- First-visit preloader: the mark assembles from its triangles -->
+  <div class="preloader" aria-hidden="true">
+    <svg class="preloader__mark" viewBox="8 2 116 73">
+      <polygon class="pl-t" fill="url(#jdsB)" points="27.23,51.94 45.9,73 10,73"/>
+      <polygon class="pl-t" fill="url(#jdsB)" points="29.6,51 64.43,51 47.48,71.16"/>
+      <polygon class="pl-t" fill="url(#jdsB)" points="65.99,52.88 82.45,73 49.07,73"/>
+      <polygon class="pl-t" fill="url(#jdsB)" points="67.55,51 102,51 84.78,72.05"/>
+      <polygon class="pl-t" fill="url(#jdsG)" points="47,26 82.45,26 64.45,48 28,48"/>
+      <polygon class="pl-t" fill="url(#jdsL)" points="84,27.9 100.45,48 67.55,48"/>
+      <polygon class="pl-t" fill="url(#jdsB)" points="85.55,26 122,26 102.82,47.1"/>
+      <polygon class="pl-t pl-red" fill="url(#jdsR)" points="105,4 122,24 88,24"/>
+    </svg>
+    <div class="preloader__word">JDS SOMMER</div>
+  </div>
+
+  <!-- Page transition curtain (Barba) -->
+  <div class="curtain" aria-hidden="true">
+    <svg class="curtain__mark"><use href="#jds-mark"/></svg>
+  </div>
+
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header" data-header>
+    <div class="notice-bar" role="status">
+      <div class="container notice-bar__inner">
+        <span class="pulse-dot" aria-hidden="true"></span>
+        <p><strong>Unsere Website wird neu entwickelt.</strong> <span class="hide-sm">Unsere Kernleistungen und Kontaktdaten bleiben hier in der Zwischenzeit vollständig verfügbar.</span></p>
+        <a href="index.html#all-services" class="notice-bar__link">Neuigkeiten <span aria-hidden="true">→</span></a>
+        <button class="notice-bar__close" type="button" aria-label="Hinweis schließen" data-notice-close>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="container header__inner">
+      <a href="index.html" class="brand" aria-label="JDS Sommer, zurück zur Startseite">
+        <svg class="brand__mark" role="img" aria-hidden="true"><use href="#jds-mark"/></svg>
+        <span class="brand__text">
+          <span class="brand__name">JDS SOMMER</span>
+          <span class="brand__tag">Engineering-Daten &amp; BIM-Konvertierung</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Hauptnavigation">
+        <ul class="nav__list" data-header-variant="v2">
+          <li class="nav__item" data-dd>
+            <button class="nav__link nav__trigger" type="button" aria-expanded="false" aria-controls="dd-services" data-nav-group="2d 3d">
+              Leistungen <svg class="nav__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="nav-dd nav-dd--mega" id="dd-services">
+              <div class="nav-dd__col">
+                <a href="2d-cad-digitalisierung.html" class="nav-dd__head" data-nav="2d">
+                  <span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 12h6v8M10 4v4M14 12h6M10 12a4 4 0 0 1 4-4"/></svg></span>
+                  <span><strong>2D-CAD-Digitalisierung</strong><small>Pläne, Zeichnungen und Scans zu bearbeitbarem DWG</small></span>
+                </a>
+                <ul class="nav-dd__list">
+                  <li><a href="2d-cad-digitalisierung.html#drawing-to-cad-conversion">Zeichnungen zu CAD</a></li>
+                  <li><a href="2d-cad-digitalisierung.html#scan-to-cad">Scan-to-CAD</a></li>
+                  <li><a href="2d-cad-digitalisierung.html#cad-restructuring">CAD-Umstrukturierung &amp; Standardisierung</a></li>
+                </ul>
+              </div>
+              <div class="nav-dd__col">
+                <a href="3d-bim-modellierung.html" class="nav-dd__head" data-nav="3d">
+                  <span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></svg></span>
+                  <span><strong>3D- &amp; BIM-Modellierung</strong><small>Aus Punktwolken, CAD-Dateien und Bauteilen</small></span>
+                </a>
+                <ul class="nav-dd__list">
+                  <li><a href="3d-bim-modellierung.html#scan-to-bim">Scan-to-BIM</a></li>
+                  <li><a href="3d-bim-modellierung.html#cad-to-bim">CAD-to-BIM-Modellierung</a></li>
+                  <li><a href="3d-bim-modellierung.html#as-built-bim">Bestands-BIM-Modellierung</a></li>
+                  <li><a href="3d-bim-modellierung.html#3d-cad-modelling">3D-CAD &amp; Reverse Engineering</a></li>
+                  <li><a href="3d-bim-modellierung.html#industrial-facility-modelling">Modellierung von Industrieanlagen</a></li>
+                </ul>
+              </div>
+              <div class="nav-dd__col">
+                <a href="3d-bim-modellierung.html#modelling-by-discipline" class="nav-dd__head">
+                  <span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 21V9l8-5 8 5v12"/><path d="M9 21v-6h6v6M3 21h18M12 4v5"/></svg></span>
+                  <span><strong>Modellierung nach Fachdisziplin</strong><small>Architektur, Tragwerk und Gebäudetechnik</small></span>
+                </a>
+                <ul class="nav-dd__list">
+                  <li><a href="3d-bim-modellierung.html#architectural-modelling">Architekturmodellierung</a></li>
+                  <li><a href="3d-bim-modellierung.html#structural-modelling">Tragwerksmodellierung</a></li>
+                  <li><a href="3d-bim-modellierung.html#mep-modelling">TGA-Modellierung (MEP)</a></li>
+                  <li><a href="3d-bim-modellierung.html#hvac-modelling">HLK-Modellierung</a></li>
+                  <li><a href="3d-bim-modellierung.html#plant-modelling">Anlagenmodellierung</a></li>
+                </ul>
+              </div>
+              <div class="nav-dd__col">
+                <div class="nav-dd__head nav-dd__head--static">
+                  <span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l9 4.5-9 4.5-9-4.5z"/><path d="M3 12l9 4.5 9-4.5M3 16.5L12 21l9-4.5"/></svg></span>
+                  <span><strong>Koordination &amp; Dokumentation</strong><small>BIM-Koordination, FM und GIS</small></span>
+                </div>
+                <ul class="nav-dd__list">
+                  <li><span class="nav-dd__soon">BIM-Koordination <small>Bald</small></span></li>
+                  <li><span class="nav-dd__soon">Kollisionsprüfung <small>Bald</small></span></li>
+                  <li><span class="nav-dd__soon">Bestands- &amp; FM-Dokumentation <small>Bald</small></span></li>
+                  <li><span class="nav-dd__soon">GIS-Digitalisierung <small>Bald</small></span></li>
+                </ul>
+              </div>
+              <div class="nav-dd__foot">
+                <a href="index.html#contact" class="nav-dd__cta">
+                  <strong>Unsicher, welche Leistung passt?</strong>
+                  <small>Senden Sie uns Ihre Pläne für eine kostenlose Beratung und ein kostenloses Angebot <span aria-hidden="true">&rarr;</span></small>
+                </a>
+                <div class="nav-dd__contact">
+                  <a href="mailto:info@jds-sommer.de"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5L12 13l8.5-6.5"/></svg>info@jds-sommer.de</a>
+                  <a href="tel:+49699054690"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>+49 (0)69 / 905 469-0</a>
+                </div>
+                <div class="nav-dd__follow">
+                  <span>Folgen Sie uns</span>
+                  <ul class="social social--dd" aria-label="JDS Sommer in den sozialen Medien">
+                    <li><a href="https://www.facebook.com/jdssommer/" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer auf Facebook"><svg aria-hidden="true"><use href="#i-facebook"/></svg></a></li>
+                    <li><a href="https://www.linkedin.com/company/jds-sommer-gmbh" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer auf LinkedIn"><svg aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+                    <li><a href="https://x.com/JDS_Sommer" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer auf X (Twitter)"><svg aria-hidden="true"><use href="#i-x"/></svg></a></li>
+                    <!-- YouTube: replace href="#" with the channel URL, and add target="_blank" rel="noopener" -->
+                    <li><a href="#" class="social__link" data-social aria-label="JDS Sommer auf YouTube"><svg aria-hidden="true"><use href="#i-youtube"/></svg></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="nav__item" data-dd>
+            <button class="nav__link nav__trigger" type="button" aria-expanded="false" aria-controls="dd-about" data-nav-group="about">
+              Über uns <svg class="nav__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="nav-dd" id="dd-about">
+              <ul class="nav-dd__list">
+                <li data-local-only><a href="ueber-uns.html" data-nav="about">Über JDS Sommer</a></li>
+                <li data-public-only><a href="index.html#about">Über JDS Sommer</a></li>
+                <li><span class="nav-dd__soon">Partner <small>Bald</small></span></li>
+                <li><a href="index.html#industries">Branchen</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav__item" data-dd>
+            <button class="nav__link nav__trigger" type="button" aria-expanded="false" aria-controls="dd-resources">
+              Ressourcen <svg class="nav__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="nav-dd" id="dd-resources">
+              <ul class="nav-dd__list">
+                <li><span class="nav-dd__soon">Blog <small>Bald</small></span></li>
+                <li><span class="nav-dd__soon">Fallstudien <small>Bald</small></span></li>
+                <li><a href="index.html#faq">FAQ</a></li>
+                <li><span class="nav-dd__soon">Broschüren <small>Bald</small></span></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav__item"><a href="index.html#contact" class="nav__link" data-nav="contact">Kontakt</a></li>
+        </ul>
+        <ul class="nav__list" data-header-variant="v1">
+          <li class="nav__item"><a href="2d-cad-digitalisierung.html" class="nav__link" data-nav="2d">2D-CAD-Digitalisierung</a></li>
+          <li class="nav__item"><a href="3d-bim-modellierung.html" class="nav__link" data-nav="3d">3D- &amp; BIM-Modellierung</a></li>
+          <li class="nav__item"><a href="index.html#contact" class="nav__link" data-nav="contact">Kontakt</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <!-- lang -->
+        <div class="lang" data-lang>
+          <button class="lang__btn" type="button" aria-expanded="false" aria-controls="lang-menu" aria-label="Sprache wählen" title="Sprache wählen" data-lang-btn>
+            <svg class="lang__globe" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9M12 3c-2.5 2.6-3.8 5.6-3.8 9s1.3 6.4 3.8 9"/></svg><span class="lang__code">DE</span>
+          </button>
+          <ul class="lang__menu" id="lang-menu" data-lang-menu>
+            <li><a href="../privacy-policy.html" hreflang="en-GB" lang="en-GB" data-no-barba><span>English (UK)</span></a></li>
+            <li><a href="datenschutz.html" hreflang="de" lang="de" data-no-barba aria-current="true"><span>Deutsch</span><svg class="lang__check" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></a></li>
+          </ul>
+        </div>
+        <!-- /lang -->
+        <a href="tel:+49699054690" class="header__phone">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
+          <span>+49 (0)69 / 905 469-0</span>
+        </a>
+        <a href="index.html#contact" class="btn btn--primary btn--sm">Angebot anfordern</a>
+        <button class="burger" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu" data-burger>
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true" data-mobile-menu>
+    <nav aria-label="Mobile Navigation">
+      <ul data-header-variant="v2">
+        <li>
+          <details class="m-nav">
+            <summary><span>01</span>Leistungen</summary>
+            <div class="m-nav__sub">
+              <a href="2d-cad-digitalisierung.html" class="m-nav__head" data-nav="2d">2D-CAD-Digitalisierung</a>
+              <a href="2d-cad-digitalisierung.html#drawing-to-cad-conversion">Zeichnungen zu CAD</a>
+              <a href="2d-cad-digitalisierung.html#scan-to-cad">Scan-to-CAD</a>
+              <a href="2d-cad-digitalisierung.html#cad-restructuring">CAD-Umstrukturierung &amp; Standardisierung</a>
+              <a href="3d-bim-modellierung.html" class="m-nav__head" data-nav="3d">3D- &amp; BIM-Modellierung</a>
+              <a href="3d-bim-modellierung.html#scan-to-bim">Scan-to-BIM</a>
+              <a href="3d-bim-modellierung.html#cad-to-bim">CAD-to-BIM-Modellierung</a>
+              <a href="3d-bim-modellierung.html#as-built-bim">Bestands-BIM-Modellierung</a>
+              <a href="3d-bim-modellierung.html#3d-cad-modelling">3D-CAD &amp; Reverse Engineering</a>
+              <a href="3d-bim-modellierung.html#industrial-facility-modelling">Modellierung von Industrieanlagen</a>
+              <a href="3d-bim-modellierung.html#modelling-by-discipline" class="m-nav__head">Modellierung nach Fachdisziplin</a>
+              <a href="3d-bim-modellierung.html#architectural-modelling">Architekturmodellierung</a>
+              <a href="3d-bim-modellierung.html#structural-modelling">Tragwerksmodellierung</a>
+              <a href="3d-bim-modellierung.html#mep-modelling">TGA-Modellierung (MEP)</a>
+              <a href="3d-bim-modellierung.html#hvac-modelling">HLK-Modellierung</a>
+              <a href="3d-bim-modellierung.html#plant-modelling">Anlagenmodellierung</a>
+              <span class="m-nav__head">Koordination &amp; Dokumentation</span>
+              <span class="m-nav__soon">BIM-Koordination <small>Bald</small></span>
+              <span class="m-nav__soon">Kollisionsprüfung <small>Bald</small></span>
+              <span class="m-nav__soon">Bestands- &amp; FM-Dokumentation <small>Bald</small></span>
+              <span class="m-nav__soon">GIS-Digitalisierung <small>Bald</small></span>
+            </div>
+          </details>
+        </li>
+        <li>
+          <details class="m-nav">
+            <summary><span>02</span>Über uns</summary>
+            <div class="m-nav__sub">
+              <a href="ueber-uns.html" data-nav="about" data-local-only>Über JDS Sommer</a>
+              <a href="index.html#about" data-public-only>Über JDS Sommer</a>
+              <span class="m-nav__soon">Partner <small>Bald</small></span>
+              <a href="index.html#industries">Branchen</a>
+            </div>
+          </details>
+        </li>
+        <li>
+          <details class="m-nav">
+            <summary><span>03</span>Ressourcen</summary>
+            <div class="m-nav__sub">
+              <span class="m-nav__soon">Blog <small>Bald</small></span>
+              <span class="m-nav__soon">Fallstudien <small>Bald</small></span>
+              <a href="index.html#faq">FAQ</a>
+              <span class="m-nav__soon">Broschüren <small>Bald</small></span>
+            </div>
+          </details>
+        </li>
+        <li><a href="index.html#contact" data-nav="contact"><span>04</span>Kontakt</a></li>
+      </ul>
+      <ul data-header-variant="v1">
+        <li><a href="2d-cad-digitalisierung.html" data-nav="2d"><span>01</span>2D-CAD-Digitalisierung</a></li>
+        <li><a href="3d-bim-modellierung.html" data-nav="3d"><span>02</span>3D- &amp; BIM-Modellierung</a></li>
+        <li><a href="index.html#contact" data-nav="contact"><span>03</span>Kontakt</a></li>
+      </ul>
+    </nav>
+    <div class="mobile-menu__foot">
+      <!-- m-lang -->
+      <p class="m-lang" aria-label="Sprache"><svg class="lang__globe" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9M12 3c-2.5 2.6-3.8 5.6-3.8 9s1.3 6.4 3.8 9"/></svg><a href="../privacy-policy.html" hreflang="en-GB" lang="en-GB" data-no-barba>English (UK)</a><a href="datenschutz.html" hreflang="de" lang="de" data-no-barba aria-current="true">Deutsch</a></p>
+      <!-- /m-lang -->
+      <a href="tel:+49699054690">+49 (0)69 / 905 469-0</a>
+      <a href="mailto:info@jds-sommer.de">info@jds-sommer.de</a>
+      <ul class="social social--menu" aria-label="JDS Sommer in den sozialen Medien">
+        <li><a href="https://www.facebook.com/jdssommer/" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer auf Facebook"><svg aria-hidden="true"><use href="#i-facebook"/></svg></a></li>
+        <li><a href="https://www.linkedin.com/company/jds-sommer-gmbh" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer auf LinkedIn"><svg aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+        <li><a href="https://x.com/JDS_Sommer" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer auf X (Twitter)"><svg aria-hidden="true"><use href="#i-x"/></svg></a></li>
+        <!-- YouTube: replace href="#" with the channel URL, and add target="_blank" rel="noopener" -->
+        <li><a href="#" class="social__link" data-social aria-label="JDS Sommer auf YouTube"><svg aria-hidden="true"><use href="#i-youtube"/></svg></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============ BARBA ============ -->
+  <div data-barba="wrapper">
+  <main id="main" data-barba="container" data-barba-namespace="privacy">
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <div class="hero__bg" aria-hidden="true"><div class="hero__grid"></div><div class="hero__glow"></div></div>
+      <div class="container page-hero__inner">
+        <div class="page-hero__copy">
+          <nav class="crumbs" aria-label="Brotkrumennavigation" data-hero-fade>
+            <a href="index.html">Startseite</a><span aria-hidden="true">/</span><span aria-current="page">Datenschutzerklärung</span>
+          </nav>
+          <p class="eyebrow" data-hero-fade><span class="eyebrow__line"></span>Rechtliches · Datenschutz</p>
+          <h1 class="hero__title page-hero__title" data-split><em>Datenschutzerklärung</em>.</h1>
+          <p class="hero__lead" data-hero-fade>
+            Wie die JDS Sommer GmbH personenbezogene Daten erhebt, nutzt und schützt, und welche Rechte Sie nach der Datenschutz-Grundverordnung (DSGVO) haben.
+          </p>
+          <p class="policy__meta" data-hero-fade>
+            <strong>JDS Sommer GmbH</strong> · August-Schanz-Straße 28 · 60433 Frankfurt am Main · <a href="mailto:info@jds-sommer.de">info@jds-sommer.de</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- POLICY -->
+    <section class="policy">
+      <div class="container policy__layout">
+        <nav class="policy__toc" aria-label="Auf dieser Seite">
+          <h2>Auf dieser Seite</h2>
+          <ol>
+            <li><a href="#definitions">Begriffsbestimmungen</a></li>
+            <li><a href="#controller">Verantwortlicher</a></li>
+            <li><a href="#cookies">Cookies</a></li>
+            <li><a href="#general-data">Allgemeine Daten und Informationen</a></li>
+            <li><a href="#registration">Registrierung</a></li>
+            <li><a href="#contact-options">Kontaktmöglichkeit</a></li>
+            <li><a href="#deletion">Löschung und Sperrung</a></li>
+            <li><a href="#rights">Rechte der betroffenen Person</a></li>
+            <li><a href="#facebook">Facebook</a></li>
+            <li><a href="#google-analytics">Google Analytics</a></li>
+            <li><a href="#google-ads">Google Ads</a></li>
+            <li><a href="#twitter">Twitter</a></li>
+            <li><a href="#legal-basis">Rechtsgrundlage der Verarbeitung</a></li>
+            <li><a href="#legitimate-interests">Berechtigte Interessen</a></li>
+            <li><a href="#storage-duration">Speicherdauer</a></li>
+            <li><a href="#requirements">Bereitstellung der Daten</a></li>
+            <li><a href="#automated-decisions">Automatisierte Entscheidungsfindung</a></li>
+            <li><a href="#usercentrics">Usercentrics</a></li>
+            <li><a href="#cookiebot">Cookiebot</a></li>
+          </ol>
+          <p class="policy__toc-foot">
+            <a href="mailto:info@jds-sommer.de" class="link-arrow">Fragen zum Datenschutz <span aria-hidden="true">→</span></a>
+          </p>
+        </nav>
+
+        <article class="policy__body" data-reveal>
+
+          <h2 id="definitions">1. Begriffsbestimmungen</h2>
+          <p>Die Datenschutzerklärung der JDS Sommer GmbH beruht auf den Begrifflichkeiten, die durch den Europäischen Richtlinien- und Verordnungsgeber beim Erlass der Datenschutz-Grundverordnung (DS-GVO) verwendet wurden. Unsere Datenschutzerklärung soll sowohl für die Öffentlichkeit als auch für unsere Kunden und Geschäftspartner einfach lesbar und verständlich sein. Um dies zu gewährleisten, möchten wir vorab die verwendeten Begrifflichkeiten erläutern.</p>
+          <p>Wir verwenden in dieser Datenschutzerklärung unter anderem die folgenden Begriffe:</p>
+          <ul>
+            <li>a) Personenbezogene Daten sind alle Informationen, die sich auf eine identifizierte oder identifizierbare natürliche Person (im Folgenden „betroffene Person“) beziehen. Als identifizierbar wird eine natürliche Person angesehen, die direkt oder indirekt, insbesondere mittels Zuordnung zu einer Kennung wie einem Namen, zu einer Kennnummer, zu Standortdaten, zu einer Online-Kennung oder zu einem oder mehreren besonderen Merkmalen, die Ausdruck der physischen, physiologischen, genetischen, psychischen, wirtschaftlichen, kulturellen oder sozialen Identität dieser natürlichen Person sind, identifiziert werden kann.</li>
+            <li>b) Betroffene Person ist jede identifizierte oder identifizierbare natürliche Person, deren personenbezogene Daten von dem für die Verarbeitung Verantwortlichen verarbeitet werden.</li>
+            <li>c) Verarbeitung ist jeder mit oder ohne Hilfe automatisierter Verfahren ausgeführte Vorgang oder jede solche Vorgangsreihe im Zusammenhang mit personenbezogenen Daten wie das Erheben, das Erfassen, die Organisation, das Ordnen, die Speicherung, die Anpassung oder Veränderung, das Auslesen, das Abfragen, die Verwendung, die Offenlegung durch Übermittlung, Verbreitung oder eine andere Form der Bereitstellung, den Abgleich oder die Verknüpfung, die Einschränkung, das Löschen oder die Vernichtung.</li>
+            <li>d) Einschränkung der Verarbeitung ist die Markierung gespeicherter personenbezogener Daten mit dem Ziel, ihre künftige Verarbeitung einzuschränken.</li>
+            <li>e) Profiling ist jede Art der automatisierten Verarbeitung personenbezogener Daten, die darin besteht, dass diese personenbezogenen Daten verwendet werden, um bestimmte persönliche Aspekte, die sich auf eine natürliche Person beziehen, zu bewerten, insbesondere, um Aspekte bezüglich Arbeitsleistung, wirtschaftlicher Lage, Gesundheit, persönlicher Vorlieben, Interessen, Zuverlässigkeit, Verhalten, Aufenthaltsort oder Ortswechsel dieser natürlichen Person zu analysieren oder vorherzusagen.</li>
+            <li>f) Pseudonymisierung ist die Verarbeitung personenbezogener Daten in einer Weise, auf welche die personenbezogenen Daten ohne Hinzuziehung zusätzlicher Informationen nicht mehr einer spezifischen betroffenen Person zugeordnet werden können, sofern diese zusätzlichen Informationen gesondert aufbewahrt werden und technischen und organisatorischen Maßnahmen unterliegen, die gewährleisten, dass die personenbezogenen Daten nicht einer identifizierten oder identifizierbaren natürlichen Person zugewiesen werden.</li>
+            <li>g) Verantwortlicher oder für die Verarbeitung Verantwortlicher ist die natürliche oder juristische Person, Behörde, Einrichtung oder andere Stelle, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten entscheidet. Sind die Zwecke und Mittel dieser Verarbeitung durch das Unionsrecht oder das Recht der Mitgliedstaaten vorgegeben, so kann der Verantwortliche beziehungsweise können die bestimmten Kriterien seiner Benennung nach dem Unionsrecht oder dem Recht der Mitgliedstaaten vorgesehen werden.</li>
+            <li>h) Auftragsverarbeiter ist eine natürliche oder juristische Person, Behörde, Einrichtung oder andere Stelle, die personenbezogene Daten im Auftrag des Verantwortlichen verarbeitet.</li>
+            <li>i) Empfänger ist eine natürliche oder juristische Person, Behörde, Einrichtung oder andere Stelle, der personenbezogene Daten offengelegt werden, unabhängig davon, ob es sich bei ihr um einen Dritten handelt oder nicht. Behörden, die im Rahmen eines bestimmten Untersuchungsauftrags nach dem Unionsrecht oder dem Recht der Mitgliedstaaten möglicherweise personenbezogene Daten erhalten, gelten jedoch nicht als Empfänger.</li>
+            <li>j) Dritter ist eine natürliche oder juristische Person, Behörde, Einrichtung oder andere Stelle außer der betroffenen Person, dem Verantwortlichen, dem Auftragsverarbeiter und den Personen, die unter der unmittelbaren Verantwortung des Verantwortlichen oder des Auftragsverarbeiters befugt sind, die personenbezogenen Daten zu verarbeiten.</li>
+            <li>k) Einwilligung ist jede von der betroffenen Person freiwillig für den bestimmten Fall in informierter Weise und unmissverständlich abgegebene Willensbekundung in Form einer Erklärung oder einer sonstigen eindeutigen bestätigenden Handlung, mit der die betroffene Person zu verstehen gibt, dass sie mit der Verarbeitung der sie betreffenden personenbezogenen Daten einverstanden ist.</li>
+          </ul>
+
+          <h2 id="controller">2. Name und Anschrift des für die Verarbeitung Verantwortlichen</h2>
+          <p>Verantwortlicher im Sinne der Datenschutz-Grundverordnung, sonstiger in den Mitgliedstaaten der Europäischen Union geltenden Datenschutzgesetze und anderer Bestimmungen mit datenschutzrechtlichem Charakter ist die:</p>
+          <p>JDS Sommer GmbH<br> August-Schanz-Straße 28<br> 60433 Frankfurt<br> Deutschland</p>
+          <p>Tel.: 069 9054690<br> E-Mail: info@jds-sommer.de<br> Website: www.jds-sommer.de</p>
+
+          <h2 id="cookies">3. Cookies</h2>
+          <p>Die Internetseiten der JDS Sommer GmbH verwenden Cookies. Cookies sind Textdateien, welche über einen Internetbrowser auf einem Computersystem abgelegt und gespeichert werden. Cookies werden für die Personalisierung von Anzeigen verwendet.</p>
+          <p>Zahlreiche Internetseiten und Server verwenden Cookies. Viele Cookies enthalten eine sogenannte Cookie-ID. Eine Cookie-ID ist eine eindeutige Kennung des Cookies. Sie besteht aus einer Zeichenfolge, durch welche Internetseiten und Server dem konkreten Internetbrowser zugeordnet werden können, in dem das Cookie gespeichert wurde. Dies ermöglicht es den besuchten Internetseiten und Servern, den individuellen Browser der betroffenen Person von anderen Internetbrowsern, die andere Cookies enthalten, zu unterscheiden. Ein bestimmter Internetbrowser kann über die eindeutige Cookie-ID wiedererkannt und identifiziert werden.</p>
+          <p>Durch den Einsatz von Cookies kann die JDS Sommer GmbH den Nutzern dieser Internetseite nutzerfreundlichere Services bereitstellen, die ohne die Cookie-Setzung nicht möglich wären.</p>
+          <p>Mittels eines Cookies können die Informationen und Angebote auf unserer Internetseite im Sinne des Benutzers optimiert werden. Cookies ermöglichen uns, wie bereits erwähnt, die Benutzer unserer Internetseite wiederzuerkennen. Zweck dieser Wiedererkennung ist es, den Nutzern die Verwendung unserer Internetseite zu erleichtern. Der Benutzer einer Internetseite, die Cookies verwendet, muss beispielsweise nicht bei jedem Besuch der Internetseite erneut seine Zugangsdaten eingeben, weil dies von der Internetseite und dem auf dem Computersystem des Benutzers abgelegten Cookie übernommen wird. Ein weiteres Beispiel ist das Cookie eines Warenkorbes im Online-Shop. Der Online-Shop merkt sich die Artikel, die ein Kunde in den virtuellen Warenkorb gelegt hat, über ein Cookie.</p>
+          <p>Die betroffene Person kann die Setzung von Cookies durch unsere Internetseite jederzeit mittels einer entsprechenden Einstellung des genutzten Internetbrowsers verhindern und damit der Setzung von Cookies dauerhaft widersprechen. Ferner können bereits gesetzte Cookies jederzeit über einen Internetbrowser oder andere Softwareprogramme gelöscht werden. Dies ist in allen gängigen Internetbrowsern möglich. Deaktiviert die betroffene Person die Setzung von Cookies in dem genutzten Internetbrowser, sind unter Umständen nicht alle Funktionen unserer Internetseite vollumfänglich nutzbar.</p>
+
+          <h2 id="general-data">4. Erfassung von allgemeinen Daten und Informationen</h2>
+          <p>Die Internetseite der JDS Sommer GmbH erfasst mit jedem Aufruf der Internetseite durch eine betroffene Person oder ein automatisiertes System eine Reihe von allgemeinen Daten und Informationen. Diese allgemeinen Daten und Informationen werden in den Logfiles des Servers gespeichert. Erfasst werden können die (1) verwendeten Browsertypen und Versionen, (2) das vom zugreifenden System verwendete Betriebssystem, (3) die Internetseite, von welcher ein zugreifendes System auf unsere Internetseite gelangt (sogenannte Referrer), (4) die Unterwebseiten, welche über ein zugreifendes System auf unserer Internetseite angesteuert werden, (5) das Datum und die Uhrzeit eines Zugriffs auf die Internetseite, (6) eine Internet-Protokoll-Adresse (IP-Adresse), (7) der Internet-Service-Provider des zugreifenden Systems und (8) sonstige ähnliche Daten und Informationen, die der Gefahrenabwehr im Falle von Angriffen auf unsere informationstechnologischen Systeme dienen.</p>
+          <p>Bei der Nutzung dieser allgemeinen Daten und Informationen zieht die JDS Sommer GmbH keine Rückschlüsse auf die betroffene Person. Diese Informationen werden vielmehr benötigt, um (1) die Inhalte unserer Internetseite korrekt auszuliefern, (2) die Inhalte unserer Internetseite sowie die Werbung für diese zu optimieren, (3) die dauerhafte Funktionsfähigkeit unserer informationstechnologischen Systeme und der Technik unserer Internetseite zu gewährleisten sowie (4) um Strafverfolgungsbehörden im Falle eines Cyberangriffes die zur Strafverfolgung notwendigen Informationen bereitzustellen. Diese anonym erhobenen Daten und Informationen werden durch die JDS Sommer GmbH daher einerseits statistisch und ferner mit dem Ziel ausgewertet, den Datenschutz und die Datensicherheit in unserem Unternehmen zu erhöhen, um letztlich ein optimales Schutzniveau für die von uns verarbeiteten personenbezogenen Daten sicherzustellen. Die anonymen Daten der Server-Logfiles werden getrennt von allen durch eine betroffene Person angegebenen personenbezogenen Daten gespeichert.</p>
+
+          <h2 id="registration">5. Registrierung auf unserer Internetseite</h2>
+          <p>Die betroffene Person hat die Möglichkeit, sich auf der Internetseite des für die Verarbeitung Verantwortlichen unter Angabe von personenbezogenen Daten zu registrieren. Welche personenbezogenen Daten dabei an den für die Verarbeitung Verantwortlichen übermittelt werden, ergibt sich aus der jeweiligen Eingabemaske, die für die Registrierung verwendet wird. Die von der betroffenen Person eingegebenen personenbezogenen Daten werden ausschließlich für die interne Verwendung bei dem für die Verarbeitung Verantwortlichen und für eigene Zwecke erhoben und gespeichert. Der für die Verarbeitung Verantwortliche kann die Weitergabe an einen oder mehrere Auftragsverarbeiter, beispielsweise einen Paketdienstleister, veranlassen, der die personenbezogenen Daten ebenfalls ausschließlich für eine interne Verwendung, die dem für die Verarbeitung Verantwortlichen zuzurechnen ist, nutzt.</p>
+          <p>Durch eine Registrierung auf der Internetseite des für die Verarbeitung Verantwortlichen wird ferner die vom Internet-Service-Provider (ISP) der betroffenen Person vergebene IP-Adresse, das Datum sowie die Uhrzeit der Registrierung gespeichert. Die Speicherung dieser Daten erfolgt vor dem Hintergrund, dass nur so der Missbrauch unserer Dienste verhindert werden kann, und diese Daten im Bedarfsfall ermöglichen, begangene Straftaten aufzuklären. Insofern ist die Speicherung dieser Daten zur Absicherung des für die Verarbeitung Verantwortlichen erforderlich. Eine Weitergabe dieser Daten an Dritte erfolgt grundsätzlich nicht, sofern keine gesetzliche Pflicht zur Weitergabe besteht oder die Weitergabe der Strafverfolgung dient.</p>
+          <p>Die Registrierung der betroffenen Person unter freiwilliger Angabe personenbezogener Daten dient dem für die Verarbeitung Verantwortlichen dazu, der betroffenen Person Inhalte oder Leistungen anzubieten, die aufgrund der Natur der Sache nur registrierten Benutzern angeboten werden können. Registrierten Personen steht die Möglichkeit frei, die bei der Registrierung angegebenen personenbezogenen Daten jederzeit abzuändern oder vollständig aus dem Datenbestand des für die Verarbeitung Verantwortlichen löschen zu lassen.</p>
+          <p>Der für die Verarbeitung Verantwortliche erteilt jeder betroffenen Person jederzeit auf Anfrage Auskunft darüber, welche personenbezogenen Daten über die betroffene Person gespeichert sind. Ferner berichtigt oder löscht der für die Verarbeitung Verantwortliche personenbezogene Daten auf Wunsch oder Hinweis der betroffenen Person, soweit dem keine gesetzlichen Aufbewahrungspflichten entgegenstehen. Die Gesamtheit der Mitarbeiter des für die Verarbeitung Verantwortlichen stehen der betroffenen Person in diesem Zusammenhang als Ansprechpartner zur Verfügung.</p>
+
+          <h2 id="contact-options">6. Kontaktmöglichkeit über die Internetseite</h2>
+          <p>Die Internetseite der JDS Sommer GmbH enthält aufgrund von gesetzlichen Vorschriften Angaben, die eine schnelle elektronische Kontaktaufnahme zu unserem Unternehmen sowie eine unmittelbare Kommunikation mit uns ermöglichen, was ebenfalls eine allgemeine Adresse der sogenannten elektronischen Post (E-Mail-Adresse) umfasst. Sofern eine betroffene Person per E-Mail oder über ein Kontaktformular den Kontakt mit dem für die Verarbeitung Verantwortlichen aufnimmt, werden die von der betroffenen Person übermittelten personenbezogenen Daten automatisch gespeichert. Solche auf freiwilliger Basis von einer betroffenen Person an den für die Verarbeitung Verantwortlichen übermittelten personenbezogenen Daten werden für Zwecke der Bearbeitung oder der Kontaktaufnahme zur betroffenen Person gespeichert. Es erfolgt keine Weitergabe dieser personenbezogenen Daten an Dritte.</p>
+
+          <h2 id="deletion">7. Routinemäßige Löschung und Sperrung von personenbezogenen Daten</h2>
+          <p>Der für die Verarbeitung Verantwortliche verarbeitet und speichert personenbezogene Daten der betroffenen Person nur für den Zeitraum, der zur Erreichung des Speicherungszwecks erforderlich ist oder sofern dies durch den Europäischen Richtlinien- und Verordnungsgeber oder einen anderen Gesetzgeber in Gesetzen oder Vorschriften, welchen der für die Verarbeitung Verantwortliche unterliegt, vorgesehen wurde.</p>
+          <p>Entfällt der Speicherungszweck oder läuft eine vom Europäischen Richtlinien- und Verordnungsgeber oder einem anderen zuständigen Gesetzgeber vorgeschriebene Speicherfrist ab, werden die personenbezogenen Daten routinemäßig und entsprechend den gesetzlichen Vorschriften gesperrt oder gelöscht.</p>
+
+          <h2 id="rights">8. Rechte der betroffenen Person</h2>
+
+          <h3>a) Recht auf Bestätigung</h3>
+          <p>Jede betroffene Person hat das vom Europäischen Richtlinien- und Verordnungsgeber eingeräumte Recht, von dem für die Verarbeitung Verantwortlichen eine Bestätigung darüber zu verlangen, ob sie betreffende personenbezogene Daten verarbeitet werden. Möchte eine betroffene Person dieses Bestätigungsrecht in Anspruch nehmen, kann sie sich hierzu jederzeit an einen Mitarbeiter des für die Verarbeitung Verantwortlichen wenden.</p>
+
+          <h3>b) Recht auf Auskunft</h3>
+          <p>Jede von der Verarbeitung personenbezogener Daten betroffene Person hat das vom Europäischen Richtlinien- und Verordnungsgeber gewährte Recht, jederzeit von dem für die Verarbeitung Verantwortlichen unentgeltliche Auskunft über die zu seiner Person gespeicherten personenbezogenen Daten und eine Kopie dieser Auskunft zu erhalten. Ferner hat der Europäische Richtlinien- und Verordnungsgeber der betroffenen Person Auskunft über folgende Informationen zugestanden:</p>
+          <ul>
+            <li>die Verarbeitungszwecke</li>
+            <li>die Kategorien personenbezogener Daten, die verarbeitet werden</li>
+            <li>die Empfänger oder Kategorien von Empfängern, gegenüber denen die personenbezogenen Daten offengelegt worden sind oder noch offengelegt werden, insbesondere bei Empfängern in Drittländern oder bei internationalen Organisationen</li>
+            <li>falls möglich die geplante Dauer, für die die personenbezogenen Daten gespeichert werden, oder, falls dies nicht möglich ist, die Kriterien für die Festlegung dieser Dauer</li>
+            <li>das Bestehen eines Rechts auf Berichtigung oder Löschung der sie betreffenden personenbezogenen Daten oder auf Einschränkung der Verarbeitung durch den Verantwortlichen oder eines Widerspruchsrechts gegen diese Verarbeitung</li>
+            <li>das Bestehen eines Beschwerderechts bei einer Aufsichtsbehörde</li>
+            <li>wenn die personenbezogenen Daten nicht bei der betroffenen Person erhoben werden: Alle verfügbaren Informationen über die Herkunft der Daten</li>
+            <li>das Bestehen einer automatisierten Entscheidungsfindung einschließlich Profiling gemäß Artikel 22 Abs.1 und 4 DS-GVO und — zumindest in diesen Fällen — aussagekräftige Informationen über die involvierte Logik sowie die Tragweite und die angestrebten Auswirkungen einer derartigen Verarbeitung für die betroffene Person</li>
+          </ul>
+          <p>Ferner steht der betroffenen Person ein Auskunftsrecht darüber zu, ob personenbezogene Daten an ein Drittland oder an eine internationale Organisation übermittelt wurden. Sofern dies der Fall ist, so steht der betroffenen Person im Übrigen das Recht zu, Auskunft über die geeigneten Garantien im Zusammenhang mit der Übermittlung zu erhalten.</p>
+          <p>Möchte eine betroffene Person dieses Auskunftsrecht in Anspruch nehmen, kann sie sich hierzu jederzeit an einen Mitarbeiter des für die Verarbeitung Verantwortlichen wenden.</p>
+
+          <h3>c) Recht auf Berichtigung</h3>
+          <p>Jede von der Verarbeitung personenbezogener Daten betroffene Person hat das vom Europäischen Richtlinien- und Verordnungsgeber gewährte Recht, die unverzügliche Berichtigung sie betreffender unrichtiger personenbezogener Daten zu verlangen. Ferner steht der betroffenen Person das Recht zu, unter Berücksichtigung der Zwecke der Verarbeitung, die Vervollständigung unvollständiger personenbezogener Daten — auch mittels einer ergänzenden Erklärung — zu verlangen.Möchte eine betroffene Person dieses Berichtigungsrecht in Anspruch nehmen, kann sie sich hierzu jederzeit an einen Mitarbeiter des für die Verarbeitung Verantwortlichen wenden.</p>
+
+          <h3>d) Recht auf Löschung (Recht auf Vergessen werden)</h3>
+          <p>Jede von der Verarbeitung personenbezogener Daten betroffene Person hat das vom Europäischen Richtlinien- und Verordnungsgeber gewährte Recht, von dem Verantwortlichen zu verlangen, dass die sie betreffenden personenbezogenen Daten unverzüglich gelöscht werden, sofern einer der folgenden Gründe zutrifft und soweit die Verarbeitung nicht erforderlich ist:</p>
+          <ul>
+            <li>Die personenbezogenen Daten wurden für solche Zwecke erhoben oder auf sonstige Weise verarbeitet, für welche sie nicht mehr notwendig sind.</li>
+            <li>Die betroffene Person widerruft ihre Einwilligung, auf die sich die Verarbeitung gemäß Art. 6 Abs. 1 Buchstabe a DS-GVO oder Art. 9 Abs. 2 Buchstabe a DS-GVO stützte, und es fehlt an einer anderweitigen Rechtsgrundlage für die Verarbeitung.</li>
+            <li>Die betroffene Person legt gemäß Art. 21 Abs. 1 DS-GVO Widerspruch gegen die Verarbeitung ein, und es liegen keine vorrangigen berechtigten Gründe für die Verarbeitung vor, oder die betroffene Person legt gemäß Art. 21 Abs. 2 DS-GVO Widerspruch gegen die Verarbeitung ein.</li>
+            <li>Die personenbezogenen Daten wurden unrechtmäßig verarbeitet.</li>
+            <li>Die Löschung der personenbezogenen Daten ist zur Erfüllung einer rechtlichen Verpflichtung nach dem Unionsrecht oder dem Recht der Mitgliedstaaten erforderlich, dem der Verantwortliche unterliegt.</li>
+            <li>Die personenbezogenen Daten wurden in Bezug auf angebotene Dienste der Informationsgesellschaft gemäß Art. 8 Abs. 1 DS-GVO erhoben.</li>
+          </ul>
+          <p>Sofern einer der oben genannten Gründe zutrifft und eine betroffene Person die Löschung von personenbezogenen Daten, die bei der JDS Sommer GmbH gespeichert sind, veranlassen möchte, kann sie sich hierzu jederzeit an einen Mitarbeiter des für die Verarbeitung Verantwortlichen wenden. Der Mitarbeiter der JDS Sommer GmbH wird veranlassen, dass dem Löschverlangen unverzüglich nachgekommen wird.</p>
+          <p>Wurden die personenbezogenen Daten von der JDS Sommer GmbH öffentlich gemacht und ist unser Unternehmen als Verantwortlicher gemäß Art. 17 Abs. 1 DS-GVO zur Löschung der personenbezogenen Daten verpflichtet, so trifft die JDS Sommer GmbH unter Berücksichtigung der verfügbaren Technologie und der Implementierungskosten angemessene Maßnahmen, auch technischer Art, um andere für die Datenverarbeitung Verantwortliche, welche die veröffentlichten personenbezogenen Daten verarbeiten, darüber in Kenntnis zu setzen, dass die betroffene Person von diesen anderen für die Datenverarbeitung Verantwortlichen die Löschung sämtlicher Links zu diesen personenbezogenen Daten oder von Kopien oder Replikationen dieser personenbezogenen Daten verlangt hat, soweit die Verarbeitung nicht erforderlich ist. Der Mitarbeiter der JDS Sommer GmbH wird im Einzelfall das Notwendige veranlassen.</p>
+
+          <h3>e) Recht auf Einschränkung der Verarbeitung</h3>
+          <p>Jede von der Verarbeitung personenbezogener Daten betroffene Person hat das vom Europäischen Richtlinien- und Verordnungsgeber gewährte Recht, von dem Verantwortlichen die Einschränkung der Verarbeitung zu verlangen, wenn eine der folgenden Voraussetzungen gegeben ist:</p>
+          <ul>
+            <li>Die Richtigkeit der personenbezogenen Daten wird von der betroffenen Person bestritten, und zwar für eine Dauer, die es dem Verantwortlichen ermöglicht, die Richtigkeit der personenbezogenen Daten zu überprüfen.</li>
+            <li>Die Verarbeitung ist unrechtmäßig, die betroffene Person lehnt die Löschung der personenbezogenen Daten ab und verlangt stattdessen die Einschränkung der Nutzung der personenbezogenen Daten.</li>
+            <li>Der Verantwortliche benötigt die personenbezogenen Daten für die Zwecke der Verarbeitung nicht länger, die betroffene Person benötigt sie jedoch zur Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen.</li>
+            <li>Die betroffene Person hat Widerspruch gegen die Verarbeitung gem. Art. 21 Abs. 1 DS-GVO eingelegt und es steht noch nicht fest, ob die berechtigten Gründe des Verantwortlichen gegenüber denen der betroffenen Person überwiegen.</li>
+          </ul>
+          <p>Sofern eine der oben genannten Voraussetzungen gegeben ist und eine betroffene Person die Einschränkung von personenbezogenen Daten, die bei der JDS Sommer GmbH gespeichert sind, verlangen möchte, kann sie sich hierzu jederzeit an einen Mitarbeiter des für die Verarbeitung Verantwortlichen wenden. Der Mitarbeiter der JDS Sommer GmbH wird die Einschränkung der Verarbeitung veranlassen.</p>
+
+          <h3>f) Recht auf Datenübertragbarkeit</h3>
+          <p>Jede von der Verarbeitung personenbezogener Daten betroffene Person hat das vom Europäischen Richtlinien- und Verordnungsgeber gewährte Recht, die sie betreffenden personenbezogenen Daten, welche durch die betroffene Person einem Verantwortlichen bereitgestellt wurden, in einem strukturierten, gängigen und maschinenlesbaren Format zu erhalten. Sie hat außerdem das Recht, diese Daten einem anderen Verantwortlichen ohne Behinderung durch den Verantwortlichen, dem die personenbezogenen Daten bereitgestellt wurden, zu übermitteln, sofern die Verarbeitung auf der Einwilligung gemäß Art. 6 Abs. 1 Buchstabe a DS-GVO oder Art. 9 Abs. 2 Buchstabe a DS-GVO oder auf einem Vertrag gemäß Art. 6 Abs. 1 Buchstabe b DS-GVO beruht und die Verarbeitung mithilfe automatisierter Verfahren erfolgt, sofern die Verarbeitung nicht für die Wahrnehmung einer Aufgabe erforderlich ist, die im öffentlichen Interesse liegt oder in Ausübung öffentlicher Gewalt erfolgt, welche dem Verantwortlichen übertragen wurde.Ferner hat die betroffene Person bei der Ausübung ihres Rechts auf Datenübertragbarkeit gemäß Art. 20 Abs. 1 DS-GVO das Recht, zu erwirken, dass die personenbezogenen Daten direkt von einem Verantwortlichen an einen anderen Verantwortlichen übermittelt werden, soweit dies technisch machbar ist und sofern hiervon nicht die Rechte und Freiheiten anderer Personen beeinträchtigt werden.</p>
+          <p>Zur Geltendmachung des Rechts auf Datenübertragbarkeit kann sich die betroffene Person jederzeit an einen Mitarbeiter der JDS Sommer GmbH wenden.</p>
+
+          <h3>g) Recht auf Widerspruch</h3>
+          <p>Jede von der Verarbeitung personenbezogener Daten betroffene Person hat das vom Europäischen Richtlinien- und Verordnungsgeber gewährte Recht, aus Gründen, die sich aus ihrer besonderen Situation ergeben, jederzeit gegen die Verarbeitung sie betreffender personenbezogener Daten, die aufgrund von Art. 6 Abs. 1 Buchstaben e oder f DS-GVO erfolgt, Widerspruch einzulegen. Dies gilt auch für ein auf diese Bestimmungen gestütztes Profiling.</p>
+          <p>Die JDS Sommer GmbH verarbeitet die personenbezogenen Daten im Falle des Widerspruchs nicht mehr, es sei denn, wir können zwingende schutzwürdige Gründe für die Verarbeitung nachweisen, die den Interessen, Rechten und Freiheiten der betroffenen Person überwiegen, oder die Verarbeitung dient der Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen.</p>
+          <p>Verarbeitet die JDS Sommer GmbH personenbezogene Daten, um Direktwerbung zu betreiben, so hat die betroffene Person das Recht, jederzeit Widerspruch gegen die Verarbeitung der personenbezogenen Daten zum Zwecke derartiger Werbung einzulegen. Dies gilt auch für das Profiling, soweit es mit solcher Direktwerbung in Verbindung steht. Widerspricht die betroffene Person gegenüber der JDS Sommer GmbH der Verarbeitung für Zwecke der Direktwerbung, so wird die JDS Sommer GmbH die personenbezogenen Daten nicht mehr für diese Zwecke verarbeiten.</p>
+          <p>Zudem hat die betroffene Person das Recht, aus Gründen, die sich aus ihrer besonderen Situation ergeben, gegen die sie betreffende Verarbeitung personenbezogener Daten, die bei der JDS Sommer GmbH zu wissenschaftlichen oder historischen Forschungszwecken oder zu statistischen Zwecken gemäß Art. 89 Abs. 1 DS-GVO erfolgen, Widerspruch einzulegen, es sei denn, eine solche Verarbeitung ist zur Erfüllung einer im öffentlichen Interesse liegenden Aufgabe erforderlich.</p>
+          <p>Zur Ausübung des Rechts auf Widerspruch kann sich die betroffene Person direkt an jeden Mitarbeiter der JDS Sommer GmbH oder einen anderen Mitarbeiter wenden. Der betroffenen Person steht es ferner frei, im Zusammenhang mit der Nutzung von Diensten der Informationsgesellschaft, ungeachtet der Richtlinie 2002/58/EG, ihr Widerspruchsrecht mittels automatisierter Verfahren auszuüben, bei denen technische Spezifikationen verwendet werden.</p>
+
+          <h3>h) Automatisierte Entscheidungen im Einzelfall einschließlich Profiling</h3>
+          <p>Jede von der Verarbeitung personenbezogener Daten betroffene Person hat das vom Europäischen Richtlinien- und Verordnungsgeber gewährte Recht, nicht einer ausschließlich auf einer automatisierten Verarbeitung — einschließlich Profiling — beruhenden Entscheidung unterworfen zu werden, die ihr gegenüber rechtliche Wirkung entfaltet oder sie in ähnlicher Weise erheblich beeinträchtigt, sofern die Entscheidung (1) nicht für den Abschluss oder die Erfüllung eines Vertrags zwischen der betroffenen Person und dem Verantwortlichen erforderlich ist, oder (2) aufgrund von Rechtsvorschriften der Union oder der Mitgliedstaaten, denen der Verantwortliche unterliegt, zulässig ist und diese Rechtsvorschriften angemessene Maßnahmen zur Wahrung der Rechte und Freiheiten sowie der berechtigten Interessen der betroffenen Person enthalten oder (3) mit ausdrücklicher Einwilligung der betroffenen Person erfolgt.Ist die Entscheidung (1) für den Abschluss oder die Erfüllung eines Vertrags zwischen der betroffenen Person und dem Verantwortlichen erforderlich oder (2) erfolgt sie mit ausdrücklicher Einwilligung der betroffenen Person, trifft die JDS Sommer GmbH angemessene Maßnahmen, um die Rechte und Freiheiten sowie die berechtigten Interessen der betroffenen Person zu wahren, wozu mindestens das Recht auf Erwirkung des Eingreifens einer Person seitens des Verantwortlichen, auf Darlegung des eigenen Standpunkts und auf Anfechtung der Entscheidung gehört.</p>
+          <p>Möchte die betroffene Person Rechte mit Bezug auf automatisierte Entscheidungen geltend machen, kann sie sich hierzu jederzeit an einen Mitarbeiter des für die Verarbeitung Verantwortlichen wenden.</p>
+
+          <h3>i) Recht auf Widerruf einer datenschutzrechtlichen Einwilligung</h3>
+          <p>Jede von der Verarbeitung personenbezogener Daten betroffene Person hat das vom Europäischen Richtlinien- und Verordnungsgeber gewährte Recht, eine Einwilligung zur Verarbeitung personenbezogener Daten jederzeit zu widerrufen.Möchte die betroffene Person ihr Recht auf Widerruf einer Einwilligung geltend machen, kann sie sich hierzu jederzeit an einen Mitarbeiter des für die Verarbeitung Verantwortlichen wenden.</p>
+
+          <h2 id="facebook">9. Datenschutzbestimmungen zu Einsatz und Verwendung von Facebook</h2>
+          <p>Der für die Verarbeitung Verantwortliche hat auf dieser Internetseite Komponenten des Unternehmens Facebook integriert. Facebook ist ein soziales Netzwerk.</p>
+          <p>Ein soziales Netzwerk ist ein im Internet betriebener sozialer Treffpunkt, eine Online-Gemeinschaft, die es den Nutzern in der Regel ermöglicht, untereinander zu kommunizieren und im virtuellen Raum zu interagieren. Ein soziales Netzwerk kann als Plattform zum Austausch von Meinungen und Erfahrungen dienen oder ermöglicht es der Internetgemeinschaft, persönliche oder unternehmensbezogene Informationen bereitzustellen. Facebook ermöglicht den Nutzern des sozialen Netzwerkes unter anderem die Erstellung von privaten Profilen, den Upload von Fotos und eine Vernetzung über Freundschaftsanfragen.</p>
+          <p>Betreibergesellschaft von Facebook ist die Facebook, Inc., 1 Hacker Way, Menlo Park, CA 94025, USA. Für die Verarbeitung personenbezogener Daten Verantwortlicher ist, wenn eine betroffene Person außerhalb der USA oder Kanada lebt, die Facebook Ireland Ltd., 4 Grand Canal Square, Grand Canal Harbour, Dublin 2, Ireland.</p>
+          <p>Durch jeden Aufruf einer der Einzelseiten dieser Internetseite, die durch den für die Verarbeitung Verantwortlichen betrieben wird und auf welcher eine Facebook-Komponente (Facebook-Plug-In) integriert wurde, wird der Internetbrowser auf dem informationstechnologischen System der betroffenen Person automatisch durch die jeweilige Facebook-Komponente veranlasst, eine Darstellung der entsprechenden Facebook-Komponente von Facebook herunterzuladen. Eine Gesamtübersicht über alle Facebook-Plug-Ins kann unter <a href="https://developers.facebook.com/docs/plugins/?locale=de_DE" target="_blank" rel="noopener">https://developers.facebook.com/docs/plugins/?locale=de_DE</a> abgerufen werden. Im Rahmen dieses technischen Verfahrens erhält Facebook Kenntnis darüber, welche konkrete Unterseite unserer Internetseite durch die betroffene Person besucht wird.</p>
+          <p>Sofern die betroffene Person gleichzeitig bei Facebook eingeloggt ist, erkennt Facebook mit jedem Aufruf unserer Internetseite durch die betroffene Person und während der gesamten Dauer des jeweiligen Aufenthaltes auf unserer Internetseite, welche konkrete Unterseite unserer Internetseite die betroffene Person besucht. Diese Informationen werden durch die Facebook-Komponente gesammelt und durch Facebook dem jeweiligen Facebook-Account der betroffenen Person zugeordnet. Betätigt die betroffene Person einen der auf unserer Internetseite integrierten Facebook-Buttons, beispielsweise den „Gefällt mir“-Button, oder gibt die betroffene Person einen Kommentar ab, ordnet Facebook diese Information dem persönlichen Facebook-Benutzerkonto der betroffenen Person zu und speichert diese personenbezogenen Daten.</p>
+          <p>Facebook erhält über die Facebook-Komponente immer dann eine Information darüber, dass die betroffene Person unsere Internetseite besucht hat, wenn die betroffene Person zum Zeitpunkt des Aufrufs unserer Internetseite gleichzeitig bei Facebook eingeloggt ist; dies findet unabhängig davon statt, ob die betroffene Person die Facebook-Komponente anklickt oder nicht. Ist eine derartige Übermittlung dieser Informationen an Facebook von der betroffenen Person nicht gewollt, kann diese die Übermittlung dadurch verhindern, dass sie sich vor einem Aufruf unserer Internetseite aus ihrem Facebook-Account ausloggt.</p>
+          <p>Die von Facebook veröffentlichte Datenrichtlinie, die unter <a href="https://de-de.facebook.com/about/privacy/" target="_blank" rel="noopener">https://de-de.facebook.com/about/privacy/</a> abrufbar ist, gibt Aufschluss über die Erhebung, Verarbeitung und Nutzung personenbezogener Daten durch Facebook. Ferner wird dort erläutert, welche Einstellungsmöglichkeiten Facebook zum Schutz der Privatsphäre der betroffenen Person bietet. Zudem sind unterschiedliche Applikationen erhältlich, die es ermöglichen, eine Datenübermittlung an Facebook zu unterdrücken. Solche Applikationen können durch die betroffene Person genutzt werden, um eine Datenübermittlung an Facebook zu unterdrücken.</p>
+
+          <h2 id="google-analytics">10. Datenschutzbestimmungen zu Einsatz und Verwendung von Google Analytics (mit Anonymisierungsfunktion)</h2>
+          <p>Der für die Verarbeitung Verantwortliche hat auf dieser Internetseite die Komponente Google Analytics (mit Anonymisierungsfunktion) integriert. Google Analytics ist ein Web-Analyse-Dienst. Web-Analyse ist die Erhebung, Sammlung und Auswertung von Daten über das Verhalten von Besuchern von Internetseiten. Ein Web-Analyse-Dienst erfasst unter anderem Daten darüber, von welcher Internetseite eine betroffene Person auf eine Internetseite gekommen ist (sogenannte Referrer), auf welche Unterseiten der Internetseite zugegriffen oder wie oft und für welche Verweildauer eine Unterseite betrachtet wurde. Eine Web-Analyse wird überwiegend zur Optimierung einer Internetseite und zur Kosten-Nutzen-Analyse von Internetwerbung eingesetzt.</p>
+          <p>Betreibergesellschaft der Google-Analytics-Komponente ist die Google Ireland Limited, Gordon House, Barrow Street, Dublin, D04 E5W5, Ireland.</p>
+          <p>Der für die Verarbeitung Verantwortliche verwendet für die Web-Analyse über Google Analytics den Zusatz “_gat._anonymizeIp”. Mittels dieses Zusatzes wird die IP-Adresse des Internetanschlusses der betroffenen Person von Google gekürzt und anonymisiert, wenn der Zugriff auf unsere Internetseiten aus einem Mitgliedstaat der Europäischen Union oder aus einem anderen Vertragsstaat des Abkommens über den Europäischen Wirtschaftsraum erfolgt.</p>
+          <p>Der Zweck der Google-Analytics-Komponente ist die Analyse der Besucherströme auf unserer Internetseite. Google nutzt die gewonnenen Daten und Informationen unter anderem dazu, die Nutzung unserer Internetseite auszuwerten, um für uns Online-Reports, welche die Aktivitäten auf unseren Internetseiten aufzeigen, zusammenzustellen, und um weitere mit der Nutzung unserer Internetseite in Verbindung stehende Dienstleistungen zu erbringen.</p>
+          <p>Google Analytics setzt ein Cookie auf dem informationstechnologischen System der betroffenen Person. Was Cookies sind, wurde oben bereits erläutert. Mit Setzung des Cookies wird Google eine Analyse der Benutzung unserer Internetseite ermöglicht. Durch jeden Aufruf einer der Einzelseiten dieser Internetseite, die durch den für die Verarbeitung Verantwortlichen betrieben wird und auf welcher eine Google-Analytics-Komponente integriert wurde, wird der Internetbrowser auf dem informationstechnologischen System der betroffenen Person automatisch durch die jeweilige Google-Analytics-Komponente veranlasst, Daten zum Zwecke der Online-Analyse an Google zu übermitteln. Im Rahmen dieses technischen Verfahrens erhält Google Kenntnis über personenbezogene Daten, wie der IP-Adresse der betroffenen Person, die Google unter anderem dazu dienen, die Herkunft der Besucher und Klicks nachzuvollziehen und in der Folge Provisionsabrechnungen zu ermöglichen.</p>
+          <p>Mittels des Cookies werden personenbezogene Informationen, beispielsweise die Zugriffszeit, der Ort, von welchem ein Zugriff ausging und die Häufigkeit der Besuche unserer Internetseite durch die betroffene Person, gespeichert. Bei jedem Besuch unserer Internetseiten werden diese personenbezogenen Daten, einschließlich der IP-Adresse des von der betroffenen Person genutzten Internetanschlusses, an Google in den Vereinigten Staaten von Amerika übertragen. Diese personenbezogenen Daten werden durch Google in den Vereinigten Staaten von Amerika gespeichert. Google gibt diese über das technische Verfahren erhobenen personenbezogenen Daten unter Umständen an Dritte weiter.</p>
+          <p>Die betroffene Person kann die Setzung von Cookies durch unsere Internetseite, wie oben bereits dargestellt, jederzeit mittels einer entsprechenden Einstellung des genutzten Internetbrowsers verhindern und damit der Setzung von Cookies dauerhaft widersprechen. Eine solche Einstellung des genutzten Internetbrowsers würde auch verhindern, dass Google ein Cookie auf dem informationstechnologischen System der betroffenen Person setzt. Zudem kann ein von Google Analytics bereits gesetzter Cookie jederzeit über den Internetbrowser oder andere Softwareprogramme gelöscht werden.</p>
+          <p>Ferner besteht für die betroffene Person die Möglichkeit, einer Erfassung der durch Google Analytics erzeugten, auf eine Nutzung dieser Internetseite bezogenen Daten sowie der Verarbeitung dieser Daten durch Google zu widersprechen und eine solche zu verhindern. Hierzu muss die betroffene Person ein Browser-Add-On unter dem Link <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">https://tools.google.com/dlpage/gaoptout</a> herunterladen und installieren. Dieses Browser-Add-On teilt Google Analytics über JavaScript mit, dass keine Daten und Informationen zu den Besuchen von Internetseiten an Google Analytics übermittelt werden dürfen. Die Installation des Browser-Add-Ons wird von Google als Widerspruch gewertet. Wird das informationstechnologische System der betroffenen Person zu einem späteren Zeitpunkt gelöscht, formatiert oder neu installiert, muss durch die betroffene Person eine erneute Installation des Browser-Add-Ons erfolgen, um Google Analytics zu deaktivieren. Sofern das Browser-Add-On durch die betroffene Person oder einer anderen Person, die ihrem Machtbereich zuzurechnen ist, deinstalliert oder deaktiviert wird, besteht die Möglichkeit der Neuinstallation oder der erneuten Aktivierung des Browser-Add-Ons.</p>
+          <p>Weitere Informationen und die geltenden Datenschutzbestimmungen von Google können unter <a href="https://www.google.de/intl/de/policies/privacy/" target="_blank" rel="noopener">https://www.google.de/intl/de/policies/privacy/</a> und unter <a href="http://www.google.com/analytics/terms/de.html" target="_blank" rel="noopener">http://www.google.com/analytics/terms/de.html</a> abgerufen werden. Google Analytics wird unter diesem Link <a href="https://www.google.com/intl/de_de/analytics/" target="_blank" rel="noopener">https://www.google.com/intl/de_de/analytics/</a> genauer erläutert.</p>
+
+          <h2 id="google-ads">11. Datenschutzbestimmungen zu Einsatz und Verwendung von Google Ads</h2>
+          <p>Der für die Verarbeitung Verantwortliche hat auf dieser Internetseite Google Ads integriert. Google Ads ist ein Dienst zur Internetwerbung, der es Werbetreibenden gestattet, sowohl Anzeigen in den Suchmaschinenergebnissen von Google als auch im Google-Werbenetzwerk zu schalten. Google Ads ermöglicht es einem Werbetreibenden, vorab bestimmte Schlüsselwörter festzulegen, mittels derer eine Anzeige in den Suchmaschinenergebnissen von Google ausschließlich dann angezeigt wird, wenn der Nutzer mit der Suchmaschine ein schlüsselwortrelevantes Suchergebnis abruft. Im Google-Werbenetzwerk werden die Anzeigen mittels eines automatischen Algorithmus und unter Beachtung der zuvor festgelegten Schlüsselwörter auf themenrelevanten Internetseiten verteilt.</p>
+          <p>Betreibergesellschaft der Dienste von Google Ads ist die Google Ireland Limited, Gordon House, Barrow Street, Dublin, D04 E5W5, Ireland.</p>
+          <p>Der Zweck von Google Ads ist die Bewerbung unserer Internetseite durch die Einblendung von interessenrelevanter Werbung auf den Internetseiten von Drittunternehmen und in den Suchmaschinenergebnissen der Suchmaschine Google und eine Einblendung von Fremdwerbung auf unserer Internetseite.</p>
+          <p>Gelangt eine betroffene Person über eine Google-Anzeige auf unsere Internetseite, wird auf dem informationstechnologischen System der betroffenen Person durch Google ein sogenannter Conversion-Cookie abgelegt. Was Cookies sind, wurde oben bereits erläutert. Ein Conversion-Cookie verliert nach dreißig Tagen seine Gültigkeit und dient nicht zur Identifikation der betroffenen Person. Über den Conversion-Cookie wird, sofern das Cookie noch nicht abgelaufen ist, nachvollzogen, ob bestimmte Unterseiten, beispielsweise der Warenkorb von einem Online-Shop-System, auf unserer Internetseite aufgerufen wurden. Durch den Conversion-Cookie können sowohl wir als auch Google nachvollziehen, ob eine betroffene Person, die über eine Google Ads-Anzeige auf unsere Internetseite gelangt ist, einen Umsatz generierte, also einen Warenkauf vollzogen oder abgebrochen hat.</p>
+          <p>Die durch die Nutzung des Conversion-Cookies erhobenen Daten und Informationen werden von Google verwendet, um Besuchsstatistiken für unsere Internetseite zu erstellen. Diese Besuchsstatistiken werden durch uns wiederum genutzt, um die Gesamtanzahl der Nutzer zu ermitteln, welche über Google Ads-Anzeigen an uns vermittelt wurden, also um den Erfolg oder Misserfolg der jeweiligen Google Ads-Anzeige zu ermitteln und um unsere Google Ads-Anzeigen für die Zukunft zu optimieren. Weder unser Unternehmen noch andere Werbekunden von Google Ads erhalten Informationen von Google, mittels derer die betroffene Person identifiziert werden könnte.</p>
+          <p>Mittels des Conversion-Cookies werden personenbezogene Informationen, beispielsweise die durch die betroffene Person besuchten Internetseiten, gespeichert. Bei jedem Besuch unserer Internetseiten werden demnach personenbezogene Daten, einschließlich der IP-Adresse des von der betroffenen Person genutzten Internetanschlusses, an Google in den Vereinigten Staaten von Amerika übertragen. Diese personenbezogenen Daten werden durch Google in den Vereinigten Staaten von Amerika gespeichert. Google gibt diese über das technische Verfahren erhobenen personenbezogenen Daten unter Umständen an Dritte weiter.</p>
+          <p>Die betroffene Person kann die Setzung von Cookies durch unsere Internetseite, wie oben bereits dargestellt, jederzeit mittels einer entsprechenden Einstellung des genutzten Internetbrowsers verhindern und damit der Setzung von Cookies dauerhaft widersprechen. Eine solche Einstellung des genutzten Internetbrowsers würde auch verhindern, dass Google einen Conversion-Cookie auf dem informationstechnologischen System der betroffenen Person setzt. Zudem kann ein von Google Ads bereits gesetzter Cookie jederzeit über den Internetbrowser oder andere Softwareprogramme gelöscht werden.</p>
+          <p>Ferner besteht für die betroffene Person die Möglichkeit, der interessenbezogenen Werbung durch Google zu widersprechen. Hierzu muss die betroffene Person von jedem der von ihr genutzten Internetbrowser aus den Link www.google.de/settings/ads aufrufen und dort die gewünschten Einstellungen vornehmen.</p>
+          <p>Weitere Informationen und die geltenden Datenschutzbestimmungen von Google können unter <a href="https://www.google.de/intl/de/policies/privacy/" target="_blank" rel="noopener">https://www.google.de/intl/de/policies/privacy/</a> abgerufen werden.</p>
+
+          <h2 id="twitter">12. Datenschutzbestimmungen zu Einsatz und Verwendung von Twitter</h2>
+          <p>Der für die Verarbeitung Verantwortliche hat auf dieser Internetseite Komponenten von Twitter integriert. Twitter ist ein multilingualer öffentlich zugänglicher Mikroblogging-Dienst, auf welchem die Nutzer sogenannte Tweets, also Kurznachrichten, die auf 280 Zeichen begrenzt sind, veröffentlichen und verbreiten können. Diese Kurznachrichten sind für jedermann, also auch für nicht bei Twitter angemeldete Personen abrufbar. Die Tweets werden aber auch den sogenannten Followern des jeweiligen Nutzers angezeigt. Follower sind andere Twitter-Nutzer, die den Tweets eines Nutzers folgen. Ferner ermöglicht Twitter über Hashtags, Verlinkungen oder Retweets die Ansprache eines breiten Publikums.</p>
+          <p>Betreibergesellschaft von Twitter International Company, One Cumberland Place, Fenian Street Dublin 2, D02 AX07, Ireland.</p>
+          <p>Durch jeden Aufruf einer der Einzelseiten dieser Internetseite, die durch den für die Verarbeitung Verantwortlichen betrieben wird und auf welcher eine Twitter-Komponente (Twitter-Button) integriert wurde, wird der Internetbrowser auf dem informationstechnologischen System der betroffenen Person automatisch durch die jeweilige Twitter-Komponente veranlasst, eine Darstellung der entsprechenden Twitter-Komponente von Twitter herunterzuladen. Weitere Informationen zu den Twitter-Buttons sind unter <a href="https://about.twitter.com/de/resources/buttons" target="_blank" rel="noopener">https://about.twitter.com/de/resources/buttons</a> abrufbar. Im Rahmen dieses technischen Verfahrens erhält Twitter Kenntnis darüber, welche konkrete Unterseite unserer Internetseite durch die betroffene Person besucht wird. Zweck der Integration der Twitter-Komponente ist es, unseren Nutzern eine Weiterverbreitung der Inhalte diese Internetseite zu ermöglichen, diese Internetseite in der digitalen Welt bekannt zu machen und unsere Besucherzahlen zu erhöhen.</p>
+          <p>Sofern die betroffene Person gleichzeitig bei Twitter eingeloggt ist, erkennt Twitter mit jedem Aufruf unserer Internetseite durch die betroffene Person und während der gesamten Dauer des jeweiligen Aufenthaltes auf unserer Internetseite, welche konkrete Unterseite unserer Internetseite die betroffene Person besucht. Diese Informationen werden durch die Twitter-Komponente gesammelt und durch Twitter dem jeweiligen Twitter-Account der betroffenen Person zugeordnet. Betätigt die betroffene Person einen der auf unserer Internetseite integrierten Twitter-Buttons, werden die damit übertragenen Daten und Informationen dem persönlichen Twitter-Benutzerkonto der betroffenen Person zugeordnet und von Twitter gespeichert und verarbeitet.</p>
+          <p>Twitter erhält über die Twitter-Komponente immer dann eine Information darüber, dass die betroffene Person unsere Internetseite besucht hat, wenn die betroffene Person zum Zeitpunkt des Aufrufs unserer Internetseite gleichzeitig bei Twitter eingeloggt ist; dies findet unabhängig davon statt, ob die betroffene Person die Twitter-Komponente anklickt oder nicht. Ist eine derartige Übermittlung dieser Informationen an Twitter von der betroffenen Person nicht gewollt, kann diese die Übermittlung dadurch verhindern, dass sie sich vor einem Aufruf unserer Internetseite aus ihrem Twitter-Account ausloggt.</p>
+          <p>Die geltenden Datenschutzbestimmungen von Twitter sind unter <a href="https://twitter.com/privacy?lang=de" target="_blank" rel="noopener">https://twitter.com/privacy?lang=de</a> abrufbar.</p>
+
+          <h2 id="legal-basis">13. Rechtsgrundlage der Verarbeitung</h2>
+          <p>Art. 6 I lit. a DS-GVO dient unserem Unternehmen als Rechtsgrundlage für Verarbeitungsvorgänge, bei denen wir eine Einwilligung für einen bestimmten Verarbeitungszweck einholen. Ist die Verarbeitung personenbezogener Daten zur Erfüllung eines Vertrags, dessen Vertragspartei die betroffene Person ist, erforderlich, wie dies beispielsweise bei Verarbeitungsvorgängen der Fall ist, die für eine Lieferung von Waren oder die Erbringung einer sonstigen Leistung oder Gegenleistung notwendig sind, so beruht die Verarbeitung auf Art. 6 I lit. b DS-GVO. Gleiches gilt für solche Verarbeitungsvorgänge die zur Durchführung vorvertraglicher Maßnahmen erforderlich sind, etwa in Fällen von Anfragen zur unseren Produkten oder Leistungen. Unterliegt unser Unternehmen einer rechtlichen Verpflichtung durch welche eine Verarbeitung von personenbezogenen Daten erforderlich wird, wie beispielsweise zur Erfüllung steuerlicher Pflichten, so basiert die Verarbeitung auf Art. 6 I lit. c DS-GVO. In seltenen Fällen könnte die Verarbeitung von personenbezogenen Daten erforderlich werden, um lebenswichtige Interessen der betroffenen Person oder einer anderen natürlichen Person zu schützen. Dies wäre beispielsweise der Fall, wenn ein Besucher in unserem Betrieb verletzt werden würde und daraufhin sein Name, sein Alter, seine Krankenkassendaten oder sonstige lebenswichtige Informationen an einen Arzt, ein Krankenhaus oder sonstige Dritte weitergegeben werden müssten. Dann würde die Verarbeitung auf Art. 6 I lit. d DS-GVO beruhen.<br> Letztlich könnten Verarbeitungsvorgänge auf Art. 6 I lit. f DS-GVO beruhen. Auf dieser Rechtsgrundlage basieren Verarbeitungsvorgänge, die von keiner der vorgenannten Rechtsgrundlagen erfasst werden, wenn die Verarbeitung zur Wahrung eines berechtigten Interesses unseres Unternehmens oder eines Dritten erforderlich ist, sofern die Interessen, Grundrechte und Grundfreiheiten des Betroffenen nicht überwiegen. Solche Verarbeitungsvorgänge sind uns insbesondere deshalb gestattet, weil sie durch den Europäischen Gesetzgeber besonders erwähnt wurden. Er vertrat insoweit die Auffassung, dass ein berechtigtes Interesse anzunehmen sein könnte, wenn die betroffene Person ein Kunde des Verantwortlichen ist (Erwägungsgrund 47 Satz 2 DS-GVO).</p>
+
+          <h2 id="legitimate-interests">14. Berechtigte Interessen an der Verarbeitung, die von dem Verantwortlichen oder einem Dritten verfolgt werden</h2>
+          <p>Basiert die Verarbeitung personenbezogener Daten auf Artikel 6 I lit. f DS-GVO ist unser berechtigtes Interesse die Durchführung unserer Geschäftstätigkeit zugunsten des Wohlergehens all unserer Mitarbeiter und unserer Anteilseigner.</p>
+
+          <h2 id="storage-duration">15. Dauer, für die die personenbezogenen Daten gespeichert werden</h2>
+          <p>Das Kriterium für die Dauer der Speicherung von personenbezogenen Daten ist die jeweilige gesetzliche Aufbewahrungsfrist. Nach Ablauf der Frist werden die entsprechenden Daten routinemäßig gelöscht, sofern sie nicht mehr zur Vertragserfüllung oder Vertragsanbahnung erforderlich sind.</p>
+
+          <h2 id="requirements">16. Gesetzliche oder vertragliche Vorschriften zur Bereitstellung der personenbezogenen Daten; Erforderlichkeit für den Vertragsabschluss; Verpflichtung der betroffenen Person, die personenbezogenen Daten bereitzustellen; mögliche Folgen der Nichtbereitstellung</h2>
+          <p>Wir klären Sie darüber auf, dass die Bereitstellung personenbezogener Daten zum Teil gesetzlich vorgeschrieben ist (z.B. Steuervorschriften) oder sich auch aus vertraglichen Regelungen (z.B. Angaben zum Vertragspartner) ergeben kann.<br> Mitunter kann es zu einem Vertragsschluss erforderlich sein, dass eine betroffene Person uns personenbezogene Daten zur Verfügung stellt, die in der Folge durch uns verarbeitet werden müssen. Die betroffene Person ist beispielsweise verpflichtet uns personenbezogene Daten bereitzustellen, wenn unser Unternehmen mit ihr einen Vertrag abschließt. Eine Nichtbereitstellung der personenbezogenen Daten hätte zur Folge, dass der Vertrag mit dem Betroffenen nicht geschlossen werden könnte.<br> Vor einer Bereitstellung personenbezogener Daten durch den Betroffenen muss sich der Betroffene an einen unserer Mitarbeiter wenden. Unser Mitarbeiter klärt den Betroffenen einzelfallbezogen darüber auf, ob die Bereitstellung der personenbezogenen Daten gesetzlich oder vertraglich vorgeschrieben oder für den Vertragsabschluss erforderlich ist, ob eine Verpflichtung besteht, die personenbezogenen Daten bereitzustellen, und welche Folgen die Nichtbereitstellung der personenbezogenen Daten hätte.</p>
+
+          <h2 id="automated-decisions">17. Bestehen einer automatisierten Entscheidungsfindung</h2>
+          <p>Als verantwortungsbewusstes Unternehmen verzichten wir auf eine automatische Entscheidungsfindung oder ein Profiling.</p>
+
+          <h2 id="usercentrics">18. Usercentrics</h2>
+          <p>Wir nutzen der Zustimmungsverwaltungsdienst Usercentrics, der Usercentrics GmbH, Sendlinger Str. 7, 80331 München, Deutschland (Usercentrics). Dies ermöglicht uns die Einwilligung der Websitenutzer zur Datenverarbeitung einzuholen und zu verwalten. Die Verarbeitung ist zur Erfüllung einer rechtlichen Verpflichtung erforderlich (Art. 7 Abs. 1DSGVO), der wir unterliegen (Art. 6 Abs. 1 S. 1 lit. c DSGVO). Dafür werden folgende Daten verarbeitet:</p>
+          <p>Datum und Uhrzeit des Zugriffs Browser-Informationen Geräteinformationen Geografischer Standort Cookie-Präferenzen URL der besuchten Seite</p>
+          <p>Die Funktionsfähigkeit der Website ist ohne die Verarbeitung nicht gewährleistet.</p>
+          <p>Usercentrics ist Empfänger Ihrer personenbezogenen Daten und als Auftragsverarbeiter für uns tätig.</p>
+          <p>Die Verarbeitung findet in der Europäischen Union statt. Weitere Informationen zu Widerspruchs- und Beseitigungsmöglichkeiten gegenüber Usercentrics finden Sie unter: <a href="https://usercentrics.com/de/datenschutzerklaerung/" target="_blank" rel="noopener">https://usercentrics.com/de/datenschutzerklaerung/</a></p>
+          <p>Die Daten werden nach Ablauf von 3 Jahren gelöscht.</p>
+          <p>Bitte beachten Sie unsere generellen Ausführungen über die Löschung und Deaktivierung von Cookies oben.</p>
+
+          <h2 id="cookiebot">19. Cookiebot</h2>
+          <p>Wir nutzen der Zustimmungsverwaltungsdienst Cookiebot, der Usercentrics A/S, Havnegade 39, 1058 Kopenhagen, Dänemark (Usercentrics). Dies ermöglicht uns die Einwilligung der Websitenutzer zur Datenverarbeitung einzuholen und zu verwalten. Die Verarbeitung ist zur Erfüllung einer rechtlichen Verpflichtung erforderlich (Art. 7 Abs. 1DSGVO), der wir unterliegen (Art. 6 Abs. 1 S. 1 lit. c DSGVO). Dafür werden mit Hilfe von Cookies folgende Daten verarbeitet:</p>
+          <p>Ihre IP-Adresse (die letzten drei Ziffern werden auf ‚0’ gesetzt). Datum und Uhrzeit der Zustimmung. Browserinformationen URL, von der die Zustimmung gesendet wurde. Ein anonymer, zufälliger und verschlüsselter Schlüssel Ihr Einwilligungsstatus des Endnutzers, als Nachweis der Zustimmung</p>
+          <p>Der Schlüssel und Zustimmungsstatus werden für 12 Monate im Browser mit Hilfe des Cookies „CookieConsent“ gespeichert. Damit bleibt Ihre Cookie-Präferenz für nachfolgende Seitenanfragen erhalten. Mit Hilfe des Schlüssels kann ihre Zustimmung nachgewiesen und nachvollzogen werden.</p>
+          <p>Wenn Sie die Service-Funktion „Sammelzustimmung“ aktivieren, um die Zustimmung für mehrere Webseiten durch eine einzige Endnutzerzustimmung zu aktivieren, speichert der Dienst zusätzlich eine separate, zufällige, eindeutige ID mit Ihrer Zustimmung. Wenn alle folgenden Kriterien erfüllt sind, wird dieser Schlüssel im Cookie des Drittanbieters „CookieConsentBulkTicket“ in Ihrem Browser in verschlüsselter Form gespeichert: Sie aktivieren die Sammelzustimmungsfunktion in der Dienstkonfiguration. Sie lassen Cookies von Drittanbietern über Browsereinstellungen zu. Sie haben „Nicht verfolgen“ über die Browsereinstellungen deaktiviert. Sie akzeptieren alle oder wenigstens bestimmte Arten von Cookies, wenn Sie die Zustimmung erteilen.</p>
+          <p>Die Funktionsfähigkeit der Website ist ohne die Verarbeitung nicht gewährleistet.</p>
+          <p>Usercentrics ist Empfänger Ihrer personenbezogenen Daten und als Auftragsverarbeiter für uns tätig.</p>
+          <p>Die Verarbeitung findet in der Europäischen Union statt. Weitere Informationen zu Widerspruchs- und Beseitigungsmöglichkeiten gegenüber Usercentrics finden Sie unter: <a href="https://www.cookiebot.com/de/privacy-policy/" target="_blank" rel="noopener">https://www.cookiebot.com/de/privacy-policy/</a></p>
+          <p>Ihre personenbezogenen Daten werden fortlaufend nach 12 Monaten oder unmittelbar nach der Kündigung des Vertrages zwischen uns und Usercentrics gelöscht.</p>
+          <p>Bitte beachten Sie unsere generellen Ausführungen über die Löschung und Deaktivierung von Cookies oben.</p>
+        </article>
+      </div>
+    </section>
+
+  </main>
+  </div>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer__top">
+      <div class="footer__brand">
+        <a href="index.html" class="brand brand--light" aria-label="Startseite von JDS Sommer">
+          <svg class="brand__mark" aria-hidden="true"><use href="#jds-mark"/></svg>
+          <span class="brand__text">
+            <span class="brand__name">JDS SOMMER</span>
+            <span class="brand__tag">Engineering-Daten &amp; BIM-Konvertierung</span>
+          </span>
+        </a>
+        <p>Von Bestandszeichnungen und Punktwolken zu nutzbaren Engineering-Daten.</p>
+        <ul class="social social--footer" aria-label="JDS Sommer in den sozialen Medien">
+          <li><a href="https://www.facebook.com/jdssommer/" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer auf Facebook"><svg aria-hidden="true"><use href="#i-facebook"/></svg></a></li>
+          <li><a href="https://www.linkedin.com/company/jds-sommer-gmbh" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer auf LinkedIn"><svg aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+          <li><a href="https://x.com/JDS_Sommer" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer auf X (Twitter)"><svg aria-hidden="true"><use href="#i-x"/></svg></a></li>
+          <!-- YouTube: replace href="#" with the channel URL, and add target="_blank" rel="noopener" -->
+          <li><a href="#" class="social__link" data-social aria-label="JDS Sommer auf YouTube"><svg aria-hidden="true"><use href="#i-youtube"/></svg></a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Leistungen</h4>
+        <ul>
+          <li><a href="2d-cad-digitalisierung.html">2D-CAD-Digitalisierung</a></li>
+          <li><a href="3d-bim-modellierung.html">3D- &amp; BIM-Modellierung</a></li>
+          <li><a href="index.html#contact">Angebot anfordern</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col footer__col--v2">
+        <h4>Über uns</h4>
+        <ul>
+          <li data-local-only><a href="ueber-uns.html">Über JDS Sommer</a></li>
+          <li data-public-only><a href="index.html#about">Über JDS Sommer</a></li>
+          <li><a href="index.html#industries">Branchen</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col footer__col--v2">
+        <h4>Ressourcen</h4>
+        <ul>
+          <li><a href="index.html#faq">FAQ</a></li>
+          <li><a href="index.html#references">Referenzen</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Kontakt</h4>
+        <ul>
+          <li>August-Schanz-Straße 28<br>D-60433 Frankfurt am Main</li>
+          <li><a href="tel:+49699054690">+49 (0)69 / 905 469-0</a></li>
+          <li><a href="mailto:info@jds-sommer.de">info@jds-sommer.de</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer__bottom">
+      <p>© <span data-year>2026</span> JDS Sommer GmbH</p>
+      <ul class="footer__legal">
+        <li><a href="index.html#faq">FAQ</a></li>
+        <li><a href="index.html#references">Referenzen</a></li>
+        <li><a href="agb.html">AGB</a></li>
+        <li><a href="impressum.html">Impressum</a></li>
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+        <li class="footer__cookie-item"><button type="button" class="footer__cookie" data-cookie-settings>Cookie-Einstellungen</button></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- Floating back-to-top: the red triangle from the logo -->
+  <a href="#main" class="fab-top" aria-label="Nach oben" data-fab-top>
+    <svg viewBox="86 2 38 24" aria-hidden="true">
+      <polygon fill="url(#jdsR)" points="105,4 122,24 88,24"/>
+      <path d="M105 19.5V12.5M101.8 15.4 105 12.2 108.2 15.4" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+
+</body>
+</html>
