@@ -241,7 +241,9 @@ em { font-family: var(--font-accent); font-style: italic; font-weight: 400; lett
 .nav__link.is-active::after { transform: scaleX(1); }
 
 .header__actions { display: flex; align-items: center; gap: 14px; }
-.header__phone { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 14px; color: var(--ink); white-space: nowrap; }
+/* flex: none + margin: the number must never shrink under the quote button (its last digit got covered) */
+.header__phone { display: inline-flex; align-items: center; gap: 8px; flex: none; margin-right: 10px; font-weight: 700; font-size: 14px; color: var(--ink); white-space: nowrap; }
+.header__actions .btn { flex: none; }
 /* flex: none: in a tight header row (the longer German menu) the icon must not be squeezed */
 .header__phone svg { flex: none; width: 16px; height: 16px; fill: var(--red); }
 
@@ -363,7 +365,7 @@ em { font-family: var(--font-accent); font-style: italic; font-weight: 400; lett
 .sheet__dots i { width: 10px; height: 10px; border-radius: 50%; background: var(--brand-100); }
 .sheet__dots i:first-child { background: var(--red); }
 .sheet__dots i:nth-child(2) { background: var(--brand); }
-.sheet__file { font-size: 12.5px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sheet__file { min-width: 0; font-size: 12.5px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .sheet__file b { color: var(--red); }
 .plan { width: 100%; height: auto; }
 .sheet__tags { position: absolute; left: 14px; right: 14px; bottom: 14px; display: flex; justify-content: space-between; gap: 8px; pointer-events: none; }
@@ -617,7 +619,7 @@ em { font-family: var(--font-accent); font-style: italic; font-weight: 400; lett
   box-shadow: inset 0 0 0 1px var(--line), var(--shadow);
 }
 .form__group { border: 0; margin: 0 0 22px; padding: 0; }
-.form__group legend { font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 10px; padding: 0; }
+.form__group legend { font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 8px; padding: 0; }
 .form__group--inline { display: flex; flex-wrap: wrap; gap: 10px; }
 .form__group--inline legend { width: 100%; }
 .choice { position: relative; cursor: pointer; }
@@ -633,21 +635,21 @@ em { font-family: var(--font-accent); font-style: italic; font-weight: 400; lett
 .choice input:checked + span::before { box-shadow: inset 0 0 0 5px var(--brand); }
 .choice input:focus-visible + span { outline: 3px solid var(--red); outline-offset: 2px; }
 
-.form__row { display: grid; gap: 16px; margin-bottom: 16px; }
+.form__row { display: grid; gap: 12px 16px; margin-bottom: 12px; }
 .form__row--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .form__row--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.field { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
+.field { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
 .field label { font-size: 13.5px; font-weight: 700; color: var(--ink); }
 .req { color: var(--red); }
 .field input, .field select, .field textarea {
-  width: 100%; min-height: 50px; padding: 12px 14px;
+  width: 100%; min-height: 44px; padding: 10px 14px;
   border: 0; border-radius: 12px; background: var(--bg-soft);
   box-shadow: inset 0 0 0 1.5px var(--line);
   font-size: 15.5px; color: var(--ink);
   transition: box-shadow .25s, background-color .25s;
   appearance: none; -webkit-appearance: none;
 }
-.field textarea { resize: vertical; min-height: 140px; line-height: 1.5; }
+.field textarea { resize: vertical; min-height: 112px; line-height: 1.5; }
 .field select {
   padding-right: 40px; cursor: pointer;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23393B8D' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
@@ -682,7 +684,14 @@ em { font-family: var(--font-accent); font-style: italic; font-weight: 400; lett
 .contact-card h3 { font-size: 20px; color: var(--brand-deep); letter-spacing: .01em; }
 .contact-card address { font-style: normal; margin-top: 8px; color: var(--text); }
 .contact-list { display: grid; margin: 22px 0; border-top: 1px solid var(--line); }
-.contact-list li { display: grid; grid-template-columns: 70px 1fr; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+/* The label column fits the longest label ("GESCHÄFTSZEITEN"); on a narrow card the label sits above its value.
+   A container query, because the card is narrow in some desktop layouts too, not only on phones. */
+.contact-card__body { container-type: inline-size; }
+.contact-list li { display: grid; grid-template-columns: 9.25rem 1fr; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+@container (max-width: 340px) {
+  .contact-list li { grid-template-columns: 1fr; gap: 3px; }
+  .contact-list__label { padding-top: 0; }
+}
 .contact-list a { font-weight: 700; color: var(--brand-deep); word-break: break-word; }
 .contact-list a:hover { color: var(--red); }
 .contact-list__label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); padding-top: 2px; }
@@ -829,7 +838,8 @@ html[data-header-design="v1"] .footer__col--v2 { display: none; }
 .facts span { display: block; margin-top: 6px; font-size: 12.5px; color: var(--muted); line-height: 1.35; }
 
 @media (max-width: 980px) {
-  .page-hero__inner { grid-template-columns: 1fr; }
+  /* minmax(0, 1fr): a long unbreakable line (longer German labels) must not widen the column past the screen */
+  .page-hero__inner { grid-template-columns: minmax(0, 1fr); }
   .page-hero .hero__visual { max-width: 640px; width: 100%; margin: 0 auto; }
 }
 @media (max-width: 560px) {
@@ -1110,51 +1120,48 @@ html[data-header-design="v1"] .footer__col--v2 { display: none; }
 }
 .contact-card__open:hover { background: var(--brand-deep); color: #fff; }
 
-/* ---------- Step-by-step form ---------- */
-.stepper { display: none; margin-bottom: 30px; }
-.form.is-stepped .stepper { display: block; }
-.stepper__list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-.stepper__list li { display: flex; align-items: center; gap: 10px; min-width: 0; font-size: 14px; font-weight: 700; color: var(--muted); }
-.stepper__n {
-  flex: none; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%;
-  background: var(--bg-soft); box-shadow: inset 0 0 0 1.5px var(--line); font-size: 14px;
-  transition: background-color .4s, color .4s, box-shadow .4s;
-}
-.stepper__t { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.stepper__list .is-current { color: var(--ink); }
-.stepper__list .is-current .stepper__n { background: var(--red); color: #fff; box-shadow: 0 0 0 5px rgba(204, 0, 0, .12); }
-.stepper__list .is-done { color: var(--brand-deep); cursor: pointer; }
-.stepper__list .is-done .stepper__n { background: var(--brand-deep); color: #fff; box-shadow: none; font-size: 0; }
-.stepper__list .is-done .stepper__n::before { content: "✓"; font-size: 15px; }
-.stepper__bar { margin-top: 16px; height: 4px; border-radius: 4px; background: var(--brand-50); overflow: hidden; }
-.stepper__bar span { display: block; height: 100%; width: 33.333%; background: linear-gradient(90deg, var(--brand), var(--red)); border-radius: inherit; transition: width .6s var(--ease); }
-
-.form-step { border: 0; margin: 0; padding: 0; min-width: 0; }
-.form-step + .form-step { margin-top: 26px; padding-top: 26px; border-top: 1px dashed var(--brand-100); }
-.form-step__title { padding: 0; margin-bottom: 18px; font-size: 20px; font-weight: 700; color: var(--ink); letter-spacing: -.01em; }
-.form.is-stepped .form-step + .form-step { margin-top: 0; padding-top: 0; border-top: 0; }
-.form.is-stepped .form-step:not(.is-active) { display: none; }
-.form-step .form__group { margin: 6px 0 0; }
+/* ---------- Contact form: one step, sent in the background (contact.php) ---------- */
+.form__title { padding: 0; margin-bottom: 14px; font-size: 20px; font-weight: 700; color: var(--ink); letter-spacing: -.01em; }
+.form .form__group { margin: 2px 0 0; }
+.form .consent { margin-bottom: 0; }
 
 .form__nav { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--line); }
 .form__nav .form__note { flex: 1; min-width: 160px; }
-.form__back, .form__next, .form__count { display: none; }
-.form.is-stepped .form__count { display: inline; }
-.form.is-stepped .form__next { display: inline-flex; }
-.form.is-stepped .form__send { display: none; }
-.form.is-stepped.is-last .form__next { display: none; }
-.form.is-stepped.is-last .form__send { display: inline-flex; }
-.form.is-stepped:not(.is-first) .form__back { display: inline-flex; }
-.form__back { min-height: 48px; padding: 0 20px; }
-.form__back:hover svg { transform: translateX(-3px); }
-.form .consent { margin-bottom: 0; }
+.form__send[disabled] { opacity: .7; cursor: progress; }
+.form__send[disabled] svg { animation: form-send 1s ease-in-out infinite; }
+@keyframes form-send { 50% { transform: translateX(4px); } }
+
+/* Sending failed: say so, with the other ways to reach us */
+.form__error {
+  margin-top: 18px; padding: 16px 18px; border-radius: 14px;
+  background: #fffafa; box-shadow: inset 0 0 0 1.5px var(--red);
+  font-size: 14.5px; color: var(--ink);
+}
+.form__error[hidden] { display: none; }
+.form__error a { font-weight: 700; color: var(--brand-deep); white-space: nowrap; }
+
+/* Sent: the confirmation takes the place of the fields */
+.form.is-sent .form__body, .form.is-sent .form__nav { display: none; }
+.form.is-sent { display: flex; flex-direction: column; justify-content: center; }
+.form.is-sent .form__success { margin-top: 0; }
+
+/* Sent animation: letter folds into a paper plane that flies into the JDS box, using up its route as it goes.
+   Drawn in its final state (route flown, badge on the box), so it is complete without JS or with reduced motion. */
+.form__sent-art { display: none; }
+.form.is-sent .form__sent-art { display: block; width: 100%; max-width: 440px; margin: 0 auto 18px; }
+.form__sent-art svg { display: block; width: 100%; height: auto; overflow: visible; }
+.sa-trail { fill: none; stroke: var(--brand-200); stroke-width: 2; stroke-linecap: round; stroke-dasharray: 2 9; }
+.sa-sheet { fill: #fff; stroke: var(--brand); stroke-width: 2; }
+.sa-lines { fill: none; stroke: var(--brand-200); stroke-width: 3; stroke-linecap: round; }
+.sa-trail, .sa-letter, .sa-plane { opacity: 0; }
+.sa-wing { fill: #fff; stroke: var(--brand-deep); stroke-width: 2; stroke-linejoin: round; }
+.sa-wing--low { fill: var(--brand-100); }
+.sa-fold { stroke: var(--brand-deep); stroke-width: 1.5; }
+.sa-box-bg { fill: #fff; stroke: var(--line); stroke-width: 2; filter: drop-shadow(0 8px 18px rgba(57, 59, 141, .14)); }
+.sa-badge circle { fill: var(--brand-deep); }
+.sa-badge path { fill: none; stroke: #fff; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
 
 @media (max-width: 640px) {
-  .stepper__list { display: flex; gap: 12px; }
-  .stepper__list li { flex: none; }
-  .stepper__list .is-current { flex: 1; }
-  .stepper__t { display: none; }
-  .stepper__list .is-current .stepper__t { display: block; overflow: visible; }
   .form__nav { gap: 10px; }
   .form__nav .form__note { order: -1; flex-basis: 100%; }
   .form__nav .btn { flex: 1; }
@@ -1688,7 +1695,7 @@ html:not([data-hero]) [data-hero-variant]:not([data-hero-variant="v1"]) { displa
 /* ---------- Services menu: third column (specialist services) ---------- */
 /* The wide panel centres on the header, not on the Services button, so it never runs off-screen */
 .nav__item:has(> .nav-dd--mega) { position: static; }
-.nav-dd--mega { top: calc(100% - 4px); grid-template-columns: repeat(4, minmax(0, 1fr)); width: min(1140px, calc(100vw - 32px)); }
+.nav-dd--mega { top: calc(100% - 4px); grid-template-columns: repeat(3, minmax(0, 1fr)); width: min(960px, calc(100vw - 32px)); }
 .nav-dd--mega .nav-dd__list a { white-space: normal; }
 @media (max-width: 1100px) { .nav-dd--mega { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .nav-dd--mega::before { top: -26px; height: 26px; }
@@ -2214,7 +2221,8 @@ html:not(.js) .quotes__ctrl { display: none; }
    against the header. A guaranteed top gap (the hero grows if needed) and a slightly smaller German
    headline keep the spacing the same as in English. */
 .hero--bare { padding-top: calc(var(--header-h) + clamp(64px, 9vh, 110px)); }
-html[lang="de"] .hero--bare .hero__title { font-size: clamp(32px, 3.5vw, 52px); }
+/* Both languages: the headline is a full sentence about both services, so it uses the smaller size */
+.hero--bare .hero__title { font-size: clamp(32px, 3.5vw, 52px); }
 /* Shorter screens (laptops at 768px high): less space above and below so the hero still fits one screen */
 @media (min-width: 981px) and (max-height: 860px) {
   .hero--bare { padding-top: calc(var(--header-h) + clamp(44px, 6.5vh, 110px)); }
@@ -2235,3 +2243,94 @@ html[lang="de"] .hero--bare .hero__title { font-size: clamp(32px, 3.5vw, 52px); 
 .not-found__links { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 34px; font-weight: 700; }
 .not-found__links a { color: var(--brand-deep); }
 .not-found__links a:hover { color: var(--red); }
+
+/* ---------- Core service cards on phones/tablets: a bigger image strip and less white space ----------
+   (initHScroll still checks that the pinned card fits the screen and falls back to the scroll-driven
+   layout when it does not, so the taller image never pushes the call to action off screen) */
+@media (max-width: 1000px) {
+  .hcard__media img { padding: 8px 10px; }
+  .hscroll.is-pinned .hcard__media { height: clamp(120px, 20vh, 190px); }
+}
+@media (max-width: 1000px) and (max-height: 720px) {
+  .hscroll.is-pinned .hcard__media { height: clamp(90px, 15vh, 130px); }
+}
+
+/* ---------- Step / discipline cards on narrow phones (320–400px) ----------
+   Long uppercase headings ("DIGITALISIERUNG", "ARCHITECTURAL") must wrap instead of pushing the card
+   past the screen: the grid tracks may shrink, headings hyphenate, and badge/icon get a little smaller. */
+.steps5 h3 { hyphens: auto; overflow-wrap: break-word; }
+@media (max-width: 640px) {
+  .steps5 { grid-template-columns: minmax(0, 1fr); }
+  .steps5 li { grid-template-columns: 52px minmax(0, 1fr); min-width: 0; }
+}
+@media (max-width: 400px) {
+  .steps5 li { grid-template-columns: 44px minmax(0, 1fr); column-gap: 12px; padding: 18px 16px; }
+  .steps5 li:has(.steps5__icon) { padding-right: 58px; }
+  .steps5__n { width: 36px; height: 36px; font-size: 13px; }
+  .steps5 h3 { font-size: 15px; letter-spacing: .04em; }
+  .steps5__icon { top: 16px; right: 14px; width: 34px; height: 34px; border-radius: 11px; }
+  .steps5__icon svg { width: 19px; height: 19px; }
+}
+
+/* ---------- Very small phones (≤ 380px): header and notice bar stay within the screen ----------
+   (the German notice text is longer and pushed the close button past the edge) */
+@media (max-width: 380px) {
+  .brand__tag { display: none; }
+  .notice-bar__inner { gap: 8px; }
+  .notice-bar__inner > * { min-width: 0; }
+  .notice-bar__link { font-size: 12px; }
+  .notice-bar__close { flex: none; }
+}
+
+/* ---------- Long German compounds ("CAD-Digitalisierungsservice") must not overflow narrow screens ---------- */
+h1, h2, h3, .h2 { overflow-wrap: break-word; }
+html[lang="de"] h1, html[lang="de"] h2, html[lang="de"] h3, html[lang="de"] .h2 { hyphens: auto; }
+
+/* ---------- Core services on phones/tablets: no scroll effect, the cards simply stack ---------- */
+@media (max-width: 1000px) {
+  .hscroll { overflow: visible; }
+  .hscroll .hscroll__viewport { overflow: visible; scroll-snap-type: none; }
+  .hscroll .hscroll__track { display: grid; gap: 20px; padding-inline: var(--gutter); transform: none !important; }
+  .hscroll .hcard { width: auto; scroll-snap-align: none; transform: none !important; opacity: 1 !important; }
+  .hscroll .hcard__media { min-height: 260px; }
+  .hscroll__dots { display: none; }
+}
+@media (max-width: 760px) {
+  .hscroll .hcard { grid-template-columns: minmax(0, 1fr); }
+  .hscroll .hcard__media { min-height: 0; aspect-ratio: 16 / 10; }
+}
+
+/* ---------- All-services carousel: swipe on touch screens ----------
+   The page still scrolls vertically over the carousel; horizontal finger moves go to the slider's drag code
+   (without this the browser takes the horizontal pan and cancels the drag). */
+.svc-slider__viewport { touch-action: pan-y; }
+.svc-slider__viewport img { -webkit-user-drag: none; user-select: none; }
+
+/* Contact form: ALTCHA bot check ("Ich bin kein Roboter"), in the form's colours */
+.form__altcha { margin: 10px 0 4px; }
+altcha-widget {
+  --altcha-border-radius: 12px;
+  --altcha-border-color: var(--line);
+  --altcha-color-base: var(--bg-soft);
+  --altcha-color-base-content: var(--ink);
+  --altcha-color-primary: var(--brand);
+  --altcha-color-primary-content: #fff;
+  --altcha-color-success: var(--brand-deep);
+  --altcha-color-error: var(--red);
+  --altcha-checkbox-border-radius: 6px;
+  --altcha-max-width: 320px;
+  --altcha-shadow: none;
+  display: block;
+}
+
+/* Reply choice and bot check side by side: the two options stacked on the left, the ALTCHA box on the right */
+.form__duo { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px 20px; align-items: end; margin: 2px 0 14px; }
+.form__duo .form__group--inline { flex-direction: column; align-items: flex-start; gap: 8px; margin: 0; }
+.form__duo .choice span { padding: 9px 16px 9px 12px; }
+.form__duo .form__altcha { margin: 0; }
+.form__duo altcha-widget { --altcha-max-width: 100%; }
+@media (max-width: 640px) {
+  /* Phones: the bot check goes under the choice; the two short options share one line */
+  .form__duo { grid-template-columns: 1fr; }
+  .form__duo .form__group--inline { flex-direction: row; flex-wrap: wrap; align-items: center; }
+}

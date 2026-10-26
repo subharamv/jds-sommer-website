@@ -8,7 +8,7 @@ prices on the service pages). The block is
 rewritten on every run, so edit this file, not the pages. sitemap.xml lists
 every page that is not noindex, with its language alternates.
 
-English pages sit in the site root, German pages in de/.
+German pages (the default language) sit in the site root, English pages in en/.
 
 Usage (from the site folder):
     python tools/seo/build_seo.py
@@ -23,7 +23,8 @@ SITE = os.path.dirname(os.path.dirname(HERE))
 
 
 def page_url(file):
-    """Public path of a page, without .html: 'index.html' -> '', 'de/index.html' -> 'de/', 'imprint.html' -> 'imprint'.
+    """Public path of a page, without .html: 'index.html' -> '', 'impressum.html' -> 'impressum',
+    'en/index.html' -> 'en/', 'en/imprint.html' -> 'en/imprint'.
     The deployed site uses these clean URLs (the staging step strips .html from the links as well)."""
     if file.endswith('index.html'):
         return file[:-len('index.html')]
@@ -50,20 +51,20 @@ X_HANDLE = '@JDS_Sommer'
 
 # Every page: (file, language, key of its translation pair or None)
 PAGES = [
-    ('index.html', 'en', 'home'),
-    ('de/index.html', 'de', 'home'),
-    ('2d-cad-digitizing.html', 'en', '2d'),
-    ('de/2d-cad-digitalisierung.html', 'de', '2d'),
-    ('3d-bim-modeling.html', 'en', '3d'),
-    ('de/3d-bim-modellierung.html', 'de', '3d'),
-    ('about-us.html', 'en', 'about'),
-    ('de/ueber-uns.html', 'de', 'about'),
-    ('imprint.html', 'en', 'imprint'),
-    ('de/impressum.html', 'de', 'imprint'),
-    ('privacy-policy.html', 'en', 'privacy'),
-    ('de/datenschutz.html', 'de', 'privacy'),
-    ('terms-and-conditions.html', 'en', 'terms'),
-    ('de/agb.html', 'de', 'terms'),
+    ('en/index.html', 'en', 'home'),
+    ('index.html', 'de', 'home'),
+    ('en/2d-cad-digitizing.html', 'en', '2d'),
+    ('2d-cad-digitalisierung.html', 'de', '2d'),
+    ('en/3d-bim-modeling.html', 'en', '3d'),
+    ('3d-bim-modellierung.html', 'de', '3d'),
+    ('en/about-us.html', 'en', 'about'),
+    ('ueber-uns.html', 'de', 'about'),
+    ('en/imprint.html', 'en', 'imprint'),
+    ('impressum.html', 'de', 'imprint'),
+    ('en/privacy-policy.html', 'en', 'privacy'),
+    ('datenschutz.html', 'de', 'privacy'),
+    ('en/terms-and-conditions.html', 'en', 'terms'),
+    ('agb.html', 'de', 'terms'),
 ]
 LOCALE = {'en': 'en_GB', 'de': 'de_DE'}
 OG_IMAGE = {'en': 'assets/img/og/jds-sommer-en.png', 'de': 'assets/img/og/jds-sommer-de.png'}
@@ -131,7 +132,7 @@ def schema(file, lang, pair, s):
     url = ORIGIN + page_url(file)
     title = text(re.search(r'<title>(.*?)</title>', s, re.S).group(1))
     desc = re.search(r'<meta name="description" content="([^"]*)"', s)
-    home = page_url(file) in ('', 'de/')
+    home = page_url(file) in ('', 'en/')
     page = {'@type': 'WebPage', '@id': url + '#webpage', 'url': url, 'name': title, 'inLanguage': INLANG[lang],
             'isPartOf': {'@id': SITE_ID}, 'primaryImageOfPage': ORIGIN + OG_IMAGE[lang]}
     if desc:
@@ -172,7 +173,7 @@ def block(file, lang, pair, s):
          f'<link rel="canonical" href="{url}">']
     if len(alts) > 1:
         t += [f'<link rel="alternate" hreflang="{l}" href="{u}">' for l, u in alts.items()]
-        t.append(f'<link rel="alternate" hreflang="x-default" href="{alts["en"]}">')
+        t.append(f'<link rel="alternate" hreflang="x-default" href="{alts["de"]}">')
     t += [f'<meta property="og:url" content="{url}">',
           '<meta property="og:site_name" content="JDS Sommer">',
           f'<meta property="og:locale" content="{LOCALE[lang]}">']
@@ -215,7 +216,7 @@ def sitemap(indexed):
         alts = [(l, ORIGIN + page_url(f)) for f, l, p, _ in indexed if pair and p == pair]
         if len(alts) > 1:
             out += [f'    <xhtml:link rel="alternate" hreflang="{l}" href="{u}"/>' for l, u in alts]
-            out.append(f'    <xhtml:link rel="alternate" hreflang="x-default" href="{dict(alts)["en"]}"/>')
+            out.append(f'    <xhtml:link rel="alternate" hreflang="x-default" href="{dict(alts)["de"]}"/>')
         out.append('  </url>')
     out.append('</urlset>')
     open(os.path.join(SITE, 'sitemap.xml'), 'w', encoding='utf-8', newline='\n').write('\n'.join(out) + '\n')

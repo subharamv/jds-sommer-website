@@ -5,3 +5,7 @@ Thumbs.db
 .vercel
 .env*
 __pycache__/
+
+# contact.php server-side data: secrets, token cache, logs, rate limit (only the folder lock is versioned)
+_private/*
+!_private/.htaccess

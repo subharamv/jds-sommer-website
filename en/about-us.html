@@ -5,19 +5,20 @@
   <!-- English and German versions exist, so browsers should not machine-translate -->
   <meta name="google" content="notranslate">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Imprint | JDS Sommer</title>
-  <meta name="description" content="Imprint (legal notice) of JDS SOMMER GmbH, Frankfurt am Main: company details, commercial register, VAT ID and professional liability insurance.">
+  <title>About JDS Sommer GmbH | CAD Digitalisation since 1984</title>
+  <meta name="description" content="JDS Sommer GmbH, founded 1984 in Frankfurt am Main: your partner for digitalisation, CAD conversion, scanning and data capture, with around 2,000 customers.">
+  <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#393B8D">
-  <link rel="icon" type="image/svg+xml" href="assets/img/jds-mark.svg">
-  <meta property="og:title" content="Imprint | JDS Sommer">
-  <meta property="og:description" content="Imprint (legal notice) of JDS SOMMER GmbH, Frankfurt am Main: company details, commercial register, VAT ID and professional liability insurance.">
+  <link rel="icon" type="image/svg+xml" href="../assets/img/jds-mark.svg">
+  <meta property="og:title" content="About JDS Sommer GmbH | CAD Digitalisation since 1984">
+  <meta property="og:description" content="JDS Sommer GmbH, founded 1984 in Frankfurt am Main: your partner for digitalisation, CAD conversion, scanning and data capture, with around 2,000 customers.">
   <meta property="og:type" content="website">
   <!-- seo: written by tools/seo/build_seo.py, edit it there -->
-  <link rel="canonical" href="https://www.jds-sommer.de/imprint">
-  <link rel="alternate" hreflang="en" href="https://www.jds-sommer.de/imprint">
-  <link rel="alternate" hreflang="de" href="https://www.jds-sommer.de/de/impressum">
-  <link rel="alternate" hreflang="x-default" href="https://www.jds-sommer.de/imprint">
-  <meta property="og:url" content="https://www.jds-sommer.de/imprint">
+  <link rel="canonical" href="https://www.jds-sommer.de/en/about-us">
+  <link rel="alternate" hreflang="en" href="https://www.jds-sommer.de/en/about-us">
+  <link rel="alternate" hreflang="de" href="https://www.jds-sommer.de/ueber-uns">
+  <link rel="alternate" hreflang="x-default" href="https://www.jds-sommer.de/ueber-uns">
+  <meta property="og:url" content="https://www.jds-sommer.de/en/about-us">
   <meta property="og:site_name" content="JDS Sommer">
   <meta property="og:locale" content="en_GB">
   <meta property="og:locale:alternate" content="de_DE">
@@ -28,8 +29,8 @@
   <meta property="og:image:alt" content="JDS Sommer: engineering data and BIM conversion from Frankfurt am Main">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@JDS_Sommer">
-  <link rel="icon" type="image/png" sizes="48x48" href="assets/img/favicon-48.png">
-  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="../assets/img/favicon-48.png">
+  <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
   <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -50,17 +51,17 @@
   },
   {
    "@type": "WebPage",
-   "@id": "https://www.jds-sommer.de/imprint#webpage",
-   "url": "https://www.jds-sommer.de/imprint",
-   "name": "Imprint | JDS Sommer",
+   "@id": "https://www.jds-sommer.de/en/about-us#webpage",
+   "url": "https://www.jds-sommer.de/en/about-us",
+   "name": "About JDS Sommer GmbH | CAD Digitalisation since 1984",
    "inLanguage": "en-GB",
    "isPartOf": {
     "@id": "https://www.jds-sommer.de/#website"
    },
    "primaryImageOfPage": "https://www.jds-sommer.de/assets/img/og/jds-sommer-en.png",
-   "description": "Imprint (legal notice) of JDS SOMMER GmbH, Frankfurt am Main: company details, commercial register, VAT ID and professional liability insurance.",
+   "description": "JDS Sommer GmbH, founded 1984 in Frankfurt am Main: your partner for digitalisation, CAD conversion, scanning and data capture, with around 2,000 customers.",
    "breadcrumb": {
-    "@id": "https://www.jds-sommer.de/imprint#breadcrumb"
+    "@id": "https://www.jds-sommer.de/en/about-us#breadcrumb"
    }
   },
   {
@@ -72,19 +73,19 @@
   },
   {
    "@type": "BreadcrumbList",
-   "@id": "https://www.jds-sommer.de/imprint#breadcrumb",
+   "@id": "https://www.jds-sommer.de/en/about-us#breadcrumb",
    "itemListElement": [
     {
      "@type": "ListItem",
      "position": 1,
      "name": "Home",
-     "item": "https://www.jds-sommer.de/"
+     "item": "https://www.jds-sommer.de/en/"
     },
     {
      "@type": "ListItem",
      "position": 2,
-     "name": "Imprint",
-     "item": "https://www.jds-sommer.de/imprint"
+     "name": "About us",
+     "item": "https://www.jds-sommer.de/en/about-us"
     }
    ]
   }
@@ -104,6 +105,8 @@
       try { var u = new URL(location.href); if (u.searchParams.has('header') || u.searchParams.has('hero')) { u.searchParams.delete('header'); u.searchParams.delete('hero'); history.replaceState(history.state, '', u.pathname + u.search + u.hash); } } catch (e) {}
       // Pages still in review only show on local/dev hosts (html.is-local)
       if (location.protocol === 'file:' || /^(localhost|127\.0\.0\.1|\[::1\]|.+\.local|192\.168\.\d+\.\d+|10\.\d+\.\d+\.\d+)$/.test(location.hostname)) d.classList.add('is-local');
+      // Not public yet: visitors on the live site go to the homepage
+      if (!d.classList.contains('is-local')) location.replace('index.html');
       try { if (localStorage.getItem('jdsNoticeClosed')) d.classList.add('notice-closed'); } catch (e) {}
       var seen = false;
       try { seen = !!sessionStorage.getItem('jdsSeen'); } catch (e) {}
@@ -112,13 +115,13 @@
       d.setAttribute('data-hero', 'v4');
     })(document.documentElement);
   </script>
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
 
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script defer src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/@barba/core@2.10.3/dist/barba.umd.js"></script>
-  <script defer src="assets/js/main.js"></script>
+  <script defer src="../assets/js/main.js"></script>
 </head>
 <body>
 
@@ -151,7 +154,6 @@
       <!-- Social icons -->
       <symbol id="i-facebook" viewBox="0 0 24 24"><path fill="currentColor" d="M13.5 21v-7.5H16l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H8v3h2.5V21z"/></symbol>
       <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M6.9 8.8H3.6V20h3.3zM5.25 3.5a1.95 1.95 0 1 0 0 3.9 1.95 1.95 0 0 0 0-3.9zM20.4 13.6c0-3-1.6-5-4.4-5-1.4 0-2.4.8-2.8 1.5V8.8H10V20h3.3v-5.6c0-1.5.3-2.9 2.1-2.9s1.8 1.7 1.8 3V20h3.3z"/></symbol>
-      <symbol id="i-youtube" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4a2.5 2.5 0 0 0-1.8 1.8A26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8c1.6.4 7.8.4 7.8.4s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15V9l5.2 3z"/></symbol>
       <symbol id="i-x" viewBox="0 0 24 24"><path fill="currentColor" d="M17.8 3h3.1l-6.8 7.8 8 10.2h-6.3l-4.9-6.4L5.3 21H2.2l7.3-8.3L1.9 3h6.4l4.4 5.8zm-1.1 16.2h1.7L7.4 4.7H5.6z"/></symbol>
     </defs>
   </svg>
@@ -196,7 +198,7 @@
         <svg class="brand__mark" role="img" aria-hidden="true"><use href="#jds-mark"/></svg>
         <span class="brand__text">
           <span class="brand__name">JDS SOMMER</span>
-          <span class="brand__tag">Engineering Data &amp; BIM Conversion</span>
+          <span class="brand__tag">Precise CAD Digitalisation &amp; 3D Modelling</span>
         </span>
       </a>
 
@@ -244,18 +246,6 @@
                   <li><a href="3d-bim-modeling.html#plant-modelling">Plant modelling</a></li>
                 </ul>
               </div>
-              <div class="nav-dd__col">
-                <div class="nav-dd__head nav-dd__head--static">
-                  <span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l9 4.5-9 4.5-9-4.5z"/><path d="M3 12l9 4.5 9-4.5M3 16.5L12 21l9-4.5"/></svg></span>
-                  <span><strong>Coordination &amp; documentation</strong><small>BIM coordination, FM and GIS</small></span>
-                </div>
-                <ul class="nav-dd__list">
-                  <li><span class="nav-dd__soon">BIM coordination <small>Soon</small></span></li>
-                  <li><span class="nav-dd__soon">Clash detection <small>Soon</small></span></li>
-                  <li><span class="nav-dd__soon">As-built &amp; FM documentation <small>Soon</small></span></li>
-                  <li><span class="nav-dd__soon">GIS digitising <small>Soon</small></span></li>
-                </ul>
-              </div>
               <div class="nav-dd__foot">
                 <a href="index.html#contact" class="nav-dd__cta">
                   <strong>Not sure which service fits?</strong>
@@ -271,8 +261,6 @@
                     <li><a href="https://www.facebook.com/jdssommer/" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer on Facebook"><svg aria-hidden="true"><use href="#i-facebook"/></svg></a></li>
                     <li><a href="https://www.linkedin.com/company/jds-sommer-gmbh" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer on LinkedIn"><svg aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
                     <li><a href="https://x.com/JDS_Sommer" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer on X (Twitter)"><svg aria-hidden="true"><use href="#i-x"/></svg></a></li>
-                    <!-- YouTube: replace href="#" with the channel URL, and add target="_blank" rel="noopener" -->
-                    <li><a href="#" class="social__link" data-social aria-label="JDS Sommer on YouTube"><svg aria-hidden="true"><use href="#i-youtube"/></svg></a></li>
                   </ul>
                 </div>
               </div>
@@ -286,7 +274,6 @@
               <ul class="nav-dd__list">
                 <li data-local-only><a href="about-us.html" data-nav="about">About JDS Sommer</a></li>
                 <li data-public-only><a href="index.html#about">About JDS Sommer</a></li>
-                <li><span class="nav-dd__soon">Partners <small>Soon</small></span></li>
                 <li><a href="index.html#industries">Industries</a></li>
               </ul>
             </div>
@@ -297,10 +284,7 @@
             </button>
             <div class="nav-dd" id="dd-resources">
               <ul class="nav-dd__list">
-                <li><span class="nav-dd__soon">Blogs <small>Soon</small></span></li>
-                <li><span class="nav-dd__soon">Case studies <small>Soon</small></span></li>
                 <li><a href="index.html#faq">FAQs</a></li>
-                <li><span class="nav-dd__soon">Brochures <small>Soon</small></span></li>
               </ul>
             </div>
           </li>
@@ -320,8 +304,8 @@
             <svg class="lang__globe" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9M12 3c-2.5 2.6-3.8 5.6-3.8 9s1.3 6.4 3.8 9"/></svg><span class="lang__code">EN</span>
           </button>
           <ul class="lang__menu" id="lang-menu" data-lang-menu>
-            <li><a href="imprint.html" hreflang="en-GB" lang="en-GB" data-no-barba aria-current="true"><span>English (UK)</span><svg class="lang__check" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></a></li>
-            <li><a href="de/impressum.html" hreflang="de" lang="en-GB" data-no-barba><span>German</span></a></li>
+            <li><a href="about-us.html" hreflang="en-GB" lang="en-GB" data-no-barba aria-current="true"><span>English (UK)</span><svg class="lang__check" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></a></li>
+            <li><a href="../ueber-uns.html" hreflang="de" lang="en-GB" data-no-barba><span>German</span></a></li>
           </ul>
         </div>
         <!-- /lang -->
@@ -361,11 +345,6 @@
               <a href="3d-bim-modeling.html#mep-modelling">MEP modelling</a>
               <a href="3d-bim-modeling.html#hvac-modelling">HVAC modelling</a>
               <a href="3d-bim-modeling.html#plant-modelling">Plant modelling</a>
-              <span class="m-nav__head">Coordination &amp; documentation</span>
-              <span class="m-nav__soon">BIM coordination <small>Soon</small></span>
-              <span class="m-nav__soon">Clash detection <small>Soon</small></span>
-              <span class="m-nav__soon">As-built &amp; FM documentation <small>Soon</small></span>
-              <span class="m-nav__soon">GIS digitising <small>Soon</small></span>
             </div>
           </details>
         </li>
@@ -375,7 +354,6 @@
             <div class="m-nav__sub">
               <a href="about-us.html" data-nav="about" data-local-only>About JDS Sommer</a>
               <a href="index.html#about" data-public-only>About JDS Sommer</a>
-              <span class="m-nav__soon">Partners <small>Soon</small></span>
               <a href="index.html#industries">Industries</a>
             </div>
           </details>
@@ -384,10 +362,7 @@
           <details class="m-nav">
             <summary><span>03</span>Resources</summary>
             <div class="m-nav__sub">
-              <span class="m-nav__soon">Blogs <small>Soon</small></span>
-              <span class="m-nav__soon">Case studies <small>Soon</small></span>
               <a href="index.html#faq">FAQs</a>
-              <span class="m-nav__soon">Brochures <small>Soon</small></span>
             </div>
           </details>
         </li>
@@ -401,7 +376,7 @@
     </nav>
     <div class="mobile-menu__foot">
       <!-- m-lang -->
-      <p class="m-lang" aria-label="Language"><svg class="lang__globe" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9M12 3c-2.5 2.6-3.8 5.6-3.8 9s1.3 6.4 3.8 9"/></svg><a href="imprint.html" hreflang="en-GB" lang="en-GB" data-no-barba aria-current="true">English (UK)</a><a href="de/impressum.html" hreflang="de" lang="en-GB" data-no-barba>German</a></p>
+      <p class="m-lang" aria-label="Language"><svg class="lang__globe" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9M12 3c-2.5 2.6-3.8 5.6-3.8 9s1.3 6.4 3.8 9"/></svg><a href="about-us.html" hreflang="en-GB" lang="en-GB" data-no-barba aria-current="true">English (UK)</a><a href="../ueber-uns.html" hreflang="de" lang="en-GB" data-no-barba>German</a></p>
       <!-- /m-lang -->
       <a href="tel:+49699054690">+49 (0)69 / 905 469-0</a>
       <a href="mailto:info@jds-sommer.de">info@jds-sommer.de</a>
@@ -409,15 +384,13 @@
         <li><a href="https://www.facebook.com/jdssommer/" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer on Facebook"><svg aria-hidden="true"><use href="#i-facebook"/></svg></a></li>
         <li><a href="https://www.linkedin.com/company/jds-sommer-gmbh" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer on LinkedIn"><svg aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
         <li><a href="https://x.com/JDS_Sommer" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer on X (Twitter)"><svg aria-hidden="true"><use href="#i-x"/></svg></a></li>
-        <!-- YouTube: replace href="#" with the channel URL, and add target="_blank" rel="noopener" -->
-        <li><a href="#" class="social__link" data-social aria-label="JDS Sommer on YouTube"><svg aria-hidden="true"><use href="#i-youtube"/></svg></a></li>
       </ul>
     </div>
   </div>
 
   <!-- ============ BARBA ============ -->
   <div data-barba="wrapper">
-  <main id="main" data-barba="container" data-barba-namespace="imprint">
+  <main id="main" data-barba="container" data-barba-namespace="about">
 
     <!-- PAGE HERO -->
     <section class="page-hero">
@@ -425,74 +398,170 @@
       <div class="container page-hero__inner">
         <div class="page-hero__copy">
           <nav class="crumbs" aria-label="Breadcrumb" data-hero-fade>
-            <a href="index.html">Home</a><span aria-hidden="true">/</span><span aria-current="page">Imprint</span>
+            <a href="index.html">Home</a><span aria-hidden="true">/</span><span aria-current="page">About us</span>
           </nav>
-          <p class="eyebrow" data-hero-fade><span class="eyebrow__line"></span>Legal · Imprint</p>
-          <h1 class="hero__title page-hero__title" data-split><em>Imprint</em>.</h1>
+          <p class="eyebrow" data-hero-fade><span class="eyebrow__line"></span>About JDS Sommer · Frankfurt am Main</p>
+          <h1 class="hero__title page-hero__title" data-split>Your service partner for <em>digitalization</em>.</h1>
           <p class="hero__lead" data-hero-fade>
-            Legal notice and company details of JDS SOMMER GmbH.
+            Your reliable service partner for all areas of digitalization for 42 years. Expect excellent
+            expertise, high-performance capabilities, and affordable, fast service.
           </p>
-          <p class="policy__meta" data-hero-fade>
-            <strong>JDS Sommer GmbH</strong> · August-Schanz-Straße 28 · 60433 Frankfurt am Main ·
-            <a href="mailto:info@jds-sommer.de">info@jds-sommer.de</a>
-          </p>
+          <div class="hero__ctas" data-hero-fade>
+            <a href="index.html#contact" class="btn btn--primary">
+              Start enquiry <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="index.html#all-services" class="btn btn--ghost">Our services</a>
+          </div>
+          <ul class="facts" data-hero-fade>
+            <li><strong><span data-count="42">42</span></strong><span>years of digital services</span></li>
+            <li><strong><span data-count="2000" data-format="thousands">2,000</span>+</strong><span>customers</span></li>
+            <li><strong><span data-count="1000" data-format="thousands">1,000</span>+</strong><span>drawings converted per month</span></li>
+          </ul>
+        </div>
+
+        <div class="hero__visual" data-hero-visual>
+          <div class="spec-card about-glance">
+            <svg class="about-glance__mark" aria-hidden="true"><use href="#jds-mark"/></svg>
+            <h3>JDS SOMMER GmbH at a glance</h3>
+            <p>Then as now: <strong>“Digital instead of paper.”</strong></p>
+            <ul class="spec-list">
+              <li><span>1984</span>Founded in Frankfurt am Main by Dipl.-Ing. Dan Sommer</li>
+              <li><span>≈75%</span>of drawings and documents converted automatically</li>
+              <li><span>16</span>core specialists in CAD, GIS, FM, media and software</li>
+              <li><span>≈50</span>freelance CAD designers and engineers in our network</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- POLICY -->
-    <section class="policy">
-      <div class="container policy__layout">
-        <nav class="policy__toc" aria-label="On this page">
-          <h2>On this page</h2>
-          <ol>
-            <li><a href="#general">General information</a></li>
-            <li><a href="#technical">Technical notes</a></li>
-            <li><a href="#disclaimer">Disclaimer</a></li>
-            <li><a href="#eu-dispute-resolution">EU dispute resolution</a></li>
-            <li><a href="#responsible">Responsible</a></li>
-            <li><a href="#insurance">Liability insurance</a></li>
-            <li><a href="#consumer-dispute-resolution">Consumer dispute resolution</a></li>
-            <li><a href="#image-sources">Image sources</a></li>
-          </ol>
-          <p class="policy__toc-foot">
-            <a href="mailto:info@jds-sommer.de" class="link-arrow">Contact us <span aria-hidden="true">→</span></a>
+    <!-- STORY -->
+    <section class="section detail" id="story">
+      <div class="container detail__grid">
+        <div class="detail__copy" data-reveal>
+          <p class="eyebrow"><span class="eyebrow__line"></span>Our story</p>
+          <h2 class="h2">From paper archives to <em>intelligent</em> digital files.</h2>
+          <p>
+            JDS SOMMER GmbH was founded in 1984 in Frankfurt am Main by its owner and managing director,
+            Dipl.-Ing. Dan Sommer. Then as now, JDS remains committed to its philosophy and the motto
+            “Digital instead of paper.”
           </p>
-        </nav>
+          <p>
+            From the outset, JDS focused on optimising workflows through fast, direct and secure access to
+            drawings and documents within companies. We digitised and reorganized entire paper archives,
+            from text documents to complex large-format drawings.
+          </p>
+          <p>
+            The need quickly became apparent to convert these documents into intelligent digital files:
+            exact reproductions of the paper originals, but editable in the respective software. JDS worked
+            intensively on a solution, and the full range of it is described on these pages.
+          </p>
+        </div>
 
-        <article class="policy__body" data-reveal>
-          <h2 id="general">General information</h2>
-          <p>The content presented here uses registered trademarks, trade names, and brand names. Even if these are not explicitly marked as such, the corresponding legal protections apply. Every care has been taken to ensure the accuracy and completeness of the information in the program sections. However, errors cannot be completely ruled out.</p>
+        <div class="spec-card" data-reveal>
+          <h3>Who we work for</h3>
+          <p>Over 2,000 customers trust JDS, including:</p>
+          <ul class="format-chips format-chips--soft">
+            <li>Architects</li><li>Engineering firms</li><li>Industrial companies</li><li>Utility companies</li>
+            <li>Municipal enterprises</li><li>Publishers</li><li>Media companies</li><li>Museums</li>
+          </ul>
+          <h4>Every month</h4>
+          <ul class="spec-list">
+            <li><span>1,000+</span>paper drawings converted into precise CAD files</li>
+            <li><span>1,000s</span>of text documents captured and converted</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-          <h2 id="technical">Technical notes</h2>
-          <p>Please enable “Javascript” in your browser.</p>
-
-          <h2 id="disclaimer">Disclaimer</h2>
-          <p>All information contained herein has been checked with the utmost care. However, JDS SOMMER GmbH cannot be held liable for any damages arising in connection with the use of this content.</p>
-
-          <h2 id="eu-dispute-resolution">EU dispute resolution</h2>
-          <p>The European Commission provides a platform for online dispute resolution (ODR): <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a>. You can find our email address in this legal notice.</p>
-
-          <h2 id="responsible">Responsible</h2>
-          <p><strong>JDS SOMMER GmbH</strong><br>August-Schanz-Strasse 28<br>D-60433 Frankfurt am Main</p>
-          <p>Managing Director: Dan Sommer<br>Frankfurt Local Court HRB 24876<br>VAT ID No.: DE 114172986</p>
-          <p>Tel.: <a href="tel:+49699054690">+49 (0)69 / 905 469-0</a><br>Fax: +49 (0)69 / 905 469-29<br>Email: <a href="mailto:info@jds-sommer.de">info@jds-sommer.de</a></p>
-
-          <h2 id="insurance">Professional liability insurance</h2>
-          <p>Name and registered office of the insurer: Hiscox SA, Arnulfstrasse 31, 80636 Munich.<br>Scope of insurance coverage: Germany.</p>
-
-          <h2 id="consumer-dispute-resolution">EU consumer dispute resolution / universal arbitration body</h2>
-          <p>We are neither willing nor obligated to participate in dispute resolution proceedings before a consumer arbitration board.</p>
-
-          <h2 id="image-sources">Sources for the images and graphics used</h2>
-          <p>black_mts, kanesuan – stock.adobe.com</p>
-
-          <div class="policy__note">
-            <p><strong>Free consultation!</strong> Simply call us on <a href="tel:+49699054690">+49 (0)69 / 905 469-0</a> or send us an <a href="mailto:info@jds-sommer.de">email</a> with your request.</p>
-            <p>Read <a href="index.html#client-feedback">what our clients say</a> about how companies like yours have gained significant competitive advantages in a very short time and at low cost using our service.</p>
-            <p>We hope you enjoy browsing our website!</p>
+    <!-- KNOW-HOW -->
+    <section class="section about why" id="know-how">
+      <svg class="why__mark" aria-hidden="true" focusable="false"><use href="#jds-mark"/></svg>
+      <div class="container about__grid">
+        <div class="about__copy" data-reveal>
+          <p class="eyebrow eyebrow--light"><span class="eyebrow__line"></span>Know-how</p>
+          <h2 class="h2 h2--light">Scanning &amp; <em>computer-aided</em> digitalisation.</h2>
+          <p>
+            JDS combines optimal scanning, computer-aided digitalisation and sound engineering expertise to
+            offer cost-effective, fast and high-quality paper-to-CAD and paper-to-text conversion. About
+            75% of drawings and documents are converted automatically, with dimensions and text largely
+            interpreted correctly. That keeps our prices very competitive.
+          </p>
+          <p>
+            Quality assurance and technical correction are then done on screen by CAD specialists,
+            engineers and media designers. A core team of 16 manages a growing network of about fifty
+            freelance CAD designers and engineers from all disciplines, from surveyors to energy
+            technicians, as well as OCR and XML specialists.
+          </p>
+          <div class="about__counter">
+            <div><strong>≈<span data-count="75">75</span>%</strong><small>automated</small></div>
+            <div><strong><span data-count="16">16</span></strong><small>core team</small></div>
+            <div><strong>≈<span data-count="50">50</span></strong><small>freelancers</small></div>
           </div>
-        </article>
+        </div>
+
+        <div class="expertise" data-reveal>
+          <h3>Our expertise in digitalisation for</h3>
+          <ul class="expertise__chips">
+            <li>CAD</li>
+            <li>GIS</li>
+            <li>Facility management (FM)</li>
+            <li>Design &amp; visualisation</li>
+            <li>Scanning</li>
+            <li>OCR &amp; text capture</li>
+            <li>Tagging &amp; XML</li>
+            <li>Database programming</li>
+            <li>Web software</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW WE WORK -->
+    <section class="section steps-section" id="how-we-work">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow"><span class="eyebrow__line"></span>Our goal</p>
+          <h2 class="h2">Optimal services in digitalisation, data acquisition, design <em>and</em> visualisation.</h2>
+          <p class="section-head__lead">We want to be a true service partner for our customers, at unbeatable prices. We achieve this through:</p>
+        </header>
+        <ol class="steps5 steps5--4">
+          <li data-reveal-item><span class="steps5__n">01</span><h3>Motivated team</h3><p>A well-trained team that enjoys its work and always strives to increase customer satisfaction.</p></li>
+          <li data-reveal-item><span class="steps5__n">02</span><h3>Innovation</h3><p>An innovative combination of processes, knowledge and technology, always looking for better quality results.</p></li>
+          <li data-reveal-item><span class="steps5__n">03</span><h3>Optimised processes</h3><p>Processes tuned for speed and quality. We continuously work to make our procedures more efficient.</p></li>
+          <li data-reveal-item><span class="steps5__n">04</span><h3>Latest technology</h3><p>State-of-the-art software and high-performance hardware, with continuous investment in quality and speed.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- MOTTO -->
+    <section class="section quote-section">
+      <div class="container">
+        <figure class="quote" data-reveal>
+          <svg class="quote__mark" viewBox="0 0 48 36" aria-hidden="true"><path d="M0 36V20C0 8 7 1 19 0v7c-6 1-9 5-9 11h9v18zm29 0V20C29 8 36 1 48 0v7c-6 1-9 5-9 11h9v18z"/></svg>
+          <blockquote>
+            <p>Digital instead of paper.</p>
+          </blockquote>
+          <figcaption><strong>JDS SOMMER GmbH</strong><span>Our motto since 1984</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section test-us test-us--end">
+      <div class="container">
+        <div class="test-us__card" data-reveal>
+          <svg class="test-us__mark" aria-hidden="true"><use href="#jds-mark"/></svg>
+          <div>
+            <p class="eyebrow"><span class="eyebrow__line"></span>Our promise</p>
+            <h2 class="h2">Precise digitalisation of the <em>highest quality</em>.</h2>
+            <p>Continuous optimisation of our processes lets us offer precise digitalisation at very reasonable prices. Let our performance convince you: we guarantee high quality, reasonable prices and on-time delivery.</p>
+          </div>
+          <div class="test-us__ctas">
+            <a href="index.html#contact" class="btn btn--primary">Start enquiry</a>
+            <a href="mailto:info@jds-sommer.de" class="btn btn--ghost">info@jds-sommer.de</a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -507,7 +576,7 @@
           <svg class="brand__mark" aria-hidden="true"><use href="#jds-mark"/></svg>
           <span class="brand__text">
             <span class="brand__name">JDS SOMMER</span>
-            <span class="brand__tag">Engineering Data &amp; BIM Conversion</span>
+            <span class="brand__tag">Precise CAD Digitalisation &amp; 3D Modelling</span>
           </span>
         </a>
         <p>From existing drawings and point clouds to usable engineering data.</p>
@@ -515,8 +584,6 @@
           <li><a href="https://www.facebook.com/jdssommer/" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer on Facebook"><svg aria-hidden="true"><use href="#i-facebook"/></svg></a></li>
           <li><a href="https://www.linkedin.com/company/jds-sommer-gmbh" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer on LinkedIn"><svg aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
           <li><a href="https://x.com/JDS_Sommer" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer on X (Twitter)"><svg aria-hidden="true"><use href="#i-x"/></svg></a></li>
-          <!-- YouTube: replace href="#" with the channel URL, and add target="_blank" rel="noopener" -->
-          <li><a href="#" class="social__link" data-social aria-label="JDS Sommer on YouTube"><svg aria-hidden="true"><use href="#i-youtube"/></svg></a></li>
         </ul>
       </div>
 
@@ -576,6 +643,8 @@
       <path d="M105 19.5V12.5M101.8 15.4 105 12.2 108.2 15.4" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </a>
+
+  <!-- Review only: switch between the hero and header designs. Remove once they are chosen. -->
 
 </body>
 </html>

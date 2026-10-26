@@ -1,87 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://www.jds-sommer.de/en/</loc>
+    <lastmod>2026-10-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jds-sommer.de/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.jds-sommer.de/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jds-sommer.de/"/>
+  </url>
+  <url>
     <loc>https://www.jds-sommer.de/</loc>
-    <lastmod>2026-10-24</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.jds-sommer.de/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.jds-sommer.de/de/"/>
+    <lastmod>2026-10-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jds-sommer.de/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.jds-sommer.de/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jds-sommer.de/"/>
   </url>
   <url>
-    <loc>https://www.jds-sommer.de/de/</loc>
-    <lastmod>2026-10-24</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.jds-sommer.de/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.jds-sommer.de/de/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jds-sommer.de/"/>
+    <loc>https://www.jds-sommer.de/en/2d-cad-digitizing</loc>
+    <lastmod>2026-10-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jds-sommer.de/en/2d-cad-digitizing"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.jds-sommer.de/2d-cad-digitalisierung"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jds-sommer.de/2d-cad-digitalisierung"/>
   </url>
   <url>
-    <loc>https://www.jds-sommer.de/2d-cad-digitizing</loc>
-    <lastmod>2026-10-24</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.jds-sommer.de/2d-cad-digitizing"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.jds-sommer.de/de/2d-cad-digitalisierung"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jds-sommer.de/2d-cad-digitizing"/>
+    <loc>https://www.jds-sommer.de/2d-cad-digitalisierung</loc>
+    <lastmod>2026-10-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jds-sommer.de/en/2d-cad-digitizing"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.jds-sommer.de/2d-cad-digitalisierung"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jds-sommer.de/2d-cad-digitalisierung"/>
   </url>
   <url>
-    <loc>https://www.jds-sommer.de/de/2d-cad-digitalisierung</loc>
-    <lastmod>2026-10-24</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.jds-sommer.de/2d-cad-digitizing"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.jds-sommer.de/de/2d-cad-digitalisierung"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jds-sommer.de/2d-cad-digitizing"/>
+    <loc>https://www.jds-sommer.de/en/3d-bim-modeling</loc>
+    <lastmod>2026-10-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jds-sommer.de/en/3d-bim-modeling"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.jds-sommer.de/3d-bim-modellierung"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jds-sommer.de/3d-bim-modellierung"/>
   </url>
   <url>
-    <loc>https://www.jds-sommer.de/3d-bim-modeling</loc>
-    <lastmod>2026-10-24</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.jds-sommer.de/3d-bim-modeling"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.jds-sommer.de/de/3d-bim-modellierung"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jds-sommer.de/3d-bim-modeling"/>
+    <loc>https://www.jds-sommer.de/3d-bim-modellierung</loc>
+    <lastmod>2026-10-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jds-sommer.de/en/3d-bim-modeling"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.jds-sommer.de/3d-bim-modellierung"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jds-sommer.de/3d-bim-modellierung"/>
   </url>
   <url>
-    <loc>https://www.jds-sommer.de/de/3d-bim-modellierung</loc>
-    <lastmod>2026-10-24</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.jds-sommer.de/3d-bim-modeling"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.jds-sommer.de/de/3d-bim-modellierung"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jds-sommer.de/3d-bim-modeling"/>
+    <loc>https://www.jds-sommer.de/en/imprint</loc>
+    <lastmod>2026-10-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jds-sommer.de/en/imprint"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.jds-sommer.de/impressum"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jds-sommer.de/impressum"/>
   </url>
   <url>
-    <loc>https://www.jds-sommer.de/imprint</loc>
-    <lastmod>2026-10-24</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.jds-sommer.de/imprint"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.jds-sommer.de/de/impressum"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jds-sommer.de/imprint"/>
+    <loc>https://www.jds-sommer.de/impressum</loc>
+    <lastmod>2026-10-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jds-sommer.de/en/imprint"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.jds-sommer.de/impressum"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jds-sommer.de/impressum"/>
   </url>
   <url>
-    <loc>https://www.jds-sommer.de/de/impressum</loc>
-    <lastmod>2026-10-24</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.jds-sommer.de/imprint"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.jds-sommer.de/de/impressum"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jds-sommer.de/imprint"/>
+    <loc>https://www.jds-sommer.de/en/privacy-policy</loc>
+    <lastmod>2026-10-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jds-sommer.de/en/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.jds-sommer.de/datenschutz"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jds-sommer.de/datenschutz"/>
   </url>
   <url>
-    <loc>https://www.jds-sommer.de/privacy-policy</loc>
-    <lastmod>2026-10-24</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.jds-sommer.de/privacy-policy"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.jds-sommer.de/de/datenschutz"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jds-sommer.de/privacy-policy"/>
+    <loc>https://www.jds-sommer.de/datenschutz</loc>
+    <lastmod>2026-10-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jds-sommer.de/en/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.jds-sommer.de/datenschutz"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jds-sommer.de/datenschutz"/>
   </url>
   <url>
-    <loc>https://www.jds-sommer.de/de/datenschutz</loc>
-    <lastmod>2026-10-24</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.jds-sommer.de/privacy-policy"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.jds-sommer.de/de/datenschutz"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jds-sommer.de/privacy-policy"/>
+    <loc>https://www.jds-sommer.de/en/terms-and-conditions</loc>
+    <lastmod>2026-10-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jds-sommer.de/en/terms-and-conditions"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.jds-sommer.de/agb"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jds-sommer.de/agb"/>
   </url>
   <url>
-    <loc>https://www.jds-sommer.de/terms-and-conditions</loc>
-    <lastmod>2026-10-24</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.jds-sommer.de/terms-and-conditions"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.jds-sommer.de/de/agb"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jds-sommer.de/terms-and-conditions"/>
-  </url>
-  <url>
-    <loc>https://www.jds-sommer.de/de/agb</loc>
-    <lastmod>2026-10-24</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.jds-sommer.de/terms-and-conditions"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.jds-sommer.de/de/agb"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jds-sommer.de/terms-and-conditions"/>
+    <loc>https://www.jds-sommer.de/agb</loc>
+    <lastmod>2026-10-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jds-sommer.de/en/terms-and-conditions"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.jds-sommer.de/agb"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jds-sommer.de/agb"/>
   </url>
 </urlset>

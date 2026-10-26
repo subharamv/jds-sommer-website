@@ -568,7 +568,9 @@
     var end = parseFloat(el.getAttribute('data-count'));
     var fmt = el.getAttribute('data-format');
     var o = { v: 0 };
-    el.textContent = formatNum(0, fmt);
+    // Scroll counters keep their real number from the HTML until the count actually starts:
+    // if the trigger never fires (print, full-page screenshot, crawler) they must not read "0"
+    if (delay) el.textContent = formatNum(0, fmt);
     gsap.to(o, {
       v: end, duration: duration || 2, delay: delay || 0, ease: 'power2.out',
       onUpdate: function () { el.textContent = formatNum(o.v, fmt); },
@@ -663,70 +665,7 @@
       setActive(Math.round(pos));
     }
     var mm = gsap.matchMedia();
-    mm.add('(max-width: 1000px)', function () {
-      var tween = null, rt = null;
-
-      function teardown() {
-        if (tween) {
-          if (tween.scrollTrigger) tween.scrollTrigger.kill();
-          tween.kill();
-          tween = null;
-        }
-        st = null;
-        sec.classList.remove('is-pinned', 'is-scroll-driven');
-        gsap.set(track, { clearProps: 'x' });
-        gsap.set(cards, { clearProps: 'scale,opacity' });
-      }
-
-      function build() {
-        teardown();
-        viewport.scrollLeft = 0;
-        // Measure the compact pinned layout before committing to it: if heading, card and dots
-        // still exceed the screen, a pin would hold the card's foot below the fold.
-        sec.classList.add('is-pinned');
-        if (sec.offsetHeight <= window.innerHeight - 4) {
-          tween = gsap.to(track, {
-            x: function () { return -step() * (n - 1); }, ease: 'none',
-            scrollTrigger: {
-              trigger: sec, start: 'top top', pin: true, scrub: 0.8, anticipatePin: 1, invalidateOnRefresh: true,
-              end: function () { return '+=' + Math.round(window.innerHeight * 0.75 * (n - 1)); },
-              onUpdate: function (self) { paint(self.progress); }
-            }
-          });
-          st = tween.scrollTrigger;
-          paint(0);
-          return;
-        }
-        // Short screen: no pin. The slide starts once the card itself is on screen and ends
-        // while it is still fully visible, so it never feels finished before the reader arrives.
-        sec.classList.remove('is-pinned');
-        sec.classList.add('is-scroll-driven');
-        tween = gsap.to(track, {
-          x: function () { return -step() * (n - 1); }, ease: 'none',
-          scrollTrigger: {
-            trigger: viewport, start: 'top 78%', end: 'top 18%', scrub: 0.6, invalidateOnRefresh: true,
-            // no dimming: the card being read stays at full contrast while it slides
-            onUpdate: function (self) { setActive(Math.round(self.progress * (n - 1))); }
-          }
-        });
-        st = tween.scrollTrigger;
-        setActive(0);
-      }
-
-      build();
-
-      function onResize() {
-        clearTimeout(rt);
-        rt = setTimeout(function () { build(); ScrollTrigger.refresh(); }, 220);
-      }
-      window.addEventListener('resize', onResize);
-
-      return function () {
-        clearTimeout(rt);
-        window.removeEventListener('resize', onResize);
-        teardown();
-      };
-    });
+    // Phones and tablets: no scroll effect, the cards simply stack (CSS: .hscroll at max-width 1000px)
     mm.add('(min-width: 1001px)', function () {
       sec.classList.add('is-pinned');
       viewport.scrollLeft = 0;
@@ -948,7 +887,9 @@
     }
     vp.addEventListener('pointerup', endDrag);
     vp.addEventListener('pointercancel', endDrag);
-    vp.addEventListener('lostpointercapture', endDrag);
+    // Only the viewport's own capture counts: on touch screens the finger is first captured by the touched
+    // child (an image); moving the capture to the viewport fires a bubbling lostpointercapture from that child.
+    vp.addEventListener('lostpointercapture', function (e) { if (e.target === vp) endDrag(e); });
     vp.addEventListener('click', function (e) { if (suppressClick) { e.preventDefault(); e.stopPropagation(); suppressClick = false; } }, true);
     vp.addEventListener('dragstart', function (e) { e.preventDefault(); });
 
@@ -1067,7 +1008,9 @@
     }
     vp.addEventListener('pointerup', endDrag);
     vp.addEventListener('pointercancel', endDrag);
-    vp.addEventListener('lostpointercapture', endDrag);
+    // Only the viewport's own capture counts: on touch screens the finger is first captured by the touched
+    // child (an image); moving the capture to the viewport fires a bubbling lostpointercapture from that child.
+    vp.addEventListener('lostpointercapture', function (e) { if (e.target === vp) endDrag(e); });
     vp.addEventListener('click', function (e) { if (suppressClick) { e.preventDefault(); e.stopPropagation(); suppressClick = false; } }, true);
     vp.addEventListener('dragstart', function (e) { e.preventDefault(); });
 
@@ -1138,15 +1081,6 @@
     if (!form || form.dataset.ready) return;
     form.dataset.ready = '1';
 
-    var phone = $('#f-phone', form);
-    var phoneReq = $('[data-phone-req]', form);
-    function syncCallback() {
-      var cb = !!$('input[name="reply"][data-callback]:checked', form);
-      phone.required = cb;
-      phoneReq.hidden = !cb;
-    }
-    $$('input[name="reply"]', form).forEach(function (r) { r.addEventListener('change', syncCallback); });
-    syncCallback();
 
     applyPrefill();
 
@@ -1170,6 +1104,8 @@
       if (field.type === 'checkbox') { setError(field, field.required && !field.checked ? 'required' : ''); return field.checked || !field.required; }
       if (field.required && !v) { setError(field, t('Please fill in this field.', 'Bitte füllen Sie dieses Feld aus.')); return false; }
       if (field.type === 'email' && v && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) { setError(field, t('Please enter a valid email address.', 'Bitte geben Sie eine gültige E-Mail-Adresse ein.')); return false; }
+      // Same rule as contact.php: at least 6 digits
+      if (field.type === 'tel' && v && (v.match(/[0-9]/g) || []).length < 6) { setError(field, t('Please enter a valid phone number.', 'Bitte geben Sie eine gültige Telefonnummer ein.')); return false; }
       setError(field, '');
       return true;
     }
@@ -1182,108 +1118,166 @@
       f.addEventListener('input', function () { if (f.closest('.has-error')) validate(f); });
     });
 
-    /* Step-by-step: without JS all steps show as one long form */
-    var steps = $$('[data-form-step]', form);
-    var current = 0;
-    var dots = $$('[data-step-dot]', form);
-    var progress = $('[data-step-progress]', form);
-    var stepNum = $('[data-step-num]', form);
-    var stepFields = function (i) { return fields.filter(function (f) { return steps[i].contains(f); }); };
-
     function shake() { if (animate) gsap.fromTo(form, { x: -6 }, { x: 0, duration: 0.5, ease: 'elastic.out(1, 0.3)' }); }
-    function checkStep(i) {
-      var bad = null;
-      stepFields(i).forEach(function (f) { if (!validate(f) && !bad) bad = f; });
-      return bad;
+
+    var success = $('.form__success', form);
+    var errorBox = $('.form__error', form);
+    var send = $('.form__send', form);
+    var sendLabel = $('[data-send-label]', form);
+    var idle = sendLabel.textContent;
+    var loaded = Date.now();
+
+    // The letter folds into a paper plane, flies along the trail into the JDS box, the box gets its check badge.
+    // Returns the timeline; the confirmation text fades in when the plane lands.
+    function sentArt() {
+      var art = $('.form__sent-art', form);
+      var trail = $('.sa-trail', art), letter = $('.sa-letter', art), flap = $('.sa-flap', art);
+      var plane = $('.sa-plane', art), body = $('.sa-plane-body', art), box = $('.sa-box', art), badge = $('.sa-badge', art);
+      var len = trail.getTotalLength(), bb = trail.getBBox(), flight = { p: 0 };
+      function fly() {
+        var at = flight.p * len, pt = trail.getPointAtLength(at), next = trail.getPointAtLength(Math.min(len, at + 1));
+        var angle = Math.atan2(next.y - pt.y, next.x - pt.x) * 180 / Math.PI;
+        plane.setAttribute('transform', 'translate(' + pt.x + ' ' + pt.y + ') rotate(' + angle + ')');
+        // The route is used up as the plane flies: everything left of its tail disappears. The path runs
+        // left to right, so the cut follows the plane's own x (not the share of the length, which drifts on curves).
+        var cut = Math.max(0, Math.min(100, (pt.x - 24 - bb.x) / bb.width * 100));
+        trail.style.clipPath = 'inset(0 0 0 ' + cut + '%)';
+      }
+      gsap.set(trail, { opacity: 0 });
+      gsap.set(letter, { opacity: 0, y: 14 });
+      gsap.set(flap, { scaleY: 1, transformOrigin: '50% 100%' });
+      gsap.set(body, { opacity: 0, scale: 0, transformOrigin: '50% 50%' });
+      gsap.set(plane, { opacity: 1 });
+      gsap.set(badge, { scale: 0, transformOrigin: '50% 50%' });
+      gsap.set(box, { x: 228 });                                                            // at the end of the trail
+      fly();
+      return gsap.timeline()
+        .to(letter, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' })
+        .to(trail, { opacity: 1, duration: 0.5 }, '<0.1')                                   // the route ahead
+        .to(flap, { scaleY: -1, duration: 0.4, ease: 'power2.inOut' }, '+=0.1')          // top half folds down
+        .to(letter, { scaleX: 0.35, scaleY: 0.2, opacity: 0, duration: 0.3, ease: 'power2.in', transformOrigin: '50% 50%' })
+        .to(body, { opacity: 1, scale: 1, duration: 0.3, ease: 'back.out(2)' }, '-=0.12')  // ...and becomes the plane
+        .to(flight, { p: 1, duration: 1.4, ease: 'power1.inOut', onUpdate: fly })
+        .to(trail, { opacity: 0, duration: 0.2 }, '-=0.2')                                  // last bit at the box
+        .to(body, { scale: 0.2, opacity: 0, duration: 0.22, ease: 'power2.in' }, '-=0.18')
+        .to(box, { scale: 1.08, duration: 0.16, yoyo: true, repeat: 1, transformOrigin: '50% 50%' }, '-=0.06')
+        .to(badge, { scale: 1, duration: 0.45, ease: 'back.out(2.6)' }, '-=0.1')
+        .addLabel('landed', '-=0.3')
+        .to(box, { x: 0, scale: 1.3, transformOrigin: '50% 50%', duration: 0.8, ease: 'power3.inOut' }, '+=0.2'); // then glides to the centre, a bit larger
     }
-    function showStep(i, dir) {
-      var prev = steps[current];
-      current = i;
-      steps.forEach(function (s, k) { s.classList.toggle('is-active', k === i); });
-      dots.forEach(function (d, k) {
-        d.classList.toggle('is-current', k === i);
-        d.classList.toggle('is-done', k < i);
-      });
-      form.classList.toggle('is-first', i === 0);
-      form.classList.toggle('is-last', i === steps.length - 1);
-      if (progress) progress.style.width = ((i + 1) / steps.length * 100) + '%';
-      if (stepNum) stepNum.textContent = i + 1;
-      if (dir && animate && prev !== steps[i]) {
-        gsap.fromTo(steps[i], { x: 30 * dir, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5, ease: 'power3.out' });
-      }
-      if (dir) {
-        // keep the top of the form in view and move focus into the new step
-        var top = form.getBoundingClientRect().top;
-        if (top < 0 || top > window.innerHeight * 0.6) scrollToTarget(form);
-        var first = $('input:not([type=hidden]), select, textarea', steps[i]);
-        if (first) first.focus({ preventScroll: true });
-      }
+
+    function showSuccess() {
+      form.classList.add('is-sent');
+      errorBox.hidden = true;
+      success.hidden = false;
+      // The fields are gone now, so the page is shorter: measure again before scrolling to the message
       if (lenis) lenis.resize();
       if (window.ScrollTrigger) ScrollTrigger.refresh();
+      var art = $('.form__sent-art', form);
+      requestAnimationFrame(function () {
+        // Bring the animation into view (it sits just above the message), unless it already is
+        var r = art.getBoundingClientRect();
+        if (r.top < 80 || r.bottom > window.innerHeight) scrollToTarget(art);
+        success.focus({ preventScroll: true });
+      });
+      if (!animate) {
+        // Reduced motion: the same end picture, the box enlarged about its centre (280, 98)
+        $('.sa-box', art).setAttribute('transform', 'translate(280 98) scale(1.3) translate(-280 -98)');
+        return;
+      }
+      // A short pause so the letter is not folded while the page is still scrolling to it
+      var tl = sentArt().delay(0.5);
+      tl.fromTo(success, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' }, 'landed');
     }
-    function next() {
-      var bad = checkStep(current);
-      if (bad) { bad.focus({ preventScroll: true }); shake(); return; }
-      if (current < steps.length - 1) showStep(current + 1, 1);
+    function showError(code) {
+      var rate = code === 'rate';
+      $('[data-error-rate]', errorBox).hidden = !rate;
+      $('[data-error-other]', errorBox).hidden = rate;
+      errorBox.hidden = false;
+      if (lenis) lenis.resize();
     }
-
-    if (steps.length > 1) {
-      form.classList.add('is-stepped');
-      showStep(0);
-      $('[data-step-next]', form).addEventListener('click', next);
-      $('[data-step-prev]', form).addEventListener('click', function () { if (current > 0) showStep(current - 1, -1); });
-      dots.forEach(function (d, k) { d.addEventListener('click', function () { if (k < current) showStep(k, -1); }); });
+    function busy(on) {
+      send.disabled = on;
+      sendLabel.textContent = on ? t('Sending…', 'Wird gesendet …') : idle;
     }
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      // Enter key on an earlier step means "continue"
-      if (form.classList.contains('is-stepped') && current < steps.length - 1) { next(); return; }
+      if (send.disabled) return;
+      errorBox.hidden = true;
 
       var ok = true, firstBad = null;
       fields.forEach(function (f) { if (!validate(f)) { ok = false; firstBad = firstBad || f; } });
       if (!ok) {
-        if (form.classList.contains('is-stepped')) {
-          var k = steps.findIndex(function (s) { return s.contains(firstBad); });
-          if (k !== current) showStep(k, -1);
-        }
         firstBad.focus({ preventScroll: true });
         scrollToTarget(firstBad.closest('.field, .consent'));
         shake();
         return;
       }
 
-      var success = $('.form__success', form);
-      // Bots fill the hidden field; pretend success and send nothing.
-      if ($('#f-website', form).value) { success.hidden = false; return; }
+      // Bots fill the hidden field: pretend success and send nothing
+      if ($('#f-website', form).value) { showSuccess(); return; }
 
-      var d = new FormData(form);
-      var g = function (k) { return (d.get(k) || '').toString().trim(); };
-      var lines = [
-        t('I would like: ', 'Ich wünsche: ') + g('reply'),
-        '',
-        t('Company: ', 'Firma: ') + (g('company') || '-'),
-        'Name: ' + g('salutation') + ' ' + g('first_name') + ' ' + g('last_name'),
-        t('Street: ', 'Straße: ') + g('street'),
-        t('Postal code / Location: ', 'PLZ / Ort: ') + g('postal_code') + ' ' + g('location'),
-        t('Country: ', 'Land: ') + g('country'),
-        t('Email: ', 'E-Mail: ') + g('email'),
-        t('Phone: ', 'Telefon: ') + (g('phone') || '-'),
-        'Fax: ' + (g('fax') || '-'),
-        t('How did you find us: ', 'Wie haben Sie uns gefunden: ') + g('source'),
-        t('Regarding: ', 'Betreff: ') + g('reference'),
-        '',
-        t('Enquiry:', 'Anfrage:'),
-        g('inquiry'),
-        '',
-        t('Privacy policy accepted: yes', 'Datenschutzerklärung akzeptiert: ja')
-      ];
-      var subject = t('Website enquiry: ', 'Website-Anfrage: ') + g('reference') + ' (' + g('first_name') + ' ' + g('last_name') + ')';
-      window.location.href = 'mailto:info@jds-sommer.de?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
-
-      success.hidden = false;
-      if (animate) gsap.fromTo(success, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' });
+      // Sent in the background by the website (contact.php), no email program involved
+      var data = new FormData(form);
+      data.append('lang', DE ? 'de' : 'en');
+      data.append('elapsed', Math.round((Date.now() - loaded) / 1000));
+      var ctrl = window.AbortController ? new AbortController() : null;
+      var timer = ctrl && setTimeout(function () { ctrl.abort(); }, 20000);
+      busy(true);
+      altchaReady()
+        .then(function () {
+          if (altchaPayload) data.set('altcha', altchaPayload);
+          return fetch('/contact.php', { method: 'POST', body: data, headers: { Accept: 'application/json' }, signal: ctrl && ctrl.signal });
+        })
+        .then(function (res) { return res.json().catch(function () { return { ok: false }; }); })
+        .then(function (r) {
+          if (r && r.ok) { form.reset(); resetAltcha(); showSuccess(); }
+          else { showError(r && r.error); if (r && r.error === 'bot') resetAltcha(); }   // expired or refused: check again
+        })
+        .catch(function () { showError(); })
+        .then(function () { clearTimeout(timer); busy(false); });
     });
+
+    /* ALTCHA bot check: a self-hosted widget (assets/js/altcha/, MIT) solves a proof-of-work challenge from
+       contact.php in the background ("Ich bin kein Roboter" ticks itself when the visitor starts typing).
+       Loaded here rather than in the page head, so it also works after a page transition to the form. */
+    var widget = $('altcha-widget', form), altchaPayload = null;
+    if (widget) {
+      widget.addEventListener('statechange', function (e) {
+        var d = e.detail || {};
+        altchaPayload = d.state === 'verified' ? d.payload : null;
+      });
+      if (!(window.customElements && customElements.get('altcha-widget')) && !document.querySelector('script[data-altcha]')) {
+        var lib = document.createElement('script');
+        lib.src = '/assets/js/altcha/altcha.min.js?v=3.3.0';
+        lib.setAttribute('data-altcha', '');
+        lib.onload = function () {
+          var de = document.createElement('script');
+          de.src = '/assets/js/altcha/de.js?v=3.3.0';
+          // The German texts arrive after the widget started: apply the page language once they are there
+          de.onload = function () { $$('altcha-widget').forEach(function (w) { if (w.configure) w.configure({ language: DE ? 'de' : 'en' }); }); };
+          document.head.appendChild(de);
+        };
+        document.head.appendChild(lib);
+      }
+    }
+    // Resolves once the check is done (starting it if needed); after 15 s it gives up and the server decides
+    function altchaReady() {
+      if (altchaPayload || !widget || typeof widget.verify !== 'function') return Promise.resolve();
+      return new Promise(function (resolve) {
+        var timer = setTimeout(resolve, 15000);
+        widget.addEventListener('statechange', function wait(e) {
+          var s = e.detail && e.detail.state;
+          if (s === 'verified' || s === 'error' || s === 'expired') { clearTimeout(timer); widget.removeEventListener('statechange', wait); resolve(); }
+        });
+        try { widget.verify(); } catch (err) { clearTimeout(timer); resolve(); }
+      });
+    }
+    function resetAltcha() {
+      altchaPayload = null;
+      if (widget && typeof widget.reset === 'function') widget.reset();
+    }
   }
 
   /* ---------- Client feedback: quote carousel ---------- */
@@ -1446,6 +1440,13 @@
     }
     barba.init({
       preventRunning: true,
+      // The server can take over a second per page; Barba's default 2 s limit then aborted the
+      // transition halfway and left the new page hidden. Wait longer, and on any failure load the page normally.
+      timeout: 8000,
+      requestError: function (trigger, action, url) {
+        window.location.assign(url);
+        return false;
+      },
       prevent: function (o) {
         var el = o.el;
         return el.target === '_blank' || el.hasAttribute('data-no-barba') || isSamePageHash(el);

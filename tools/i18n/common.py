@@ -1,4 +1,4 @@
-# Page pairs: English source (site root) -> German output (site/de/)
+# Page pairs: English source (site/en/) -> German output (site root)
 PAGES = {
     'index.html': 'index.html',
     '2d-cad-digitizing.html': '2d-cad-digitalisierung.html',
