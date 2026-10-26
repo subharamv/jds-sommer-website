@@ -1049,5 +1049,9 @@
  "City": "Ort",
  "Postal code": "PLZ",
  "Please try again in a moment, or contact us directly: <a href=\"mailto:info@jds-sommer.de\">info@jds-sommer.de</a> · <a href=\"tel:+49699054690\">+49 (0)69 / 905 469-0": "Bitte versuchen Sie es gleich noch einmal oder kontaktieren Sie uns direkt: <a href=\"mailto:info@jds-sommer.de\">info@jds-sommer.de</a> · <a href=\"tel:+49699054690\">+49 (0)69 / 905 469-0",
- "Phone <span class=\"req\">*": "Telefon <span class=\"req\">*"
+ "Phone <span class=\"req\">*": "Telefon <span class=\"req\">*",
+ "Electrical": "ELT",
+ "Building services for electrical engineering: Power supply, lighting, cable trays, and security systems.": "Technische Gebäudeausrüstung für Elektrotechnik: Starkstrom- und Schwachstromanlagen, Kabeltrassen, Beleuchtungs- und Sicherheitssysteme.",
+ "HVAC &amp; Plumbing": "HLS",
+ "Heating, ventilation, air conditioning, and plumbing: Ductwork networks, air outlets, and piping systems modelled as-built.": "Heizung, Lüftung und Sanitär: Lüftungsgeräte, Kanalnetze, Luftauslässe, Heizungs- und Sanitärleitungen, modelliert wie gebaut."
 }
