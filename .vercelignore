@@ -1,2 +1,13 @@
 # Pages still in review: kept out of deployments, viewable on localhost only
-about-us.html
+en/about-us.html
+ueber-uns.html
+
+# Build tooling for the German pages, not part of the site
+tools/
+
+# Local secrets (Vercel OIDC token): never upload
+.env*
+
+# Contact form backend: needs PHP (live server only); test hosts show the form's error message instead
+contact.php
+_private/

@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en-GB" translate="no" class="notice-closed">
+<head>
+  <meta charset="utf-8">
+  <!-- English and German versions exist, so browsers should not machine-translate -->
+  <meta name="google" content="notranslate">
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found | JDS Sommer</title>
+  <meta name="description" content="The page you were looking for does not exist. Seite nicht gefunden.">
+  <meta name="theme-color" content="#393B8D">
+  <link rel="icon" type="image/svg+xml" href="/assets/img/jds-mark.svg">
+  <meta property="og:title" content="Page not found | JDS Sommer">
+  <meta property="og:description" content="The page you were looking for does not exist.">
+  <meta property="og:type" content="website">
+
+  <script>
+    // Hide animated elements only when JS runs; give them back if the libraries never arrive.
+    (function (d) {
+      d.classList.add('js');
+      // Final design: Header V1 and Hero V4 (the review switcher is gone); choices saved during the review are cleared
+      d.setAttribute('data-header-design', 'v1');
+      try { localStorage.removeItem('jdsHeader'); localStorage.removeItem('jdsHero'); } catch (e) {}
+      // Old review links (?header=…, ?hero=…) no longer do anything: take them out of the address bar
+      try { var u = new URL(location.href); if (u.searchParams.has('header') || u.searchParams.has('hero')) { u.searchParams.delete('header'); u.searchParams.delete('hero'); history.replaceState(history.state, '', u.pathname + u.search + u.hash); } } catch (e) {}
+      // Pages still in review only show on local/dev hosts (html.is-local)
+      if (location.protocol === 'file:' || /^(localhost|127\.0\.0\.1|\[::1\]|.+\.local|192\.168\.\d+\.\d+|10\.\d+\.\d+\.\d+)$/.test(location.hostname)) d.classList.add('is-local');
+      try { if (localStorage.getItem('jdsNoticeClosed')) d.classList.add('notice-closed'); } catch (e) {}
+      var seen = false;
+      try { seen = !!sessionStorage.getItem('jdsSeen'); } catch (e) {}
+      if (!seen && !matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('show-preloader');
+      setTimeout(function () { if (!window.gsap) d.classList.remove('js', 'show-preloader'); }, 2500);
+      d.setAttribute('data-hero', 'v4');
+    })(document.documentElement);
+  </script>
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@barba/core@2.10.3/dist/barba.umd.js"></script>
+  <script defer src="/assets/js/main.js"></script>
+</head>
+<body>
+
+  <!-- Shared SVG defs: the JDS mark, reused by <use> everywhere -->
+  <svg class="svg-defs" aria-hidden="true" focusable="false">
+    <defs>
+      <pattern id="bpGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+        <path d="M20 0H0V20" fill="none" stroke="#4749AF" stroke-opacity=".08" stroke-width="1"/>
+      </pattern>
+      <linearGradient id="jdsB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5b5fd0"/><stop offset=".55" stop-color="#3f42a3"/><stop offset="1" stop-color="#2a2c78"/></linearGradient>
+      <linearGradient id="jdsG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4a4dc0"/><stop offset=".55" stop-color="#7477d8"/><stop offset="1" stop-color="#393b8d"/></linearGradient>
+      <linearGradient id="jdsL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a3a5ee"/><stop offset="1" stop-color="#4b4fbf"/></linearGradient>
+      <linearGradient id="jdsR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff7a7a"/><stop offset=".6" stop-color="#e3262b"/><stop offset="1" stop-color="#b8121a"/></linearGradient>
+      <mask id="jdsCut" maskUnits="userSpaceOnUse" x="0" y="0" width="140" height="80">
+        <rect width="140" height="80" fill="#fff"/>
+        <path stroke="#000" stroke-width="2.4" d="M26.05 48.8 49.45 75.2M67.85 48.8 45.65 75.2M64.2 48.8 85.8 75.2M84.9 24.9 65.2 49M83.1 24.9 103 49"/>
+      </mask>
+      <symbol id="jds-mark" viewBox="8 2 116 73">
+        <g mask="url(#jdsCut)">
+          <polygon fill="url(#jdsG)" points="47,26 84,26 66,48 28,48"/>
+          <polygon fill="url(#jdsL)" points="84,26 102,48 66,48"/>
+          <polygon fill="url(#jdsB)" points="84,26 122,26 102,48"/>
+          <polygon fill="url(#jdsB)" points="28,51 47.5,73 10,73"/>
+          <polygon fill="url(#jdsB)" points="28,51 66,51 47.5,73"/>
+          <polygon fill="url(#jdsB)" points="66,51 84,73 47.5,73"/>
+          <polygon fill="url(#jdsB)" points="66,51 102,51 84,73"/>
+        </g>
+        <polygon fill="url(#jdsR)" points="105,4 122,24 88,24"/>
+      </symbol>
+      <!-- Social icons -->
+      <symbol id="i-facebook" viewBox="0 0 24 24"><path fill="currentColor" d="M13.5 21v-7.5H16l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H8v3h2.5V21z"/></symbol>
+      <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M6.9 8.8H3.6V20h3.3zM5.25 3.5a1.95 1.95 0 1 0 0 3.9 1.95 1.95 0 0 0 0-3.9zM20.4 13.6c0-3-1.6-5-4.4-5-1.4 0-2.4.8-2.8 1.5V8.8H10V20h3.3v-5.6c0-1.5.3-2.9 2.1-2.9s1.8 1.7 1.8 3V20h3.3z"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><path fill="currentColor" d="M17.8 3h3.1l-6.8 7.8 8 10.2h-6.3l-4.9-6.4L5.3 21H2.2l7.3-8.3L1.9 3h6.4l4.4 5.8zm-1.1 16.2h1.7L7.4 4.7H5.6z"/></symbol>
+    </defs>
+  </svg>
+
+  <!-- First-visit preloader: the mark assembles from its triangles -->
+  <div class="preloader" aria-hidden="true">
+    <svg class="preloader__mark" viewBox="8 2 116 73">
+      <polygon class="pl-t" fill="url(#jdsB)" points="27.23,51.94 45.9,73 10,73"/>
+      <polygon class="pl-t" fill="url(#jdsB)" points="29.6,51 64.43,51 47.48,71.16"/>
+      <polygon class="pl-t" fill="url(#jdsB)" points="65.99,52.88 82.45,73 49.07,73"/>
+      <polygon class="pl-t" fill="url(#jdsB)" points="67.55,51 102,51 84.78,72.05"/>
+      <polygon class="pl-t" fill="url(#jdsG)" points="47,26 82.45,26 64.45,48 28,48"/>
+      <polygon class="pl-t" fill="url(#jdsL)" points="84,27.9 100.45,48 67.55,48"/>
+      <polygon class="pl-t" fill="url(#jdsB)" points="85.55,26 122,26 102.82,47.1"/>
+      <polygon class="pl-t pl-red" fill="url(#jdsR)" points="105,4 122,24 88,24"/>
+    </svg>
+    <div class="preloader__word">JDS SOMMER</div>
+  </div>
+
+  <!-- Page transition curtain (Barba) -->
+  <div class="curtain" aria-hidden="true">
+    <svg class="curtain__mark"><use href="#jds-mark"/></svg>
+  </div>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header" data-header>
+    <div class="notice-bar" role="status">
+      <div class="container notice-bar__inner">
+        <span class="pulse-dot" aria-hidden="true"></span>
+        <p><strong>Our website is being redeveloped.</strong> <span class="hide-sm">Our core services and contact details stay fully available here in the meantime.</span></p>
+        <a href="/en/#all-services" class="notice-bar__link">What's new <span aria-hidden="true">→</span></a>
+        <button class="notice-bar__close" type="button" aria-label="Close notice" data-notice-close>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="container header__inner">
+      <a href="/en/" class="brand" aria-label="JDS Sommer, back to homepage">
+        <svg class="brand__mark" role="img" aria-hidden="true"><use href="#jds-mark"/></svg>
+        <span class="brand__text">
+          <span class="brand__name">JDS SOMMER</span>
+          <span class="brand__tag">Precise CAD Digitalisation &amp; 3D Modelling</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Main navigation">
+        <ul class="nav__list" data-header-variant="v2">
+          <li class="nav__item" data-dd>
+            <button class="nav__link nav__trigger" type="button" aria-expanded="false" aria-controls="dd-services" data-nav-group="2d 3d">
+              Services <svg class="nav__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="nav-dd nav-dd--mega" id="dd-services">
+              <div class="nav-dd__col">
+                <a href="/en/2d-cad-digitizing" class="nav-dd__head" data-nav="2d">
+                  <span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 12h6v8M10 4v4M14 12h6M10 12a4 4 0 0 1 4-4"/></svg></span>
+                  <span><strong>2D CAD Digitalisation</strong><small>Plans, drawings and scans to editable DWG</small></span>
+                </a>
+                <ul class="nav-dd__list">
+                  <li><a href="/en/2d-cad-digitizing#drawing-to-cad-conversion">Drawing-to-CAD conversion</a></li>
+                  <li><a href="/en/2d-cad-digitizing#scan-to-cad">Scan-to-CAD</a></li>
+                  <li><a href="/en/2d-cad-digitizing#cad-restructuring">CAD restructuring &amp; standardisation</a></li>
+                </ul>
+              </div>
+              <div class="nav-dd__col">
+                <a href="/en/3d-bim-modeling" class="nav-dd__head" data-nav="3d">
+                  <span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></svg></span>
+                  <span><strong>3D &amp; BIM Modelling</strong><small>From point clouds, CAD files and parts</small></span>
+                </a>
+                <ul class="nav-dd__list">
+                  <li><a href="/en/3d-bim-modeling#scan-to-bim">Scan-to-BIM</a></li>
+                  <li><a href="/en/3d-bim-modeling#cad-to-bim">CAD-to-BIM modelling</a></li>
+                  <li><a href="/en/3d-bim-modeling#as-built-bim">As-built BIM modelling</a></li>
+                  <li><a href="/en/3d-bim-modeling#3d-cad-modelling">3D CAD &amp; reverse engineering</a></li>
+                  <li><a href="/en/3d-bim-modeling#industrial-facility-modelling">Industrial facility modelling</a></li>
+                </ul>
+              </div>
+              <div class="nav-dd__col">
+                <a href="/en/3d-bim-modeling#modelling-by-discipline" class="nav-dd__head">
+                  <span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 21V9l8-5 8 5v12"/><path d="M9 21v-6h6v6M3 21h18M12 4v5"/></svg></span>
+                  <span><strong>Modelling by discipline</strong><small>Architecture, structure and building services</small></span>
+                </a>
+                <ul class="nav-dd__list">
+                  <li><a href="/en/3d-bim-modeling#architectural-modelling">Architectural modelling</a></li>
+                  <li><a href="/en/3d-bim-modeling#structural-modelling">Structural modelling</a></li>
+                  <li><a href="/en/3d-bim-modeling#mep-modelling">MEP modelling</a></li>
+                  <li><a href="/en/3d-bim-modeling#hvac-modelling">HVAC modelling</a></li>
+                  <li><a href="/en/3d-bim-modeling#plant-modelling">Plant modelling</a></li>
+                </ul>
+              </div>
+              <div class="nav-dd__foot">
+                <a href="/en/#contact" class="nav-dd__cta">
+                  <strong>Not sure which service fits?</strong>
+                  <small>Send us your plans for free advice and a free quote <span aria-hidden="true">&rarr;</span></small>
+                </a>
+                <div class="nav-dd__contact">
+                  <a href="mailto:info@jds-sommer.de"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5L12 13l8.5-6.5"/></svg>info@jds-sommer.de</a>
+                  <a href="tel:+49699054690"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>+49 (0)69 / 905 469-0</a>
+                </div>
+                <div class="nav-dd__follow">
+                  <span>Follow us</span>
+                  <ul class="social social--dd" aria-label="JDS Sommer on social media">
+                    <li><a href="https://www.facebook.com/jdssommer/" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer on Facebook"><svg aria-hidden="true"><use href="#i-facebook"/></svg></a></li>
+                    <li><a href="https://www.linkedin.com/company/jds-sommer-gmbh" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer on LinkedIn"><svg aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+                    <li><a href="https://x.com/JDS_Sommer" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer on X (Twitter)"><svg aria-hidden="true"><use href="#i-x"/></svg></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="nav__item" data-dd>
+            <button class="nav__link nav__trigger" type="button" aria-expanded="false" aria-controls="dd-about" data-nav-group="about">
+              About us <svg class="nav__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="nav-dd" id="dd-about">
+              <ul class="nav-dd__list">
+                <li data-local-only><a href="/en/about-us" data-nav="about">About JDS Sommer</a></li>
+                <li data-public-only><a href="/en/#about">About JDS Sommer</a></li>
+                <li><a href="/en/#industries">Industries</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav__item" data-dd>
+            <button class="nav__link nav__trigger" type="button" aria-expanded="false" aria-controls="dd-resources">
+              Resources <svg class="nav__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="nav-dd" id="dd-resources">
+              <ul class="nav-dd__list">
+                <li><a href="/en/#faq">FAQs</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav__item"><a href="/en/#contact" class="nav__link" data-nav="contact">Contact us</a></li>
+        </ul>
+        <ul class="nav__list" data-header-variant="v1">
+          <li class="nav__item"><a href="/en/2d-cad-digitizing" class="nav__link" data-nav="2d">2D CAD Digitalisation</a></li>
+          <li class="nav__item"><a href="/en/3d-bim-modeling" class="nav__link" data-nav="3d">3D &amp; BIM Modelling</a></li>
+          <li class="nav__item"><a href="/en/#contact" class="nav__link" data-nav="contact">Contact us</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <!-- lang -->
+        <div class="lang" data-lang>
+          <button class="lang__btn" type="button" aria-expanded="false" aria-controls="lang-menu" aria-label="Select language" title="Select language" data-lang-btn>
+            <svg class="lang__globe" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9M12 3c-2.5 2.6-3.8 5.6-3.8 9s1.3 6.4 3.8 9"/></svg><span class="lang__code">EN</span>
+          </button>
+          <ul class="lang__menu" id="lang-menu" data-lang-menu>
+            <li><a href="/en/" hreflang="en-GB" lang="en-GB" data-no-barba aria-current="true"><span>English (UK)</span><svg class="lang__check" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></a></li>
+            <li><a href="/" hreflang="de" lang="en-GB" data-no-barba><span>German</span></a></li>
+          </ul>
+        </div>
+        <!-- /lang -->
+        <a href="tel:+49699054690" class="header__phone">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
+          <span>+49 (0)69 / 905 469-0</span>
+        </a>
+        <a href="/en/#contact" class="btn btn--primary btn--sm">Request a quote</a>
+        <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" data-burger>
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true" data-mobile-menu>
+    <nav aria-label="Mobile navigation">
+      <ul data-header-variant="v2">
+        <li>
+          <details class="m-nav">
+            <summary><span>01</span>Services</summary>
+            <div class="m-nav__sub">
+              <a href="/en/2d-cad-digitizing" class="m-nav__head" data-nav="2d">2D CAD Digitalisation</a>
+              <a href="/en/2d-cad-digitizing#drawing-to-cad-conversion">Drawing-to-CAD conversion</a>
+              <a href="/en/2d-cad-digitizing#scan-to-cad">Scan-to-CAD</a>
+              <a href="/en/2d-cad-digitizing#cad-restructuring">CAD restructuring &amp; standardisation</a>
+              <a href="/en/3d-bim-modeling" class="m-nav__head" data-nav="3d">3D &amp; BIM Modelling</a>
+              <a href="/en/3d-bim-modeling#scan-to-bim">Scan-to-BIM</a>
+              <a href="/en/3d-bim-modeling#cad-to-bim">CAD-to-BIM modelling</a>
+              <a href="/en/3d-bim-modeling#as-built-bim">As-built BIM modelling</a>
+              <a href="/en/3d-bim-modeling#3d-cad-modelling">3D CAD &amp; reverse engineering</a>
+              <a href="/en/3d-bim-modeling#industrial-facility-modelling">Industrial facility modelling</a>
+              <a href="/en/3d-bim-modeling#modelling-by-discipline" class="m-nav__head">Modelling by discipline</a>
+              <a href="/en/3d-bim-modeling#architectural-modelling">Architectural modelling</a>
+              <a href="/en/3d-bim-modeling#structural-modelling">Structural modelling</a>
+              <a href="/en/3d-bim-modeling#mep-modelling">MEP modelling</a>
+              <a href="/en/3d-bim-modeling#hvac-modelling">HVAC modelling</a>
+              <a href="/en/3d-bim-modeling#plant-modelling">Plant modelling</a>
+            </div>
+          </details>
+        </li>
+        <li>
+          <details class="m-nav">
+            <summary><span>02</span>About us</summary>
+            <div class="m-nav__sub">
+              <a href="/en/about-us" data-nav="about" data-local-only>About JDS Sommer</a>
+              <a href="/en/#about" data-public-only>About JDS Sommer</a>
+              <a href="/en/#industries">Industries</a>
+            </div>
+          </details>
+        </li>
+        <li>
+          <details class="m-nav">
+            <summary><span>03</span>Resources</summary>
+            <div class="m-nav__sub">
+              <a href="/en/#faq">FAQs</a>
+            </div>
+          </details>
+        </li>
+        <li><a href="/en/#contact" data-nav="contact"><span>04</span>Contact us</a></li>
+      </ul>
+      <ul data-header-variant="v1">
+        <li><a href="/en/2d-cad-digitizing" data-nav="2d"><span>01</span>2D CAD Digitalisation</a></li>
+        <li><a href="/en/3d-bim-modeling" data-nav="3d"><span>02</span>3D &amp; BIM Modelling</a></li>
+        <li><a href="/en/#contact" data-nav="contact"><span>03</span>Contact us</a></li>
+      </ul>
+    </nav>
+    <div class="mobile-menu__foot">
+      <!-- m-lang -->
+      <p class="m-lang" aria-label="Language"><svg class="lang__globe" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9M12 3c-2.5 2.6-3.8 5.6-3.8 9s1.3 6.4 3.8 9"/></svg><a href="/en/" hreflang="en-GB" lang="en-GB" data-no-barba aria-current="true">English (UK)</a><a href="/" hreflang="de" lang="en-GB" data-no-barba>German</a></p>
+      <!-- /m-lang -->
+      <a href="tel:+49699054690">+49 (0)69 / 905 469-0</a>
+      <a href="mailto:info@jds-sommer.de">info@jds-sommer.de</a>
+      <ul class="social social--menu" aria-label="JDS Sommer on social media">
+        <li><a href="https://www.facebook.com/jdssommer/" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer on Facebook"><svg aria-hidden="true"><use href="#i-facebook"/></svg></a></li>
+        <li><a href="https://www.linkedin.com/company/jds-sommer-gmbh" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer on LinkedIn"><svg aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+        <li><a href="https://x.com/JDS_Sommer" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer on X (Twitter)"><svg aria-hidden="true"><use href="#i-x"/></svg></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============ BARBA ============ -->
+  <div data-barba="wrapper">
+  <main id="main" data-barba="container" data-barba-namespace="not-found">
+
+    <!-- 404 -->
+    <section class="page-hero not-found">
+      <div class="hero__bg" aria-hidden="true"><div class="hero__grid"></div><div class="hero__glow"></div></div>
+      <div class="container page-hero__inner">
+        <div class="page-hero__copy">
+          <p class="eyebrow" data-hero-fade><span class="eyebrow__line"></span>Error 404</p>
+          <h1 class="hero__title page-hero__title" data-split>Page <em>not found</em>.</h1>
+          <p class="hero__lead" data-hero-fade>
+            The page you were looking for does not exist or has moved. Our services are just one click away.
+          </p>
+          <p class="not-found__de" lang="de" data-hero-fade>
+            <strong>Seite nicht gefunden.</strong> Die gesuchte Seite existiert nicht oder wurde verschoben.
+          </p>
+          <div class="hero__ctas" data-hero-fade>
+            <a href="/en/" class="btn btn--primary">Go to the homepage <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a href="/" class="btn btn--ghost" lang="de" hreflang="de">Zur Startseite</a>
+          </div>
+          <ul class="not-found__links" data-hero-fade>
+            <li><a href="/en/2d-cad-digitizing">2D CAD Digitalisation</a></li>
+            <li><a href="/en/3d-bim-modeling">3D &amp; BIM Modelling</a></li>
+            <li><a href="/en/#contact">Contact us</a></li>
+            <li lang="de"><a href="/2d-cad-digitalisierung" hreflang="de">2D-CAD-Digitalisierung</a></li>
+            <li lang="de"><a href="/3d-bim-modellierung" hreflang="de">3D- &amp; BIM-Modellierung</a></li>
+            <li lang="de"><a href="/#contact" hreflang="de">Kontakt</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+  </div>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer__top">
+      <div class="footer__brand">
+        <a href="/en/" class="brand brand--light" aria-label="JDS Sommer homepage">
+          <svg class="brand__mark" aria-hidden="true"><use href="#jds-mark"/></svg>
+          <span class="brand__text">
+            <span class="brand__name">JDS SOMMER</span>
+            <span class="brand__tag">Precise CAD Digitalisation &amp; 3D Modelling</span>
+          </span>
+        </a>
+        <p>From existing drawings and point clouds to usable engineering data.</p>
+        <ul class="social social--footer" aria-label="JDS Sommer on social media">
+          <li><a href="https://www.facebook.com/jdssommer/" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer on Facebook"><svg aria-hidden="true"><use href="#i-facebook"/></svg></a></li>
+          <li><a href="https://www.linkedin.com/company/jds-sommer-gmbh" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer on LinkedIn"><svg aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+          <li><a href="https://x.com/JDS_Sommer" class="social__link" target="_blank" rel="noopener" aria-label="JDS Sommer on X (Twitter)"><svg aria-hidden="true"><use href="#i-x"/></svg></a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="/en/2d-cad-digitizing">2D CAD Digitalisation</a></li>
+          <li><a href="/en/3d-bim-modeling">3D &amp; BIM Modelling</a></li>
+          <li><a href="/en/#contact">Request a quote</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col footer__col--v2">
+        <h4>About us</h4>
+        <ul>
+          <li data-local-only><a href="/en/about-us">About JDS Sommer</a></li>
+          <li data-public-only><a href="/en/#about">About JDS Sommer</a></li>
+          <li><a href="/en/#industries">Industries</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col footer__col--v2">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="/en/#faq">FAQs</a></li>
+          <li><a href="/en/#references">References</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Contact</h4>
+        <ul>
+          <li>August-Schanz-Straße 28<br>D-60433 Frankfurt am Main</li>
+          <li><a href="tel:+49699054690">+49 (0)69 / 905 469-0</a></li>
+          <li><a href="mailto:info@jds-sommer.de">info@jds-sommer.de</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer__bottom">
+      <p>© <span data-year>2026</span> JDS Sommer GmbH</p>
+      <ul class="footer__legal">
+        <li><a href="/en/#faq">FAQ</a></li>
+        <li><a href="/en/#references">References</a></li>
+        <li><a href="/en/terms-and-conditions">Terms &amp; Conditions</a></li>
+        <li><a href="/en/imprint">Imprint</a></li>
+        <li><a href="/en/privacy-policy">Privacy Policy</a></li>
+        <li class="footer__cookie-item"><button type="button" class="footer__cookie" data-cookie-settings>Cookie settings</button></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- Floating back-to-top: the red triangle from the logo -->
+  <a href="#main" class="fab-top" aria-label="Back to top" data-fab-top>
+    <svg viewBox="86 2 38 24" aria-hidden="true">
+      <polygon fill="url(#jdsR)" points="105,4 122,24 88,24"/>
+      <path d="M105 19.5V12.5M101.8 15.4 105 12.2 108.2 15.4" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+
+</body>
+</html>

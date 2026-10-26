@@ -1,0 +1,6 @@
+# JDS Sommer GmbH: www.jds-sommer.de
+# All crawlers, including search engines and AI assistants, may read the whole site.
+User-agent: *
+Allow: /
+
+Sitemap: https://www.jds-sommer.de/sitemap.xml

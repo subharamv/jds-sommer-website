@@ -1,0 +1,68 @@
+# JDS Sommer website (static files) on www.jds-sommer.de
+# Clean URLs: /imprint serves imprint.html; old .html addresses and old-site URLs redirect permanently.
+# German is the default language and lives in the site root (/, /impressum); English is under /en/.
+DirectoryIndex index.html
+Options -MultiViews
+# Our own error page (all its links are root-absolute, so it works at any depth)
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # German is the default language and lives in the site root; English is under /en/.
+  # Addresses of the interim layout (English in the root, German under /de/) move permanently:
+  RewriteRule ^de/?$ / [R=301,L]
+  RewriteRule ^de/3d-cad-digitalisierung(\.html)?$ /3d-bim-modellierung [R=301,L]
+  RewriteRule ^de/(.+?)(\.html)?$ /$1 [R=301,L]
+  RewriteRule ^(2d-cad-digitizing|3d-bim-modeling|imprint|privacy-policy|terms-and-conditions)(\.html)?$ /en/$1 [R=301,L]
+
+  # Renamed pages
+  RewriteRule ^3d-cad-digitizing(\.html)?$ /en/3d-bim-modeling [R=301,L]
+  RewriteRule ^3d-cad-digitalisierung(\.html)?$ /3d-bim-modellierung [R=301,L]
+  RewriteRule ^en/3d-cad-digitizing(/.*)?$ /en/3d-bim-modeling [R=301,L]
+
+  # Addresses of the previous website (German at /, English under /en/, with trailing slashes)
+  RewriteRule ^datenschutzerklaerung/?$ /datenschutz [R=301,L]
+  RewriteRule ^referenzen/?$ /#references [R=301,L,NE]
+  RewriteRule ^faq(/.*)?$ /#faq [R=301,L,NE]
+  RewriteRule ^en$ /en/ [R=301,L]
+  RewriteRule ^en/terms-conditions/?$ /en/terms-and-conditions [R=301,L]
+  RewriteRule ^en/2d-cad-digitizing/.+$ /en/2d-cad-digitizing [R=301,L]
+  RewriteRule ^en/references/?$ /en/#references [R=301,L,NE]
+  RewriteRule ^en/faq(/.*)?$ /en/#faq [R=301,L,NE]
+  RewriteRule ^en/about-us/?$ /en/#about [R=301,L,NE]
+  RewriteRule ^en/(contact|offer)(/.*)?$ /en/#contact [R=301,L,NE]
+  # /impressum/ -> /impressum, /en/imprint/ -> /en/imprint (a trailing slash on a page that is not a folder)
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.+)/$ /$1 [R=301,L]
+
+  # /index.html -> /  and  /page.html -> /page (only for requests typed with .html, not internal rewrites)
+  RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?]
+  RewriteRule ^ /%1 [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+([^\s?]+)\.html[\s?]
+  RewriteRule ^ /%1 [R=301,L]
+
+  # /page serves page.html
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^(.+)$ $1.html [L]
+</IfModule>
+
+<IfModule mod_deflate.c>
+  # gzip text files on the way to the browser (HTML already is). The browser unpacks them to the exact
+  # same bytes, so CSS and JS behave identically; only fewer bytes travel. Images and video are already compressed.
+  AddOutputFilterByType DEFLATE text/css text/javascript application/javascript image/svg+xml application/xml text/xml text/plain application/json
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Pages: browsers re-check on every visit, so they always see the latest version tags (?v=...)
+  <FilesMatch "\.(html|txt|xml)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  # Files referenced with ?v=<fingerprint>: a change gives a new URL, so they can be cached for a year
+  <FilesMatch "\.(css|js|webp|png|jpg|jpeg|svg|gif|mp4|ico)$">
+    Header set Cache-Control "public, max-age=31536000"
+  </FilesMatch>
+</IfModule>

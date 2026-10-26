@@ -8,6 +8,9 @@
   'use strict';
 
   var root = document.documentElement;
+  // Page language: German pages (lang="de") get German UI strings
+  var DE = /^de/i.test(root.lang);
+  function t(en, de) { return DE ? de : en; }
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   var hasGSAP = !!window.gsap;
@@ -17,6 +20,8 @@
   var pageCleanups = [];
 
   if (!animate) root.classList.remove('js', 'show-preloader');
+  // Shown inside the review prototype: it has its own toolbar, so the variant switcher hides
+  try { if (window.self !== window.top) root.classList.add('in-frame'); } catch (e) { root.classList.add('in-frame'); }
   if (hasGSAP && window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
 
   function $(sel, scope) { return (scope || document).querySelector(sel); }
@@ -57,6 +62,44 @@
   });
 
   /* ---------- Header ---------- */
+  /* ---------- Language switcher ---------- */
+  function initLang() {
+    var box = $('[data-lang]'), btn = $('[data-lang-btn]');
+    if (!box || !btn) return;
+    function set(open) { box.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', String(open)); }
+    btn.addEventListener('click', function (e) { e.stopPropagation(); set(!box.classList.contains('is-open')); });
+    document.addEventListener('click', function (e) { if (!box.contains(e.target)) set(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && box.classList.contains('is-open')) { set(false); btn.focus(); } });
+  }
+
+  /* ---------- Page scrollbar: widen it while the pointer is over it ---------- */
+  function initScrollbar() {
+    if (!finePointer) return;
+    var inside = false, toc = null, tocInside = false;
+    function set(next) {
+      if (next === inside) return;
+      inside = next;
+      root.classList.toggle('is-scrollbar-hover', inside);
+    }
+    function setToc(next) {
+      if (next === tocInside) return;
+      tocInside = next;
+      if (toc) toc.classList.toggle('is-scrollbar-hover', tocInside);
+    }
+    window.addEventListener('pointermove', function (e) {
+      set(e.clientX >= window.innerWidth - 12);
+      // The policy page's section index has its own bar: widen it near the edge too
+      var el = document.querySelector('.policy__toc');
+      if (el !== toc) { if (toc) toc.classList.remove('is-scrollbar-hover'); toc = el; tocInside = false; }
+      if (toc) {
+        var r = toc.getBoundingClientRect();
+        setToc(e.clientX >= r.right - 14 && e.clientX <= r.right + 2 &&
+               e.clientY >= r.top && e.clientY <= r.bottom && toc.scrollHeight > toc.clientHeight);
+      }
+    }, { passive: true });
+    window.addEventListener('pointerleave', function () { set(false); setToc(false); });
+  }
+
   function initHeader() {
     var header = $('[data-header]');
     if (!header) return;
@@ -95,10 +138,17 @@
 
   /* ---------- Mobile menu ---------- */
   var burger, menu;
+  // Centre the circle reveal on the burger; it moves with the notice bar and header height
+  function aimMenu() {
+    var r = burger.getBoundingClientRect();
+    menu.style.setProperty('--menu-x', (r.left + r.width / 2) + 'px');
+    menu.style.setProperty('--menu-y', (r.top + r.height / 2) + 'px');
+  }
   function openMenu() {
+    aimMenu();
     root.classList.add('menu-open');
     burger.setAttribute('aria-expanded', 'true');
-    burger.setAttribute('aria-label', 'Close menu');
+    burger.setAttribute('aria-label', t('Close menu', 'Menü schließen'));
     menu.setAttribute('aria-hidden', 'false');
     $('[data-header]').classList.remove('is-hidden');
     if (lenis) lenis.stop();
@@ -109,9 +159,10 @@
   }
   function closeMenu() {
     if (!root.classList.contains('menu-open')) return;
+    aimMenu();
     root.classList.remove('menu-open');
     burger.setAttribute('aria-expanded', 'false');
-    burger.setAttribute('aria-label', 'Open menu');
+    burger.setAttribute('aria-label', t('Open menu', 'Menü öffnen'));
     menu.setAttribute('aria-hidden', 'true');
     if (lenis) lenis.start();
   }
@@ -204,7 +255,7 @@
 
   function formatNum(n, fmt) {
     n = Math.round(n);
-    return fmt === 'thousands' ? n.toLocaleString('en-US') : String(n);
+    return fmt === 'thousands' ? n.toLocaleString(DE ? 'de-DE' : 'en-US') : String(n);
   }
 
   function prepDraw(el) {
@@ -285,6 +336,14 @@
     if (!heroes.length) { root.classList.remove('hero-dark'); return; }
     var chosen = root.getAttribute('data-hero') || 'v1';
     heroes.forEach(function (h) { if (h.getAttribute('data-hero-variant') !== chosen) h.remove(); });
+    // Only the default hero has the <h1> in the HTML (crawlers see one); a review variant takes it over here
+    var title = $('h2.hero__title', $('[data-hero-variant]', container));
+    if (title) {
+      var h1 = document.createElement('h1');
+      [].slice.call(title.attributes).forEach(function (a) { h1.setAttribute(a.name, a.value); });
+      h1.innerHTML = title.innerHTML;
+      title.replaceWith(h1);
+    }
     root.classList.toggle('hero-dark', !!$('.hero--video', container));
     $$('[data-hero-link]').forEach(function (a) {
       var on = a.getAttribute('data-hero-link') === chosen;
@@ -301,7 +360,7 @@
     function sync() {
       if (!btn) return;
       btn.classList.toggle('is-paused', paused);
-      btn.setAttribute('aria-label', paused ? 'Play background video' : 'Pause background video');
+      btn.setAttribute('aria-label', paused ? t('Play background video', 'Hintergrundvideo abspielen') : t('Pause background video', 'Hintergrundvideo pausieren'));
     }
     function play() {
       if (!video.src) { video.src = video.getAttribute('data-src'); }
@@ -343,7 +402,13 @@
   }
 
   /* ---------- 3D: level-of-detail explorer ---------- */
-  var LOD = {
+  var LOD = DE ? {
+    100: ['LOD 100 · Konzept', 'Gesamtkubatur: Größe, Höhe und Lage des Gebäudes als einfaches Volumen.'],
+    200: ['LOD 200 · Ungefähre Geometrie', 'Generische Elemente wie Decken, Wände und Öffnungen mit ungefährer Größe, Form und Lage.'],
+    300: ['LOD 300 · Präzise Geometrie', 'Konkrete Elemente mit exakten Maßen, Form, Lage und Ausrichtung. Bereit für Koordination und abgeleitete Pläne.'],
+    400: ['LOD 400 · Fertigungsdetail', 'Elemente mit dem für Fertigung und Montage nötigen Detail: Brüstungen, Rahmen, Anschlüsse, Befestigungen.'],
+    500: ['LOD 500 · Bestand', 'Eine vor Ort verifizierte Darstellung der Elemente wie gebaut, für Betrieb und Facility Management.']
+  } : {
     100: ['LOD 100 · Concept', 'Overall massing: size, height and position of the building as a simple volume.'],
     200: ['LOD 200 · Approximate geometry', 'Generic elements such as floors, walls and openings with approximate size, shape and location.'],
     300: ['LOD 300 · Precise geometry', 'Specific elements with exact dimensions, shape, location and orientation. Ready for coordination and derived plans.'],
@@ -470,7 +535,7 @@
         ctx.beginPath(); ctx.moveTo(A[0], A[1]); ctx.lineTo(A[0] + (B[0] - A[0]) * t, A[1] + (B[1] - A[1]) * t); ctx.stroke();
       }
       if (meter) meter.style.width = (p * 100).toFixed(1) + '%';
-      if (label) label.textContent = p < 0.5 ? 'Point cloud · 2.4 M points' : p < 0.98 ? 'Modelling · ' + Math.round(p * 100) + '%' : 'CAD model · fully structured';
+      if (label) label.textContent = p < 0.5 ? t('Point cloud · 2.4 M points', 'Punktwolke · 2,4 Mio. Punkte') : p < 0.98 ? t('Modelling · ', 'Modellierung · ') + Math.round(p * 100) + (DE ? ' %' : '%') : t('CAD model · fully structured', 'CAD-Modell · vollständig strukturiert');
     }
     function tick() { if (visible) { state.a += 0.0035; draw(); } }
 
@@ -503,12 +568,124 @@
     var end = parseFloat(el.getAttribute('data-count'));
     var fmt = el.getAttribute('data-format');
     var o = { v: 0 };
-    el.textContent = formatNum(0, fmt);
+    // Scroll counters keep their real number from the HTML until the count actually starts:
+    // if the trigger never fires (print, full-page screenshot, crawler) they must not read "0"
+    if (delay) el.textContent = formatNum(0, fmt);
     gsap.to(o, {
       v: end, duration: duration || 2, delay: delay || 0, ease: 'power2.out',
       onUpdate: function () { el.textContent = formatNum(o.v, fmt); },
       scrollTrigger: delay ? null : { trigger: el, start: 'top 90%', once: true }
     });
+  }
+
+  /* ---------- Stacked cards: each card sinks back as the next one slides over it ---------- */
+  // The stacking itself is CSS (position: sticky); this only adds the scale and dim, scrubbed to scroll.
+  function initStack(scope) {
+    var stack = $('[data-stack]', scope);
+    if (!stack) return;
+    var cards = $$('.app-card', stack);
+    var mm = gsap.matchMedia();
+    mm.add('(min-width: 1001px) and (min-height: 701px)', function () {
+      // Same height for every card, so each one covers the previous card exactly and the buttons line up.
+      // Remeasured on every ScrollTrigger refresh (resize, fonts, images).
+      function equalise() {
+        cards.forEach(function (c) { c.style.minHeight = ''; });
+        var h = Math.max.apply(null, cards.map(function (c) { return c.offsetHeight; }));
+        cards.forEach(function (c) { c.style.minHeight = h + 'px'; });
+      }
+      equalise();
+      ScrollTrigger.addEventListener('refreshInit', equalise);
+      cards.forEach(function (card, i) {
+        var next = cards[i + 1];
+        if (!next) return;
+        // Explicit start values: tweening from filter "none" makes GSAP begin at brightness(0), i.e. black.
+        // Runs only while the next card actually covers this one: from its top meeting this card's
+        // bottom edge until it reaches its own pinned position.
+        gsap.fromTo(card, { scale: 1, filter: 'brightness(1)' }, {
+          scale: 1 - 0.035 * (cards.length - 1 - i), filter: 'brightness(0.94)', ease: 'none',
+          scrollTrigger: {
+            trigger: next, scrub: 0.8, invalidateOnRefresh: true,
+            start: function () { return 'top top+=' + (parseFloat(getComputedStyle(card).top) + card.offsetHeight); },
+            end: function () { return 'top top+=' + parseFloat(getComputedStyle(next).top); }
+          }
+        });
+      });
+      // Below the breakpoint the cards are a plain list again: natural heights
+      return function () {
+        ScrollTrigger.removeEventListener('refreshInit', equalise);
+        cards.forEach(function (c) { c.style.minHeight = ''; });
+      };
+    });
+    pageCleanups.push(function () { mm.revert(); });
+  }
+
+  /* ---------- Horizontal scroll: vertical scroll slides the core-service cards sideways ---------- */
+  // Desktop always pins. Phones and tablets pin too when the compact card, heading and dots fit
+  // the screen; when they do not (short viewports), pinning would clip the card's price and
+  // call to action, so the swap is instead paced to the card entering the viewport.
+  function initHScroll(scope) {
+    var sec = $('[data-hscroll]', scope);
+    if (!sec) return;
+    var track = $('[data-hscroll-track]', sec), viewport = $('[data-hscroll-viewport]', sec);
+    var cards = $$('[data-hscroll-card]', sec), dots = $$('[data-hscroll-dot]', sec);
+    var n = cards.length, st = null;
+
+    function step() { return n > 1 ? cards[1].offsetLeft - cards[0].offsetLeft : 0; }
+    function setActive(i) {
+      cards.forEach(function (c, k) { c.classList.toggle('is-active', k === i); });
+      dots.forEach(function (d, k) {
+        d.classList.toggle('is-active', k === i);
+        if (k === i) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current');
+      });
+    }
+    function onSwipe() {
+      if (st) return;
+      setActive(Math.max(0, Math.min(n - 1, Math.round(viewport.scrollLeft / (step() || 1)))));
+    }
+    viewport.addEventListener('scroll', onSwipe, { passive: true });
+    dots.forEach(function (d, i) {
+      d.addEventListener('click', function () {
+        if (st) {
+          var y = st.start + (st.end - st.start) * (i / (n - 1));
+          if (lenis) lenis.scrollTo(y, { duration: 1.2 }); else window.scrollTo({ top: y, behavior: 'smooth' });
+        } else {
+          viewport.scrollTo({ left: step() * i, behavior: reduceMotion ? 'auto' : 'smooth' });
+        }
+      });
+    });
+    pageCleanups.push(function () { viewport.removeEventListener('scroll', onSwipe); });
+
+    if (!animate || n < 2) return;
+    function paint(p) {
+      var pos = p * (n - 1);
+      cards.forEach(function (c, i) {
+        var d = Math.min(Math.abs(pos - i), 1);
+        gsap.set(c, { scale: 1 - 0.1 * d, opacity: 1 - 0.5 * d });
+      });
+      setActive(Math.round(pos));
+    }
+    var mm = gsap.matchMedia();
+    // Phones and tablets: no scroll effect, the cards simply stack (CSS: .hscroll at max-width 1000px)
+    mm.add('(min-width: 1001px)', function () {
+      sec.classList.add('is-pinned');
+      viewport.scrollLeft = 0;
+      var tween = gsap.to(track, {
+        x: function () { return -step() * (n - 1); }, ease: 'none',
+        scrollTrigger: {
+          trigger: sec, start: 'top top', pin: true, scrub: 0.8, anticipatePin: 1, invalidateOnRefresh: true,
+          end: function () { return '+=' + Math.round(window.innerHeight * 0.9 * (n - 1)); },
+          onUpdate: function (self) { paint(self.progress); }
+        }
+      });
+      st = tween.scrollTrigger;
+      paint(0);
+      return function () {
+        sec.classList.remove('is-pinned');
+        st = null;
+        gsap.set(cards, { clearProps: 'scale,opacity' });
+      };
+    });
+    pageCleanups.push(function () { mm.revert(); });
   }
 
   /* ---------- Scroll reveals ---------- */
@@ -544,7 +721,17 @@
     if (steps.length) {
       var wrap = steps[0].closest('.process__wrap');
       var line = $('.process__line line', wrap);
-      if (line) gsap.to(line, { strokeDashoffset: 0, ease: 'none', scrollTrigger: { trigger: wrap, start: 'top 75%', end: 'bottom 60%', scrub: 0.6 } });
+      if (line) gsap.to(line, {
+        strokeDashoffset: 0, ease: 'none',
+        scrollTrigger: { trigger: wrap, start: 'top 75%', end: 'bottom 60%', scrub: 0.6 },
+        // The line runs from the first icon to the last; an icon turns red once the drawn line reaches it
+        onUpdate: function () {
+          var p = this.progress();
+          steps.forEach(function (step, i) {
+            step.classList.toggle('is-reached', p > 0.01 && p >= i / (steps.length - 1) - 0.001);
+          });
+        }
+      });
       gsap.fromTo(steps, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, stagger: 0.15, ease: 'back.out(1.4)', scrollTrigger: { trigger: wrap, start: 'top 80%', once: true } });
     }
 
@@ -577,18 +764,6 @@
         rx(-((e.clientY - r.top) / r.height - 0.5) * 6);
       });
       card.addEventListener('pointerleave', function () { rx(0); ry(0); });
-    });
-    $$('.magnetic', document).forEach(function (btn) {
-      if (btn.dataset.magnet) return;
-      btn.dataset.magnet = '1';
-      var x = gsap.quickTo(btn, 'x', { duration: 0.5, ease: 'power3.out' });
-      var y = gsap.quickTo(btn, 'y', { duration: 0.5, ease: 'power3.out' });
-      btn.addEventListener('pointermove', function (e) {
-        var r = btn.getBoundingClientRect();
-        x((e.clientX - r.left - r.width / 2) * 0.25);
-        y((e.clientY - r.top - r.height / 2) * 0.35);
-      });
-      btn.addEventListener('pointerleave', function () { x(0); y(0); });
     });
   }
 
@@ -670,7 +845,7 @@
     pauseBtn.addEventListener('click', function () {
       userPaused = !userPaused;
       pauseBtn.setAttribute('aria-pressed', String(userPaused));
-      pauseBtn.setAttribute('aria-label', userPaused ? 'Play the carousel' : 'Pause the carousel');
+      pauseBtn.setAttribute('aria-label', userPaused ? t('Play the carousel', 'Karussell abspielen') : t('Pause the carousel', 'Karussell pausieren'));
     });
     vp.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') hovering = true; });
     vp.addEventListener('pointerleave', function () { hovering = false; });
@@ -712,7 +887,9 @@
     }
     vp.addEventListener('pointerup', endDrag);
     vp.addEventListener('pointercancel', endDrag);
-    vp.addEventListener('lostpointercapture', endDrag);
+    // Only the viewport's own capture counts: on touch screens the finger is first captured by the touched
+    // child (an image); moving the capture to the viewport fires a bubbling lostpointercapture from that child.
+    vp.addEventListener('lostpointercapture', function (e) { if (e.target === vp) endDrag(e); });
     vp.addEventListener('click', function (e) { if (suppressClick) { e.preventDefault(); e.stopPropagation(); suppressClick = false; } }, true);
     vp.addEventListener('dragstart', function (e) { e.preventDefault(); });
 
@@ -751,7 +928,7 @@
     var DUR = reduceMotion ? 0 : 700, AUTO = 5500;
     var pos = 1, moving = false, elapsed = 0, drag = null, suppressClick = false;
     var userPaused = reduceMotion, hovering = false, focused = false, visible = true;
-    if (pauseBtn && userPaused) { pauseBtn.setAttribute('aria-pressed', 'true'); pauseBtn.setAttribute('aria-label', 'Play the slider'); }
+    if (pauseBtn && userPaused) { pauseBtn.setAttribute('aria-pressed', 'true'); pauseBtn.setAttribute('aria-label', t('Play the slider', 'Slider abspielen')); }
 
     function setPos(p, animate, dx) {
       pos = p;
@@ -789,7 +966,7 @@
     if (pauseBtn) pauseBtn.addEventListener('click', function () {
       userPaused = !userPaused;
       pauseBtn.setAttribute('aria-pressed', String(userPaused));
-      pauseBtn.setAttribute('aria-label', userPaused ? 'Play the slider' : 'Pause the slider');
+      pauseBtn.setAttribute('aria-label', userPaused ? t('Play the slider', 'Slider abspielen') : t('Pause the slider', 'Slider pausieren'));
     });
     root.addEventListener('keydown', function (e) {
       if (e.key === 'ArrowRight') { e.preventDefault(); go(1); }
@@ -831,7 +1008,9 @@
     }
     vp.addEventListener('pointerup', endDrag);
     vp.addEventListener('pointercancel', endDrag);
-    vp.addEventListener('lostpointercapture', endDrag);
+    // Only the viewport's own capture counts: on touch screens the finger is first captured by the touched
+    // child (an image); moving the capture to the viewport fires a bubbling lostpointercapture from that child.
+    vp.addEventListener('lostpointercapture', function (e) { if (e.target === vp) endDrag(e); });
     vp.addEventListener('click', function (e) { if (suppressClick) { e.preventDefault(); e.stopPropagation(); suppressClick = false; } }, true);
     vp.addEventListener('dragstart', function (e) { e.preventDefault(); });
 
@@ -902,15 +1081,6 @@
     if (!form || form.dataset.ready) return;
     form.dataset.ready = '1';
 
-    var phone = $('#f-phone', form);
-    var phoneReq = $('[data-phone-req]', form);
-    function syncCallback() {
-      var cb = $('input[name="reply"]:checked', form).value === 'A callback';
-      phone.required = cb;
-      phoneReq.hidden = !cb;
-    }
-    $$('input[name="reply"]', form).forEach(function (r) { r.addEventListener('change', syncCallback); });
-    syncCallback();
 
     applyPrefill();
 
@@ -932,8 +1102,10 @@
     function validate(field) {
       var v = (field.value || '').trim();
       if (field.type === 'checkbox') { setError(field, field.required && !field.checked ? 'required' : ''); return field.checked || !field.required; }
-      if (field.required && !v) { setError(field, 'Please fill in this field.'); return false; }
-      if (field.type === 'email' && v && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) { setError(field, 'Please enter a valid email address.'); return false; }
+      if (field.required && !v) { setError(field, t('Please fill in this field.', 'Bitte füllen Sie dieses Feld aus.')); return false; }
+      if (field.type === 'email' && v && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) { setError(field, t('Please enter a valid email address.', 'Bitte geben Sie eine gültige E-Mail-Adresse ein.')); return false; }
+      // Same rule as contact.php: at least 6 digits
+      if (field.type === 'tel' && v && (v.match(/[0-9]/g) || []).length < 6) { setError(field, t('Please enter a valid phone number.', 'Bitte geben Sie eine gültige Telefonnummer ein.')); return false; }
       setError(field, '');
       return true;
     }
@@ -946,107 +1118,236 @@
       f.addEventListener('input', function () { if (f.closest('.has-error')) validate(f); });
     });
 
-    /* Step-by-step: without JS all steps show as one long form */
-    var steps = $$('[data-form-step]', form);
-    var current = 0;
-    var dots = $$('[data-step-dot]', form);
-    var progress = $('[data-step-progress]', form);
-    var stepNum = $('[data-step-num]', form);
-    var stepFields = function (i) { return fields.filter(function (f) { return steps[i].contains(f); }); };
-
     function shake() { if (animate) gsap.fromTo(form, { x: -6 }, { x: 0, duration: 0.5, ease: 'elastic.out(1, 0.3)' }); }
-    function checkStep(i) {
-      var bad = null;
-      stepFields(i).forEach(function (f) { if (!validate(f) && !bad) bad = f; });
-      return bad;
+
+    var success = $('.form__success', form);
+    var errorBox = $('.form__error', form);
+    var send = $('.form__send', form);
+    var sendLabel = $('[data-send-label]', form);
+    var idle = sendLabel.textContent;
+    var loaded = Date.now();
+
+    // The letter folds into a paper plane, flies along the trail into the JDS box, the box gets its check badge.
+    // Returns the timeline; the confirmation text fades in when the plane lands.
+    function sentArt() {
+      var art = $('.form__sent-art', form);
+      var trail = $('.sa-trail', art), letter = $('.sa-letter', art), flap = $('.sa-flap', art);
+      var plane = $('.sa-plane', art), body = $('.sa-plane-body', art), box = $('.sa-box', art), badge = $('.sa-badge', art);
+      var len = trail.getTotalLength(), bb = trail.getBBox(), flight = { p: 0 };
+      function fly() {
+        var at = flight.p * len, pt = trail.getPointAtLength(at), next = trail.getPointAtLength(Math.min(len, at + 1));
+        var angle = Math.atan2(next.y - pt.y, next.x - pt.x) * 180 / Math.PI;
+        plane.setAttribute('transform', 'translate(' + pt.x + ' ' + pt.y + ') rotate(' + angle + ')');
+        // The route is used up as the plane flies: everything left of its tail disappears. The path runs
+        // left to right, so the cut follows the plane's own x (not the share of the length, which drifts on curves).
+        var cut = Math.max(0, Math.min(100, (pt.x - 24 - bb.x) / bb.width * 100));
+        trail.style.clipPath = 'inset(0 0 0 ' + cut + '%)';
+      }
+      gsap.set(trail, { opacity: 0 });
+      gsap.set(letter, { opacity: 0, y: 14 });
+      gsap.set(flap, { scaleY: 1, transformOrigin: '50% 100%' });
+      gsap.set(body, { opacity: 0, scale: 0, transformOrigin: '50% 50%' });
+      gsap.set(plane, { opacity: 1 });
+      gsap.set(badge, { scale: 0, transformOrigin: '50% 50%' });
+      gsap.set(box, { x: 228 });                                                            // at the end of the trail
+      fly();
+      return gsap.timeline()
+        .to(letter, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' })
+        .to(trail, { opacity: 1, duration: 0.5 }, '<0.1')                                   // the route ahead
+        .to(flap, { scaleY: -1, duration: 0.4, ease: 'power2.inOut' }, '+=0.1')          // top half folds down
+        .to(letter, { scaleX: 0.35, scaleY: 0.2, opacity: 0, duration: 0.3, ease: 'power2.in', transformOrigin: '50% 50%' })
+        .to(body, { opacity: 1, scale: 1, duration: 0.3, ease: 'back.out(2)' }, '-=0.12')  // ...and becomes the plane
+        .to(flight, { p: 1, duration: 1.4, ease: 'power1.inOut', onUpdate: fly })
+        .to(trail, { opacity: 0, duration: 0.2 }, '-=0.2')                                  // last bit at the box
+        .to(body, { scale: 0.2, opacity: 0, duration: 0.22, ease: 'power2.in' }, '-=0.18')
+        .to(box, { scale: 1.08, duration: 0.16, yoyo: true, repeat: 1, transformOrigin: '50% 50%' }, '-=0.06')
+        .to(badge, { scale: 1, duration: 0.45, ease: 'back.out(2.6)' }, '-=0.1')
+        .addLabel('landed', '-=0.3')
+        .to(box, { x: 0, scale: 1.3, transformOrigin: '50% 50%', duration: 0.8, ease: 'power3.inOut' }, '+=0.2'); // then glides to the centre, a bit larger
     }
-    function showStep(i, dir) {
-      var prev = steps[current];
-      current = i;
-      steps.forEach(function (s, k) { s.classList.toggle('is-active', k === i); });
-      dots.forEach(function (d, k) {
-        d.classList.toggle('is-current', k === i);
-        d.classList.toggle('is-done', k < i);
-      });
-      form.classList.toggle('is-first', i === 0);
-      form.classList.toggle('is-last', i === steps.length - 1);
-      if (progress) progress.style.width = ((i + 1) / steps.length * 100) + '%';
-      if (stepNum) stepNum.textContent = i + 1;
-      if (dir && animate && prev !== steps[i]) {
-        gsap.fromTo(steps[i], { x: 30 * dir, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5, ease: 'power3.out' });
-      }
-      if (dir) {
-        // keep the top of the form in view and move focus into the new step
-        var top = form.getBoundingClientRect().top;
-        if (top < 0 || top > window.innerHeight * 0.6) scrollToTarget(form);
-        var first = $('input:not([type=hidden]), select, textarea', steps[i]);
-        if (first) first.focus({ preventScroll: true });
-      }
+
+    function showSuccess() {
+      form.classList.add('is-sent');
+      errorBox.hidden = true;
+      success.hidden = false;
+      // The fields are gone now, so the page is shorter: measure again before scrolling to the message
       if (lenis) lenis.resize();
       if (window.ScrollTrigger) ScrollTrigger.refresh();
+      var art = $('.form__sent-art', form);
+      requestAnimationFrame(function () {
+        // Bring the animation into view (it sits just above the message), unless it already is
+        var r = art.getBoundingClientRect();
+        if (r.top < 80 || r.bottom > window.innerHeight) scrollToTarget(art);
+        success.focus({ preventScroll: true });
+      });
+      if (!animate) {
+        // Reduced motion: the same end picture, the box enlarged about its centre (280, 98)
+        $('.sa-box', art).setAttribute('transform', 'translate(280 98) scale(1.3) translate(-280 -98)');
+        return;
+      }
+      // A short pause so the letter is not folded while the page is still scrolling to it
+      var tl = sentArt().delay(0.5);
+      tl.fromTo(success, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' }, 'landed');
     }
-    function next() {
-      var bad = checkStep(current);
-      if (bad) { bad.focus({ preventScroll: true }); shake(); return; }
-      if (current < steps.length - 1) showStep(current + 1, 1);
+    function showError(code) {
+      var rate = code === 'rate';
+      $('[data-error-rate]', errorBox).hidden = !rate;
+      $('[data-error-other]', errorBox).hidden = rate;
+      errorBox.hidden = false;
+      if (lenis) lenis.resize();
     }
-
-    if (steps.length > 1) {
-      form.classList.add('is-stepped');
-      showStep(0);
-      $('[data-step-next]', form).addEventListener('click', next);
-      $('[data-step-prev]', form).addEventListener('click', function () { if (current > 0) showStep(current - 1, -1); });
-      dots.forEach(function (d, k) { d.addEventListener('click', function () { if (k < current) showStep(k, -1); }); });
+    function busy(on) {
+      send.disabled = on;
+      sendLabel.textContent = on ? t('Sending…', 'Wird gesendet …') : idle;
     }
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      // Enter key on an earlier step means "continue"
-      if (form.classList.contains('is-stepped') && current < steps.length - 1) { next(); return; }
+      if (send.disabled) return;
+      errorBox.hidden = true;
 
       var ok = true, firstBad = null;
       fields.forEach(function (f) { if (!validate(f)) { ok = false; firstBad = firstBad || f; } });
       if (!ok) {
-        if (form.classList.contains('is-stepped')) {
-          var k = steps.findIndex(function (s) { return s.contains(firstBad); });
-          if (k !== current) showStep(k, -1);
-        }
         firstBad.focus({ preventScroll: true });
         scrollToTarget(firstBad.closest('.field, .consent'));
         shake();
         return;
       }
 
-      var success = $('.form__success', form);
-      // Bots fill the hidden field; pretend success and send nothing.
-      if ($('#f-website', form).value) { success.hidden = false; return; }
+      // Bots fill the hidden field: pretend success and send nothing
+      if ($('#f-website', form).value) { showSuccess(); return; }
 
-      var d = new FormData(form);
-      var g = function (k) { return (d.get(k) || '').toString().trim(); };
-      var lines = [
-        'I would like: ' + g('reply'),
-        '',
-        'Company: ' + (g('company') || '-'),
-        'Name: ' + g('salutation') + ' ' + g('first_name') + ' ' + g('last_name'),
-        'Street: ' + g('street'),
-        'Postal code / Location: ' + g('postal_code') + ' ' + g('location'),
-        'Country: ' + g('country'),
-        'Email: ' + g('email'),
-        'Phone: ' + (g('phone') || '-'),
-        'Fax: ' + (g('fax') || '-'),
-        'How did you find us: ' + g('source'),
-        'Regarding: ' + g('reference'),
-        '',
-        'Inquiry:',
-        g('inquiry'),
-        '',
-        'Privacy policy accepted: yes'
-      ];
-      var subject = 'Website enquiry: ' + g('reference') + ' (' + g('first_name') + ' ' + g('last_name') + ')';
-      window.location.href = 'mailto:info@jds-sommer.de?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
+      // Sent in the background by the website (contact.php), no email program involved
+      var data = new FormData(form);
+      data.append('lang', DE ? 'de' : 'en');
+      data.append('elapsed', Math.round((Date.now() - loaded) / 1000));
+      var ctrl = window.AbortController ? new AbortController() : null;
+      var timer = ctrl && setTimeout(function () { ctrl.abort(); }, 20000);
+      busy(true);
+      altchaReady()
+        .then(function () {
+          if (altchaPayload) data.set('altcha', altchaPayload);
+          return fetch('/contact.php', { method: 'POST', body: data, headers: { Accept: 'application/json' }, signal: ctrl && ctrl.signal });
+        })
+        .then(function (res) { return res.json().catch(function () { return { ok: false }; }); })
+        .then(function (r) {
+          if (r && r.ok) { form.reset(); resetAltcha(); showSuccess(); }
+          else { showError(r && r.error); if (r && r.error === 'bot') resetAltcha(); }   // expired or refused: check again
+        })
+        .catch(function () { showError(); })
+        .then(function () { clearTimeout(timer); busy(false); });
+    });
 
-      success.hidden = false;
-      if (animate) gsap.fromTo(success, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' });
+    /* ALTCHA bot check: a self-hosted widget (assets/js/altcha/, MIT) solves a proof-of-work challenge from
+       contact.php in the background ("Ich bin kein Roboter" ticks itself when the visitor starts typing).
+       Loaded here rather than in the page head, so it also works after a page transition to the form. */
+    var widget = $('altcha-widget', form), altchaPayload = null;
+    if (widget) {
+      widget.addEventListener('statechange', function (e) {
+        var d = e.detail || {};
+        altchaPayload = d.state === 'verified' ? d.payload : null;
+      });
+      if (!(window.customElements && customElements.get('altcha-widget')) && !document.querySelector('script[data-altcha]')) {
+        var lib = document.createElement('script');
+        lib.src = '/assets/js/altcha/altcha.min.js?v=3.3.0';
+        lib.setAttribute('data-altcha', '');
+        lib.onload = function () {
+          var de = document.createElement('script');
+          de.src = '/assets/js/altcha/de.js?v=3.3.0';
+          // The German texts arrive after the widget started: apply the page language once they are there
+          de.onload = function () { $$('altcha-widget').forEach(function (w) { if (w.configure) w.configure({ language: DE ? 'de' : 'en' }); }); };
+          document.head.appendChild(de);
+        };
+        document.head.appendChild(lib);
+      }
+    }
+    // Resolves once the check is done (starting it if needed); after 15 s it gives up and the server decides
+    function altchaReady() {
+      if (altchaPayload || !widget || typeof widget.verify !== 'function') return Promise.resolve();
+      return new Promise(function (resolve) {
+        var timer = setTimeout(resolve, 15000);
+        widget.addEventListener('statechange', function wait(e) {
+          var s = e.detail && e.detail.state;
+          if (s === 'verified' || s === 'error' || s === 'expired') { clearTimeout(timer); widget.removeEventListener('statechange', wait); resolve(); }
+        });
+        try { widget.verify(); } catch (err) { clearTimeout(timer); resolve(); }
+      });
+    }
+    function resetAltcha() {
+      altchaPayload = null;
+      if (widget && typeof widget.reset === 'function') widget.reset();
+    }
+  }
+
+  /* ---------- Client feedback: quote carousel ---------- */
+  // The track is a native scroll-snap row (swipe and trackpad work as-is); this adds the arrows, dots,
+  // the active card and a slow autoplay that runs only while the section is on screen and nobody is using it.
+  function initQuotes(scope) {
+    var root = $('[data-quotes]', scope);
+    if (!root) return;
+    var track = $('[data-quotes-track]', root), slides = $$('[data-quote]', track), n = slides.length;
+    var dotsBox = $('[data-quotes-dots]', root), prev = $('[data-quotes-prev]', root), next = $('[data-quotes-next]', root);
+    if (n < 2) { $('.quotes__ctrl', root).hidden = true; return; }
+    var AUTO = 8000, cur = 0, timer = null, held = false, visible = false, raf = 0;
+
+    var dots = slides.map(function (s, i) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', t('Show feedback ', 'Kundenstimme ') + (i + 1) + t(' of ', ' von ') + n);
+      b.addEventListener('click', function () { go(i); restart(); });
+      dotsBox.appendChild(b);
+      return b;
+    });
+    function left(i) { return slides[i].offsetLeft - slides[0].offsetLeft; }
+    function mark(i) {
+      cur = i;
+      slides.forEach(function (s, k) { s.classList.toggle('is-active', k === i); });
+      dots.forEach(function (d, k) { if (k === i) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current'); });
+    }
+    function go(i) {
+      i = (i + n) % n;
+      track.scrollTo({ left: left(i), behavior: reduceMotion ? 'auto' : 'smooth' });
+      mark(i);
+    }
+    // The card nearest the start of the track is the current one (also after swiping)
+    function onScroll() {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(function () {
+        var x = track.scrollLeft, best = 0;
+        slides.forEach(function (s, k) { if (Math.abs(left(k) - x) < Math.abs(left(best) - x)) best = k; });
+        // at the end of the track the last card may not reach the start edge
+        if (x + track.clientWidth >= track.scrollWidth - 2) best = n - 1;
+        if (best !== cur) mark(best);
+      });
+    }
+    function stop() { clearInterval(timer); timer = null; }
+    function restart() {
+      stop();
+      if (!reduceMotion && visible && !held && !document.hidden) timer = setInterval(function () { go(cur + 1); }, AUTO);
+    }
+    function hold(on) { held = on; restart(); }
+    var io = 'IntersectionObserver' in window ? new IntersectionObserver(function (en) { visible = en[0].isIntersecting; restart(); }, { threshold: 0.35 }) : null;
+    if (io) io.observe(root); else { visible = true; }
+
+    prev.addEventListener('click', function () { go(cur - 1); restart(); });
+    next.addEventListener('click', function () { go(cur + 1); restart(); });
+    track.addEventListener('scroll', onScroll, { passive: true });
+    track.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); go(cur + (e.key === 'ArrowRight' ? 1 : -1)); restart(); }
+    });
+    root.addEventListener('pointerenter', function () { hold(true); });
+    root.addEventListener('pointerleave', function () { hold(false); });
+    root.addEventListener('focusin', function () { hold(true); });
+    root.addEventListener('focusout', function (e) { if (!root.contains(e.relatedTarget)) hold(false); });
+    track.addEventListener('touchstart', function () { hold(true); }, { passive: true });
+    document.addEventListener('visibilitychange', restart);
+    mark(0);
+    restart();
+    pageCleanups.push(function () {
+      stop(); cancelAnimationFrame(raf);
+      if (io) io.disconnect();
+      document.removeEventListener('visibilitychange', restart);
     });
   }
 
@@ -1065,11 +1366,14 @@
     initFaq(container);
     initIndustries(container);
     initSvcSlider(container);
+    initQuotes(container);
+    initHScroll(container);
 
     if (!animate) return;
     pageCtx = gsap.context(function () {
       if (!opts.deferHero) heroIntro(container);
       initReveals(container);
+      initStack(container);
     }, container);
     initPointer(container);
     ScrollTrigger.refresh();
@@ -1121,8 +1425,28 @@
     if (!animate || !window.barba || !/^https?:$/.test(location.protocol)) return;
     var curtain = $('.curtain'), mark = $('.curtain__mark');
 
+    // The header and mobile menu sit outside the swapped container, so their language links would keep
+    // pointing at the first page's translation. Take them from the incoming page instead.
+    function syncLangLinks(html) {
+      if (!html) return;
+      var doc = new DOMParser().parseFromString(html, 'text/html');
+      ['[data-lang-menu] a[hreflang]', '.m-lang a[hreflang]'].forEach(function (sel) {
+        var fresh = $$(sel, doc);
+        $$(sel).forEach(function (a) {
+          var match = fresh.filter(function (f) { return f.getAttribute('hreflang') === a.getAttribute('hreflang'); })[0];
+          if (match) a.setAttribute('href', match.getAttribute('href'));
+        });
+      });
+    }
     barba.init({
       preventRunning: true,
+      // The server can take over a second per page; Barba's default 2 s limit then aborted the
+      // transition halfway and left the new page hidden. Wait longer, and on any failure load the page normally.
+      timeout: 8000,
+      requestError: function (trigger, action, url) {
+        window.location.assign(url);
+        return false;
+      },
       prevent: function (o) {
         var el = o.el;
         return el.target === '_blank' || el.hasAttribute('data-no-barba') || isSamePageHash(el);
@@ -1145,6 +1469,7 @@
           if (lenis) lenis.scrollTo(0, { immediate: true }); else window.scrollTo(0, 0);
         },
         enter: function (data) {
+          syncLangLinks(data.next.html);
           initPage(data.next.container, { deferHero: true });
           // Barba strips the #fragment before navigating; read it from the clicked link instead
           var linkHref = data.trigger && data.trigger.href;
@@ -1169,7 +1494,9 @@
   /* ---------- Boot ---------- */
   function boot() {
     initLenis();
+    initScrollbar();
     initHeader();
+    initLang();
     initMenu();
     initNavDropdowns();
     // Social links are placeholders until the profile URLs are set: "#" should do nothing
