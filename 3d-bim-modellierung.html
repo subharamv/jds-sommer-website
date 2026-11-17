@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="de" translate="no" class="notice-closed">
 <head>
   <meta charset="utf-8">
@@ -139,13 +139,15 @@
     // Hide animated elements only when JS runs; give them back if the libraries never arrive.
     (function (d) {
       d.classList.add('js');
-      // Final design: Header V1 and Hero V4 (the review switcher is gone); choices saved during the review are cleared
-      d.setAttribute('data-header-design', 'v1');
+      // Final design: Header V2 (dropdowns) and Hero V4 (the review switcher is gone); choices saved during the review are cleared
+      d.setAttribute('data-header-design', 'v2');
       try { localStorage.removeItem('jdsHeader'); localStorage.removeItem('jdsHero'); } catch (e) {}
       // Old review links (?header=…, ?hero=…) no longer do anything: take them out of the address bar
       try { var u = new URL(location.href); if (u.searchParams.has('header') || u.searchParams.has('hero')) { u.searchParams.delete('header'); u.searchParams.delete('hero'); history.replaceState(history.state, '', u.pathname + u.search + u.hash); } } catch (e) {}
-      // Pages still in review only show on local/dev hosts (html.is-local)
-      if (location.protocol === 'file:' || /^(localhost|127\.0\.0\.1|\[::1\]|.+\.local|192\.168\.\d+\.\d+|10\.\d+\.\d+\.\d+)$/.test(location.hostname)) d.classList.add('is-local');
+      // All pages are public since 2026-11-17: is-local is always on, so every [data-local-only] item shows
+      d.classList.add('is-local');
+      // Services menu V3 (image preview): live on all hosts since 2026-11-17
+      d.setAttribute('data-header-design', 'v3');
       try { if (localStorage.getItem('jdsNoticeClosed')) d.classList.add('notice-closed'); } catch (e) {}
       var seen = false;
       try { seen = !!sessionStorage.getItem('jdsSeen'); } catch (e) {}
@@ -308,18 +310,194 @@
       <nav class="nav" aria-label="Hauptnavigation">
         <ul class="nav__list" data-header-variant="v2">
           <li class="nav__item" data-dd>
-            <button class="nav__link nav__trigger" type="button" aria-expanded="false" aria-controls="dd-services" data-nav-group="2d 3d">
-              Leistungen <svg class="nav__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            <button class="nav__link nav__trigger" type="button" aria-expanded="false" aria-controls="dd-services" data-nav-group="2d 3d asbuilt gis docs">
+              <span class="nav__label">Leistungen</span> <svg class="nav__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
             </button>
             <div class="nav-dd nav-dd--mega" id="dd-services">
+              <!-- Services V3 (preview): groups | sub-services | one shared image preview -->
+              <div class="svc3" data-svc3>
+                <div class="svc3__rail" data-lenis-prevent>
+                  <p class="svc3__label">Unsere Leistungen</p>
+                  <a href="2d-cad-digitalisierung.html" class="svc3__group is-on" data-svc3-group="0" data-nav="2d"><span class="svc3__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 12h6v8M10 4v4M14 12h6M10 12a4 4 0 0 1 4-4"/></svg></span><span class="svc3__gtext"><strong>2D-CAD-Digitalisierung</strong><small>Pläne, Zeichnungen und Scans zu bearbeitbarem DWG</small></span><svg class="svc3__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+                  <a href="3d-bim-modellierung.html" class="svc3__group" data-svc3-group="1" data-nav="3d"><span class="svc3__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></svg></span><span class="svc3__gtext"><strong>3D- &amp; BIM-Modellierung</strong><small>BIM-Modelle aus Scans und CAD-Dateien</small></span><svg class="svc3__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+                  <a href="3d-cad-reverse-engineering.html" class="svc3__group" data-svc3-group="2" data-nav="3dcad"><span class="svc3__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.3 7l8.7 5 8.7-5M12 22V12"/></svg></span><span class="svc3__gtext"><strong>3D-CAD &amp; Reverse Engineering</strong><small>3D-Modelle von Bauteilen und Maschinen</small></span><svg class="svc3__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+                  <a href="bestandsdokumentation.html" class="svc3__group" data-svc3-group="3" data-nav="asbuilt" data-local-only><span class="svc3__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 21V9l8-5 8 5v12"/><path d="M4 21h16M9 21v-5h6v5M9 11h6"/></svg></span><span class="svc3__gtext"><strong>Bestands- &amp; Facility-Dokumentation</strong><small>Aktuelle Pläne von Bestandsgebäuden und Anlagen</small></span><svg class="svc3__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+                  <a href="gis-infrastrukturdaten.html" class="svc3__group" data-svc3-group="4" data-nav="gis" data-local-only><span class="svc3__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/></svg></span><span class="svc3__gtext"><strong>GIS- &amp; Infrastrukturdaten</strong><small>Karten und Netze, bereit für GIS</small></span><svg class="svc3__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+                  <hr class="svc3__divider">
+                  <a href="3d-bim-modellierung.html#modelling-by-discipline" class="svc3__group svc3__group--discipline" data-svc3-group="5"><span class="svc3__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 21V9l8-5 8 5v12"/><path d="M9 21v-6h6v6M3 21h18M12 4v5"/></svg></span><span class="svc3__gtext"><strong>Modellierung nach Fachdisziplin</strong><small>Architektur, Tragwerk, Elektro, HLS, Anlagenbau</small></span><svg class="svc3__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+                </div>
+                <div class="svc3__panes" data-lenis-prevent>
+                  <div class="svc3__pane is-on" data-svc3-pane="0">
+                    <a href="2d-cad-digitalisierung.html" class="svc3__pane-head" data-svc3-show="svc-2d-digitalisation">
+                      <strong>2D-CAD-Digitalisierung</strong>
+                      <span>Übersicht <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span>
+                    </a>
+                    <ul class="svc3__links">
+                      <li><a href="2d-cad-digitalisierung.html#drawing-to-cad-conversion" data-svc3-show="2d-drawing-to-cad-conversion"><span>Papier/PDF zu CAD</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+                      <li><a href="2d-cad-digitalisierung.html#cafm-data-preparation" data-svc3-show="2d-cafm-data-preparation"><span>CAFM-Datenaufbereitung</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+                      <li><a href="2d-cad-digitalisierung.html#scan-to-cad" data-svc3-show="2d-scan-to-cad"><span>Punktwolke zu 2D-CAD</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+                      <li><a href="2d-cad-digitalisierung.html#cad-from-engineering-drawings" data-svc3-show="2d-cad-from-engineering"><span>CAD-Modellierung aus Konstruktionszeichnungen</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+                      <li><a href="2d-cad-digitalisierung.html#cad-restructuring" data-svc3-show="2d-cad-restructuring"><span>CAD-Umstrukturierung &amp; Standardisierung</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+                    </ul>
+                  </div>
+                  <div class="svc3__pane" data-svc3-pane="1">
+                    <a href="3d-bim-modellierung.html" class="svc3__pane-head" data-svc3-show="svc-3d-modelling">
+                      <strong>3D- &amp; BIM-Modellierung</strong>
+                      <span>Übersicht <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span>
+                    </a>
+                    <ul class="svc3__links">
+                      <li><a href="3d-bim-modellierung.html#scan-to-bim" data-svc3-show="3d-scan-to-bim"><span>Scan-to-BIM-Dienstleistungen</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+                      <li><a href="3d-bim-modellierung.html#cad-to-bim" data-svc3-show="3d-cad-to-bim"><span>CAD-to-BIM-Dienstleistungen</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+                      <li><a href="3d-bim-modellierung.html#as-built-bim" data-svc3-show="3d-as-built-bim"><span>Bestands-BIM-Modellierung</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+                      <li><a href="3d-bim-modellierung.html#industrial-facility-modelling" data-svc3-show="3d-industrial-facility-modelling"><span>BIM-Modellierung von Industrieanlagen</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+                    </ul>
+                  </div>
+                  <div class="svc3__pane" data-svc3-pane="2">
+                    <a href="3d-cad-reverse-engineering.html" class="svc3__pane-head" data-svc3-show="svc-3d-cad-reverse-engineering">
+                      <strong>3D-CAD &amp; Reverse Engineering</strong>
+                      <span>Übersicht <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span>
+                    </a>
+                    <ul class="svc3__links">
+                      <li><a href="3d-cad-reverse-engineering.html#component-modelling" data-svc3-show="3d-component-modelling"><span>3D-Bauteilmodellierung</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+                      <li><a href="3d-cad-reverse-engineering.html#scan-to-cad" data-svc3-show="scan-to-cad-modelling"><span>Scan-to-CAD-Modellierung</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+                      <li><a href="3d-cad-reverse-engineering.html#industrial-equipment" data-svc3-show="industrial-equipment-machinery"><span>Industrieanlagen- &amp; Maschinenmodellierung</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+                      <li><a href="3d-cad-reverse-engineering.html#mechanical-assembly" data-svc3-show="mechanical-assembly-modelling"><span>Mechanische Baugruppenmodellierung</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+                    </ul>
+                  </div>
+                  <div class="svc3__pane" data-svc3-pane="3" data-local-only>
+                    <a href="bestandsdokumentation.html" class="svc3__pane-head" data-svc3-show="svc-as-built-facility-management">
+                      <strong>Bestands- &amp; Facility-Dokumentation</strong>
+                      <span>Übersicht <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span>
+                    </a>
+                    <ul class="svc3__links">
+                      <li><a href="bestandsdokumentation.html#as-built-drawings" data-svc3-show="as-built-drawings"><span>Bestands- &amp; Gebäudedokumentation</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+                      <li><a href="bestandsdokumentation.html#facility-management-drawings" data-svc3-show="facility-management-drawings"><span>Facility-Management-Dokumentation</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+                      <li><a href="bestandsdokumentation.html#existing-industrial-facility-documentation" data-svc3-show="existing-industrial-facility-documentation"><span>Industrieanlagen-Dokumentation</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+                      <li><a href="bestandsdokumentation.html#cad-updates-from-site-measurements" data-svc3-show="cad-updates-from-site-measurements"><span>CAD-Nachführung aus Aufmaßen</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+                    </ul>
+                  </div>
+                  <div class="svc3__pane" data-svc3-pane="4" data-local-only>
+                    <a href="gis-infrastrukturdaten.html" class="svc3__pane-head" data-svc3-show="svc-gis-infrastructure-data">
+                      <strong>GIS- &amp; Infrastrukturdaten</strong>
+                      <span>Übersicht <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span>
+                    </a>
+                    <ul class="svc3__links">
+                      <li><a href="gis-infrastrukturdaten.html#gis-digitisation" data-svc3-show="gis-digitisation"><span>GIS-Digitalisierung</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+                      <li><a href="gis-infrastrukturdaten.html#utility-map-digitisation" data-svc3-show="utility-map-digitisation"><span>Digitalisierung von Leitungsplänen</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+                      <li><a href="gis-infrastrukturdaten.html#cad-to-gis-data-conversion" data-svc3-show="cad-to-gis-data-conversion"><span>CAD-zu-GIS-Konvertierung</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+                      <li><a href="gis-infrastrukturdaten.html#georeferencing-map-updating" data-svc3-show="georeferencing-map-updating"><span>Georeferenzierung &amp; Kartennachführung</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+                    </ul>
+                  </div>
+                  <div class="svc3__pane" data-svc3-pane="5">
+                    <a href="3d-bim-modellierung.html#modelling-by-discipline" class="svc3__pane-head" data-svc3-show="svc-modelling-by-discipline">
+                      <strong>Modellierung nach Fachdisziplin</strong>
+                      <span>Übersicht <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span>
+                    </a>
+                    <ul class="svc3__links">
+                      <li><a href="3d-bim-modellierung.html#architectural-modelling" data-svc3-show="architectural-modelling"><span>Architektur</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+                      <li><a href="3d-bim-modellierung.html#structural-modelling" data-svc3-show="structural-modelling"><span>Tragwerk</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+                      <li><a href="3d-bim-modellierung.html#electrical-modelling" data-svc3-show="electrical-modelling"><span>Elektro</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+                      <li><a href="3d-bim-modellierung.html#hvac-plumbing-modelling" data-svc3-show="hvac-plumbing-modelling"><span>HLS</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+                      <li><a href="3d-bim-modellierung.html#plant-modelling" data-svc3-show="plant-modelling"><span>Anlagenbau</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="svc3__preview">
+                  <div class="svc3__media" aria-hidden="true">
+                      <img src="assets/img/services/svc-2d-digitalisation.webp" alt="" decoding="async" data-svc3-img="svc-2d-digitalisation" class="is-on">
+                      <img data-src="assets/img/services/2d-drawing-to-cad-conversion.webp" alt="" decoding="async" data-svc3-img="2d-drawing-to-cad-conversion">
+                      <img data-src="assets/img/services/2d-scan-to-cad.webp" alt="" decoding="async" data-svc3-img="2d-scan-to-cad">
+                      <img data-src="assets/img/services/2d-cafm-data-preparation.webp" alt="" decoding="async" data-svc3-img="2d-cafm-data-preparation">
+                      <img data-src="assets/img/services/2d-cad-from-engineering-drawings.webp" alt="" decoding="async" data-svc3-img="2d-cad-from-engineering">
+                      <img data-src="assets/img/services/2d-cad-restructuring.webp" alt="" decoding="async" data-svc3-img="2d-cad-restructuring">
+                      <img data-src="assets/img/services/svc-3d-modelling.webp" alt="" decoding="async" data-svc3-img="svc-3d-modelling">
+                      <img data-src="assets/img/services/3d-scan-to-bim.webp" alt="" decoding="async" data-svc3-img="3d-scan-to-bim">
+                      <img data-src="assets/img/services/3d-cad-to-bim.webp" alt="" decoding="async" data-svc3-img="3d-cad-to-bim">
+                      <img data-src="assets/img/services/3d-as-built-bim.webp" alt="" decoding="async" data-svc3-img="3d-as-built-bim">
+                      <img data-src="assets/img/services/3d-cad-modelling-reverse-engineering.webp" alt="" decoding="async" data-svc3-img="3d-cad-modelling-reverse-engineering">
+                      <img data-src="assets/img/work/core-3d-bim-modelling.webp" alt="" decoding="async" data-svc3-img="svc-modelling-by-discipline">
+                      <img data-src="assets/img/services/menu/mep-modelling.webp" alt="" decoding="async" data-svc3-img="electrical-modelling">
+                      <img data-src="assets/img/services/menu/hvac-modelling.webp" alt="" decoding="async" data-svc3-img="hvac-plumbing-modelling">
+                      <img data-src="assets/img/services/3d-cad-modelling-reverse-engineering.webp" alt="" decoding="async" data-svc3-img="svc-3d-cad-reverse-engineering">
+                      <img data-src="assets/img/services/3d-cad-modelling-reverse-engineering.webp" alt="" decoding="async" data-svc3-img="3d-component-modelling">
+                      <img data-src="assets/img/services/svc-scan-to-cad-modelling.webp" alt="" decoding="async" data-svc3-img="scan-to-cad-modelling">
+                      <img data-src="assets/img/services/3d-industrial-facility-modelling.webp" alt="" decoding="async" data-svc3-img="industrial-equipment-machinery">
+                      <img data-src="assets/img/services/3d-cad-modelling-reverse-engineering.webp" alt="" decoding="async" data-svc3-img="mechanical-assembly-modelling">
+                      <img data-src="assets/img/services/3d-industrial-facility-modelling.webp" alt="" decoding="async" data-svc3-img="3d-industrial-facility-modelling">
+                      <img data-src="assets/img/work/core-3d-bim-modelling.webp" alt="" decoding="async" data-svc3-img="core-3d-bim-modelling">
+                      <img data-src="assets/img/services/menu/architectural-modelling.webp" alt="" decoding="async" data-svc3-img="architectural-modelling">
+                      <img data-src="assets/img/services/menu/structural-modelling.webp" alt="" decoding="async" data-svc3-img="structural-modelling">
+                      <img data-src="assets/img/services/menu/mep-modelling.webp" alt="" decoding="async" data-svc3-img="mep-modelling">
+                      <img data-src="assets/img/services/menu/hvac-modelling.webp" alt="" decoding="async" data-svc3-img="hvac-modelling">
+                      <img data-src="assets/img/services/menu/plant-modelling.webp" alt="" decoding="async" data-svc3-img="plant-modelling">
+                      <img data-src="assets/img/services/svc-as-built-facility-management.webp" alt="" decoding="async" data-svc3-img="svc-as-built-facility-management">
+                      <img data-src="assets/img/services/menu/as-built-drawings.webp" alt="" decoding="async" data-svc3-img="as-built-drawings">
+                      <img data-src="assets/img/work/navvis-as-built-documentation-still.webp" alt="" decoding="async" data-svc3-img="navvis-as-built-documentation-still">
+                      <img data-src="assets/img/services/menu/facility-management-drawings.webp" alt="" decoding="async" data-svc3-img="facility-management-drawings">
+                      <img data-src="assets/img/services/menu/building-plans-from-survey-data.webp" alt="" decoding="async" data-svc3-img="building-plans-from-survey-data">
+                      <img data-src="assets/img/services/menu/existing-industrial-facility-documentation.webp" alt="" decoding="async" data-svc3-img="existing-industrial-facility-documentation">
+                      <img data-src="assets/img/services/menu/cad-updates-from-site-measurements.webp" alt="" decoding="async" data-svc3-img="cad-updates-from-site-measurements">
+                      <img data-src="assets/img/services/svc-gis-infrastructure-data.webp" alt="" decoding="async" data-svc3-img="svc-gis-infrastructure-data">
+                      <img data-src="assets/img/services/menu/gis-digitisation.webp" alt="" decoding="async" data-svc3-img="gis-digitisation">
+                      <img data-src="assets/img/services/menu/utility-map-digitisation.webp" alt="" decoding="async" data-svc3-img="utility-map-digitisation">
+                      <img data-src="assets/img/services/menu/cad-to-gis-data-conversion.webp" alt="" decoding="async" data-svc3-img="cad-to-gis-data-conversion">
+                      <img data-src="assets/img/services/menu/legacy-infrastructure-map-conversion.webp" alt="" decoding="async" data-svc3-img="legacy-infrastructure-map-conversion">
+                      <img data-src="assets/img/services/menu/georeferencing-map-updating.webp" alt="" decoding="async" data-svc3-img="georeferencing-map-updating">
+                      <img data-src="assets/img/services/svc-scan-to-cad-modelling.webp" alt="" decoding="async" data-svc3-img="svc-scan-to-cad-modelling">
+                      <img data-src="assets/img/services/menu/paper-pdf-to-cad.webp" alt="" decoding="async" data-svc3-img="paper-pdf-to-cad">
+                      <img data-src="assets/img/services/menu/large-format-drawing-scanning.webp" alt="" decoding="async" data-svc3-img="large-format-drawing-scanning">
+                    <span class="svc3__shade"></span>
+                    <svg class="svc3__mark"><use href="#jds-mark"/></svg>
+                  </div>
+                    <div class="svc3__info is-on" data-svc3-info="0" data-svc3-img-key="svc-2d-digitalisation">
+                      <strong class="svc3__title" data-svc3-title>2D-CAD-Digitalisierung</strong>
+                      <p>Papierpläne, PDFs und Scans als layerstrukturierte, maßstabsgetreue DWG-, DGN- oder Allplan-Zeichnungen, geprüft von unseren CAD-Experten.</p>
+                      <ul class="svc3__chips"><li>DWG</li><li>DGN</li><li>Allplan</li></ul>
+                      <a href="2d-cad-digitalisierung.html" class="svc3__cta">Leistung erkunden <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+                    </div>
+                    <div class="svc3__info" data-svc3-info="1" data-svc3-img-key="svc-3d-modelling">
+                      <strong class="svc3__title" data-svc3-title>3D- &amp; BIM-Modellierung</strong>
+                      <p>BIM-Modelle aus Punktwolken, 2D-Plänen und Fotos sowie 3D-CAD-Modelle von Maschinenteilen, von LOD 100 bis LOD 500.</p>
+                      <ul class="svc3__chips"><li>Revit</li><li>IFC</li><li>STEP</li></ul>
+                      <a href="3d-bim-modellierung.html" class="svc3__cta">Leistung erkunden <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+                    </div>
+                    <div class="svc3__info" data-svc3-info="2" data-svc3-img-key="svc-3d-cad-reverse-engineering">
+                      <strong class="svc3__title" data-svc3-title>3D-CAD &amp; Reverse Engineering</strong>
+                      <p>3D-Modelle von Bauteilen, Maschinen und Industrieanlagen aus Scans, Skizzen oder Bestandsteilen.</p>
+                      <ul class="svc3__chips"><li>STEP</li><li>IGES</li><li>Inventor</li></ul>
+                      <a href="3d-cad-reverse-engineering.html" class="svc3__cta">Leistung erkunden <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+                    </div>
+                    <div class="svc3__info" data-svc3-info="3" data-svc3-img-key="svc-as-built-facility-management" data-local-only>
+                      <strong class="svc3__title" data-svc3-title>Bestands- &amp; Facility-Dokumentation</strong>
+                      <p>Aktuelle Grundrisse, Schnitte und FM-Pläne bestehender Gebäude und Anlagen, bereit für Ihr CAFM-System.</p>
+                      <ul class="svc3__chips"><li>DWG</li><li>DXF</li><li>IFC</li></ul>
+                      <a href="bestandsdokumentation.html" class="svc3__cta">Leistung erkunden <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+                    </div>
+                    <div class="svc3__info" data-svc3-info="4" data-svc3-img-key="svc-gis-infrastructure-data" data-local-only>
+                      <strong class="svc3__title" data-svc3-title>GIS- &amp; Infrastrukturdaten</strong>
+                      <p>Leitungs- und Netzpläne sowie CAD-Zeichnungen als georeferenzierte GIS-Daten mit Attributen.</p>
+                      <ul class="svc3__chips"><li>Shapefile</li><li>DXF</li><li>DWG</li></ul>
+                      <a href="gis-infrastrukturdaten.html" class="svc3__cta">Leistung erkunden <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+                    </div>
+                    <div class="svc3__info" data-svc3-info="5" data-svc3-img-key="svc-modelling-by-discipline">
+                      <strong class="svc3__title" data-svc3-title>Modellierung nach Fachdisziplin</strong>
+                      <p>BIM-Modelle für Architektur, Tragwerk, Elektro, HLS und Anlagenbau.</p>
+                      <ul class="svc3__chips"><li>Revit</li><li>Allplan</li><li>Archicad</li></ul>
+                      <a href="3d-bim-modellierung.html#modelling-by-discipline" class="svc3__cta">Leistung erkunden <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+                    </div>
+                </div>
+              </div>
+              <div class="nav-dd__cols" data-lenis-prevent>
               <div class="nav-dd__col">
                 <a href="2d-cad-digitalisierung.html" class="nav-dd__head" data-nav="2d">
                   <span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 12h6v8M10 4v4M14 12h6M10 12a4 4 0 0 1 4-4"/></svg></span>
                   <span><strong>2D-CAD-Digitalisierung</strong><small>Pläne, Zeichnungen und Scans zu bearbeitbarem DWG</small></span>
                 </a>
                 <ul class="nav-dd__list">
-                  <li><a href="2d-cad-digitalisierung.html#drawing-to-cad-conversion">Zeichnungen zu CAD</a></li>
-                  <li><a href="2d-cad-digitalisierung.html#scan-to-cad">Scan-to-CAD</a></li>
+                  <li><a href="2d-cad-digitalisierung.html#drawing-to-cad-conversion">Papier/PDF zu CAD</a></li>
+                  <li><a href="2d-cad-digitalisierung.html#cafm-data-preparation">CAFM-Datenaufbereitung</a></li>
+                  <li><a href="2d-cad-digitalisierung.html#scan-to-cad">Punktwolke zu 2D-CAD</a></li>
+                  <li><a href="2d-cad-digitalisierung.html#cad-from-engineering-drawings">CAD-Modellierung aus Konstruktionszeichnungen</a></li>
                   <li><a href="2d-cad-digitalisierung.html#cad-restructuring">CAD-Umstrukturierung &amp; Standardisierung</a></li>
                 </ul>
               </div>
@@ -329,11 +507,10 @@
                   <span><strong>3D- &amp; BIM-Modellierung</strong><small>Aus Punktwolken, CAD-Dateien und Bauteilen</small></span>
                 </a>
                 <ul class="nav-dd__list">
-                  <li><a href="3d-bim-modellierung.html#scan-to-bim">Scan-to-BIM</a></li>
-                  <li><a href="3d-bim-modellierung.html#cad-to-bim">CAD-to-BIM-Modellierung</a></li>
+                  <li><a href="3d-bim-modellierung.html#scan-to-bim">Scan-to-BIM-Dienstleistungen</a></li>
+                  <li><a href="3d-bim-modellierung.html#cad-to-bim">CAD-to-BIM-Dienstleistungen</a></li>
                   <li><a href="3d-bim-modellierung.html#as-built-bim">Bestands-BIM-Modellierung</a></li>
-                  <li><a href="3d-bim-modellierung.html#3d-cad-modelling">3D-CAD &amp; Reverse Engineering</a></li>
-                  <li><a href="3d-bim-modellierung.html#industrial-facility-modelling">Modellierung von Industrieanlagen</a></li>
+                  <li><a href="3d-bim-modellierung.html#industrial-facility-modelling">BIM-Modellierung von Industrieanlagen</a></li>
                 </ul>
               </div>
               <div class="nav-dd__col">
@@ -344,13 +521,53 @@
                 <ul class="nav-dd__list">
                   <li><a href="3d-bim-modellierung.html#architectural-modelling">Architekturmodellierung</a></li>
                   <li><a href="3d-bim-modellierung.html#structural-modelling">Tragwerksmodellierung</a></li>
-                  <li><a href="3d-bim-modellierung.html#mep-modelling">TGA-Modellierung (MEP)</a></li>
-                  <li><a href="3d-bim-modellierung.html#hvac-modelling">HLS-Modellierung</a></li>
+                  <li><a href="3d-bim-modellierung.html#electrical-modelling">Elektro</a></li>
+                  <li><a href="3d-bim-modellierung.html#hvac-plumbing-modelling">HLS</a></li>
                   <li><a href="3d-bim-modellierung.html#plant-modelling">Anlagenmodellierung</a></li>
                 </ul>
               </div>
+              <div class="nav-dd__col" data-local-only>
+                <a href="bestandsdokumentation.html" class="nav-dd__head" data-nav="asbuilt">
+                  <span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 21V9l8-5 8 5v12"/><path d="M4 21h16M9 21v-5h6v5M9 11h6"/></svg></span>
+                  <span><strong>Bestands- &amp; Facility-Dokumentation</strong><small>Aktuelle Pläne von Bestandsgebäuden und Anlagen</small></span>
+                </a>
+                <ul class="nav-dd__list">
+                  <li><a href="bestandsdokumentation.html#as-built-drawings">Bestands- &amp; Gebäudedokumentation</a></li>
+                  <li><a href="bestandsdokumentation.html#facility-management-drawings">Facility-Management-Dokumentation</a></li>
+                  <li><a href="bestandsdokumentation.html#existing-industrial-facility-documentation">Industrieanlagen-Dokumentation</a></li>
+                  <li><a href="bestandsdokumentation.html#cad-updates-from-site-measurements">CAD-Nachführung aus Aufmaßen</a></li>
+                </ul>
+              </div>
+              <div class="nav-dd__col" data-local-only>
+                <a href="gis-infrastrukturdaten.html" class="nav-dd__head" data-nav="gis">
+                  <span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/></svg></span>
+                  <span><strong>GIS- &amp; Infrastrukturdaten</strong><small>Karten und Netze, bereit für GIS</small></span>
+                </a>
+                <ul class="nav-dd__list">
+                  <li><a href="gis-infrastrukturdaten.html#gis-digitisation">GIS-Digitalisierung</a></li>
+                  <li><a href="gis-infrastrukturdaten.html#utility-map-digitisation">Digitalisierung von Leitungsplänen</a></li>
+                  <li><a href="gis-infrastrukturdaten.html#cad-to-gis-data-conversion">CAD-zu-GIS-Konvertierung</a></li>
+                  <li><a href="gis-infrastrukturdaten.html#georeferencing-map-updating">Georeferenzierung &amp; Kartennachführung</a></li>
+                </ul>
+              </div>
+              <div class="nav-dd__col" data-local-only>
+                <a href="zeichnungs-dokumentendigitalisierung.html" class="nav-dd__head" data-nav="docs">
+                  <span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span>
+                  <span><strong>Plan- &amp; Zeichnungsdigitalisierung</strong><small>Papier- und PDF-Zeichnungen zu bearbeitbarem CAD</small></span>
+                </a>
+                <ul class="nav-dd__list">
+                  <li><a href="zeichnungs-dokumentendigitalisierung.html#drawing-to-cad-conversion">Zeichnung-zu-CAD-Konvertierung (Papier &amp; PDF)</a></li>
+                  <li><a href="zeichnungs-dokumentendigitalisierung.html#large-format-drawing-scanning">Scannen großformatiger Zeichnungen</a></li>
+                  <li><a href="zeichnungs-dokumentendigitalisierung.html#cad-restructuring-standardisation">CAD-Umstrukturierung &amp; Standardisierung</a></li>
+                </ul>
+              </div>
+              </div>
               <div class="nav-dd__foot">
-                <a href="index.html#contact" class="nav-dd__cta">
+                <a href="kontakt.html" class="nav-dd__cta" data-local-only>
+                  <strong>Unsicher, welche Leistung passt?</strong>
+                  <small>Senden Sie uns Ihre Pläne für eine kostenlose Beratung und ein kostenloses Angebot <span aria-hidden="true">&rarr;</span></small>
+                </a>
+                <a href="index.html#contact" class="nav-dd__cta" data-public-only>
                   <strong>Unsicher, welche Leistung passt?</strong>
                   <small>Senden Sie uns Ihre Pläne für eine kostenlose Beratung und ein kostenloses Angebot <span aria-hidden="true">&rarr;</span></small>
                 </a>
@@ -369,34 +586,93 @@
               </div>
             </div>
           </li>
-          <li class="nav__item" data-dd>
-            <button class="nav__link nav__trigger" type="button" aria-expanded="false" aria-controls="dd-about" data-nav-group="about">
-              Über uns <svg class="nav__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-            </button>
-            <div class="nav-dd" id="dd-about">
-              <ul class="nav-dd__list">
-                <li data-local-only><a href="ueber-uns.html" data-nav="about">Über JDS Sommer</a></li>
-                <li data-public-only><a href="index.html#about">Über JDS Sommer</a></li>
-                <li><a href="index.html#industries">Branchen</a></li>
+          <li class="nav__item" data-dd data-local-only>
+            <a href="branchen/index.html" class="nav__link nav__trigger" aria-expanded="false" aria-controls="dd-industries" data-nav-group="industries" data-nav="industries">
+              <span class="nav__label">Branchen</span> <svg class="nav__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </a>
+            <div class="nav-dd nav-dd--industries" id="dd-industries">
+              <div class="nav-dd__ind-head">
+                <p class="nav-dd__label">Unsere Branchen</p>
+                <a href="branchen/index.html" class="nav-dd__ind-all" data-nav="industries">Alle Branchen <svg class="nav-dd__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+              </div>
+              <ul class="nav-dd__ind">
+                <li><a href="branchen/industrie-fertigung.html" class="nav-dd__ind-link"><span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21V11l5 3v-3l5 3V4h5v17"/><path d="M2 21h20M7 18h2M12 18h2"/></svg></span><span>Industrie &amp; Fertigung</span><svg class="nav-dd__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+                <li><a href="branchen/energie-versorgung.html" class="nav-dd__ind-link"><span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 3L5 13.5h6L10 21l8-10.5h-6z"/></svg></span><span>Energie &amp; Versorgung</span><svg class="nav-dd__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+                <li><a href="branchen/oeffentliche-hand.html" class="nav-dd__ind-link"><span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 9.5L12 4l9 5.5M4 9.5h16M6 9.5V18M10 9.5V18M14 9.5V18M18 9.5V18M4 18h16M3 21h18"/></svg></span><span>Öffentliche Hand</span><svg class="nav-dd__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+                <li><a href="branchen/bauwesen-architektur.html" class="nav-dd__ind-link"><span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 21V5M3 5h17M7 9l4-4M17 5v5M15.5 10h3v2.5h-3zM4 21h6"/></svg></span><span>Bauwesen &amp; Architektur</span><svg class="nav-dd__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+                <li><a href="branchen/immobilien-facility-management.html" class="nav-dd__ind-link"><span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2M3 21h18"/></svg></span><span>Immobilien &amp; Facility Management</span><svg class="nav-dd__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+                <li><a href="branchen/gesundheitswesen.html" class="nav-dd__ind-link"><span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"/></svg></span><span>Gesundheitswesen</span><svg class="nav-dd__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+                <li><a href="branchen/bildung-forschung.html" class="nav-dd__ind-link"><span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5M22 9v6"/></svg></span><span>Bildung &amp; Forschung</span><svg class="nav-dd__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+                <li><a href="branchen/verkehr-infrastruktur.html" class="nav-dd__ind-link"><span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="13" rx="3"/><path d="M5 10h14M9 13h.01M15 13h.01M8 16l-2 5M16 16l2 5M7 19h10"/></svg></span><span>Verkehr &amp; Infrastruktur</span><svg class="nav-dd__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+                <li><a href="branchen/denkmalschutz.html" class="nav-dd__ind-link"><span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 21V8h3v3h3V8h4v3h3V8h3v13M3 21h18M10 21v-4a2 2 0 0 1 4 0v4"/></svg></span><span>Denkmalschutz &amp; Kulturerbe</span><svg class="nav-dd__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
               </ul>
             </div>
           </li>
+          <li class="nav__item" data-public-only><a href="index.html#industries" class="nav__link">Branchen</a></li>
           <li class="nav__item" data-dd>
-            <button class="nav__link nav__trigger" type="button" aria-expanded="false" aria-controls="dd-resources">
-              Ressourcen <svg class="nav__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            <button class="nav__link nav__trigger" type="button" aria-expanded="false" aria-controls="dd-company" data-nav-group="about insights faq glossary">
+              <span class="nav__label">Wissen &amp; Praxis</span> <svg class="nav__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
             </button>
-            <div class="nav-dd" id="dd-resources">
-              <ul class="nav-dd__list">
-                <li><a href="index.html#faq">FAQ</a></li>
-              </ul>
+            <div class="nav-dd nav-dd--company" id="dd-company">
+              <div class="nav-dd__group">
+              <p class="nav-dd__label">Unternehmen</p>
+              <a href="ueber-uns.html" class="nav-dd__row" data-nav="about" data-local-only>
+                <span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg></span>
+                <span><strong>Über JDS Sommer</strong><small>Wer wir sind und wie wir arbeiten</small></span><svg class="nav-dd__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+              </a>
+              <a href="index.html#about" class="nav-dd__row" data-public-only>
+                <span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg></span>
+                <span><strong>Über JDS Sommer</strong><small>Wer wir sind und wie wir arbeiten</small></span><svg class="nav-dd__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+              </a>
+              <div class="nav-dd__touch">
+                <svg class="nav-dd__touch-mark" aria-hidden="true" focusable="false"><use href="#jds-mark"/></svg>
+                <p class="nav-dd__touch-label">Kontakt aufnehmen</p>
+                <a href="mailto:info@jds-sommer.de" class="nav-dd__touch-link"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5L12 13l8.5-6.5"/></svg>info@jds-sommer.de</a>
+                <a href="tel:+49699054690" class="nav-dd__touch-link"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>+49 (0)69 / 905 469-0</a>
+                <div class="nav-dd__touch-foot">
+                  <ul class="nav-dd__social" aria-label="JDS Sommer in den sozialen Medien">
+                    <li><a href="https://www.linkedin.com/company/jds-sommer-gmbh" target="_blank" rel="noopener" aria-label="JDS Sommer auf LinkedIn"><svg aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+                    <li><a href="https://www.facebook.com/jdssommer/" target="_blank" rel="noopener" aria-label="JDS Sommer auf Facebook"><svg aria-hidden="true"><use href="#i-facebook"/></svg></a></li>
+                    <li><a href="https://x.com/JDS_Sommer" target="_blank" rel="noopener" aria-label="JDS Sommer auf X (Twitter)"><svg aria-hidden="true"><use href="#i-x"/></svg></a></li>
+                  </ul>
+                  <a href="kontakt.html" class="nav-dd__touch-btn" data-local-only>Kontakt <svg class="nav-dd__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+                  <a href="index.html#contact" class="nav-dd__touch-btn" data-public-only>Kontakt <svg class="nav-dd__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+                </div>
+              </div>
+              </div>
+              <div class="nav-dd__group">
+              <p class="nav-dd__label">Ratgeber</p>
+              <a href="wissen.html" class="nav-dd__row" data-nav="insights" data-local-only>
+                <span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 5h6a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H3zM21 5h-6a3 3 0 0 0-3 3v12a2 2 0 0 1 2-2h7z"/></svg></span>
+                <span><strong>Wissen</strong><small>Blogbeiträge und Fachartikel</small></span><svg class="nav-dd__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+              </a>
+              <a href="wissen.html#case-studies" class="nav-dd__row" data-local-only>
+                <span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></svg></span>
+                <span><strong>Fallstudien</strong><small>Berichte aus echten Projekten</small></span><svg class="nav-dd__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+              </a>
+              <a href="faq.html" class="nav-dd__row" data-nav="faq" data-local-only>
+                <span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6M12 17h.01"/></svg></span>
+                <span><strong>FAQ</strong><small>Antworten auf die häufigsten Fragen</small></span><svg class="nav-dd__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+              </a>
+              <a href="index.html#faq" class="nav-dd__row" data-public-only>
+                <span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6M12 17h.01"/></svg></span>
+                <span><strong>FAQ</strong><small>Antworten auf die häufigsten Fragen</small></span><svg class="nav-dd__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+              </a>
+              <a href="glossar.html" class="nav-dd__row" data-nav="glossary" data-local-only>
+                <span class="nav-dd__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h12a2 2 0 0 1 2 2v14H7a2 2 0 0 1-2-2z"/><path d="M5 18a2 2 0 0 1 2-2h12M9.5 12.5l2-5 2 5M10.2 11h2.6"/></svg></span>
+                <span><strong>Glossar</strong><small>CAD- und BIM-Begriffe erklärt</small></span><svg class="nav-dd__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+              </a>
+              </div>
             </div>
           </li>
-          <li class="nav__item"><a href="index.html#contact" class="nav__link" data-nav="contact">Kontakt</a></li>
+          <li class="nav__item" data-local-only><a href="kontakt.html" class="nav__link" data-nav="contact">Kontakt</a></li>
+          <li class="nav__item" data-public-only><a href="index.html#contact" class="nav__link" data-nav="contact">Kontakt</a></li>
         </ul>
         <ul class="nav__list" data-header-variant="v1">
           <li class="nav__item"><a href="2d-cad-digitalisierung.html" class="nav__link" data-nav="2d">2D-CAD-Digitalisierung</a></li>
           <li class="nav__item"><a href="3d-bim-modellierung.html" class="nav__link" data-nav="3d">3D- &amp; BIM-Modellierung</a></li>
-          <li class="nav__item"><a href="index.html#contact" class="nav__link" data-nav="contact">Kontakt</a></li>
+          <li class="nav__item" data-local-only><a href="kontakt.html" class="nav__link" data-nav="contact">Kontakt</a></li>
+          <li class="nav__item" data-public-only><a href="index.html#contact" class="nav__link" data-nav="contact">Kontakt</a></li>
         </ul>
       </nav>
 
@@ -416,7 +692,8 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
           <span>+49 (0)69 / 905 469-0</span>
         </a>
-        <a href="index.html#contact" class="btn btn--primary btn--sm">Angebot anfordern</a>
+        <a href="kontakt.html#contact" class="btn btn--primary btn--sm" data-local-only>Angebot anfordern</a>
+        <a href="index.html#contact" class="btn btn--primary btn--sm" data-public-only>Angebot anfordern</a>
         <button class="burger" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu" data-burger>
           <span></span><span></span>
         </button>
@@ -431,50 +708,115 @@
         <li>
           <details class="m-nav">
             <summary><span>01</span>Leistungen</summary>
-            <div class="m-nav__sub">
-              <a href="2d-cad-digitalisierung.html" class="m-nav__head" data-nav="2d">2D-CAD-Digitalisierung</a>
-              <a href="2d-cad-digitalisierung.html#drawing-to-cad-conversion">Zeichnungen zu CAD</a>
-              <a href="2d-cad-digitalisierung.html#scan-to-cad">Scan-to-CAD</a>
-              <a href="2d-cad-digitalisierung.html#cad-restructuring">CAD-Umstrukturierung &amp; Standardisierung</a>
-              <a href="3d-bim-modellierung.html" class="m-nav__head" data-nav="3d">3D- &amp; BIM-Modellierung</a>
-              <a href="3d-bim-modellierung.html#scan-to-bim">Scan-to-BIM</a>
-              <a href="3d-bim-modellierung.html#cad-to-bim">CAD-to-BIM-Modellierung</a>
-              <a href="3d-bim-modellierung.html#as-built-bim">Bestands-BIM-Modellierung</a>
-              <a href="3d-bim-modellierung.html#3d-cad-modelling">3D-CAD &amp; Reverse Engineering</a>
-              <a href="3d-bim-modellierung.html#industrial-facility-modelling">Modellierung von Industrieanlagen</a>
-              <a href="3d-bim-modellierung.html#modelling-by-discipline" class="m-nav__head">Modellierung nach Fachdisziplin</a>
-              <a href="3d-bim-modellierung.html#architectural-modelling">Architekturmodellierung</a>
-              <a href="3d-bim-modellierung.html#structural-modelling">Tragwerksmodellierung</a>
-              <a href="3d-bim-modellierung.html#mep-modelling">TGA-Modellierung (MEP)</a>
-              <a href="3d-bim-modellierung.html#hvac-modelling">HLS-Modellierung</a>
-              <a href="3d-bim-modellierung.html#plant-modelling">Anlagenmodellierung</a>
+            <div class="m-nav__sub m-nav__groups" data-m-groups>
+              <details class="m-sub" name="m-services">
+                <summary><i class="m-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 12h6v8M10 4v4M14 12h6M10 12a4 4 0 0 1 4-4"/></svg></i>2D-CAD-Digitalisierung</summary>
+                <div class="m-sub__list">
+                  <a href="2d-cad-digitalisierung.html" data-nav="2d">Übersicht</a>
+                  <a href="2d-cad-digitalisierung.html#drawing-to-cad-conversion">Papier/PDF zu CAD</a>
+                  <a href="2d-cad-digitalisierung.html#cafm-data-preparation">CAFM-Datenaufbereitung</a>
+                  <a href="2d-cad-digitalisierung.html#scan-to-cad">Punktwolke zu 2D-CAD</a>
+                  <a href="2d-cad-digitalisierung.html#cad-from-engineering-drawings">CAD-Modellierung aus Konstruktionszeichnungen</a>
+                  <a href="2d-cad-digitalisierung.html#cad-restructuring">CAD-Umstrukturierung &amp; Standardisierung</a>
+                </div>
+              </details>
+              <details class="m-sub" name="m-services">
+                <summary><i class="m-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></svg></i>3D- &amp; BIM-Modellierung</summary>
+                <div class="m-sub__list">
+                  <a href="3d-bim-modellierung.html" data-nav="3d">Übersicht</a>
+                  <a href="3d-bim-modellierung.html#scan-to-bim">Scan-to-BIM-Dienstleistungen</a>
+                  <a href="3d-bim-modellierung.html#cad-to-bim">CAD-to-BIM-Dienstleistungen</a>
+                  <a href="3d-bim-modellierung.html#as-built-bim">Bestands-BIM-Modellierung</a>
+                  <a href="3d-bim-modellierung.html#industrial-facility-modelling">BIM-Modellierung von Industrieanlagen</a>
+                </div>
+              </details>
+              <details class="m-sub" name="m-services">
+                <summary><i class="m-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 21V9l8-5 8 5v12"/><path d="M9 21v-6h6v6M3 21h18M12 4v5"/></svg></i>Modellierung nach Fachdisziplin</summary>
+                <div class="m-sub__list">
+                  <a href="3d-bim-modellierung.html#modelling-by-discipline">Übersicht</a>
+                  <a href="3d-bim-modellierung.html#architectural-modelling">Architekturmodellierung</a>
+                  <a href="3d-bim-modellierung.html#structural-modelling">Tragwerksmodellierung</a>
+                  <a href="3d-bim-modellierung.html#electrical-modelling">Elektro</a>
+                  <a href="3d-bim-modellierung.html#hvac-plumbing-modelling">HLS</a>
+                  <a href="3d-bim-modellierung.html#plant-modelling">Anlagenmodellierung</a>
+                </div>
+              </details>
+              <details class="m-sub" name="m-services" data-local-only>
+                <summary><i class="m-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 21V9l8-5 8 5v12"/><path d="M4 21h16M9 21v-5h6v5M9 11h6"/></svg></i>Bestands- &amp; Facility-Dokumentation</summary>
+                <div class="m-sub__list">
+                  <a href="bestandsdokumentation.html" data-nav="asbuilt">Übersicht</a>
+                  <a href="bestandsdokumentation.html#as-built-drawings">Bestands- &amp; Gebäudedokumentation</a>
+                  <a href="bestandsdokumentation.html#facility-management-drawings">Facility-Management-Dokumentation</a>
+                  <a href="bestandsdokumentation.html#existing-industrial-facility-documentation">Industrieanlagen-Dokumentation</a>
+                  <a href="bestandsdokumentation.html#cad-updates-from-site-measurements">CAD-Nachführung aus Aufmaßen</a>
+                </div>
+              </details>
+              <details class="m-sub" name="m-services" data-local-only>
+                <summary><i class="m-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/></svg></i>GIS- &amp; Infrastrukturdaten</summary>
+                <div class="m-sub__list">
+                  <a href="gis-infrastrukturdaten.html" data-nav="gis">Übersicht</a>
+                  <a href="gis-infrastrukturdaten.html#gis-digitisation">GIS-Digitalisierung</a>
+                  <a href="gis-infrastrukturdaten.html#utility-map-digitisation">Digitalisierung von Leitungsplänen</a>
+                  <a href="gis-infrastrukturdaten.html#cad-to-gis-data-conversion">CAD-zu-GIS-Konvertierung</a>
+                  <a href="gis-infrastrukturdaten.html#georeferencing-map-updating">Georeferenzierung &amp; Kartennachführung</a>
+                </div>
+              </details>
+              <details class="m-sub" name="m-services" data-local-only>
+                <summary><i class="m-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></i>Plan- &amp; Zeichnungsdigitalisierung</summary>
+                <div class="m-sub__list">
+                  <a href="zeichnungs-dokumentendigitalisierung.html" data-nav="docs">Übersicht</a>
+                  <a href="zeichnungs-dokumentendigitalisierung.html#drawing-to-cad-conversion">Zeichnung-zu-CAD-Konvertierung (Papier &amp; PDF)</a>
+                  <a href="zeichnungs-dokumentendigitalisierung.html#large-format-drawing-scanning">Scannen großformatiger Zeichnungen</a>
+                  <a href="zeichnungs-dokumentendigitalisierung.html#cad-restructuring-standardisation">CAD-Umstrukturierung &amp; Standardisierung</a>
+                </div>
+              </details>
             </div>
           </details>
         </li>
+        <li data-local-only>
+          <details class="m-nav">
+            <summary><span>02</span>Branchen</summary>
+            <div class="m-nav__sub">
+              <a href="branchen/index.html" class="m-nav__head" data-nav="industries">Alle Branchen</a>
+              <a href="branchen/industrie-fertigung.html"><i class="m-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21V11l5 3v-3l5 3V4h5v17"/><path d="M2 21h20M7 18h2M12 18h2"/></svg></i>Industrie &amp; Fertigung</a>
+              <a href="branchen/energie-versorgung.html"><i class="m-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 3L5 13.5h6L10 21l8-10.5h-6z"/></svg></i>Energie &amp; Versorgung</a>
+              <a href="branchen/oeffentliche-hand.html"><i class="m-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 9.5L12 4l9 5.5M4 9.5h16M6 9.5V18M10 9.5V18M14 9.5V18M18 9.5V18M4 18h16M3 21h18"/></svg></i>Öffentliche Hand</a>
+              <a href="branchen/bauwesen-architektur.html"><i class="m-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 21V5M3 5h17M7 9l4-4M17 5v5M15.5 10h3v2.5h-3zM4 21h6"/></svg></i>Bauwesen &amp; Architektur</a>
+              <a href="branchen/immobilien-facility-management.html"><i class="m-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2M3 21h18"/></svg></i>Immobilien &amp; Facility Management</a>
+              <a href="branchen/gesundheitswesen.html"><i class="m-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"/></svg></i>Gesundheitswesen</a>
+              <a href="branchen/bildung-forschung.html"><i class="m-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5M22 9v6"/></svg></i>Bildung &amp; Forschung</a>
+              <a href="branchen/verkehr-infrastruktur.html"><i class="m-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="13" rx="3"/><path d="M5 10h14M9 13h.01M15 13h.01M8 16l-2 5M16 16l2 5M7 19h10"/></svg></i>Verkehr &amp; Infrastruktur</a>
+              <a href="branchen/denkmalschutz.html"><i class="m-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 21V8h3v3h3V8h4v3h3V8h3v13M3 21h18M10 21v-4a2 2 0 0 1 4 0v4"/></svg></i>Denkmalschutz &amp; Kulturerbe</a>
+            </div>
+          </details>
+        </li>
+        <li data-public-only><a href="index.html#industries"><span>02</span>Branchen</a></li>
         <li>
           <details class="m-nav">
-            <summary><span>02</span>Über uns</summary>
+            <summary><span>03</span>Wissen &amp; Praxis</summary>
             <div class="m-nav__sub">
-              <a href="ueber-uns.html" data-nav="about" data-local-only>Über JDS Sommer</a>
-              <a href="index.html#about" data-public-only>Über JDS Sommer</a>
-              <a href="index.html#industries">Branchen</a>
+              <a href="ueber-uns.html" class="m-nav__row" data-nav="about" data-local-only><i class="m-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg></i>Über JDS Sommer</a>
+              <a href="index.html#about" class="m-nav__row" data-public-only><i class="m-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg></i>Über JDS Sommer</a>
+              <a href="wissen.html" class="m-nav__row" data-nav="insights" data-local-only><i class="m-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 5h6a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H3zM21 5h-6a3 3 0 0 0-3 3v12a2 2 0 0 1 2-2h7z"/></svg></i>Wissen</a>
+              <div class="m-nav__subl" data-local-only>
+                <a href="wissen.html#blog">Blog</a>
+                <a href="wissen.html#case-studies">Fallstudien</a>
+                <a href="wissen.html#articles">Fachartikel</a>
+              </div>
+              <a href="faq.html" class="m-nav__row" data-nav="faq" data-local-only><i class="m-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6M12 17h.01"/></svg></i>FAQ</a>
+              <a href="glossar.html" class="m-nav__row" data-nav="glossary" data-local-only><i class="m-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h12a2 2 0 0 1 2 2v14H7a2 2 0 0 1-2-2z"/><path d="M5 18a2 2 0 0 1 2-2h12M9.5 12.5l2-5 2 5M10.2 11h2.6"/></svg></i>Glossar</a>
+              <a href="index.html#faq" class="m-nav__row" data-public-only><i class="m-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6M12 17h.01"/></svg></i>FAQ</a>
             </div>
           </details>
         </li>
-        <li>
-          <details class="m-nav">
-            <summary><span>03</span>Ressourcen</summary>
-            <div class="m-nav__sub">
-              <a href="index.html#faq">FAQ</a>
-            </div>
-          </details>
-        </li>
-        <li><a href="index.html#contact" data-nav="contact"><span>04</span>Kontakt</a></li>
+        <li data-local-only><a href="kontakt.html" data-nav="contact"><span>04</span>Kontakt</a></li>
+        <li data-public-only><a href="index.html#contact" data-nav="contact"><span>04</span>Kontakt</a></li>
       </ul>
       <ul data-header-variant="v1">
         <li><a href="2d-cad-digitalisierung.html" data-nav="2d"><span>01</span>2D-CAD-Digitalisierung</a></li>
         <li><a href="3d-bim-modellierung.html" data-nav="3d"><span>02</span>3D- &amp; BIM-Modellierung</a></li>
-        <li><a href="index.html#contact" data-nav="contact"><span>03</span>Kontakt</a></li>
+        <li data-local-only><a href="kontakt.html" data-nav="contact"><span>03</span>Kontakt</a></li>
+        <li data-public-only><a href="index.html#contact" data-nav="contact"><span>03</span>Kontakt</a></li>
       </ul>
     </nav>
     <div class="mobile-menu__foot">
@@ -509,7 +851,7 @@
           </p>
           <div class="hero__ctas" data-hero-fade>
             <a href="index.html#contact" class="btn btn--primary" data-prefill="3D-Modelle für BIM">
-              Anfrage starten <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              Anfrage starten <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
             </a>
             <a href="#applications" class="btn btn--ghost">3D- &amp; BIM-Leistungen ansehen</a>
           </div>
@@ -569,7 +911,7 @@
             Wir machen aus Laserscans, Punktwolken und Plänen BIM-Modelle mit intelligenten, exakt bemaßten Bauteilen.
           </p>
           <p>
-            Entdecken Sie <a href="#scan-to-bim">Scan-to-BIM</a>, <a href="#cad-to-bim">CAD-to-BIM</a>, <a href="#as-built-bim">Bestands-BIM</a>, <a href="#industrial-facility-modelling">Industrieanlagen</a> und <a href="#3d-cad-modelling">3D-CAD &amp; Reverse Engineering</a>.
+            Entdecken Sie <a href="#scan-to-bim">Scan-to-BIM</a>, <a href="#cad-to-bim">CAD-to-BIM</a>, <a href="#as-built-bim">Bestands-BIM</a>, <a href="#industrial-facility-modelling">Industrieanlagen</a> und <a href="3d-cad-reverse-engineering.html">3D-CAD &amp; Reverse Engineering</a>.
           </p>
         </div>
       </div>
@@ -581,7 +923,7 @@
         <header class="section-head" data-reveal>
           <p class="eyebrow"><span class="eyebrow__line"></span>3D- &amp; BIM-Leistungen</p>
           <h2 class="h2">Von Punktwolken <em>und</em> Zeichnungen zu BIM und 3D-CAD.</h2>
-          <p class="section-head__lead">Fünf Leistungen für Gebäude, Industrieanlagen und Bauteile – je nachdem, welche Daten vorliegen und wofür das Modell gebraucht wird.</p>
+          <p class="section-head__lead">Vier Leistungen für Gebäude und Industrieanlagen – je nachdem, welche Daten vorliegen und wofür das Modell gebraucht wird.</p>
         </header>
 
         <div class="apps apps--stack" data-stack>
@@ -592,7 +934,7 @@
               <span class="service-card__num">01</span>
             </div>
             <div class="app-card__body">
-              <h3 class="h3">Scan-to-BIM</h3>
+              <h3 class="h3">Scan-to-BIM-Dienstleistungen</h3>
               <p class="app-card__sub">Von der Punktwolke zum strukturierten BIM-Modell</p>
               <p>
                 Überführen Sie registrierte Punktwolken und Laserscan-Daten in detaillierte 3D-BIM-Modelle des erfassten Gebäudes oder der Anlage – nach den abgestimmten Modellierungsanforderungen.
@@ -616,7 +958,7 @@
                 </div>
               </div>
               <ul class="format-chips"><li>Revit / RVT</li><li>IFC</li><li>Allplan</li><li>Archicad</li></ul>
-              <a href="index.html#contact" class="btn btn--dark" data-prefill="3D-Modelle für BIM">Scan-to-BIM anfragen <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              <a href="index.html#contact" class="btn btn--dark" data-prefill="3D-Modelle für BIM">Scan-to-BIM anfragen <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
             </div>
           </article>
 
@@ -627,7 +969,7 @@
               <span class="service-card__num">02</span>
             </div>
             <div class="app-card__body">
-              <h3 class="h3">CAD-to-BIM-Modellierung</h3>
+              <h3 class="h3">CAD-to-BIM-Dienstleistungen</h3>
               <p class="app-card__sub">Von 2D-Bestandsplänen zum 3D-BIM-Modell</p>
               <p>
                 Wandeln Sie vorhandene 2D-CAD-Zeichnungen und Gebäudepläne in strukturierte 3D-BIM-Modelle um – aus Zeichnungsinformationen werden modellierte Bauteile.
@@ -651,7 +993,7 @@
                 </div>
               </div>
               <ul class="format-chips"><li>Revit / RVT</li><li>IFC</li><li>Allplan</li><li>Archicad</li></ul>
-              <a href="index.html#contact" class="btn btn--dark" data-prefill="3D-Modelle für BIM">CAD-to-BIM anfragen <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              <a href="index.html#contact" class="btn btn--dark" data-prefill="3D-Modelle für BIM">CAD-to-BIM anfragen <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
             </div>
           </article>
 
@@ -686,53 +1028,18 @@
                 </div>
               </div>
               <ul class="format-chips"><li>Revit / RVT</li><li>IFC</li><li>Weitere abgestimmte Formate</li></ul>
-              <a href="index.html#contact" class="btn btn--dark" data-prefill="3D-Modelle für BIM">Bestands-BIM anfragen <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-            </div>
-          </article>
-
-          <!-- 3D CAD Modelling & Reverse Engineering -->
-          <article class="app-card" id="3d-cad-modelling" style="--i: 3">
-            <div class="app-card__media app-card__media--photo app-card__media--contain">
-              <img src="assets/img/services/3d-cad-modelling-reverse-engineering.webp" width="1400" height="700" loading="lazy" alt="Gescanntes Pumpengehäuse neben seinem 3D-CAD-Modell, Explosionsdarstellung und Konstruktionszeichnungen">
-              <span class="service-card__num">04</span>
-            </div>
-            <div class="app-card__body">
-              <h3 class="h3">3D-CAD-Modellierung &amp; Reverse Engineering</h3>
-              <p class="app-card__sub">Von gescannten Objekten und Konstruktionszeichnungen zu 3D-CAD</p>
-              <p>
-                Erstellen Sie strukturierte 3D-CAD-Modelle von Bauteilen und anderen technischen Objekten aus vorhandenen Scandaten, Referenzgeometrien oder Konstruktionszeichnungen – je nach Projektanforderung.
-              </p>
-              <div class="app-card__cols">
-                <div>
-                  <h4>Wir arbeiten mit</h4>
-                  <ul class="ticks">
-                    <li>3D-Scandaten und Punktwolken</li>
-                    <li>STL-Netze, sofern geeignet</li>
-                    <li>Vorhandene Konstruktions- oder Fertigungszeichnungen</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4>Was Sie erhalten</h4>
-                  <ul class="ticks">
-                    <li>3D-CAD-Geometrie für den abgestimmten Einsatzzweck</li>
-                    <li>Modelle für Konstruktion, Änderung oder weitere Engineering-Arbeiten</li>
-                    <li>Native oder Austauschformate nach Projektabsprache</li>
-                  </ul>
-                </div>
-              </div>
-              <ul class="format-chips"><li>STEP / STP</li><li>IGES / IGS</li><li>Weitere abgestimmte Formate</li></ul>
-              <a href="index.html#contact" class="btn btn--dark" data-prefill="3D-Modelle für Bauteile">3D-CAD-Modellierung anfragen <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              <a href="index.html#contact" class="btn btn--dark" data-prefill="3D-Modelle für BIM">Bestands-BIM anfragen <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
             </div>
           </article>
 
           <!-- Industrial Facility & Technical Installation Modelling -->
-          <article class="app-card" id="industrial-facility-modelling" style="--i: 4">
+          <article class="app-card" id="industrial-facility-modelling" style="--i: 3">
             <div class="app-card__media app-card__media--photo app-card__media--contain">
               <img src="assets/img/services/3d-industrial-facility-modelling.webp" width="1400" height="653" loading="lazy" alt="Punktwolke einer Prozessanlage, die in ein 3D-Modell mit Stahlbau, Behältern und farbcodierten Rohrleitungen übergeht">
-              <span class="service-card__num">05</span>
+              <span class="service-card__num">04</span>
             </div>
             <div class="app-card__body">
-              <h3 class="h3">Modellierung von Industrieanlagen &amp; technischen Installationen</h3>
+              <h3 class="h3">BIM-Modellierung von Industrieanlagen</h3>
               <p class="app-card__sub">3D-Modelle für Industriegebäude und technische Anlagen</p>
               <p>
                 Entwickeln Sie 3D-CAD-/BIM-Modelle von Industrieanlagen und technischen Installationen aus vorhandenen Scandaten und Zeichnungen – mit Modellinhalten nach dem vereinbarten Projektumfang.
@@ -756,7 +1063,7 @@
                 </div>
               </div>
               <ul class="format-chips"><li>Revit / RVT</li><li>IFC</li><li>Weitere abgestimmte CAD-Formate</li></ul>
-              <a href="index.html#contact" class="btn btn--dark" data-prefill="3D-Modelle für BIM">Industrieprojekt besprechen <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              <a href="index.html#contact" class="btn btn--dark" data-prefill="3D-Modelle für BIM">Industrieprojekt besprechen <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
             </div>
           </article>
         </div>
@@ -780,11 +1087,11 @@
             <span class="steps5__n">02</span><span class="steps5__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h14M5 20h14"/><path d="M12 4v16"/><path d="M8 4v2.5M16 4v2.5M8 20v-2.5M16 20v-2.5"/></svg></span><h3>Tragwerk</h3>
             <p>Tragende Wände, Stützen, Träger, Decken und Fundamente als Tragwerksmodell.</p>
           </li>
-          <li id="mep-modelling" data-reveal-item>
-            <span class="steps5__n">03</span><span class="steps5__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 8h6a4 4 0 0 1 4 4v9"/><path d="M3 12h5a1 1 0 0 1 1 1v8"/><path d="M18 3l-2.5 5h4L17 13"/></svg></span><h3>MEP</h3>
-            <p>Technische Gebäudeausrüstung für Heizung, Lüftung, Elektro und Sanitär: Rohre, Kabeltrassen, Einbauten und Steigleitungen.</p>
+          <li id="electrical-modelling" data-reveal-item>
+            <span class="steps5__n">03</span><span class="steps5__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 8h6a4 4 0 0 1 4 4v9"/><path d="M3 12h5a1 1 0 0 1 1 1v8"/><path d="M18 3l-2.5 5h4L17 13"/></svg></span><h3>ELT</h3>
+            <p>Technische Gebäudeausrüstung für Elektrotechnik: Starkstrom- und Schwachstromanlagen, Kabeltrassen, Beleuchtungs- und Sicherheitssysteme.</p>
           </li>
-          <li id="hvac-modelling" data-reveal-item>
+          <li id="hvac-plumbing-modelling" data-reveal-item>
             <span class="steps5__n">04</span><span class="steps5__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 8h10a3 3 0 1 0-3-3"/><path d="M3 12h15a3 3 0 1 1-3 3"/><path d="M3 16h6"/></svg></span><h3>HLS</h3>
             <p>Heizung, Lüftung und Sanitär: Lüftungsgeräte, Kanalnetze, Luftauslässe, Heizungs- und Sanitärleitungen, modelliert wie gebaut.</p>
           </li>
@@ -795,7 +1102,7 @@
         </ol>
         <div class="disciplines__cta" data-reveal>
           <p>Sie benötigen eine Fachdisziplin oder alle? Wir legen den Modellumfang gemeinsam mit Ihnen fest.</p>
-          <a href="index.html#contact" class="btn btn--primary" data-prefill="3D-Modelle für BIM">Ihr Modell besprechen <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="index.html#contact" class="btn btn--primary" data-prefill="3D-Modelle für BIM">Ihr Modell besprechen <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
         </div>
       </div>
     </section>
@@ -979,24 +1286,34 @@
         <ul>
           <li><a href="2d-cad-digitalisierung.html">2D-CAD-Digitalisierung</a></li>
           <li><a href="3d-bim-modellierung.html">3D- &amp; BIM-Modellierung</a></li>
-          <li><a href="index.html#contact">Angebot anfordern</a></li>
+          <li><a href="3d-cad-reverse-engineering.html">3D-CAD &amp; Reverse Engineering</a></li>
+          <li data-local-only><a href="bestandsdokumentation.html">Bestands- &amp; Facility-Dokumentation</a></li>
+          <li data-local-only><a href="gis-infrastrukturdaten.html">GIS- &amp; Infrastrukturdaten</a></li>
+          <li data-local-only><a href="zeichnungs-dokumentendigitalisierung.html">Plan- &amp; Zeichnungsdigitalisierung</a></li>
         </ul>
       </div>
 
       <div class="footer__col footer__col--v2">
-        <h4>Über uns</h4>
+        <h4>Unternehmen</h4>
         <ul>
           <li data-local-only><a href="ueber-uns.html">Über JDS Sommer</a></li>
           <li data-public-only><a href="index.html#about">Über JDS Sommer</a></li>
-          <li><a href="index.html#industries">Branchen</a></li>
+          <li data-local-only><a href="branchen/index.html">Branchen</a></li>
+          <li data-public-only><a href="index.html#industries">Branchen</a></li>
+          <li><a href="index.html#references">Referenzen</a></li>
+          <li data-local-only><a href="kontakt.html">Kontakt</a></li>
+          <li data-public-only><a href="index.html#contact">Kontakt</a></li>
         </ul>
       </div>
 
       <div class="footer__col footer__col--v2">
-        <h4>Ressourcen</h4>
+        <h4>Wissen</h4>
         <ul>
-          <li><a href="index.html#faq">FAQ</a></li>
-          <li><a href="index.html#references">Referenzen</a></li>
+          <li data-local-only><a href="wissen.html#blog">Blog</a></li>
+          <li data-local-only><a href="wissen.html#case-studies">Fallstudien</a></li>
+          <li data-local-only><a href="faq.html">FAQ</a></li>
+          <li data-local-only><a href="glossar.html">Glossar</a></li>
+          <li data-public-only><a href="index.html#faq">FAQ</a></li>
         </ul>
       </div>
 
@@ -1013,8 +1330,6 @@
     <div class="container footer__bottom">
       <p>© <span data-year>2026</span> JDS Sommer GmbH</p>
       <ul class="footer__legal">
-        <li><a href="index.html#faq">FAQ</a></li>
-        <li><a href="index.html#references">Referenzen</a></li>
         <li><a href="agb.html">AGB</a></li>
         <li><a href="impressum.html">Impressum</a></li>
         <li><a href="datenschutz.html">Datenschutz</a></li>
@@ -1027,7 +1342,7 @@
   <a href="#main" class="fab-top" aria-label="Nach oben" data-fab-top>
     <svg viewBox="86 2 38 24" aria-hidden="true">
       <polygon fill="url(#jdsR)" points="105,4 122,24 88,24"/>
-      <path d="M105 19.5V12.5M101.8 15.4 105 12.2 108.2 15.4" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M101.5 17.6 105 14.1 108.5 17.6" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </a>
 

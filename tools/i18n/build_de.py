@@ -14,7 +14,7 @@ Usage (from the site folder):
 After editing English copy, add the new sentences to de.json and rebuild.
 Untranslated text stays English on the German page and is listed on stdout.
 """
-import json, os, re, sys
+import json, os, posixpath, re, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.dirname(os.path.dirname(HERE))
@@ -33,6 +33,8 @@ DE_N = {norm(k): v for k, v in DE.items()}
 EXT = [('assets/img/og/jds-sommer-en.png', 'assets/img/og/jds-sommer-de.png'),
        # Contact form bot check (ALTCHA widget): German texts on the German page
        ('auto="onfocus" type="checkbox" language="en"', 'auto="onfocus" type="checkbox" language="de"')]
+# English pages whose German version is written by hand (not generated): link to it anyway
+LINKS = {'insights/what-is-cad-digitalisation.html': 'wissen/was-ist-cad-digitalisierung.html'}
 # Form radio values end up in the enquiry email, so they are translated too
 RADIO = {'A reply via email': 'Eine Antwort per E-Mail', 'A callback': 'Einen Rückruf'}
 # Product names, formats, numbers and the like that stay as they are
@@ -40,21 +42,29 @@ KEEP = re.compile(r'^(?:[\w ,·/+→–-]*\b(?:DWG|DXF|DGN|RVT|IFC|PLN|STEP|IGES
                   r'|DWG-[\w ]+|Hero|Header|Video|Archiv|Lager|Besprechung|info@jds-sommer\.de|.*JDS Sommer GmbH|August-Schanz-Straße.*)$', re.S)
 
 
-def rewrite_url(v):
-    """A URL in an English page (site/en/) as seen from its German page (site root)."""
+def rewrite_url(v, en, de):
+    """A URL in the English page en/<en> as seen from its German page <de> (both may sit in subfolders)."""
     if not v or re.match(r'^(https?:|mailto:|tel:|data:|#|\?|/)', v):
         return v
     path, sep, rest = re.match(r'^([^#?]*)([#?]?)(.*)$', v).groups()
-    if path in PAGES:                 # English page -> its German page
-        return PAGES[path] + sep + rest
-    if v.startswith('../'):           # assets (and German pages) in the site root
-        return v[len('../'):]
-    return 'en/' + v                  # anything else that sits next to the English pages
+    if not path:
+        return v
+    target = posixpath.normpath(posixpath.join(posixpath.dirname('en/' + en), path))
+    if target.startswith('en/') and target[3:] in PAGES:   # English page -> its German page
+        target = PAGES[target[3:]]
+    elif target.startswith('en/') and target[3:] in LINKS:
+        target = LINKS[target[3:]]
+    rel = posixpath.relpath(target, posixpath.dirname(de) or '.')
+    if path.endswith('/') and not rel.endswith('/'):
+        rel += '/'
+    return rel + sep + rest
 
 
 def set_switchers(s, en, de):
-    s, n1 = re.subn(r'[ ]*<!-- lang -->.*?<!-- /lang -->\n', lambda m: switcher('de', 'en/' + en, de), s, count=1, flags=re.S)
-    s, n2 = re.subn(r'[ ]*<!-- m-lang -->.*?<!-- /m-lang -->\n', lambda m: mobile_switcher('de', 'en/' + en, de), s, count=1, flags=re.S)
+    en_href = posixpath.relpath('en/' + en, posixpath.dirname(de) or '.')
+    de_href = posixpath.basename(de)
+    s, n1 = re.subn(r'[ ]*<!-- lang -->.*?<!-- /lang -->\n', lambda m: switcher('de', en_href, de_href), s, count=1, flags=re.S)
+    s, n2 = re.subn(r'[ ]*<!-- m-lang -->.*?<!-- /m-lang -->\n', lambda m: mobile_switcher('de', en_href, de_href), s, count=1, flags=re.S)
     assert n1 == n2 == 1, f'{en}: language switcher markers missing'
     return s
 
@@ -80,6 +90,15 @@ def build(en, de, write=True):
             missing.append(t)
     for k, v in RADIO.items():
         s = s.replace(f'value="{k}"', f'value="{v}"')
+    # FAQ topic tags (data-tags="General|Pricing") are shown as filter buttons: translate each tag
+    def tags(m):
+        out = []
+        for t in m.group(1).split('|'):
+            if t not in DE:
+                missing.append('data-tags: ' + t)
+            out.append(DE.get(t, t))
+        return 'data-tags="' + '|'.join(out) + '"'
+    s = re.sub(r'data-tags="([^"]*)"', tags, s)
     # Counters show their HTML number until they animate (or if they never do): German thousands separator
     s = re.sub(r'(data-format="thousands">\d{1,3}),(\d{3})<', r'\1.\2<', s)
     # Only the lang attribute: the <html> tag may carry other attributes (e.g. a class)
@@ -87,13 +106,22 @@ def build(en, de, write=True):
     assert n == 1, f'{en}: no <html lang="en-GB"> tag'
     for k, v in EXT:
         s = s.replace(k, v)
-    s = re.sub(r'(\s(?:href|src|poster|data-src|srcset)=")([^"]*)"', lambda m: m.group(1) + rewrite_url(m.group(2)) + '"', s)
-    s = re.sub(r'(<meta[^>]+content=")\.\./(assets/[^"]*)"', lambda m: m.group(1) + m.group(2) + '"', s)
+    s = re.sub(r'(\s(?:href|src|poster|data-src|srcset)=")([^"]*)"', lambda m: m.group(1) + rewrite_url(m.group(2), en, de) + '"', s)
+    s = re.sub(r'(<meta[^>]+content=")(\.\./[^"]*)"', lambda m: m.group(1) + rewrite_url(m.group(2), en, de) + '"', s)
     # Again after the URL rewrite, which would otherwise shift the switcher links
     s = set_switchers(s, en, de)
+    # German price format: "€49" -> "49 €" in the price lines and tiers
+    s = re.sub(r'(<p class="(?:tier__price|price)">(?:(?!</p>).)*?)€(\d+)', r'\1\2 €', s, flags=re.S)
+    # Client-approved German pages: their <main> is kept exactly as approved (tools/i18n/locked/), only header and footer are rebuilt
+    locked = os.path.join(HERE, 'locked', de)
+    if os.path.exists(locked):
+        body = open(locked, encoding='utf-8').read().rstrip('\n')
+        s, n = re.subn(r'  <main id="main".*?</main>', lambda _: body, s, count=1, flags=re.S)
+        assert n == 1, f'{en}: no <main>'
     if os.path.exists(body_file):
         s = s.replace('<!-- de-body -->', '\n' + open(body_file, encoding='utf-8').read().rstrip('\n'), 1)
     if write:
+        os.makedirs(os.path.dirname(os.path.join(SITE, de)), exist_ok=True)
         open(os.path.join(SITE, de), 'w', encoding='utf-8', newline='').write(s)
     return missing
 
@@ -109,4 +137,6 @@ if __name__ == '__main__':
             print('   ', repr(norm(t)[:110]))
     if not check:
         build_seo.main()
+        # The 404 page takes its German header and footer from the freshly built home page
+        import runpy; runpy.run_path(os.path.join(HERE, 'build_404.py'))
     sys.exit(1 if check and total else 0)

@@ -10,8 +10,10 @@ import fnmatch, hashlib, os, re, shutil, sys
 
 src, dst = sys.argv[1], sys.argv[2]
 NOINDEX = '--noindex' in sys.argv
-SKIP_DIRS = {'.git', '.vercel', 'tools'}
-SKIP_FILES = {'en/about-us.html', 'ueber-uns.html', '.gitignore', '.vercelignore', 'vercel.json'}
+SKIP_DIRS = {'.git', '.vercel', 'tools', '.devcontainer', '.vscode'}
+# Folders of pages still in review (paths from the site root)
+SKIP_PATHS = set()  # all preview pages published 2026-11-17
+SKIP_FILES = {'.gitignore', '.vercelignore', 'vercel.json', '.vsls.json', 'index-my-edits.html'}
 # Old addresses that moved (Cloudflare _redirects; the live server has its own list in htaccess-main.txt)
 MOVED = {'/de': '/', '/3d-cad-digitizing': '/en/3d-bim-modeling', '/de/3d-cad-digitalisierung': '/3d-bim-modellierung'}
 
@@ -22,7 +24,7 @@ pages = []
 n = 0
 for root, dirs, files in os.walk(src):
     rel = os.path.relpath(root, src).replace(os.sep, '/')
-    dirs[:] = [d for d in dirs if d not in SKIP_DIRS]
+    dirs[:] = [d for d in dirs if d not in SKIP_DIRS and (d if rel == '.' else rel + '/' + d) not in SKIP_PATHS]
     for f in files:
         p = f if rel == '.' else rel + '/' + f
         if p in SKIP_FILES or fnmatch.fnmatch(f, '.env*'):

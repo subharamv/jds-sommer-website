@@ -1,6 +1,6 @@
 import re, json, sys, html as H
 INLINE = {'em','i','b','strong','br','sup','sub','abbr','mark','u','s','a','span'}
-ATTRS = {'alt','aria-label','title','placeholder','data-prefill','aria-roledescription'}
+ATTRS = {'alt','aria-label','title','placeholder','data-prefill','aria-roledescription','data-one','data-many'}
 META_CONTENT = re.compile(r'<meta\s+(?:name|property)="(description|og:title|og:description|twitter:title|twitter:description|og:image:alt|keywords)"', re.I)
 TOK = re.compile(r'<!--.*?-->|<[^>]+>', re.S)
 

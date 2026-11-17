@@ -1,9 +1,30 @@
 # Pages still in review: kept out of deployments, viewable on localhost only
 en/about-us.html
 ueber-uns.html
+en/contact.html
+kontakt.html
+en/insights.html
+wissen.html
+en/faq.html
+faq.html
+en/glossary.html
+glossar.html
+en/industries/
+branchen/
+en/as-built-facility-documentation.html
+bestandsdokumentation.html
+en/gis-infrastructure-data.html
+gis-infrastrukturdaten.html
+en/drawing-document-digitisation.html
+zeichnungs-dokumentendigitalisierung.html
 
 # Build tooling for the German pages, not part of the site
 tools/
+
+# Shared editor / dev container setup, not part of the site
+.devcontainer/
+.vscode/
+.vsls.json
 
 # Local secrets (Vercel OIDC token): never upload
 .env*
