@@ -1,0 +1,489 @@
+  <main id="main" data-barba="container" data-barba-namespace="2d">
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <div class="hero__bg" aria-hidden="true"><div class="hero__grid"></div><div class="hero__glow"></div></div>
+      <div class="container page-hero__inner">
+        <div class="page-hero__copy">
+          <nav class="crumbs" aria-label="Brotkrumennavigation" data-hero-fade>
+            <a href="index.html">Startseite</a><span aria-hidden="true">/</span><span aria-current="page">2D-CAD-Digitalisierung</span>
+          </nav>
+          <h1 class="hero__title page-hero__title" data-split>CAD-Vektorisierung, <em>jetzt ganz einfach!</em></h1>
+          <p class="hero__lead" data-hero-fade>
+            Wir digitalisieren Ihre Pläne kostengünstig und schnell zu exakten CAD-Dateien. Vergilbte, gefaltete oder übergroße Zeichnungen werden zu maßstabsgerechten CAD-Zeichnungen mit korrekten Symbolen, Texten, Maßen, Linientypen und einer professionellen Layerstruktur.
+          </p>
+          <div class="hero__ctas" data-hero-fade>
+            <a href="index.html#contact" class="btn btn--primary" data-prefill="2D-CAD-Digitalisierung">
+              Anfrage starten <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+            </a>
+            <a href="#pricing" class="btn btn--ghost">Preise &amp; Varianten ansehen</a>
+          </div>
+          <ul class="facts" data-hero-fade>
+            <li><strong>49 €</strong><span>pro A0-Zeichnung, ab</span></li>
+            <li><strong>24 h</strong><span>Expresslieferung</span></li>
+            <li><strong>99 %</strong><span>gleichwertig zur Neuzeichnung</span></li>
+          </ul>
+        </div>
+
+        <!-- Before / after compare -->
+        <div class="hero__visual" data-hero-visual>
+          <div class="compare compare--hero compare--scan" data-compare style="--pos: 50%">
+            <div class="compare__bar">
+              <span class="sheet__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="sheet__file">Zum Vergleichen ziehen: Scandaten ⟷ DWG-Datei</span>
+            </div>
+            <div class="compare__stage">
+              <!-- BEFORE: scanned paper -->
+              <img class="compare__layer compare__layer--before" src="assets/img/work/cave-scan-data.webp" width="1000" height="1051" fetchpriority="high" draggable="false" alt="Laserscan-Punktwolke eines Gebäudegeschosses, von oben gesehen">
+              <img class="compare__layer compare__layer--after" src="assets/img/work/cave-cad-plan.webp" width="1000" height="1051" draggable="false" alt="Dasselbe Geschoss als 2D-CAD-Plan mit Wänden, Türen, Raumnamen und Höhenangaben">
+              <span class="compare__label compare__label--before" aria-hidden="true">Scandaten</span>
+              <span class="compare__label compare__label--after" aria-hidden="true">CAD · DWG</span>
+              <span class="compare__handle" aria-hidden="true"><span><svg viewBox="0 0 24 24"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span></span>
+              <input class="compare__range" type="range" min="0" max="100" value="50" aria-label="Scandaten mit der DWG-Datei vergleichen">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section steps-section" id="paper-to-cad">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow"><span class="eyebrow__line"></span>So funktioniert es</p>
+          <h2 class="h2">In fünf Schritten von der <em>Zeichnung</em> zu DWG.</h2>
+        </header>
+        <ol class="steps5">
+          <li data-reveal-item><span class="steps5__n">01</span><span class="steps5__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5L12 13l8.5-6.5"/></svg></span><h3>Pläne senden</h3><p>Senden Sie uns Ihre Pläne per Post oder bereits gescannt per E-Mail oder Upload.</p></li>
+          <li data-reveal-item><span class="steps5__n">02</span><span class="steps5__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.5"/></svg></span><h3>Angebot</h3><p>Wir erstellen Ihnen kostenlos ein persönliches Angebot.</p></li>
+          <li data-reveal-item><span class="steps5__n">03</span><span class="steps5__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l7 7-4 9H9L5 10z"/><path d="M12 3v7"/><circle cx="12" cy="11.5" r="1.5"/><path d="M9 19h6"/></svg></span><h3>Digitalisierung</h3><p>Wir digitalisieren Ihre Pläne nach Ihren Vorgaben zu exakten CAD-Dateien.</p></li>
+          <li data-reveal-item><span class="steps5__n">04</span><span class="steps5__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M12 11v6M9 14l3 3 3-3"/></svg></span><h3>Datei erhalten</h3><p>Sie erhalten die CAD-Datei(en) termingerecht per Download oder per Post.</p></li>
+          <li data-reveal-item><span class="steps5__n">05</span><span class="steps5__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></span><h3>Rechnung</h3><p>Wir senden Ihre Vorlagen zurück und stellen die Leistung gemäß Angebot in Rechnung.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 2D CAD SERVICES: sticky card stack, one card per service in the Services menu -->
+    <section class="section applications" id="services-2d">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow"><span class="eyebrow__line"></span>2D-CAD-Leistungen</p>
+          <h2 class="h2">Pläne, Zeichnungen und Scans zu <em>bearbeitbarem</em> DWG.</h2>
+          <p class="section-head__lead">Fünf Leistungen, ein Ergebnis: saubere, maßstabsgetreue CAD-Dateien nach Ihrem CAD-Standard.</p>
+        </header>
+
+        <div class="apps apps--stack" data-stack>
+          <!-- Drawing-to-CAD Conversion -->
+          <article class="app-card" id="drawing-to-cad-conversion" style="--i: 0">
+            <div class="app-card__media app-card__media--photo app-card__media--contain">
+              <img src="assets/img/services/2d-drawing-to-cad-conversion.webp" width="1400" height="933" loading="lazy" alt="Bemaßter 2D-CAD-Grundriss mit Möblierung, Türen und Fenstern">
+              <span class="service-card__num">01</span>
+            </div>
+            <div class="app-card__body">
+              <h3 class="h3">Papier/PDF zu CAD</h3>
+              <p>
+                Wandeln Sie Papierzeichnungen, PDFs und gescannte Pläne in präzise, editierbare 2D-CAD-Dateien um – mit der geforderten Geometrie, Bemaßung, Beschriftung, Symbolik und Layerstruktur.
+              </p>
+              <div class="app-card__cols">
+                <div>
+                  <h4>Wir arbeiten mit</h4>
+                  <ul class="ticks">
+                    <li>Technische Zeichnungen auf Papier</li>
+                    <li>PDF- und gescannte Pläne</li>
+                    <li>Rasterbilder vorhandener Zeichnungen</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Was Sie erhalten</h4>
+                  <ul class="ticks">
+                    <li>Editierbare 2D-CAD-Zeichnungen</li>
+                    <li>Bemaßungen, Texte und Symbole nach Vorgabe</li>
+                    <li>Strukturierte Layer und abgestimmte Zeichnungsstandards</li>
+                  </ul>
+                </div>
+              </div>
+              <ul class="format-chips"><li>AutoCAD DWG</li><li>DXF</li><li>MicroStation DGN</li><li>Allplan, nach Absprache</li></ul>
+              <a href="index.html#contact" class="btn btn--dark" data-prefill="2D-CAD-Digitalisierung">Zeichnungskonvertierung anfragen <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+            </div>
+          </article>
+          <article class="app-card" id="cafm-data-preparation" style="--i: 1">
+            <div class="app-card__media app-card__media--photo app-card__media--contain">
+              <img src="assets/img/services/2d-cafm-data-preparation.webp" width="1400" height="1050" loading="lazy" alt="Grundriss mit nach Nutzung farbig markierten Räumen und passender Raumliste mit Flächen">
+              <span class="service-card__num">02</span>
+            </div>
+            <div class="app-card__body">
+              <h3 class="h3">CAFM-Datenaufbereitung</h3>
+              <p class="app-card__sub">Grundrisse bereit für Ihr CAFM-System</p>
+              <p>
+                Wir bereiten Grundrisse und CAD-Zeichnungen für das Facility Management auf: Räume als geschlossene Flächen mit Nummern, Nutzungen und Flächenangaben, so strukturiert, dass sie sich sauber in Ihre CAFM-Software übernehmen lassen.
+              </p>
+              <div class="app-card__cols">
+                <div>
+                  <h4>Wir arbeiten mit</h4>
+                  <ul class="ticks">
+                    <li>Grundrisse als CAD, PDF oder auf Papier</li>
+                    <li>Raumlisten und vorhandene Flächendaten</li>
+                    <li>Ihre CAFM-Vorgaben zu Layern und Attributen</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Was Sie erhalten</h4>
+                  <ul class="ticks">
+                    <li>Geschlossene Raumpolygone mit berechneten Flächen</li>
+                    <li>Raumnummern, -namen und Nutzungen als Attribute</li>
+                    <li>Zeichnungen, strukturiert für den Import in Ihr CAFM-System</li>
+                  </ul>
+                </div>
+              </div>
+              <ul class="format-chips"><li>DWG</li><li>DXF</li><li>DGN</li></ul>
+              <a href="index.html#contact" class="btn btn--dark" data-prefill="2D-CAD-Digitalisierung">CAFM-Datenaufbereitung anfragen <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+            </div>
+          </article>
+
+
+          <!-- Scan-to-CAD -->
+          <article class="app-card" id="scan-to-cad" style="--i: 2">
+            <div class="app-card__media app-card__media--photo app-card__media--contain">
+              <img src="assets/img/services/2d-scan-to-cad.webp" width="1400" height="933" loading="lazy" alt="Punktwolke eines Hauses in der Draufsicht neben dem daraus gezeichneten 2D-Grundriss">
+              <span class="service-card__num">03</span>
+            </div>
+            <div class="app-card__body">
+              <h3 class="h3">Punktwolke zu 2D-CAD</h3>
+              <p class="app-card__sub">Scan-to-CAD: von der Punktwolke zur exakten 2D-Zeichnung</p>
+              <p>
+                Überführen Sie registrierte Punktwolken und Laserscans in 2D-CAD-Zeichnungen, die den Bestand eines Gebäudes abbilden – mit Grundrissen, Schnitten und Ansichten.
+              </p>
+              <div class="app-card__cols">
+                <div>
+                  <h4>Wir arbeiten mit</h4>
+                  <ul class="ticks">
+                    <li>Registrierte Punktwolken</li>
+                    <li>Laserscan-Daten</li>
+                    <li>Bestandspläne als Referenz und zum Abgleich</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Was Sie erhalten</h4>
+                  <ul class="ticks">
+                    <li>Grundrisse, Schnitte und Ansichten</li>
+                    <li>Wände, Öffnungen und Höhen gemäß den abgestimmten Anforderungen</li>
+                    <li>CAD-Zeichnungen im geforderten Format und Standard</li>
+                  </ul>
+                </div>
+              </div>
+              <ul class="format-chips"><li>DWG</li><li>DXF</li><li>DGN</li></ul>
+              <a href="index.html#contact" class="btn btn--dark" data-prefill="2D-CAD-Digitalisierung">Scan-to-CAD anfragen <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+            </div>
+          </article>
+          <article class="app-card" id="cad-from-engineering-drawings" style="--i: 3">
+            <div class="app-card__media app-card__media--photo app-card__media--contain">
+              <img src="assets/img/services/2d-cad-from-engineering-drawings.webp" width="1000" height="688" loading="lazy" alt="Bemaßte Konstruktionszeichnung einer Schneckenwelle mit Toleranzen, Schriftfeld und Tabellen">
+              <span class="service-card__num">04</span>
+            </div>
+            <div class="app-card__body">
+              <h3 class="h3">CAD-Modellierung aus Konstruktionszeichnungen</h3>
+              <p class="app-card__sub">Technische Zeichnungen als präzises CAD</p>
+              <p>
+                Wir zeichnen Konstruktions- und Maschinenbauzeichnungen von Papier, PDF oder Scan als exakte 2D-CAD-Zeichnungen nach – mit Ansichten, Bemaßungen, Toleranzen, Schriftfeld und Stücklisten.
+              </p>
+              <div class="app-card__cols">
+                <div>
+                  <h4>Wir arbeiten mit</h4>
+                  <ul class="ticks">
+                    <li>Konstruktionszeichnungen auf Papier oder als Scan</li>
+                    <li>PDF-Zeichnungen aus Archiven oder von Lieferanten</li>
+                    <li>Bemaßte Skizzen</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Was Sie erhalten</h4>
+                  <ul class="ticks">
+                    <li>Maßgenaue 2D-CAD-Zeichnungen</li>
+                    <li>Bemaßungen, Toleranzen und Oberflächenangaben</li>
+                    <li>Schriftfeld und Stückliste nach Ihrem Standard</li>
+                  </ul>
+                </div>
+              </div>
+              <ul class="format-chips"><li>DWG</li><li>DXF</li><li>DGN</li></ul>
+              <a href="index.html#contact" class="btn btn--dark" data-prefill="2D-CAD-Digitalisierung">Konstruktionszeichnungen anfragen <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+            </div>
+          </article>
+
+
+          <!-- CAD Restructuring & Standardisation -->
+          <article class="app-card" id="cad-restructuring" style="--i: 4">
+            <div class="app-card__media app-card__media--photo">
+              <img src="assets/img/services/2d-cad-restructuring.webp" width="1400" height="876" loading="lazy" alt="CAD-Software mit Gebäudefassade und Modell in einer einheitlichen Layerstruktur">
+              <span class="service-card__num">05</span>
+            </div>
+            <div class="app-card__body">
+              <h3 class="h3">CAD-Umstrukturierung &amp; Standardisierung</h3>
+              <p class="app-card__sub">Einheitliche Standards für vorhandene CAD-Dateien</p>
+              <p>
+                Strukturieren Sie vorhandene CAD-Zeichnungen nach Ihren aktuellen CAD-Richtlinien um – mit einheitlichen Layerstandards, Linienstilen, Schriften, Bemaßungen und Zeichnungskonventionen.
+              </p>
+              <div class="app-card__cols">
+                <div>
+                  <h4>Wir arbeiten mit</h4>
+                  <ul class="ticks">
+                    <li>Vorhandene DWG-, DXF- oder DGN-Dateien</li>
+                    <li>CAD-Standards und Vorlagen des Auftraggebers</li>
+                    <li>Zeichnungen, die nach unterschiedlichen CAD-Konventionen erstellt wurden</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Was Sie erhalten</h4>
+                  <ul class="ticks">
+                    <li>CAD-Dateien nach dem abgestimmten Standard</li>
+                    <li>Einheitliche Layerstrukturen und Benennungen</li>
+                    <li>Standardisierte Zeichnungseigenschaften und Darstellung</li>
+                  </ul>
+                </div>
+              </div>
+              <ul class="format-chips"><li>DWG</li><li>DXF</li><li>DGN</li></ul>
+              <a href="index.html#contact" class="btn btn--dark" data-prefill="2D-CAD-Digitalisierung">CAD-Umstrukturierung anfragen <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="section pricing" id="pricing">
+      <div class="container">
+        <header class="section-head section-head--center" data-reveal>
+          <p class="eyebrow"><span class="eyebrow__line"></span>Leistungsumfang</p>
+          <h2 class="h2">Überblick über unseren CAD-<em>Digitalisierungs</em>service.</h2>
+          <p class="section-head__lead">Preise pro A0-Zeichnung, zzgl. MwSt. Wählen Sie die Variante, die zu Ihrem benötigten CAD-Standard passt.</p>
+        </header>
+
+        <div class="tiers">
+          <article class="tier" data-reveal-item>
+            <header class="tier__head">
+              <h3>DWG-Basic</h3>
+              <p class="tier__price"><small>A0-Zeichnung</small>€49<small>zzgl. MwSt.</small></p>
+            </header>
+            <dl class="tier__list">
+              <div><dt>Fachgebiete</dt><dd>Architektur, Ingenieurwesen</dd></div>
+              <div><dt>CAD-Ausgabe</dt><dd>AutoCAD DWG oder DXF, MicroStation DGN</dd></div>
+              <div><dt>Layer</dt><dd>JDS-Basic-Layer: Grafik, Maße, Text, Raster, Zeichnungsrahmen &amp; Schriftfeld</dd></div>
+              <div><dt>Qualitätskontrolle</dt><dd>JDS-Fachzeichner</dd></div>
+            </dl>
+            <a href="index.html#contact" class="btn btn--ghost btn--block" data-prefill="2D-CAD-Digitalisierung">Basic anfragen</a>
+          </article>
+
+          <article class="tier tier--featured" data-reveal-item>
+            <header class="tier__head">
+              <h3>DWG-Premium</h3>
+              <p class="tier__price"><small>A0-Zeichnung</small>€75<small>zzgl. MwSt.</small></p>
+            </header>
+            <dl class="tier__list">
+              <div><dt>Fachgebiete</dt><dd>Architektur, Ingenieurwesen, Anlagenbau, Schiffbau, Kataster, weitere auf Anfrage</dd></div>
+              <div><dt>CAD-Ausgabe</dt><dd>AutoCAD DWG oder DXF, MicroStation DGN, Nemetschek Allplan FT, weitere auf Anfrage</dd></div>
+              <div><dt>Layer</dt><dd>JDS-Premium-Layer mit bis zu 56 Layern oder Ihren individuellen Layern (unbegrenzt)</dd></div>
+              <div><dt>Qualitätskontrolle</dt><dd>JDS-Ingenieure</dd></div>
+            </dl>
+            <a href="index.html#contact" class="btn btn--primary btn--block" data-prefill="2D-CAD-Digitalisierung">Premium anfragen</a>
+          </article>
+
+          <article class="tier tier--dark" data-reveal-item>
+            <header class="tier__head">
+              <h3>DWG-Premium Plus</h3>
+              <p class="tier__price"><small>A0-Zeichnung, ab</small>€99<small>zzgl. MwSt.</small></p>
+            </header>
+            <dl class="tier__list">
+              <div><dt>Alles aus Premium</dt><dd>Alle Fachgebiete, Formate und bis zu 56 / unbegrenzt viele Layer, geprüft von JDS-Ingenieuren</dd></div>
+              <div><dt>Ihre CAD-Richtlinie</dt><dd>Linienstärken, Schriften, Bemaßungsstile, Layoutrahmen, Schriftfeld-Layouts, Plotstil-Tabellen usw.</dd></div>
+              <div><dt>Zusatzleistungen</dt><dd>Plausibilitätsprüfungen über mehrere Pläne anhand von Referenzpunkten, z. B. Achsen übereinanderliegender Geschosse oder Schnitte und Ansichten im Abgleich mit Grundrissen</dd></div>
+            </dl>
+            <a href="index.html#contact" class="btn btn--light btn--block" data-prefill="2D-CAD-Digitalisierung">Premium Plus anfragen</a>
+          </article>
+        </div>
+
+        <div class="included" data-reveal>
+          <h3>In jeder Variante enthalten</h3>
+          <ul class="ticks ticks--cols">
+            <li>Kostenlose telefonische Beratung &amp; Angebot</li>
+            <li>Kostenloses Scannen mit optimalen Parametern, falls noch nicht gescannt</li>
+            <li>Exaktes CAD: Linien, Maßlinien, Symbole, Schraffuren und Texte korrekt dargestellt</li>
+            <li>Exakte Anpassung der Objekte an die vorgegebenen Maße</li>
+            <li>Kostenlose Rücksendung Ihrer Originalzeichnungen nach Projektabschluss</li>
+          </ul>
+        </div>
+
+        <div class="delivery" data-reveal>
+          <div class="delivery__intro">
+            <h3>Wählen Sie Ihre Lieferzeit</h3>
+            <p>Für kleine bis mittlere Mengen stehen je nach Dringlichkeit Ihrer Anfrage drei Lieferzeiten zur Verfügung.</p>
+          </div>
+          <ul class="delivery__opts">
+            <li><span>Standard</span><strong>5 Tage</strong></li>
+            <li><span>Eilig</span><strong>3 Tage</strong></li>
+            <li class="is-hot"><span>Express</span><strong>24 Stunden</strong></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- DETAIL -->
+    <section class="section detail">
+      <div class="container detail__grid">
+        <div class="detail__copy" data-reveal>
+          <p class="eyebrow"><span class="eyebrow__line"></span>Exakt aus Prinzip</p>
+          <h2 class="h2">Exakte Maße, korrekte Texte, <em>professionelle</em> Layer.</h2>
+          <p>
+            Zeichnungen, die heute nur als Ausdruck oder Scan existieren, werden als DWG-Dateien gebraucht: maßstabsgerecht, mit korrekten Symbolen und Texten auf dem passenden Layer und mit den richtigen Maßen, Linientypen und Linienstärken. Schnell und kostengünstig.
+          </p>
+          <p>
+            Die CAD-Digitalisierung von JDS verbindet modernste digitale Verfahren mit der Nachbearbeitung am Bildschirm durch CAD-Experten und der Qualitätssicherung durch Ingenieure, die den Inhalt Ihrer Zeichnungen verstehen. Ein hoher Anteil automatischer Vektorisierung hält den Preis niedrig; Nachbearbeitung und Prüfung durch erfahrene Ingenieure halten die Qualität hoch. In kürzester Zeit, in jeder Menge.
+          </p>
+        </div>
+
+        <div class="spec-card" data-reveal>
+          <h3>Sie geben vor, wir setzen um</h3>
+          <p>Machen Sie uns detaillierte Vorgaben zu:</p>
+          <ul class="spec-list">
+            <li><span>01</span>Layerstruktur</li>
+            <li><span>02</span>Layerfarbe</li>
+            <li><span>03</span>Maßstab der Zeichnung oder Karte</li>
+            <li><span>04</span>Textgröße</li>
+            <li><span>05</span>Linienstärken und -typen</li>
+          </ul>
+          <h4>Native Ausgabeformate</h4>
+          <ul class="format-chips">
+            <li>AutoCAD DWG</li><li>MicroStation DGN</li><li>Nemetschek Allplan FT</li><li>Andere Systeme über DXF</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY -->
+    <section class="section about why">
+      <svg class="why__mark" aria-hidden="true" focusable="false"><use href="#jds-mark"/></svg>
+      <div class="container about__grid">
+        <div class="about__copy" data-reveal>
+          <p class="eyebrow eyebrow--light"><span class="eyebrow__line"></span>Warum JDS Sommer</p>
+          <h2 class="h2 h2--light">Scannen, Digitalisieren und <em>Ingenieurwissen</em> aus einer Hand.</h2>
+          <p>
+            JDS SOMMER verbindet Scannen, computergestützte CAD-Digitalisierung und fundiertes Ingenieurwissen zur kostengünstigsten, schnellsten und hochwertigsten Konvertierung von Zeichnungen zu DWG. Selbst komplexe Bau-, Ingenieur- und Katasterzeichnungen werden zu CAD-Modellen in professioneller Qualität.
+          </p>
+          <div class="about__counter">
+            <div><strong><span data-count="99">99</span>%</strong><small>gleichwertig zur Neuzeichnung</small></div>
+            <div><strong><span data-count="1000" data-format="thousands">1.000</span>+</strong><small>CAD-Kunden</small></div>
+          </div>
+        </div>
+
+        <div class="expertise" data-reveal>
+          <h3>Umfangreiche Ingenieur- &amp; CAD-Erfahrung mit</h3>
+          <ul class="expertise__chips">
+            <li>Architekturzeichnungen inkl. Aufmaß vor Ort</li>
+            <li>R&amp;I-Fließbilder für die chemische &amp; petrochemische Verfahrenstechnik</li>
+            <li>Georeferenzierte Stromnetze &amp; Rohrleitungen</li>
+            <li>Katasterkarten für Straßenbau &amp; Grünflächen</li>
+            <li>Flächennutzungs- &amp; Bebauungspläne</li>
+            <li>Flucht- und Rettungspläne</li>
+            <li>Wasserbau &amp; Schiffstechnik</li>
+            <li>Elektrotechnik</li>
+            <li>Maschinenbau</li>
+            <li>Industrie- &amp; Kraftwerksbau</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUOTE -->
+    <section class="section quote-section">
+      <div class="container">
+        <figure class="quote" data-reveal>
+          <svg class="quote__mark" viewBox="0 0 48 36" aria-hidden="true"><path d="M0 36V20C0 8 7 1 19 0v7c-6 1-9 5-9 11h9v18zm29 0V20C29 8 36 1 48 0v7c-6 1-9 5-9 11h9v18z"/></svg>
+          <blockquote>
+            <p>Die Ergebnisse der CAD-Digitalisierung von JDS haben uns wirklich überzeugt! Hätten wir die JDS SOMMER GmbH früher gekannt, hätten wir schon viel Zeit und Geld gespart. Wir können die CAD-Digitalisierung von JDS allen CAD-Anwendern empfehlen, die nahezu vollständig exakte und vollständige Umsetzungen bestehender Pläne und Details in CAD-Dateien zu sehr günstigen Preisen wünschen!</p>
+          </blockquote>
+          <figcaption><strong>Ingenieurbüro Martin Stephan</strong><span>Kunde</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq" id="faq">
+      <div class="container faq__grid">
+        <header class="faq__head" data-reveal>
+          <p class="eyebrow"><span class="eyebrow__line"></span>FAQ · 2D-CAD-Digitalisierung</p>
+          <h2 class="h2">Fragen zur <em>2D-CAD</em>-Digitalisierung.</h2>
+          <p class="section-head__lead">Was Sie erwartet, wenn Sie uns Pläne, Zeichnungen oder Scans senden.</p>
+          <div class="faq__help">
+            <svg aria-hidden="true"><use href="#jds-mark"/></svg>
+            <p><strong>Noch Fragen?</strong> Rufen Sie an: <a href="tel:+49699054690">+49 (0)69 / 905 469-0</a> oder schreiben Sie an <a href="mailto:info@jds-sommer.de">info@jds-sommer.de</a>.</p>
+          </div>
+        </header>
+        <div class="faq__list" data-reveal>
+            <details class="faq__item" open>
+              <summary><span>Welche Zeichnungsgrößen können Sie digitalisieren?</span><i class="faq__icon" aria-hidden="true"></i></summary>
+              <div class="faq__a"><p>Alles von DIN A4 bis A0 und auch Zeichnungen, die ein Vielfaches von A0 groß sind. Vergilbte, gefaltete und übergroße Vorlagen sind kein Problem.</p></div>
+            </details>
+            <details class="faq__item">
+              <summary><span>Welche CAD-Formate liefern Sie?</span><i class="faq__icon" aria-hidden="true"></i></summary>
+              <div class="faq__a"><p>AutoCAD DWG oder DXF, MicroStation DGN und Nemetschek Allplan FT. Andere CAD-Systeme beliefern wir über DXF; weitere Formate auf Anfrage.</p></div>
+            </details>
+            <details class="faq__item">
+              <summary><span>Was ist der Unterschied zwischen Basic, Premium und Premium Plus?</span><i class="faq__icon" aria-hidden="true"></i></summary>
+              <div class="faq__a"><p>DWG-Basic (49 € pro A0) deckt Architektur- und Ingenieurzeichnungen mit dem JDS-Basic-Layersatz ab, geprüft von unseren Zeichnern. DWG-Premium (75 €) bietet weitere Fachgebiete und Allplan-Ausgabe, bis zu 56 Layer oder Ihre eigenen Layer, geprüft von JDS-Ingenieuren. DWG-Premium Plus (ab 99 €) folgt Ihrer vollständigen CAD-Richtlinie und umfasst Zusatzleistungen wie Plausibilitätsprüfungen über mehrere Pläne. Alle Preise zzgl. MwSt.</p></div>
+            </details>
+            <details class="faq__item">
+              <summary><span>Können Sie unseren eigenen CAD-Standard einhalten?</span><i class="faq__icon" aria-hidden="true"></i></summary>
+              <div class="faq__a"><p>Ja. Sie können Layerstruktur, Layerfarben, Zeichnungsmaßstab, Textgröße sowie Linienstärken und -typen vorgeben. Bei Premium Plus richten wir uns zusätzlich nach Ihren Schriften, Bemaßungsstilen, Layoutrahmen, Schriftfeldern und Plotstil-Tabellen.</p></div>
+            </details>
+            <details class="faq__item">
+              <summary><span>Unsere Zeichnungen sind bereits gescannt. Können Sie mit Bilddateien arbeiten?</span><i class="faq__icon" aria-hidden="true"></i></summary>
+              <div class="faq__a"><p>Ja. Liegen bereits Scans vor, zum Beispiel als PDF, TIFF oder JPEG, digitalisieren wir sie direkt zu CAD, ohne sie erneut zu scannen.</p></div>
+            </details>
+            <details class="faq__item">
+              <summary><span>Wie schnell können Sie liefern?</span><i class="faq__icon" aria-hidden="true"></i></summary>
+              <div class="faq__a"><p>Für kleine bis mittlere Mengen können Sie zwischen drei Lieferzeiten wählen: Standard in 5 Tagen, Eilig in 3 Tagen oder Express in nur 24 Stunden. Bei größeren Projekten stimmen wir den Zeitplan mit Ihnen ab.</p></div>
+            </details>
+            <details class="faq__item">
+              <summary><span>Wie stellen Sie sicher, dass die CAD-Dateien exakt sind?</span><i class="faq__icon" aria-hidden="true"></i></summary>
+              <div class="faq__a"><p>Auf einen hohen Anteil automatischer Vektorisierung folgen die Nachbearbeitung am Bildschirm durch CAD-Experten und die Qualitätskontrolle durch unsere Zeichner oder Ingenieure. Die Ergebnisse entsprechen zu 99 % Zeichnungen, die ein qualifizierter CAD-Experte komplett neu gezeichnet hat.</p></div>
+            </details>
+            <details class="faq__item">
+              <summary><span>Bekomme ich meine Originalzeichnungen zurück?</span><i class="faq__icon" aria-hidden="true"></i></summary>
+              <div class="faq__a"><p>Ja. Wir senden Ihnen Ihre Originalzeichnungen nach Projektabschluss kostenlos zurück.</p></div>
+            </details>
+        </div>
+      </div>
+    </section>
+    <!-- /FAQ -->
+
+    <!-- CROSS LINK -->
+    <section class="section crosslink-section">
+      <div class="container">
+        <a href="3d-bim-modellierung.html" class="crosslink" data-reveal>
+          <div>
+            <p class="eyebrow"><span class="eyebrow__line"></span>Weiter: Kernleistung 02</p>
+            <h2 class="h2">Sie benötigen <em>3D</em>? Modelle für BIM &amp; Bauteile.</h2>
+            <p>Wir erstellen auch 3D-Modelle aus vorhandenen Plänen und Zeichnungen, 2D-CAD-Dateien, Fotos und Laserscans und leiten daraus detaillierte Zeichnungen ab.</p>
+          </div>
+          <span class="crosslink__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- FREE AUDIT -->
+    <section class="section test-us test-us--end">
+      <div class="container">
+        <div class="test-us__card" data-reveal>
+          <svg class="test-us__mark" aria-hidden="true"><use href="#jds-mark"/></svg>
+          <div>
+            <p class="eyebrow"><span class="eyebrow__line"></span>Kostenlose Prüfung</p>
+            <h2 class="h2">Überzeugen Sie sich selbst von der Qualität: eine Muster-CAD-Datei, <em>kostenlos</em>.</h2>
+            <p>Senden Sie uns einen Ausschnitt Ihres Plans per Post oder E-Mail für eine kostenlose Prüfung und Musterdigitalisierung, unverbindlich. Wir beraten Sie und erstellen ein individuelles Angebot auf Basis der Anzahl Ihrer Vorlagen.</p>
+          </div>
+          <div class="test-us__ctas">
+            <a href="index.html#contact" class="btn btn--primary" data-prefill="Kostenlose Prüfung">Kostenlose Prüfung anfordern</a>
+            <a href="mailto:info@jds-sommer.de?subject=Free%20audit" class="btn btn--ghost">info@jds-sommer.de</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>

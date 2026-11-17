@@ -5,6 +5,10 @@ DirectoryIndex index.html
 Options -MultiViews
 # Our own error page (all its links are root-absolute, so it works at any depth)
 ErrorDocument 404 /404.html
+# /wissen and /en/insights are pages that share their name with a folder: no automatic slash, so the rewrite below serves the page
+<If "%{REQUEST_URI} =~ m#^/(wissen|en/insights)$#">
+  DirectorySlash Off
+</If>
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
@@ -25,14 +29,14 @@ ErrorDocument 404 /404.html
   # Addresses of the previous website (German at /, English under /en/, with trailing slashes)
   RewriteRule ^datenschutzerklaerung/?$ /datenschutz [R=301,L]
   RewriteRule ^referenzen/?$ /#references [R=301,L,NE]
-  RewriteRule ^faq(/.*)?$ /#faq [R=301,L,NE]
   RewriteRule ^en$ /en/ [R=301,L]
   RewriteRule ^en/terms-conditions/?$ /en/terms-and-conditions [R=301,L]
   RewriteRule ^en/2d-cad-digitizing/.+$ /en/2d-cad-digitizing [R=301,L]
   RewriteRule ^en/references/?$ /en/#references [R=301,L,NE]
-  RewriteRule ^en/faq(/.*)?$ /en/#faq [R=301,L,NE]
-  RewriteRule ^en/about-us/?$ /en/#about [R=301,L,NE]
-  RewriteRule ^en/(contact|offer)(/.*)?$ /en/#contact [R=301,L,NE]
+  RewriteRule ^en/offer(/.*)?$ /en/contact [R=301,L]
+  # Pages that share their name with a folder (wissen.html + wissen/ articles): serve the page, with or without
+  # a trailing slash, before Apache's folder handling turns /wissen into a 403 on /wissen/
+  RewriteRule ^(wissen|en/insights)/?$ $1.html [L]
   # /impressum/ -> /impressum, /en/imprint/ -> /en/imprint (a trailing slash on a page that is not a folder)
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule ^(.+)/$ /$1 [R=301,L]

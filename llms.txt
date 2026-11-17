@@ -1,6 +1,6 @@
 # JDS Sommer GmbH
 
-> JDS Sommer GmbH in Frankfurt am Main, Germany (founded 1984), turns existing drawings, scans and point clouds into usable CAD and BIM data: 2D CAD digitalisation and vectorisation, 3D CAD modelling, Scan to BIM and reverse engineering. Around 2,000 customers across industries; more than 1,000 drawings converted per month. Quotes and advice are free of charge.
+> JDS Sommer GmbH in Frankfurt am Main, Germany (founded 1984), turns existing drawings, scans and point clouds into usable CAD and BIM data: 2D CAD digitalisation and drawing-to-CAD conversion, 3D CAD modelling, Scan to BIM and reverse engineering. Around 2,000 customers across industries; more than 1,000 drawings converted per month. Quotes and advice are free of charge.
 
 The website is in German (the default, in the site root) and English (under /en/). Prices are net, plus VAT.
 

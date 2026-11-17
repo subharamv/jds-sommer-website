@@ -187,6 +187,20 @@
     $$('[data-nav-group]').forEach(function (b) {
       b.classList.toggle('is-active', b.getAttribute('data-nav-group').split(' ').indexOf(namespace) > -1);
     });
+    // Mobile menu: the service group of the current page starts open
+    $$('.m-sub').forEach(function (d) { d.open = !!$('[data-nav].is-active', d); });
+  }
+
+  // Mobile menu service groups: opening one closes the others (for browsers without <details name>)
+  function initMenuGroups() {
+    $$('[data-m-groups]').forEach(function (box) {
+      var groups = $$('.m-sub', box);
+      groups.forEach(function (d) {
+        d.addEventListener('toggle', function () {
+          if (d.open) groups.forEach(function (o) { if (o !== d) o.open = false; });
+        });
+      });
+    });
   }
 
   /* ---------- Header dropdowns ---------- */
@@ -1053,6 +1067,227 @@
     });
   }
 
+  /* ---------- Insights: search, type tabs (#blog, #case-studies, #articles), topic chips, carousel rows ---------- */
+  // Each type tab is its own link (insights.html#case-studies), so the types can be shared and linked separately.
+  // With no filter active the page shows the carousel rows; any search or filter switches to the results grid.
+  function initInsights(scope) {
+    var box = $('[data-insights]', scope);
+    if (!box) return;
+    var tabs = $$('[data-filter]', box), chips = $$('[data-topic-filter]', box), cards = $$('[data-post]', box);
+    var count = $('[data-insights-count]', box), empty = $('[data-ins-empty]', box), search = $('[data-ins-search]', scope);
+    var browse = $('[data-ins-browse]', box), results = $('[data-ins-results]', box);
+    var types = tabs.map(function (t) { return t.getAttribute('data-filter'); });
+    var norm = function (v) { return v.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); };
+    var index = cards.map(function (c) { return norm(c.textContent.replace(/\s+/g, ' ')); });
+    var state = { type: 'all', topics: [], q: '', sort: 'new' };
+    var refreshTimer;
+    var toggle = $('[data-topic-toggle]', box), panel = $('[data-topic-panel]', box), badge = $('[data-topic-count]', box);
+    var pills = $('[data-topic-pills]', box), pillTpl = $('[data-pill-tpl]', box), clearAll = $('[data-topic-clear-all]', box);
+    var sortLabel = $('[data-sort-label]', box), sorts = $$('[data-sort]', box);
+    var lists = [$('.insights__grid', box)].concat($$('[data-row-track]', box)).filter(Boolean);
+
+    // Latest or oldest first, in the results grid and in every carousel row
+    function sortCards() {
+      lists.forEach(function (list) {
+        var items = [].slice.call(list.children).filter(function (c) { return c.hasAttribute('data-date'); });
+        items.sort(function (a, b) {
+          var d = a.getAttribute('data-date').localeCompare(b.getAttribute('data-date'));
+          return state.sort === 'old' ? d : -d;
+        });
+        items.forEach(function (c) { list.appendChild(c); });
+        if (list.hasAttribute('data-row-track')) list.scrollLeft = 0;
+      });
+      sorts.forEach(function (o) { o.setAttribute('aria-pressed', o.getAttribute('data-sort') === state.sort ? 'true' : 'false'); });
+      var on = sorts.filter(function (o) { return o.getAttribute('data-sort') === state.sort; })[0];
+      if (sortLabel && on) sortLabel.textContent = on.textContent;
+    }
+
+    function render() {
+      var words = norm(state.q).split(' ').filter(Boolean), shown = 0;
+      var picked = state.topics.length;
+      var filtering = state.type !== 'all' || picked > 0 || words.length > 0;
+      tabs.forEach(function (t) { t.setAttribute('aria-current', t.getAttribute('data-filter') === state.type ? 'true' : 'false'); });
+      chips.forEach(function (c) { c.setAttribute('aria-pressed', state.topics.indexOf(c.getAttribute('data-topic-filter')) > -1 ? 'true' : 'false'); });
+      if (badge) { badge.hidden = !picked; badge.textContent = picked; }
+      if (clearAll) clearAll.hidden = !picked;
+      renderPills();
+      cards.forEach(function (c, i) {
+        var on = (state.type === 'all' || c.getAttribute('data-type') === state.type) &&
+                 (!picked || state.topics.indexOf(c.getAttribute('data-topic')) > -1) &&
+                 words.every(function (w) { return index[i].indexOf(w) > -1; });
+        c.hidden = !on;
+        if (on) shown++;
+      });
+      if (browse) browse.hidden = filtering;
+      if (results) results.hidden = !filtering;
+      if (count) count.textContent = count.getAttribute(shown === 1 ? 'data-one' : 'data-many').replace('{n}', shown);
+      if (empty) empty.hidden = shown > 0;
+      clearTimeout(refreshTimer);
+      if (animate) refreshTimer = setTimeout(function () { ScrollTrigger.refresh(); }, 150);
+    }
+    // Selected topics as removable pills beside the filter icon (only while the topic panel is closed)
+    function renderPills() {
+      if (!pills || !pillTpl) return;
+      pills.textContent = '';
+      chips.forEach(function (c) {
+        var key = c.getAttribute('data-topic-filter');
+        if (state.topics.indexOf(key) < 0) return;
+        var pill = pillTpl.content.firstElementChild.cloneNode(true);
+        $('span', pill).textContent = c.textContent;
+        pill.setAttribute('aria-label', pill.getAttribute('aria-label') + ': ' + c.textContent);
+        pill.addEventListener('click', function () { toggleTopic(key); });
+        pills.appendChild(pill);
+      });
+      pills.classList.toggle('is-hidden', toggle && toggle.getAttribute('aria-expanded') === 'true');
+    }
+    function toggleTopic(key) {
+      var i = state.topics.indexOf(key);
+      if (i > -1) state.topics.splice(i, 1); else state.topics.push(key);
+      render();
+    }
+    function setPanel(open) {
+      if (!toggle || !panel) return;
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      panel.classList.toggle('is-open', open);
+      panel.inert = !open;
+      renderPills();
+      clearTimeout(refreshTimer);
+      if (animate) refreshTimer = setTimeout(function () { ScrollTrigger.refresh(); }, 450);
+    }
+    function setType(type) { if (types.indexOf(type) > -1) { state.type = type; render(); } }
+    function fromHash() { setType(location.hash.slice(1)); }
+
+    // Type links from the menu while already on this page: the shared hash handler only scrolls
+    function onClick(e) {
+      var a = e.target.closest('a');
+      if (!a || !isSamePageHash(a)) return;
+      setType(new URL(a.href).hash.slice(1));
+    }
+    // Sort dropdown: outside click or Escape closes it
+    var dds = $$('[data-ins-dd]', box);
+    function setDd(dd, open) {
+      $('[data-dd-btn]', dd).setAttribute('aria-expanded', open ? 'true' : 'false');
+      $('[data-dd-menu]', dd).hidden = !open;
+    }
+    function closeDds(except) { dds.forEach(function (dd) { if (dd !== except) setDd(dd, false); }); }
+    dds.forEach(function (dd) {
+      $('[data-dd-btn]', dd).addEventListener('click', function () {
+        var open = $('[data-dd-btn]', dd).getAttribute('aria-expanded') !== 'true';
+        closeDds(dd);
+        setDd(dd, open);
+        if (open) { var first = $('[aria-pressed="true"]', dd) || $('.ins-dd__opt', dd); if (first) first.focus(); }
+      });
+    });
+    function onDocClick(e) { if (!e.target.closest('[data-ins-dd]')) closeDds(); }
+    function onKey(e) {
+      if (e.key !== 'Escape') return;
+      var open = dds.filter(function (dd) { return $('[data-dd-btn]', dd).getAttribute('aria-expanded') === 'true'; })[0];
+      if (open) { setDd(open, false); $('[data-dd-btn]', open).focus(); return; }
+      if (toggle && toggle.getAttribute('aria-expanded') === 'true' && box.contains(document.activeElement)) { setPanel(false); toggle.focus(); }
+    }
+    document.addEventListener('click', onDocClick);
+    document.addEventListener('keydown', onKey);
+
+    // Topic panel: the filter icon opens and closes it; each chip toggles its topic on or off
+    if (toggle) toggle.addEventListener('click', function () { closeDds(); setPanel(toggle.getAttribute('aria-expanded') !== 'true'); });
+    chips.forEach(function (c) {
+      c.addEventListener('click', function () { toggleTopic(c.getAttribute('data-topic-filter')); });
+    });
+    if (clearAll) clearAll.addEventListener('click', function () { state.topics = []; render(); if (toggle) toggle.focus(); });
+    sorts.forEach(function (o) {
+      o.addEventListener('click', function () { state.sort = o.getAttribute('data-sort'); closeDds(); sortCards(); });
+    });
+    if (search) {
+      search.addEventListener('input', function () { state.q = search.value; render(); });
+      // Enter in the hero search jumps down to the results
+      search.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); scrollToTarget(box); } });
+    }
+    var reset = $('[data-ins-reset]', box);
+    if (reset) reset.addEventListener('click', function () {
+      state.type = 'all'; state.topics = []; state.q = '';
+      if (search) search.value = '';
+      if (history.replaceState) history.replaceState(history.state, '', '#all');
+      render();
+    });
+
+    // Posts are not published yet: their "Read" links show a short note instead of going anywhere
+    var toast = $('[data-ins-toast]', box), toastTimer;
+    function onSoon(e) {
+      var a = e.target.closest('a[data-soon]');
+      if (!a || !scope.contains(a)) return;
+      e.preventDefault();
+      e.stopPropagation();
+      if (!toast) return;
+      toast.hidden = false;
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(function () { toast.hidden = true; }, 3200);
+    }
+
+    document.addEventListener('click', onClick);
+    document.addEventListener('click', onSoon, true);
+    window.addEventListener('hashchange', fromHash);
+    fromHash();
+    // After a Barba transition the hash is written to the address bar right after this runs
+    var raf = requestAnimationFrame(fromHash);
+    pageCleanups.push(function () {
+      cancelAnimationFrame(raf);
+      clearTimeout(toastTimer);
+      clearTimeout(refreshTimer);
+      document.removeEventListener('click', onClick);
+      document.removeEventListener('click', onSoon, true);
+      document.removeEventListener('click', onDocClick);
+      document.removeEventListener('keydown', onKey);
+      window.removeEventListener('hashchange', fromHash);
+    });
+
+    $$('[data-ins-row]', box).forEach(initInsightsRow);
+  }
+
+  // One carousel row: a scroll-snapped track (native swipe and trackpad), arrows that step one card
+  function initInsightsRow(row) {
+    var track = $('[data-row-track]', row), prev = $('[data-row-prev]', row), next = $('[data-row-next]', row);
+    if (!track || row.dataset.ready) return;
+    row.dataset.ready = '1';
+    var raf = 0;
+    function step() {
+      var card = track.firstElementChild;
+      return card ? card.getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap || 0) : track.clientWidth;
+    }
+    function sync() {
+      var max = track.scrollWidth - track.clientWidth - 2;
+      if (prev) prev.disabled = track.scrollLeft <= 2;
+      if (next) next.disabled = track.scrollLeft >= max;
+      track.classList.toggle('is-end', track.scrollLeft >= max);
+    }
+    function onScroll() { cancelAnimationFrame(raf); raf = requestAnimationFrame(sync); }
+    if (prev) prev.addEventListener('click', function () { track.scrollBy({ left: -step(), behavior: reduceMotion ? 'auto' : 'smooth' }); });
+    if (next) next.addEventListener('click', function () { track.scrollBy({ left: step(), behavior: reduceMotion ? 'auto' : 'smooth' }); });
+    track.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    sync();
+
+    // data-row-auto (industry pages): advance one card every few seconds, back to the start after the last one.
+    // Pauses while hovered, focused, off screen or with the tab hidden; never runs with reduced motion.
+    var auto = 0, hovering = false, focused = false, visible = false, io = null;
+    if (row.hasAttribute('data-row-auto') && !reduceMotion) {
+      row.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') hovering = true; });
+      row.addEventListener('pointerleave', function () { hovering = false; });
+      row.addEventListener('focusin', function () { focused = true; });
+      row.addEventListener('focusout', function (e) { if (!row.contains(e.relatedTarget)) focused = false; });
+      if ('IntersectionObserver' in window) {
+        io = new IntersectionObserver(function (en) { visible = en[0].isIntersecting; }, { threshold: 0.4 });
+        io.observe(track);
+      } else visible = true;
+      auto = setInterval(function () {
+        if (hovering || focused || !visible || document.hidden) return;
+        var atEnd = track.scrollLeft >= track.scrollWidth - track.clientWidth - 2;
+        if (atEnd) track.scrollTo({ left: 0, behavior: 'smooth' });
+        else track.scrollBy({ left: step(), behavior: 'smooth' });
+      }, 4000);
+    }
+    pageCleanups.push(function () { cancelAnimationFrame(raf); window.removeEventListener('resize', onScroll); clearInterval(auto); if (io) io.disconnect(); });
+  }
+
   /* ---------- Form subject prefill ---------- */
   // Buttons like "Submit files for assessment" pre-select the form's subject,
   // also when they link to the form from another page.
@@ -1249,12 +1484,15 @@
         altchaPayload = d.state === 'verified' ? d.payload : null;
       });
       if (!(window.customElements && customElements.get('altcha-widget')) && !document.querySelector('script[data-altcha]')) {
+        // Next to main.js, wherever the site is served from (site root live, a subfolder on local previews)
+        var me = document.querySelector('script[src*="js/main.js"]');
+        var jsDir = me ? me.src.replace(/main\.js[^/]*$/, '') : '/assets/js/';
         var lib = document.createElement('script');
-        lib.src = '/assets/js/altcha/altcha.min.js?v=3.3.0';
+        lib.src = jsDir + 'altcha/altcha.min.js?v=3.3.0';
         lib.setAttribute('data-altcha', '');
         lib.onload = function () {
           var de = document.createElement('script');
-          de.src = '/assets/js/altcha/de.js?v=3.3.0';
+          de.src = jsDir + 'altcha/de.js?v=3.3.0';
           // The German texts arrive after the widget started: apply the page language once they are there
           de.onload = function () { $$('altcha-widget').forEach(function (w) { if (w.configure) w.configure({ language: DE ? 'de' : 'en' }); }); };
           document.head.appendChild(de);
@@ -1352,6 +1590,19 @@
   }
 
   /* ---------- Page lifecycle ---------- */
+  // Sticky FAQ / glossary search: .is-stuck while it is pinned below the header (shows its backing and fade)
+  var stickyTick = false;
+  function updateStickySearch() {
+    stickyTick = false;
+    document.querySelectorAll('.faq--search .faqx-search, .glossary .glx-search, .ins-filters').forEach(function (el) {
+      var top = parseFloat(getComputedStyle(el).top) || 0;
+      el.classList.toggle('is-stuck', window.scrollY > 0 && el.getBoundingClientRect().top <= top + 1);
+    });
+  }
+  window.addEventListener('scroll', function () {
+    if (!stickyTick) { stickyTick = true; requestAnimationFrame(updateStickySearch); }
+  }, { passive: true });
+
   function initPage(container, opts) {
     opts = opts || {};
     var ns = container.getAttribute('data-barba-namespace') || 'home';
@@ -1364,10 +1615,13 @@
     initLod(container);
     initCloud(container);
     initFaq(container);
+    initInsights(container);
+    $$('[data-ins-row]', container).forEach(initInsightsRow);   // rows outside the Insights page (industry pages)
     initIndustries(container);
     initSvcSlider(container);
     initQuotes(container);
     initHScroll(container);
+    updateStickySearch();
 
     if (!animate) return;
     pageCtx = gsap.context(function () {
@@ -1438,6 +1692,13 @@
         });
       });
     }
+    // The header's links are relative to the page it came with, so a transition into another folder
+    // (e.g. en/ -> en/industries/) would leave them pointing at the wrong place: load those pages normally.
+    function folder(path) { return path.replace(/[^/]*$/, ''); }
+    function otherFolder(el) {
+      var url = new URL(el.href, location.href);
+      return url.origin === location.origin && folder(url.pathname) !== folder(location.pathname);
+    }
     barba.init({
       preventRunning: true,
       // The server can take over a second per page; Barba's default 2 s limit then aborted the
@@ -1449,7 +1710,7 @@
       },
       prevent: function (o) {
         var el = o.el;
-        return el.target === '_blank' || el.hasAttribute('data-no-barba') || isSamePageHash(el);
+        return el.target === '_blank' || el.hasAttribute('data-no-barba') || isSamePageHash(el) || otherFolder(el);
       },
       transitions: [{
         name: 'curtain',
@@ -1499,6 +1760,7 @@
     initLang();
     initMenu();
     initNavDropdowns();
+    initMenuGroups();
     // Social links are placeholders until the profile URLs are set: "#" should do nothing
     document.addEventListener('click', function (e) { var a = e.target.closest('a[data-social]'); if (a && a.getAttribute('href') === '#') e.preventDefault(); });
     var main = $('[data-barba="container"]');
@@ -1516,4 +1778,429 @@
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();
+})();
+
+/* ---------- FAQ page (faq.html): search, topic filter, answers opened by their toggle button ----------
+   Lives here rather than in the page so it also runs after a Barba page transition. */
+(function () {
+  var topic = '';            // active topic ("" = all)
+  // The German page is generated from this one, so the script texts follow the page language
+  var DE = document.documentElement.lang === 'de';
+  var T = DE
+    ? { popular: 'Beliebte Artikel', all: 'Alle Themen', one: 'Ergebnis', many: 'Ergebnisse', for: 'für', in: 'im', topic: 'Thema', filter: 'Nach Thema filtern', show: 'Antwort anzeigen', hide: 'Antwort ausblenden' }
+    : { popular: 'Popular articles', all: 'All topics', one: 'result', many: 'results', for: 'for', in: 'in', topic: 'topic', filter: 'Filter by topic', show: 'Show answer', hide: 'Hide answer' };
+  var DEFAULT_COUNT = '<strong>' + T.popular + '</strong>';
+
+  function norm(s) {
+    return (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/ß/g, 'ss');
+  }
+  function esc(s) { return s.replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  // The list itself: the homepage and service pages have a <script data-faq> (FAQ schema) in the <head>,
+  // which stays in the document after a Barba page transition
+  function root() { return document.querySelector('.faq__list[data-faq]'); }
+
+  // Highlight the search words inside a plain-text string
+  function highlight(text, terms) {
+    if (!terms.length) return esc(text);
+    var plain = norm(text), marks = new Array(text.length + 1).fill(false);
+    // norm() can change the length (ß → ss), so only highlight when lengths match
+    if (plain.length !== text.length) return esc(text);
+    terms.forEach(function (t) {
+      var i = plain.indexOf(t);
+      while (i !== -1) { for (var k = i; k < i + t.length; k++) marks[k] = true; i = plain.indexOf(t, i + t.length); }
+    });
+    var out = '', open = false;
+    for (var j = 0; j < text.length; j++) {
+      if (marks[j] && !open) { out += '<mark>'; open = true; }
+      if (!marks[j] && open) { out += '</mark>'; open = false; }
+      out += esc(text[j]);
+    }
+    return out + (open ? '</mark>' : '');
+  }
+
+  // One-time setup: snippet, tag line and topic sidebar
+  function setup() {
+    var r = root();
+    if (!r || r.hasAttribute('data-faq-ready')) return;
+    r.setAttribute('data-faq-ready', '');
+    var counts = {};
+    r.querySelectorAll('.faqx-item').forEach(function (it) {
+      var q = it.querySelector('.faqx-q'), a = it.querySelector('.faqx-a');
+      q.setAttribute('data-orig', q.textContent);
+      var txt = a.textContent.trim().replace(/\s+/g, ' ');
+      var snip = document.createElement('span');
+      snip.className = 'faqx-snip';
+      snip.textContent = txt.length > 130 ? txt.slice(0, 130).replace(/\s+\S*$/, '') + '…' : txt;
+      var tags = (it.getAttribute('data-tags') || '').split('|').filter(Boolean);
+      var tl = document.createElement('span');
+      tl.className = 'faqx-tags';
+      tags.forEach(function (t) { var s = document.createElement('span'); s.textContent = t; tl.appendChild(s); counts[t] = (counts[t] || 0) + 1; });
+      var sum = it.querySelector('summary');
+      // keep the question in column 2, snippet and tags below it
+      sum.appendChild(snip); sum.appendChild(tl);
+      it.setAttribute('data-search', norm(txt + ' ' + q.textContent + ' ' + tags.join(' ')));
+    });
+    var list = document.querySelector('[data-faq-topic-list]');
+    if (list) {
+      var total = r.querySelectorAll('.faqx-item').length;
+      var html = '<li><button type="button" class="faqx-topic is-active" data-topic="">' + T.all + ' <small>' + total + '</small></button></li>';
+      Object.keys(counts).sort(function (a, b) { return a.localeCompare(b, DE ? 'de' : 'en'); }).forEach(function (t) {
+        html += '<li><button type="button" class="faqx-topic" data-topic="' + esc(t) + '">' + esc(t) + ' <small>' + counts[t] + '</small></button></li>';
+      });
+      list.innerHTML = html;
+      // Phones: the same topics as a dropdown (CSS shows it instead of the list below 900px)
+      var box = list.closest('[data-faq-topics]');
+      if (box && !box.querySelector('.faqx-topic-select')) {
+        var opts = '<option value="">' + T.all + ' (' + total + ')</option>';
+        Object.keys(counts).sort(function (a, b) { return a.localeCompare(b, DE ? 'de' : 'en'); }).forEach(function (t) {
+          opts += '<option value="' + esc(t) + '">' + esc(t) + ' (' + counts[t] + ')</option>';
+        });
+        var wrap = document.createElement('div');
+        wrap.className = 'faqx-topic-select';
+        wrap.innerHTML = '<label class="visually-hidden" for="faqTopicSelect">' + T.filter + '</label>' +
+          '<select id="faqTopicSelect" data-faq-topic-select>' + opts + '</select>' +
+          '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>';
+        list.parentNode.insertBefore(wrap, list);
+        wrap.querySelector('select').addEventListener('change', function (e) { topic = e.target.value; apply(); });
+      }
+    }
+  }
+
+  function apply() {
+    var r = root(); if (!r) return;
+    var input = r.querySelector('#faqSearch');
+    var raw = input.value.trim();
+    var terms = norm(raw).split(/\s+/).filter(Boolean);
+    var items = r.querySelectorAll('.faqx-item'), shown = 0;
+
+    items.forEach(function (it) {
+      var hay = it.getAttribute('data-search');
+      var okTerms = terms.every(function (t) { return hay.indexOf(t) !== -1; });
+      var okTopic = !topic || (it.getAttribute('data-tags') || '').split('|').indexOf(topic) !== -1;
+      var show = okTerms && okTopic;
+      it.hidden = !show;
+      var q = it.querySelector('.faqx-q');
+      q.innerHTML = highlight(q.getAttribute('data-orig'), terms);
+      if (show) shown++;
+    });
+
+    r.querySelector('.faqx-search').classList.toggle('has-value', !!raw);
+    r.querySelector('[data-faq-empty]').classList.toggle('is-visible', shown === 0);
+    r.querySelector('[data-faq-reset]').hidden = !(raw || topic);
+
+    var c = r.querySelector('[data-faq-count]');
+    if (raw || topic) {
+      var what = [];
+      if (raw) what.push('“' + esc(raw) + '”');
+      if (topic) what.push(T.topic + ' ' + esc(topic));
+      c.innerHTML = '<strong>' + shown + '</strong> ' + (shown === 1 ? T.one : T.many) + ' ' + T.for + ' ' + what.join(' ' + T.in + ' ');
+    } else {
+      c.innerHTML = DEFAULT_COUNT;
+    }
+    document.querySelectorAll('.faqx-topic').forEach(function (b) {
+      b.classList.toggle('is-active', b.getAttribute('data-topic') === topic);
+    });
+    var sel = document.querySelector('[data-faq-topic-select]');
+    if (sel) sel.value = topic;
+  }
+
+  function reset() {
+    var r = root(); if (!r) return;
+    r.querySelector('#faqSearch').value = '';
+    topic = '';
+    apply();
+  }
+
+  document.addEventListener('input', function (e) {
+    if (e.target && e.target.id === 'faqSearch') { setup(); apply(); }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && e.target && e.target.id === 'faqSearch') reset();
+  });
+  // Clicking anywhere on the question row (or its arrow button) opens / closes the answer
+  function toggleItem(tg) {
+    var d = tg.closest('.faqx-item'); d.open = !d.open;
+    tg.setAttribute('aria-expanded', d.open ? 'true' : 'false');
+    tg.setAttribute('aria-label', d.open ? T.hide : T.show);
+  }
+  document.addEventListener('keydown', function (e) {
+    if ((e.key === 'Enter' || e.key === ' ') && e.target.classList && e.target.classList.contains('faqx-toggle')) { e.preventDefault(); toggleItem(e.target); }
+  });
+  document.addEventListener('click', function (e) {
+    var sum = e.target.closest ? e.target.closest('.faqx-item > summary') : null;
+    if (sum) {
+      e.preventDefault();                      // handled here, so the arrow's label and state stay in sync
+      if (e.target.closest('a')) return;       // links inside a question keep working
+      var tg = sum.querySelector('.faqx-toggle');
+      if (tg) toggleItem(tg); else sum.parentNode.open = !sum.parentNode.open;
+      return;
+    }
+    var t = e.target.closest ? e.target.closest('[data-topic], [data-faq-clear], [data-faq-reset]') : null;
+    // only the FAQ page's own controls (the glossary has data-topic buttons too)
+    if (!t || !root() || (t.hasAttribute('data-topic') && !t.closest('[data-faq-topics]'))) return;
+    setup();
+    if (t.hasAttribute('data-topic')) { topic = t.getAttribute('data-topic'); apply(); }
+    else if (t.hasAttribute('data-faq-clear')) { reset(); root().querySelector('#faqSearch').focus(); }
+    else reset();
+  });
+
+  function init() { topic = ''; setup(); }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+  window.addEventListener('load', function () {
+    init();
+    if (window.barba && barba.hooks) barba.hooks.afterEnter(init);
+  });
+})();
+
+/* ---------- Glossary page (glossary.html): search, topic filter and floating meaning ----------
+   Lives here rather than in the page so it also runs after a Barba page transition. */
+(function () {
+  // The German page is generated from the English one, so the script texts follow the page language
+  var DE = document.documentElement.lang === 'de';
+  var T = DE
+    ? { one: 'Begriff', many: 'Begriffe', for: 'für', in: 'im', topic: 'Thema', all: 'Begriffe von A bis Z', allTopics: 'Alle Themen', filter: 'Nach Thema filtern' }
+    : { one: 'term', many: 'terms', for: 'for', in: 'in', topic: 'topic', all: 'terms, A to Z', allTopics: 'All topics', filter: 'Filter by topic' };
+  var tip = null, cur = null, topic = '';
+
+  function norm(s) {
+    return (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/ß/g, 'ss');
+  }
+  function esc(s) { return s.replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function sec() { return document.getElementById('glossary'); }
+
+  // Highlight the search words inside a plain-text string
+  function highlight(text, terms) {
+    if (!terms.length) return esc(text);
+    var plain = norm(text), marks = new Array(text.length + 1).fill(false);
+    if (plain.length !== text.length) return esc(text);
+    terms.forEach(function (t) {
+      var i = plain.indexOf(t);
+      while (i !== -1) { for (var k = i; k < i + t.length; k++) marks[k] = true; i = plain.indexOf(t, i + t.length); }
+    });
+    var out = '', open = false;
+    for (var j = 0; j < text.length; j++) {
+      if (marks[j] && !open) { out += '<mark>'; open = true; }
+      if (!marks[j] && open) { out += '</mark>'; open = false; }
+      out += esc(text[j]);
+    }
+    return out + (open ? '</mark>' : '');
+  }
+
+  /* ---------- floating meaning ---------- */
+  function getTip() {
+    if (!tip) {
+      tip = document.createElement('div');
+      tip.className = 'glx-tip'; tip.id = 'glxTip'; tip.setAttribute('role', 'tooltip');
+      document.body.appendChild(tip);
+    }
+    return tip;
+  }
+  function place(dt) {
+    var t = getTip(), r = dt.getBoundingClientRect(), m = 12;
+    t.style.left = '0px'; t.style.top = '0px';
+    var w = t.offsetWidth, h = t.offsetHeight;
+    var left = Math.min(Math.max(m, r.left), window.innerWidth - w - m);
+    var top = r.bottom + 10;
+    if (top + h > window.innerHeight - m && r.top - h - 10 > m) top = r.top - h - 10;   // not enough room below: show above
+    t.style.left = left + 'px'; t.style.top = top + 'px';
+  }
+  function show(dt) {
+    var dd = dt.parentNode.querySelector('dd');
+    if (!dd) return;
+    if (cur && cur !== dt) cur.classList.remove('is-open');
+    var t = getTip();
+    t.innerHTML = '<strong>' + esc(dt.getAttribute('data-orig') || dt.textContent) + '</strong>' + esc(dd.textContent.trim());
+    place(dt);
+    t.classList.add('is-on');
+    dt.classList.add('is-open');
+    dt.setAttribute('aria-describedby', 'glxTip');
+    cur = dt;
+  }
+  function hide() {
+    if (tip) tip.classList.remove('is-on');
+    if (cur) { cur.classList.remove('is-open'); cur.removeAttribute('aria-describedby'); }
+    cur = null;
+  }
+  function termOf(el) { return el && el.closest ? el.closest('.glossary.is-interactive .term dt') : null; }
+
+  document.addEventListener('mouseover', function (e) { var dt = termOf(e.target); if (dt && dt !== cur) show(dt); });
+  document.addEventListener('mouseout', function (e) {
+    var dt = termOf(e.target);
+    if (dt && dt === cur && !(e.relatedTarget && dt.contains(e.relatedTarget))) hide();
+  });
+  document.addEventListener('focusin', function (e) { var dt = termOf(e.target); if (dt) show(dt); });
+  document.addEventListener('focusout', function (e) { if (termOf(e.target)) hide(); });
+  document.addEventListener('click', function (e) {
+    var dt = termOf(e.target);
+    if (dt) { show(dt); return; }              // tap on a term (touch screens) shows its meaning
+    if (cur) hide();                           // tap anywhere else closes it
+    var tp = e.target.closest ? e.target.closest('#glossary [data-topic]') : null;   // not the FAQ page's topics
+    if (tp) { topic = tp.getAttribute('data-topic'); apply(); return; }
+    var b = e.target.closest ? e.target.closest('[data-glx-clear], [data-glx-reset]') : null;
+    if (b) { reset(); if (b.hasAttribute('data-glx-clear')) { var i = document.getElementById('glxSearch'); if (i) i.focus(); } }
+  });
+  window.addEventListener('scroll', hide, true);
+  window.addEventListener('resize', hide);
+
+  /* ---------- search ---------- */
+  function setup() {
+    var s = sec();
+    if (!s || s.hasAttribute('data-glx-ready')) return;
+    s.setAttribute('data-glx-ready', '');
+    s.classList.add('is-interactive');
+    var counts = {}, total = 0;
+    s.querySelectorAll('.term').forEach(function (d) {
+      var dt = d.querySelector('dt'), dd = d.querySelector('dd');
+      var tg = (d.getAttribute('data-tags') || '').split('|').filter(Boolean);
+      tg.forEach(function (t) { counts[t] = (counts[t] || 0) + 1; });
+      total++;
+      dt.setAttribute('data-orig', dt.textContent);
+      dt.setAttribute('tabindex', '0');
+      d.setAttribute('data-search', norm(dt.textContent + ' ' + (dd ? dd.textContent : '') + ' ' + tg.join(' ')));
+    });
+    var ul = s.querySelector('[data-glx-topic-list]');
+    if (ul) {
+      var html = '<li><button type="button" class="glx-topic is-active" data-topic="">' + T.allTopics + ' <small>' + total + '</small></button></li>';
+      Object.keys(counts).sort(function (a, b) { return a.localeCompare(b, DE ? 'de' : 'en'); }).forEach(function (t) {
+        html += '<li><button type="button" class="glx-topic" data-topic="' + esc(t) + '">' + esc(t) + ' <small>' + counts[t] + '</small></button></li>';
+      });
+      ul.innerHTML = html;
+      // Phones: the same topics as a dropdown, styled like the FAQ one (CSS shows it instead of the list below 900px)
+      if (!ul.parentNode.querySelector('.faqx-topic-select')) {
+        var opts = '<option value="">' + T.allTopics + ' (' + total + ')</option>';
+        Object.keys(counts).sort(function (a, b) { return a.localeCompare(b, DE ? 'de' : 'en'); }).forEach(function (t) {
+          opts += '<option value="' + esc(t) + '">' + esc(t) + ' (' + counts[t] + ')</option>';
+        });
+        var wrap = document.createElement('div');
+        wrap.className = 'faqx-topic-select';
+        wrap.innerHTML = '<label class="visually-hidden" for="glxTopicSelect">' + T.filter + '</label>' +
+          '<select id="glxTopicSelect" data-glx-topic-select>' + opts + '</select>' +
+          '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>';
+        ul.parentNode.insertBefore(wrap, ul);
+        wrap.querySelector('select').addEventListener('change', function (e) { topic = e.target.value; apply(); });
+      }
+    }
+    apply();
+  }
+
+  function apply() {
+    var s = sec(); if (!s) return;
+    hide();
+    var input = document.getElementById('glxSearch');
+    var raw = input.value.trim();
+    var terms = norm(raw).split(/\s+/).filter(Boolean);
+    var list = s.querySelector('.glossary__list');
+    var groups = [], group = null, shown = 0, total = 0;
+
+    [].slice.call(list.children).forEach(function (k) {
+      if (k.tagName === 'H3') { group = { h: k, n: 0 }; groups.push(group); return; }
+      if (!k.classList.contains('term')) return;
+      total++;
+      var hay = k.getAttribute('data-search');
+      var okTopic = !topic || (k.getAttribute('data-tags') || '').split('|').indexOf(topic) !== -1;
+      var ok = okTopic && terms.every(function (t) { return hay.indexOf(t) !== -1; });
+      k.hidden = !ok;
+      var dt = k.querySelector('dt');
+      dt.innerHTML = highlight(dt.getAttribute('data-orig'), terms);
+      if (ok) { shown++; if (group) group.n++; }
+    });
+    groups.forEach(function (g) { g.h.hidden = g.n === 0; });
+
+    // dim the letters that have no result in the A to Z bar
+    s.querySelectorAll('.glossary__az a').forEach(function (a) {
+      var id = a.getAttribute('href').slice(1), g = groups.filter(function (x) { return x.h.id === id; })[0];
+      a.classList.toggle('is-empty', !!g && g.n === 0);
+    });
+
+    s.querySelector('.glx-search').classList.toggle('has-value', !!raw);
+    s.querySelector('[data-glx-empty]').classList.toggle('is-visible', shown === 0);
+    s.querySelector('[data-glx-reset]').hidden = !(raw || topic);
+    s.querySelector('[data-glx-count]').innerHTML = (raw || topic)
+      ? '<strong>' + shown + '</strong> ' + (shown === 1 ? T.one : T.many) + ' ' + T.for + ' ' + [raw ? '“' + esc(raw) + '”' : '', topic ? T.topic + ' ' + esc(topic) : ''].filter(Boolean).join(' ' + T.in + ' ')
+      : '<strong>' + total + '</strong> ' + T.all;
+    s.querySelectorAll('.glx-topic').forEach(function (b) { b.classList.toggle('is-active', b.getAttribute('data-topic') === topic); });
+    var sel = s.querySelector('[data-glx-topic-select]');
+    if (sel) sel.value = topic;
+  }
+
+  function reset() {
+    var i = document.getElementById('glxSearch'); if (!i) return;
+    i.value = ''; topic = ''; apply();
+  }
+
+  document.addEventListener('input', function (e) { if (e.target && e.target.id === 'glxSearch') { setup(); apply(); } });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { hide(); if (e.target && e.target.id === 'glxSearch') reset(); }
+  });
+
+  // a fresh glossary (after a page transition) starts unfiltered
+  function init() { if (sec() && !sec().hasAttribute('data-glx-ready')) topic = ''; setup(); }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+  window.addEventListener('load', function () {
+    init();
+    if (window.barba && barba.hooks) barba.hooks.afterEnter(init);
+  });
+})();
+
+/* ---------- Services menu V3: hovering a group shows its sub-services; hovering any item swaps the shared preview ---------- */
+(function () {
+  function root(el) { return el && el.closest && el.closest('[data-svc3]'); }
+  function showImg(r, key) {
+    r.querySelectorAll('[data-svc3-img]').forEach(function (img) { img.classList.toggle('is-on', img.getAttribute('data-svc3-img') === key); });
+  }
+  function info(r) { return r.querySelector('.svc3__info.is-on'); }
+  function setTitle(r, text) {
+    var t = info(r) && info(r).querySelector('[data-svc3-title]');
+    if (!t) return;
+    if (!t.hasAttribute('data-default')) t.setAttribute('data-default', t.textContent);
+    t.textContent = text == null ? t.getAttribute('data-default') : text;
+  }
+  function group(r, i) {
+    var on = function (el, attr) { el.classList.toggle('is-on', el.getAttribute(attr) === String(i)); };
+    r.querySelectorAll('[data-svc3-group]').forEach(function (el) { on(el, 'data-svc3-group'); });
+    r.querySelectorAll('[data-svc3-pane]').forEach(function (el) { on(el, 'data-svc3-pane'); });
+    r.querySelectorAll('[data-svc3-info]').forEach(function (el) { on(el, 'data-svc3-info'); });
+    setTitle(r, null);
+    if (info(r)) showImg(r, info(r).getAttribute('data-svc3-img-key'));
+  }
+  // Returning to the group preview waits a moment: moving from one link to the next crosses the gap between them,
+  // and resetting there made the image swap twice (a visible blink) on every move.
+  var resetTimer = 0;
+  function cancelReset() { clearTimeout(resetTimer); resetTimer = 0; }
+  function resetLater(r) {
+    if (resetTimer) return;
+    resetTimer = setTimeout(function () { resetTimer = 0; setTitle(r, null); if (info(r)) showImg(r, info(r).getAttribute('data-svc3-img-key')); }, 220);
+  }
+  function item(r, a) {
+    cancelReset();
+    showImg(r, a.getAttribute('data-svc3-show'));
+    var name = a.closest('.svc3__links') ? a.querySelector('span') : null;
+    setTitle(r, name ? name.textContent : null);
+  }
+  // Only the first preview image comes with the page; the others load when the menu is first opened
+  function load(r) {
+    if (r.hasAttribute('data-svc3-loaded')) return;
+    r.setAttribute('data-svc3-loaded', '');
+    r.querySelectorAll('img[data-src]').forEach(function (img) { img.src = img.getAttribute('data-src'); img.removeAttribute('data-src'); });
+  }
+  function hover(e) {
+    var r = root(e.target);
+    if (r) load(r);
+    if (!r) {
+      // Opening the menu again starts at the group of the current page (or the first one)
+      var trig = e.target.closest && e.target.closest('[aria-controls="dd-services"]');
+      var rr = trig && document.querySelector('#dd-services [data-svc3]');
+      if (rr) { load(rr); var cur = rr.querySelector('.svc3__group.is-active'); group(rr, cur ? cur.getAttribute('data-svc3-group') : 0); }
+      return;
+    }
+    var g = e.target.closest('[data-svc3-group]');
+    if (g) { cancelReset(); if (!g.classList.contains('is-on')) group(r, g.getAttribute('data-svc3-group')); return; }
+    var a = e.target.closest('[data-svc3-show]');
+    if (a) { item(r, a); return; }
+    // Back on the pane, away from the links: the preview returns to the group (after a short delay, see resetLater)
+    if (e.target.closest('.svc3__panes')) resetLater(r);
+  }
+  document.addEventListener('mouseover', hover);
+  document.addEventListener('focusin', hover);
+  document.addEventListener('click', function (e) { var t = e.target.closest && e.target.closest('[aria-controls="dd-services"]'); if (t) hover(e); });
 })();
