@@ -2307,6 +2307,8 @@ html:not(.js) .quotes__ctrl { display: none; }
 /* ---------- Long German compounds ("CAD-Digitalisierungsservice") must not overflow narrow screens ---------- */
 h1, h2, h3, .h2 { overflow-wrap: break-word; }
 html[lang="de"] h1, html[lang="de"] h2, html[lang="de"] h3, html[lang="de"] .h2 { hyphens: auto; }
+/* FAQ headline: "Ihre Fragen, beantwortet." keeps the emphasised word whole (client request, contact page) */
+html[lang="de"] .faq__head .h2 em { hyphens: manual; white-space: nowrap; }
 
 /* ---------- Core services on phones/tablets: no scroll effect, the cards simply stack ---------- */
 @media (max-width: 1000px) {
@@ -4245,3 +4247,32 @@ html:has(.site-header.is-hidden) .ins-filters { top: 16px; }
 .nav-dd__cta:hover small > span[aria-hidden="true"] { transform: translate(2px, -2px); }
 .link-arrow > span[aria-hidden="true"] { transition: transform .3s var(--ease), background-color .2s; }
 .link-arrow:hover > span[aria-hidden="true"] { background-color: var(--red); }
+
+/* ---------- Footer social icons: QR code on hover (desktop only), to open the profile on a phone. Built by main.js ---------- */
+.social--footer .social__link { position: relative; }
+/* The card starts at the left edge of the icon row (it never leaves the screen on narrow windows); the pointer sits under the hovered icon. --qr-i = icon index, 50px = 40px icon + 10px gap */
+.social--footer li:nth-child(2) { --qr-i: 1; }
+.social--footer li:nth-child(3) { --qr-i: 2; }
+.social--footer li:nth-child(4) { --qr-i: 3; }
+.social-qr { display: none; }
+@media (hover: hover) and (pointer: fine) {
+  .social-qr {
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    position: absolute; left: calc(var(--qr-i, 0) * -50px); bottom: calc(100% + 14px); z-index: 5; width: 164px; padding: 14px 14px 10px;
+    background: #fff; color: var(--brand-night); border-radius: 14px; box-shadow: 0 18px 40px rgba(6, 7, 30, .45);
+    opacity: 0; visibility: hidden; transform: translateY(8px) scale(.96); transform-origin: calc(var(--qr-i, 0) * 50px + 20px) 100%; pointer-events: none;
+    transition: opacity .2s, transform .25s var(--ease), visibility 0s .25s;
+  }
+  .social-qr::after { content: ""; position: absolute; top: 100%; left: calc(var(--qr-i, 0) * 50px + 20px); margin-left: -7px; border: 7px solid transparent; border-top-color: #fff; }
+  .social--footer .social-qr svg { width: 136px; height: 136px; overflow: visible; }
+  .social-qr__data { fill: var(--brand-night); }
+  .social-qr__frame { fill: none; stroke: var(--brand-night); stroke-width: 1; }
+  .social-qr__ball { fill: var(--red); }
+  .social-qr__badge { fill: var(--brand-deep); }
+  .social-qr use { color: #fff; }
+  .social-qr span { font-size: 12px; font-weight: 600; line-height: 1.2; letter-spacing: .01em; white-space: nowrap; color: var(--brand-deep); }
+  .social__link:hover .social-qr, .social__link:focus-visible .social-qr {
+    opacity: 1; visibility: visible; transform: none;
+    transition: opacity .2s, transform .25s var(--ease);
+  }
+}
