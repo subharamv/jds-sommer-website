@@ -2213,5 +2213,14 @@
  "Yes, of course. We review your source data in advance and, on request, create a sample CAD file from a section of your plan free of charge and without obligation, exactly to your specifications and layer structures.": "Ja, gerne. Wir prüfen Ihre Ausgangsdaten vorab und erstellen auf Wunsch kostenfrei und unverbindlich eine Muster-CAD-Datei aus einem Ausschnitt Ihres Plans – exakt nach Ihren Vorgaben und Layerstrukturen.",
  "You receive a transparent, non-binding fixed-price offer, calculated precisely on the scope and level of detail of your originals.": "Sie erhalten ein transparentes, unverbindliches Festpreisangebot – exakt kalkuliert nach Umfang und Detailgrad Ihrer Vorlagen.",
  "info@jds-sommer.de</a><em>Send us your existing data, scans or project enquiries directly by email.": "info@jds-sommer.de</a><em>Senden Sie uns Ihre Bestandsdaten, Scans oder Projektanfragen direkt per E-Mail.",
- "August-Schanz-Straße 28, 60433 Frankfurt am Main</a><em>You're welcome to visit us in person.": "August-Schanz-Straße 28, 60433 Frankfurt am Main</a><em>Sie sind herzlich eingeladen, uns persönlich zu besuchen."
+ "August-Schanz-Straße 28, 60433 Frankfurt am Main</a><em>You're welcome to visit us in person.": "August-Schanz-Straße 28, 60433 Frankfurt am Main</a><em>Sie sind herzlich eingeladen, uns persönlich zu besuchen.",
+ "per machine part from": "pro Maschinenteil ab",
+ "delivered as": "geliefert als",
+ "Explore 3D CAD": "3D-CAD entdecken",
+ "Explore As-Built": "Dokumentation entdecken",
+ "Explore GIS Data": "GIS-Daten entdecken",
+ "3D and BIM Modelling": "3D- und BIM-Modellierung",
+ "3D CAD and Reverse Engineering": "3D-CAD und Reverse Engineering",
+ "As-Built and Facility Documentation": "Bestands- und Facility-Dokumentation",
+ "GIS and Infrastructure Data": "GIS- und Infrastrukturdaten"
 }

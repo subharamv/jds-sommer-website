@@ -669,12 +669,54 @@
     });
     pageCleanups.push(function () { viewport.removeEventListener('scroll', onSwipe); });
 
+    // Phones: accordion. One card open (image, text, price); tapping another card's title opens it.
+    // The tapped card keeps its place on screen while the card above it closes.
+    var phone = window.matchMedia('(max-width: 760px)'), openIdx = 0;
+    function openCard(i) {
+      openIdx = i;
+      cards.forEach(function (c, k) {
+        c.classList.toggle('is-open', k === i);
+        var h = $('.h3', c);
+        if (h && phone.matches) h.setAttribute('aria-expanded', k === i ? 'true' : 'false');
+      });
+    }
+    function syncAccordion() {
+      sec.classList.toggle('is-accordion', phone.matches);
+      cards.forEach(function (c) {
+        var h = $('.h3', c);
+        if (!h) return;
+        if (phone.matches) { h.setAttribute('role', 'button'); h.setAttribute('tabindex', '0'); }
+        else { h.removeAttribute('role'); h.removeAttribute('tabindex'); h.removeAttribute('aria-expanded'); }
+      });
+      openCard(openIdx);
+    }
+    cards.forEach(function (c, i) {
+      function go() {
+        if (!phone.matches || c.classList.contains('is-open')) return;
+        var before = c.getBoundingClientRect().top;
+        openCard(i);
+        var delta = c.getBoundingClientRect().top - before;
+        if (Math.abs(delta) > 1) {
+          if (lenis) lenis.scrollTo(window.scrollY + delta, { immediate: true }); else window.scrollBy(0, delta);
+        }
+      }
+      c.addEventListener('click', function (e) { if (!e.target.closest('a')) go(); });
+      var h = $('.h3', c);
+      if (h) h.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+    });
+    syncAccordion();
+    if (phone.addEventListener) {
+      phone.addEventListener('change', syncAccordion);
+      pageCleanups.push(function () { phone.removeEventListener('change', syncAccordion); });
+    }
+
     if (!animate || n < 2) return;
     function paint(p) {
       var pos = p * (n - 1);
       cards.forEach(function (c, i) {
-        var d = Math.min(Math.abs(pos - i), 1);
-        gsap.set(c, { scale: 1 - 0.1 * d, opacity: 1 - 0.5 * d });
+        var d = Math.min(Math.abs(pos - i), 1), sc = 1 - 0.28 * d;
+        // Side cards: 72 % size and 40 % opacity, moved inward by what they shrink so the gap to the active card stays
+        gsap.set(c, { scale: sc, opacity: 1 - 0.6 * d, x: (pos > i ? 1 : -1) * (1 - sc) * c.offsetWidth / 2 });
       });
       setActive(Math.round(pos));
     }
@@ -696,7 +738,7 @@
       return function () {
         sec.classList.remove('is-pinned');
         st = null;
-        gsap.set(cards, { clearProps: 'scale,opacity' });
+        gsap.set(cards, { clearProps: 'scale,opacity,x' });
       };
     });
     pageCleanups.push(function () { mm.revert(); });

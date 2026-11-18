@@ -502,6 +502,7 @@ em { font-family: var(--font-accent); font-style: italic; font-weight: 400; lett
 .price { font-size: 28px; font-weight: 700; color: var(--brand-deep); letter-spacing: -.02em; line-height: 1.1; }
 .price small { display: block; font-size: 12.5px; font-weight: 400; color: var(--muted); letter-spacing: 0; }
 .price small:last-child { display: inline; margin-left: 4px; }
+.price small:only-of-type { display: block; margin-left: 0; }   /* a lone label ("delivered as") sits above the value */
 
 @media (max-width: 860px) { .services__grid { grid-template-columns: 1fr; } }
 
@@ -2319,9 +2320,43 @@ html[lang="de"] .faq__head .h2 em { hyphens: manual; white-space: nowrap; }
   .hscroll .hcard__media { min-height: 260px; }
   .hscroll__dots { display: none; }
 }
+/* Phones: an accordion. Every card shows its image and title; the open one also shows text, ticks,
+   price and button, and tapping another card opens it (main.js adds .is-accordion and .is-open, so without
+   JS every card simply stays open). */
 @media (max-width: 760px) {
-  .hscroll .hcard { grid-template-columns: minmax(0, 1fr); }
-  .hscroll .hcard__media { min-height: 0; aspect-ratio: 16 / 10; }
+  .hscroll .hscroll__track { gap: 10px; }
+  .hscroll .hcard { grid-template-columns: minmax(0, 1fr); border-radius: 18px; }
+  .hscroll .hcard__media { min-height: 0; aspect-ratio: 16 / 9; }
+  .hscroll .hcard__body { grid-template-columns: auto minmax(0, 1fr) auto; padding: 16px; }
+  .hscroll .hcard__body .h3 { font-size: 18px; line-height: 1.25; }
+  .hscroll .hcard__body > p:not(.hcard__kicker) { margin-top: 8px; font-size: 14px; }
+  .hscroll .hcard__body .ticks { margin: 12px 0 16px; }
+  /* A real border (the desktop card uses an inset shadow, which the image would paint over) */
+  .hscroll.is-accordion .hcard {
+    border: 1px solid var(--line); box-shadow: 0 2px 10px rgba(21, 22, 61, .04);
+    transition: border-color .3s, box-shadow .3s;
+  }
+  .hscroll.is-accordion .hcard.is-open { border-color: var(--brand-100); box-shadow: 0 14px 34px rgba(21, 22, 61, .10); }
+  .hscroll.is-accordion .hcard:not(.is-open) { cursor: pointer; }
+  .hscroll.is-accordion .hcard__media { border-bottom: 1px solid var(--line); }
+  .hscroll.is-accordion .hcard.is-open .hcard__body .h3 { color: var(--brand-deep); }
+  .hscroll.is-accordion .hcard:not(.is-open) .hcard__media { aspect-ratio: 21 / 9; }
+  .hscroll.is-accordion .hcard__media { transition: aspect-ratio .35s var(--ease); }
+  .hscroll.is-accordion .hcard:not(.is-open) .hcard__body > p,
+  .hscroll.is-accordion .hcard:not(.is-open) .hcard__body .ticks,
+  .hscroll.is-accordion .hcard:not(.is-open) .service-card__foot { display: none; }
+  .hscroll.is-accordion .hcard:not(.is-open) .hcard__body { padding: 14px 16px; }
+  .hscroll.is-accordion .hcard:not(.is-open) .hcard__body .h3 { font-size: 16px; }
+  /* Chevron at the end of the title row: down when closed, up when open */
+  .hscroll.is-accordion .hcard__body::after {
+    content: ""; grid-column: 3; grid-row: 1; width: 9px; height: 9px; margin: 0 4px 4px 6px;
+    border-right: 2px solid var(--brand-deep); border-bottom: 2px solid var(--brand-deep);
+    transform: rotate(45deg); transition: transform .3s var(--ease);
+  }
+  .hscroll.is-accordion .hcard.is-open .hcard__body::after { transform: rotate(-135deg); margin-bottom: -4px; }
+  .hscroll.is-accordion .hcard.is-open .hcard__body > :not(.service-card__num):not(.h3) { animation: hcard-open .45s var(--ease) both; }
+}
+@keyframes hcard-open { from { opacity: 0; transform: translateY(8px); } }
 }
 
 /* ---------- All-services carousel: swipe on touch screens ----------
