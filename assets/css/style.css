@@ -724,6 +724,7 @@ html[data-header-design="v1"] .footer__col--v2 { display: none; }
 .footer__brand { min-width: 0; }
 .steps-section .section-head .h2 { hyphens: manual; }
 html[lang="de"] .article-hero__title { hyphens: manual; }
+html[lang="de"] .test-us .h2 em { hyphens: manual; }
 @media (max-width: 560px) {
   .article-body .article-cta { padding-left: 22px; padding-right: 22px; }
   .article-body .article-cta .btn { max-width: 100%; white-space: normal; text-align: center; }
