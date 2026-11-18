@@ -252,6 +252,9 @@
       $$(':scope > *', node).forEach(walk);
       Array.prototype.slice.call(node.childNodes).forEach(function (child) {
         if (child.nodeType !== 3 || !child.textContent.trim()) return;
+        // text glued to the element before it (e.g. the full stop after </em>) must not wrap onto its own line
+        var prev = child.previousSibling;
+        var glue = prev && prev.nodeType === 1 && !/^\s/.test(child.textContent);
         var frag = document.createDocumentFragment();
         child.textContent.split(/(\s+)/).forEach(function (part) {
           if (!part) return;
@@ -260,7 +263,12 @@
           var wi = document.createElement('span'); wi.className = 'wi'; wi.textContent = part;
           w.appendChild(wi); frag.appendChild(w); out.push(wi);
         });
+        var first = frag.firstChild;
         node.replaceChild(frag, child);
+        if (glue) {
+          var nb = document.createElement('span'); nb.style.whiteSpace = 'nowrap';
+          node.insertBefore(nb, prev); nb.appendChild(prev); nb.appendChild(first);
+        }
       });
     })(el);
     el.dataset.splitDone = '1';
