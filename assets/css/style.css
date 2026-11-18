@@ -3918,12 +3918,42 @@ html:has(.site-header.is-hidden) .glossary .glx-search { top: 16px; }
 /* Contact page: "What happens next" card beside the form (the contact details live in the hero card) */
 .contact-next h3 { font-size: 20px; color: var(--brand-deep); }
 .contact-steps { margin: 18px 0 0; padding: 0; list-style: none; counter-reset: none; }
-.contact-steps li { position: relative; display: flex; gap: 16px; padding-bottom: 20px; }
-.contact-steps li:not(:last-child)::before { content: ""; position: absolute; left: 19px; top: 42px; bottom: 4px; width: 1px; background: var(--line); }
-.contact-steps__n { flex: none; display: grid; place-items: center; width: 39px; height: 39px; border-radius: 50%; font-size: 13px; font-weight: 700; color: var(--brand); background: var(--bg-soft, #f1f1f8); box-shadow: inset 0 0 0 1px var(--line); }
-.contact-steps li:first-child .contact-steps__n { color: #fff; background: var(--brand); box-shadow: none; }
-.contact-steps strong { display: block; margin-top: 8px; color: var(--ink); }
+.contact-steps li { position: relative; display: flex; gap: 16px; padding-bottom: 22px; }
+/* Connector between the step icons: a grey track with a dashed red line that flows down it */
+.contact-steps li:not(:last-child)::before { content: ""; position: absolute; left: 21px; top: 50px; bottom: 6px; width: 2px; border-radius: 2px; background: var(--line); }
+.contact-steps li:not(:last-child)::after {
+  content: ""; position: absolute; left: 21px; top: 50px; bottom: 6px; width: 2px; border-radius: 2px;
+  background: repeating-linear-gradient(to bottom, var(--red) 0 5px, transparent 5px 10px) 0 0 / 2px 10px;
+  animation: steps-flow 1s linear infinite; transform-origin: 50% 0;
+}
+@keyframes steps-flow { to { background-position: 0 10px; } }
+.contact-steps__n {
+  position: relative; flex: none; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
+  color: #fff; background: var(--gradient); box-shadow: 0 8px 18px -8px rgba(57, 59, 141, .7);
+}
+.contact-steps__n svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.contact-steps__n b {
+  position: absolute; top: -4px; right: -6px; min-width: 20px; height: 20px; padding: 0 4px; border-radius: 999px;
+  display: grid; place-items: center; font-size: 10px; font-weight: 700; letter-spacing: .02em;
+  color: #fff; background: var(--red); box-shadow: 0 0 0 2px #fff;
+}
+.contact-steps strong { display: block; margin-top: 10px; color: var(--ink); }
 .contact-steps p { margin-top: 4px; font-size: 14.5px; color: var(--muted); }
+/* Animated sequence (main.js adds .is-anim, then .is-on to one step after another) */
+.contact-steps.is-anim li::after { transform: scaleY(0); transition: transform .7s var(--ease) .55s; }
+.contact-steps.is-anim li.is-on::after { transform: none; }
+.contact-steps.is-anim .contact-steps__n {
+  color: var(--brand); background: var(--bg-soft, #f1f1f8); box-shadow: inset 0 0 0 1px var(--line); transform: scale(.7); opacity: .4;
+  transition: transform .5s cubic-bezier(.34, 1.56, .64, 1), opacity .3s, background .4s, color .4s, box-shadow .4s;
+}
+.contact-steps.is-anim li.is-on .contact-steps__n { color: #fff; background: var(--gradient); box-shadow: 0 8px 18px -8px rgba(57, 59, 141, .7); transform: none; opacity: 1; }
+.contact-steps.is-anim .contact-steps__n b { transform: scale(0); transition: transform .4s cubic-bezier(.34, 1.56, .64, 1) .35s; }
+.contact-steps.is-anim li.is-on .contact-steps__n b { transform: none; }
+.contact-steps.is-anim .contact-steps__n svg > * { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset .9s var(--ease) .15s; }
+.contact-steps.is-anim li.is-on .contact-steps__n svg > * { stroke-dashoffset: 0; }
+.contact-steps.is-anim li > div { opacity: 0; transform: translateY(10px); transition: opacity .5s var(--ease) .2s, transform .5s var(--ease) .2s; }
+.contact-steps.is-anim li.is-on > div { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .contact-steps li::after { animation: none; } }
 .contact-include { margin-top: 6px; padding: 18px 20px; border-radius: 16px; background: var(--bg-soft, #f1f1f8); }
 .contact-include h4 { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--red); }
 .contact-include ul { margin: 10px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }

@@ -744,6 +744,23 @@
     pageCleanups.push(function () { mm.revert(); });
   }
 
+  /* ---------- Contact page "What happens next?": steps light up one after another ---------- */
+  function initStepsFlow(scope) {
+    $$('[data-steps-flow]', scope).forEach(function (ol) {
+      var items = $$(':scope > li', ol);
+      if (!items.length || reduceMotion || !('IntersectionObserver' in window)) return;
+      ol.classList.add('is-anim');
+      var timers = [];
+      var io = new IntersectionObserver(function (entries) {
+        if (!entries[0].isIntersecting) return;
+        io.disconnect();
+        items.forEach(function (li, i) { timers.push(setTimeout(function () { li.classList.add('is-on'); }, 250 + i * 900)); });
+      }, { threshold: 0.35 });
+      io.observe(ol);
+      pageCleanups.push(function () { io.disconnect(); timers.forEach(clearTimeout); });
+    });
+  }
+
   /* ---------- Scroll reveals ---------- */
   function initReveals(scope) {
     $$('[data-reveal]', scope).forEach(function (el) {
@@ -1663,6 +1680,7 @@
     initSvcSlider(container);
     initQuotes(container);
     initHScroll(container);
+    initStepsFlow(container);
     updateStickySearch();
 
     if (!animate) return;
