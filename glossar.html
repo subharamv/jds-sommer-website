@@ -833,7 +833,7 @@
 
             <div class="glossary__list" data-reveal>
               <h3 class="glossary__letter" id="g-a">A</h3>
-              <dl class="term" id="a0-format" data-tags="Dokumentendigitalisierung|2D-CAD">
+              <dl class="term" id="a0-format" data-tags="2D-CAD">
                 <dt>A0-Format</dt>
                 <dd>Das größte Standard-Papierformat der Reihe ISO 216, 841 × 1189 mm. Bau- und Konstruktionspläne sind oft A0 oder größer, deshalb wird die Digitalisierung häufig pro A0-Blatt abgerechnet.</dd>
               </dl>
@@ -845,7 +845,7 @@
                 <dt>Archicad</dt>
                 <dd>BIM-Software von Graphisoft für Architekturentwurf, Dokumentation und Modellierung.</dd>
               </dl>
-              <dl class="term" id="as-built-bim" data-tags="3D &amp; BIM|Bestand &amp; FM|Scannen">
+              <dl class="term" id="as-built-bim" data-tags="3D &amp; BIM|Bestand &amp; FM">
                 <dt>As-built-BIM</dt>
                 <dd>Ein BIM-Modell eines Bestandsgebäudes, das seinen aktuellen Zustand abbildet, meist erstellt aus Laserscans oder vorhandenen Plänen.</dd>
               </dl>
@@ -869,11 +869,11 @@
                 <dt>CAD (Computer-Aided Design)</dt>
                 <dd>Rechnergestütztes Konstruieren und Zeichnen. CAD-Dateien sind maßstabsgetreu und voll bearbeitbar, anders als Scans oder PDFs.</dd>
               </dl>
-              <dl class="term" id="cad-conversion" data-tags="2D-CAD|Dokumentendigitalisierung">
+              <dl class="term" id="cad-conversion" data-tags="2D-CAD">
                 <dt>CAD-Konvertierung</dt>
                 <dd>Die Umwandlung von Papier- oder PDF-Zeichnungen in bearbeitbare CAD-Zeichnungen: Linien, Bögen, Texte und Symbole werden zu CAD-Objekten, die sich bearbeiten und weiterverwenden lassen.</dd>
               </dl>
-              <dl class="term" id="cad-restructuring" data-tags="2D-CAD|Dokumentendigitalisierung">
+              <dl class="term" id="cad-restructuring" data-tags="2D-CAD">
                 <dt>CAD-Umstrukturierung</dt>
                 <dd>Die Anpassung vorhandener CAD-Dateien an einen einheitlichen Standard: Layer, Linientypen, Textstile, Blöcke und Zeichnungsrahmen.</dd>
               </dl>
@@ -885,6 +885,10 @@
                 <dt>CAD-to-BIM</dt>
                 <dd>Die Umwandlung vorhandener 2D-CAD-Zeichnungen in ein intelligentes 3D-BIM-Modell mit Wänden, Decken, Türen und weiteren Bauteilen.</dd>
               </dl>
+              <dl class="term" id="cafm" data-tags="Bestand &amp; FM|2D-CAD">
+                <dt>CAFM (Computer-Aided Facility Management)</dt>
+                <dd>Software zur Verwaltung von Gebäuden, Räumen, Flächen und technischer Ausstattung über den gesamten Lebenszyklus. CAFM-Systeme benötigen strukturierte CAD-Pläne mit sauberen Raum- und Flächenpolygonen, die wir nach den Vorgaben Ihres Systems aufbereiten.</dd>
+              </dl>
 
               <h3 class="glossary__letter" id="g-d">D</h3>
               <dl class="term" id="dgn" data-tags="Dateiformate|2D-CAD">
@@ -895,7 +899,7 @@
                 <dt>Bemaßung</dt>
                 <dd>Das Eintragen von Maßen in eine Zeichnung: Maßlinien, Maßzahlen und Toleranzen, die Größe und Lage von Elementen angeben.</dd>
               </dl>
-              <dl class="term" id="dpi" data-tags="Scannen|Dokumentendigitalisierung">
+              <dl class="term" id="dpi" data-tags="2D-CAD">
                 <dt>DPI (Punkte pro Zoll)</dt>
                 <dd>Die Auflösung eines Scans. Je höher der dpi-Wert, desto feiner die Details: Dünne Linien und kleine Schrift in Plänen brauchen eine höhere Auflösung als reine Textdokumente.</dd>
               </dl>
@@ -909,7 +913,7 @@
               </dl>
 
               <h3 class="glossary__letter" id="g-e">E</h3>
-              <dl class="term" id="e57" data-tags="Dateiformate|Scannen">
+              <dl class="term" id="e57" data-tags="Dateiformate">
                 <dt>E57</dt>
                 <dd>Ein offenes, herstellerunabhängiges Dateiformat für 3D-Punktwolken und die dazugehörigen Bilder (ASTM E2807), mit dem Laserscandaten zwischen Programmen ausgetauscht werden.</dd>
               </dl>
@@ -947,11 +951,11 @@
               </dl>
 
               <h3 class="glossary__letter" id="g-l">L</h3>
-              <dl class="term" id="large-format-scanning" data-tags="Scannen|Dokumentendigitalisierung">
+              <dl class="term" id="large-format-scanning" data-tags="2D-CAD">
                 <dt>Großformatscan</dt>
                 <dd>Das Scannen von Plänen und Zeichnungen größer als A3, bis A0 und darüber, auf Großformatscannern, die für Pläne und Karten gebaut sind.</dd>
               </dl>
-              <dl class="term" id="laser-scanning" data-tags="Scannen|3D &amp; BIM">
+              <dl class="term" id="laser-scanning" data-tags="3D &amp; BIM">
                 <dt>Laserscanning (3D)</dt>
                 <dd>Das Vermessen von Gebäuden, Anlagen oder Objekten mit einem Laserscanner, der ihre Oberflächen als Millionen gemessener Punkte erfasst. Das Ergebnis ist eine Punktwolke.</dd>
               </dl>
@@ -983,19 +987,23 @@
               </dl>
 
               <h3 class="glossary__letter" id="g-o">O</h3>
-              <dl class="term" id="ocr" data-tags="Dokumentendigitalisierung">
+              <dl class="term" id="ocr" data-tags="2D-CAD">
                 <dt>OCR (Optische Zeichenerkennung)</dt>
                 <dd>Automatische Texterkennung in gescannten Dokumenten und Zeichnungen, damit der Text durchsuchbar und bearbeitbar wird.</dd>
               </dl>
 
               <h3 class="glossary__letter" id="g-p">P</h3>
-              <dl class="term" id="pdf-to-cad" data-tags="2D-CAD|Dokumentendigitalisierung">
+              <dl class="term" id="pdf-to-cad" data-tags="2D-CAD">
                 <dt>PDF zu CAD</dt>
                 <dd>Die Umwandlung von PDF-Zeichnungen in bearbeitbare CAD-Dateien. Vektor-PDFs enthalten oft noch die Linien; gescannte PDFs bestehen nur aus Pixeln und müssen in CAD-Geometrie konvertiert werden.</dd>
               </dl>
-              <dl class="term" id="point-cloud" data-tags="Scannen|3D &amp; BIM">
+              <dl class="term" id="point-cloud" data-tags="3D &amp; BIM">
                 <dt>Punktwolke</dt>
                 <dd>Das Ergebnis eines 3D-Laserscans: Millionen gemessener Punkte, die die Geometrie eines Gebäudes, einer Anlage oder eines Objekts genau erfassen.</dd>
+              </dl>
+              <dl class="term" id="point-cloud-to-2d-cad" data-tags="2D-CAD">
+                <dt>Punktwolke zu 2D-CAD (Scan-to-CAD)</dt>
+                <dd>Erstellung präziser 2D-Grundrisse, Schnitte und Ansichten aus 3D-Laserscandaten (Punktwolken). Das Ergebnis ist eine maßstabsgetreue, layerstrukturierte CAD-Zeichnung des aktuellen Bestands – ohne das gesamte Gebäude in 3D modellieren zu müssen.</dd>
               </dl>
               <dl class="term" id="polyline" data-tags="2D-CAD">
                 <dt>Polylinie</dt>
@@ -1003,19 +1011,19 @@
               </dl>
 
               <h3 class="glossary__letter" id="g-r">R</h3>
-              <dl class="term" id="raster-data" data-tags="Dokumentendigitalisierung|2D-CAD">
+              <dl class="term" id="raster-data" data-tags="2D-CAD">
                 <dt>Rasterdaten</dt>
                 <dd>Bilder aus Pixeln, etwa Scans von Papierplänen. Sie lassen sich ansehen, aber nicht wie CAD-Linien bearbeiten.</dd>
               </dl>
-              <dl class="term" id="registration" data-tags="Scannen">
+              <dl class="term" id="registration" data-tags="3D &amp; BIM">
                 <dt>Registrierung</dt>
                 <dd>Das Zusammenfügen der einzelnen Scans einer Laserscan-Aufnahme zu einer Punktwolke in einem gemeinsamen Koordinatensystem.</dd>
               </dl>
-              <dl class="term" id="reverse-engineering" data-tags="3D &amp; BIM|Scannen">
+              <dl class="term" id="reverse-engineering" data-tags="3D &amp; BIM|Reverse Engineering">
                 <dt>Reverse Engineering</dt>
                 <dd>Die Erstellung eines 3D-CAD-Modells und von Zeichnungen aus einem vorhandenen Bauteil, zum Beispiel um ein Ersatzteil ohne Originalzeichnungen zu fertigen.</dd>
               </dl>
-              <dl class="term" id="revision" data-tags="2D-CAD|Dokumentendigitalisierung">
+              <dl class="term" id="revision" data-tags="2D-CAD">
                 <dt>Revision (Änderungsstand)</dt>
                 <dd>Ein nummerierter Änderungsstand einer Zeichnung. Jede Revision wird im Schriftfeld oder in einer Änderungstabelle vermerkt, damit alle mit dem aktuellen Stand arbeiten.</dd>
               </dl>
@@ -1029,33 +1037,33 @@
                 <dt>Maßstab</dt>
                 <dd>Das Verhältnis zwischen Zeichnung und Wirklichkeit, etwa 1:100 oder 1:50. CAD-Modelle werden in Originalgröße gezeichnet; der Maßstab gilt erst beim Ausdruck.</dd>
               </dl>
-              <dl class="term" id="scan-to-bim" data-tags="3D &amp; BIM|Scannen">
+              <dl class="term" id="scan-to-bim" data-tags="3D &amp; BIM">
                 <dt>Scan-to-BIM</dt>
                 <dd>Die Erstellung eines BIM-Modells eines Bestandsgebäudes aus Laserscandaten (Punktwolken).</dd>
               </dl>
-              <dl class="term" id="scan-to-cad" data-tags="2D-CAD|Scannen|Dokumentendigitalisierung">
+              <dl class="term" id="scan-to-cad" data-tags="2D-CAD">
                 <dt>Scan-to-CAD</dt>
-                <dd>Die Umwandlung gescannter Papierpläne in bearbeitbare, maßstabsgetreue CAD-Zeichnungen.</dd>
+                <dd>Anderer Begriff für <a href="#point-cloud-to-2d-cad">Punktwolke zu 2D-CAD</a>: maßstabsgetreue 2D-CAD-Zeichnungen aus Laserscandaten erstellen.</dd>
               </dl>
               <dl class="term" id="shapefile" data-tags="Dateiformate|GIS">
                 <dt>Shapefile (SHP)</dt>
                 <dd>Ein verbreitetes GIS-Vektorformat von Esri, das Punkte, Linien und Flächen zusammen mit ihren Attributen speichert.</dd>
               </dl>
-              <dl class="term" id="step" data-tags="Dateiformate|3D &amp; BIM">
+              <dl class="term" id="step" data-tags="Dateiformate|3D &amp; BIM|Reverse Engineering">
                 <dt>STEP</dt>
                 <dd>Ein genormtes Austauschformat (ISO 10303) für 3D-CAD-Modelle, verbreitet im Maschinenbau und in der Fertigung.</dd>
               </dl>
-              <dl class="term" id="stl" data-tags="Dateiformate|Scannen">
+              <dl class="term" id="stl" data-tags="Dateiformate|Reverse Engineering">
                 <dt>STL</dt>
                 <dd>Ein 3D-Format, das Oberflächen als Netz aus Dreiecken beschreibt, verbreitet im 3D-Druck und als Ergebnis von 3D-Scans.</dd>
               </dl>
 
               <h3 class="glossary__letter" id="g-t">T</h3>
-              <dl class="term" id="tiff" data-tags="Dateiformate|Dokumentendigitalisierung">
+              <dl class="term" id="tiff" data-tags="Dateiformate">
                 <dt>TIFF</dt>
                 <dd>Ein Rasterbildformat, das oft für gescannte Pläne verwendet wird, weil es Bilder ohne verlustbehaftete Kompression speichert.</dd>
               </dl>
-              <dl class="term" id="title-block" data-tags="2D-CAD|Dokumentendigitalisierung">
+              <dl class="term" id="title-block" data-tags="2D-CAD">
                 <dt>Schriftfeld</dt>
                 <dd>Das Feld auf einem Zeichnungsblatt mit den Projektangaben: Titel und Nummer der Zeichnung, Maßstab, Datum, Revisionsstand und Verantwortliche.</dd>
               </dl>
