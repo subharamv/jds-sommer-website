@@ -2320,6 +2320,9 @@ h1, h2, h3, .h2 { overflow-wrap: break-word; }
 html[lang="de"] h1, html[lang="de"] h2, html[lang="de"] h3, html[lang="de"] .h2 { hyphens: auto; }
 /* FAQ headline: "Ihre Fragen, beantwortet." keeps the emphasised word whole (client request, contact page) */
 html[lang="de"] .faq__head .h2 em { hyphens: manual; white-space: nowrap; }
+/* Industry pages: no automatic hyphenation in headings ("Zeichnun-gen", "Standar-disierung"; client Batch 8).
+   overflow-wrap above still breaks a word that would overflow a phone screen. */
+html[lang="de"] [data-barba-namespace="industries"] :is(h1, h2, h3, .h2) { hyphens: manual; }
 
 /* ---------- Core services on phones/tablets: no scroll effect, the cards simply stack ---------- */
 @media (max-width: 1000px) {
@@ -2700,6 +2703,14 @@ altcha-widget {
 .ins-rcard:hover .ins-rcard__cta { color: var(--red); }
 .ins-rcard:hover .ins-rcard__go, .ins-rcard:focus-within .ins-rcard__go { background: var(--red); color: #fff; box-shadow: none; transform: rotate(-45deg); }
 @media (prefers-reduced-motion: reduce) { .ins-rcard:hover .ins-rcard__go { transform: none; } }
+/* Not published yet: "Coming soon" pill instead of the date, no link, no arrow, no hover effect */
+.ins-rcard--soon { cursor: default; }
+.ins-rcard--soon:hover, .ins-rcard--soon:focus-within { box-shadow: inset 0 0 0 1px var(--line); transform: none; }
+.ins-rcard--soon .ins-rcard__media img { filter: grayscale(.35); opacity: .85; }
+.ins-rcard--soon:hover .ins-rcard__media img { transform: none; }
+.ins-rcard--soon:hover .ins-rcard__media::after { background-color: transparent; }
+.ins-rcard--soon h3 { color: var(--ink); }
+.ins-rcard__meta .post-card__soon { padding: 4px 9px; font-size: 10.5px; letter-spacing: .1em; background: var(--bg-soft); color: var(--muted); box-shadow: inset 0 0 0 1px var(--line); }
 
 /* Recently published: an endless strip that moves on its own and pauses under the pointer */
 .ins-strip .ins-row__title { margin-bottom: 22px; }
