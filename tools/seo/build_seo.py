@@ -130,11 +130,11 @@ def offer(name, unit, price=None, min_price=None):
 SERVICES = {
     '2d': {
         'en': {'name': '2D CAD digitalisation and drawing-to-CAD conversion', 'serviceType': 'CAD digitising',
-               'description': 'Plans, drawings and scans from A4 to multiples of A0 converted into to-scale CAD files with correct dimensions, text, symbols, line types and layers. Output in AutoCAD DWG/DXF, MicroStation DGN or Nemetschek Allplan FT; delivery in 5 days, 3 days or 24 hours.',
+               'description': 'Plans, drawings and scans from A4 to multiples of A0 converted into to-scale CAD files with correct dimensions, text, symbols, line types and layers. Output in AutoCAD DWG/DXF, MicroStation DGN or Allplan; delivery in 5 days, 3 days or 24 hours.',
                'offers': [offer('DWG-Basic', 'A0 drawing', price=49), offer('DWG-Premium', 'A0 drawing', price=75),
                           offer('DWG-Premium Plus', 'A0 drawing', min_price=99)]},
         'de': {'name': '2D-CAD-Digitalisierung und Zeichnung-zu-CAD-Konvertierung', 'serviceType': 'CAD-Digitalisierung',
-               'description': 'Pläne, Zeichnungen und Scans von A4 bis zu einem Vielfachen von A0 werden in maßstabsgetreue CAD-Dateien mit korrekten Bemaßungen, Texten, Symbolen, Linientypen und Layern konvertiert. Ausgabe in AutoCAD DWG/DXF, MicroStation DGN oder Nemetschek Allplan FT; Lieferung in 5 Tagen, 3 Tagen oder 24 Stunden.',
+               'description': 'Pläne, Zeichnungen und Scans von A4 bis zu einem Vielfachen von A0 werden in maßstabsgetreue CAD-Dateien mit korrekten Bemaßungen, Texten, Symbolen, Linientypen und Layern konvertiert. Ausgabe in AutoCAD DWG/DXF, MicroStation DGN oder Allplan; Lieferung in 5 Tagen, 3 Tagen oder 24 Stunden.',
                'offers': [offer('DWG-Basic', 'A0-Zeichnung', price=49), offer('DWG-Premium', 'A0-Zeichnung', price=75),
                           offer('DWG-Premium Plus', 'A0-Zeichnung', min_price=99)]},
     },

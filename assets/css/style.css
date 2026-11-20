@@ -2323,6 +2323,7 @@ html[lang="de"] .faq__head .h2 em { hyphens: manual; white-space: nowrap; }
 /* Industry pages: no automatic hyphenation in headings ("Zeichnun-gen", "Standar-disierung"; client Batch 8).
    overflow-wrap above still breaks a word that would overflow a phone screen. */
 html[lang="de"] [data-barba-namespace="industries"] :is(h1, h2, h3, .h2) { hyphens: manual; }
+html[lang="de"] [data-barba-namespace="2d"] :is(h1, h2, h3, .h2) { hyphens: manual; }
 
 /* ---------- Core services on phones/tablets: no scroll effect, the cards simply stack ---------- */
 @media (max-width: 1000px) {
