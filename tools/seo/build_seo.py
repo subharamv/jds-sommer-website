@@ -147,14 +147,14 @@ SERVICES = {
                'offers': [offer('3D-CAD-Modellierung eines Maschinenteils', 'Maschinenteil bis 40 cm Kantenlänge', min_price=250)]},
     },
     '3d': {
-        'en': {'name': '3D BIM modelling and Scan-to-BIM', 'serviceType': '3D CAD and BIM modelling',
-               'description': 'Point clouds, STL data and 2D plans turned into fully structured 3D CAD and BIM models in Revit (RVT/IFC), Allplan, Archicad, IGES and STEP, at LOD 100 to 500. Objects up to 150 cm are scanned in-house.',
-               'offers': [offer('3D scanning', 'point cloud', min_price=65),
-                          offer('3D CAD modelling of a machine part', 'machine part up to 40 cm edge length', min_price=250)]},
-        'de': {'name': '3D-BIM-Modellierung und Scan-to-BIM', 'serviceType': '3D-CAD- und BIM-Modellierung',
-               'description': 'Punktwolken, STL-Daten und 2D-Pläne werden zu vollständig strukturierten 3D-CAD- und BIM-Modellen in Revit (RVT/IFC), Allplan, Archicad, IGES und STEP, in LOD 100 bis 500. Objekte bis 150 cm scannen wir im eigenen Haus.',
-               'offers': [offer('3D-Scannen', 'Punktwolke', min_price=65),
-                          offer('3D-CAD-Modellierung eines Maschinenteils', 'Maschinenteil bis 40 cm Kantenlänge', min_price=250)]},
+        'en': {'name': '3D BIM modelling and Scan-to-BIM', 'serviceType': 'BIM modelling',
+               'description': 'Laser scan point clouds, 2D as-built plans and engineering documents turned into structured, intelligent BIM models (LOD 100 to LOD 500) for architecture, structure, MEP and industrial facilities, in Revit, IFC, Allplan or Archicad to your EIR, BEP and modelling guidelines.',
+               'offers': [offer('As-built BIM of a detached house or single storey (LOD 200-300)', 'building or storey', min_price=950),
+                          offer('Multi-storey residential, office or administrative building', 'building', min_price=2400)]},
+        'de': {'name': '3D-BIM-Modellierung und Scan-to-BIM', 'serviceType': 'BIM-Modellierung',
+               'description': 'Laserscan-Punktwolken, 2D-Bestandspläne und Konstruktionsunterlagen werden zu strukturierten, intelligenten BIM-Modellen (LOD 100 bis LOD 500) für Architektur, Tragwerk, TGA und Industrieanlagen, in Revit, IFC, Allplan oder Archicad nach Ihren AIA-, BAP- und Modellierungsrichtlinien.',
+               'offers': [offer('Bestands-BIM Einfamilienhaus / Einzelnes Bestandsgeschoss (LOD 200–300)', 'Gebäude oder Geschoss', min_price=950),
+                          offer('Mehrgeschossiges Wohn-, Büro- oder Verwaltungsgebäude', 'Gebäude', min_price=2400)]},
     },
 }
 
