@@ -4364,3 +4364,11 @@ html:has(.site-header.is-hidden) .ins-filters { top: 16px; }
     transition: opacity .2s, transform .25s var(--ease);
   }
 }
+
+/* Service pages (2D, 3D/BIM, 3D-CAD, as-built, GIS, docs): long client headlines need a calmer hero scale */
+:is([data-barba-namespace="2d"], [data-barba-namespace="3d"], [data-barba-namespace="3dcad"], [data-barba-namespace="asbuilt"], [data-barba-namespace="gis"], [data-barba-namespace="docs"]) .page-hero__title { font-size: clamp(30px, 3.1vw, 46px); line-height: 1.12; }
+:is([data-barba-namespace="2d"], [data-barba-namespace="3d"], [data-barba-namespace="3dcad"], [data-barba-namespace="asbuilt"], [data-barba-namespace="gis"], [data-barba-namespace="docs"]) .page-hero .hero__lead { margin-top: 20px; font-size: clamp(15.5px, 1.15vw, 17px); line-height: 1.6; }
+:is([data-barba-namespace="2d"], [data-barba-namespace="3d"], [data-barba-namespace="3dcad"], [data-barba-namespace="asbuilt"], [data-barba-namespace="gis"], [data-barba-namespace="docs"]) .page-hero .hero__ctas { margin-top: 26px; }
+:is([data-barba-namespace="2d"], [data-barba-namespace="3d"], [data-barba-namespace="3dcad"], [data-barba-namespace="asbuilt"], [data-barba-namespace="gis"], [data-barba-namespace="docs"]) .page-hero .facts { margin-top: 30px; }
+:is([data-barba-namespace="2d"], [data-barba-namespace="3d"], [data-barba-namespace="3dcad"], [data-barba-namespace="asbuilt"], [data-barba-namespace="gis"], [data-barba-namespace="docs"]) .page-hero .facts strong,
+:is([data-barba-namespace="2d"], [data-barba-namespace="3d"], [data-barba-namespace="3dcad"], [data-barba-namespace="asbuilt"], [data-barba-namespace="gis"], [data-barba-namespace="docs"]) .page-hero .facts li:first-child strong { font-size: clamp(16px, 1.45vw, 20px); line-height: 1.15; }
