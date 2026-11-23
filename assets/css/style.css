@@ -2342,6 +2342,10 @@ html[lang="de"] [data-barba-namespace="industries"] :is(h1, h2, h3, .h2) { hyphe
 html[lang="de"] [data-barba-namespace="2d"] :is(h1, h2, h3, .h2) { hyphens: manual; }
 html[lang="de"] [data-barba-namespace="home"] :is(h1, h2, .h2) { hyphens: manual; }
 html[lang="de"] [data-barba-namespace="3dcad"] :is(h1, h2, h3, .h2) { hyphens: manual; }
+html[lang="de"] [data-barba-namespace="asbuilt"] :is(h1, h2, h3, .h2) { hyphens: manual; }
+html[lang="de"] [data-barba-namespace="asbuilt"] .steps5 h3 { hyphens: manual; }
+html[lang="de"] [data-barba-namespace="gis"] :is(h1, h2, h3, .h2) { hyphens: manual; }
+html[lang="de"] [data-barba-namespace="gis"] .steps5 h3 { hyphens: manual; }
 
 /* ---------- Core services on phones/tablets: no scroll effect, the cards simply stack ---------- */
 @media (max-width: 1000px) {
