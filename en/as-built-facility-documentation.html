@@ -742,10 +742,32 @@
         </div>
 
         <div class="hero__visual" data-hero-visual>
-          <figure class="ind-hero__media">
-            <img src="../assets/img/services/as-built-cafm-floorplan.webp" width="1400" height="1050" fetchpriority="high" alt="Office floor plan with CAFM room data and room book">
-            <figcaption><span>04</span>As-Built &amp; Facility Documentation</figcaption>
-          </figure>
+          <section class="asbuilt-carousel" data-asbuilt-carousel aria-roledescription="carousel" aria-label="As-built documentation project views" tabindex="0">
+            <div class="asbuilt-carousel__viewport" data-asbuilt-viewport>
+              <figure class="asbuilt-carousel__slide is-active" id="asbuilt-view-1" data-asbuilt-slide aria-hidden="false">
+                <img src="../assets/img/services/menu/building-plans-from-survey-data.webp" width="1400" height="1050" fetchpriority="high" alt="Survey equipment in use for building documentation">
+                <figcaption><span>01</span>Site capture</figcaption>
+              </figure>
+              <figure class="asbuilt-carousel__slide" id="asbuilt-view-2" data-asbuilt-slide aria-hidden="true">
+                <img src="../assets/img/services/as-built-cafm-floorplan.webp" width="1400" height="1050" loading="lazy" alt="Office floor plan prepared with CAFM room data">
+                <figcaption><span>02</span>CAFM-ready plans</figcaption>
+              </figure>
+              <figure class="asbuilt-carousel__slide" id="asbuilt-view-3" data-asbuilt-slide aria-hidden="true">
+                <img src="../assets/img/services/menu/existing-industrial-facility-documentation.webp" width="1400" height="1050" loading="lazy" alt="Industrial facility recorded for technical documentation">
+                <figcaption><span>03</span>Industrial facility record</figcaption>
+              </figure>
+            </div>
+            <div class="asbuilt-carousel__controls">
+              <button class="asbuilt-carousel__arrow" type="button" data-asbuilt-prev aria-label="Show previous project view"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 5-7 7 7 7"/></svg></button>
+              <div class="asbuilt-carousel__dots" role="tablist" aria-label="Choose a project view">
+                <button type="button" role="tab" data-asbuilt-dot aria-selected="true" aria-label="Show project view 1" aria-controls="asbuilt-view-1"><span>01</span></button>
+                <button type="button" role="tab" data-asbuilt-dot aria-selected="false" aria-label="Show project view 2" aria-controls="asbuilt-view-2"><span>02</span></button>
+                <button type="button" role="tab" data-asbuilt-dot aria-selected="false" aria-label="Show project view 3" aria-controls="asbuilt-view-3"><span>03</span></button>
+              </div>
+              <button class="asbuilt-carousel__arrow" type="button" data-asbuilt-next aria-label="Show next project view"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 5 7 7-7 7"/></svg></button>
+            </div>
+            <p class="sr-only" aria-live="polite" data-asbuilt-status>Showing project view 1 of 3: Site capture.</p>
+          </section>
         </div>
       </div>
     </section>

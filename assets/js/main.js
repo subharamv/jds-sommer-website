@@ -984,6 +984,76 @@
     });
   }
 
+  /* ---------- As-built hero: real project-image carousel, controls + swipe + motion preference ---------- */
+  function initAsBuiltHeroCarousel(scope) {
+    var root = $('[data-asbuilt-carousel]', scope);
+    if (!root || root.dataset.ready) return;
+    var viewport = $('[data-asbuilt-viewport]', root), slides = $$('[data-asbuilt-slide]', root), dots = $$('[data-asbuilt-dot]', root);
+    var prev = $('[data-asbuilt-prev]', root), next = $('[data-asbuilt-next]', root), status = $('[data-asbuilt-status]', root);
+    if (!viewport || slides.length < 2 || !prev || !next) return;
+    root.dataset.ready = '1';
+    var current = 0, timer = 0, hovered = false, focused = false, interacting = false, userPaused = false, drag = null;
+    var german = (document.documentElement.lang || '').toLowerCase().indexOf('de') === 0;
+    var captions = slides.map(function (slide) { var c = $('figcaption', slide); return c ? c.textContent.replace(/^\s*\d+\s*/, '').trim() : ''; });
+
+    function render(index, announce) {
+      current = (index + slides.length) % slides.length;
+      slides.forEach(function (slide, i) {
+        var active = i === current;
+        slide.classList.toggle('is-active', active);
+        slide.setAttribute('aria-hidden', String(!active));
+      });
+      dots.forEach(function (dot, i) {
+        var active = i === current;
+        dot.setAttribute('aria-selected', String(active));
+        dot.tabIndex = active ? 0 : -1;
+      });
+      if (announce && status) status.textContent = german
+        ? 'Projektansicht ' + (current + 1) + ' von ' + slides.length + ': ' + captions[current] + '.'
+        : 'Showing project view ' + (current + 1) + ' of ' + slides.length + ': ' + captions[current] + '.';
+    }
+    function stop() { if (timer) { clearInterval(timer); timer = 0; } }
+    function start() {
+      stop();
+      if (!reduceMotion && !hovered && !focused && !interacting && !userPaused) timer = setInterval(function () { render(current + 1, false); }, 6000);
+    }
+    function go(index) { userPaused = true; stop(); render(index, true); }
+    prev.addEventListener('click', function () { go(current - 1); });
+    next.addEventListener('click', function () { go(current + 1); });
+    dots.forEach(function (dot, i) { dot.addEventListener('click', function () { go(i); }); });
+    root.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(current + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); go(current - 1); }
+      if (e.key === 'Home') { e.preventDefault(); go(0); }
+      if (e.key === 'End') { e.preventDefault(); go(slides.length - 1); }
+    });
+    root.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') { hovered = true; stop(); } });
+    root.addEventListener('pointerleave', function () { hovered = false; start(); });
+    root.addEventListener('focusin', function () { focused = true; stop(); });
+    root.addEventListener('focusout', function (e) { if (!root.contains(e.relatedTarget)) { focused = false; start(); } });
+    viewport.addEventListener('pointerdown', function (e) {
+      if (e.button !== 0) return;
+      drag = { id: e.pointerId, x: e.clientX, y: e.clientY, axis: null };
+      interacting = true; stop();
+    });
+    viewport.addEventListener('pointermove', function (e) {
+      if (!drag || drag.id !== e.pointerId) return;
+      var dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+      if (!drag.axis && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) drag.axis = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
+      if (drag.axis === 'x') { root.classList.add('is-dragging'); e.preventDefault(); }
+    });
+    function endDrag(e) {
+      if (!drag || (e && drag.id !== e.pointerId)) return;
+      var dx = e.clientX - drag.x;
+      if (drag.axis === 'x' && Math.abs(dx) > Math.max(36, viewport.clientWidth * .12)) { userPaused = true; render(current + (dx < 0 ? 1 : -1), true); }
+      drag = null; interacting = false; root.classList.remove('is-dragging'); start();
+    }
+    viewport.addEventListener('pointerup', endDrag);
+    viewport.addEventListener('pointercancel', endDrag);
+    render(0, false); start();
+    pageCleanups.push(function () { stop(); });
+  }
+
   /* ---------- All-services slider: one slide at a time, infinite, autoplay, swipe ---------- */
   function initSvcSlider(scope) {
     var root = $('[data-svc-slider]', scope);
@@ -1685,6 +1755,7 @@
     initInsights(container);
     $$('[data-ins-row]', container).forEach(initInsightsRow);   // rows outside the Insights page (industry pages)
     initIndustries(container);
+    initAsBuiltHeroCarousel(container);
     initSvcSlider(container);
     initQuotes(container);
     initHScroll(container);

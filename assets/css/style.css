@@ -860,6 +860,35 @@ html[lang="de"] .test-us .h2 em { hyphens: manual; }
 .page-hero__title { font-size: clamp(38px, 5vw, 66px); }
 .page-hero .hero__visual { padding-bottom: 0; }
 
+/* As-built documentation: a photographic project viewer, deliberately scoped to this service only. */
+.asbuilt-carousel { position: relative; width: 100%; outline: none; }
+.asbuilt-carousel .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.asbuilt-carousel__viewport { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border-radius: var(--radius-lg); background: var(--brand-deep); box-shadow: var(--shadow-lg); touch-action: pan-y; }
+.asbuilt-carousel__slide { position: absolute; inset: 0; display: grid; margin: 0; opacity: 0; pointer-events: none; transform: scale(1.025); transition: opacity .58s var(--ease), transform .8s var(--ease); }
+.asbuilt-carousel__slide.is-active { opacity: 1; pointer-events: auto; transform: scale(1); }
+.asbuilt-carousel__slide::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20, 22, 62, .04) 35%, rgba(20, 22, 62, .8) 100%); pointer-events: none; }
+.asbuilt-carousel__slide img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.asbuilt-carousel__slide figcaption { position: absolute; z-index: 1; right: 18px; bottom: 17px; left: 18px; display: flex; align-items: baseline; gap: 10px; color: #fff; font-size: clamp(14px, 1.45vw, 17px); font-weight: 700; letter-spacing: -.01em; }
+.asbuilt-carousel__slide figcaption span { color: #fff; font-size: 11px; font-weight: 700; letter-spacing: .14em; opacity: .75; }
+.asbuilt-carousel__controls { position: absolute; z-index: 2; right: 18px; top: 18px; display: flex; align-items: center; gap: 7px; }
+.asbuilt-carousel__arrow, .asbuilt-carousel__dots button { display: grid; place-items: center; min-width: 36px; height: 36px; padding: 0; border: 0; color: #fff; background: rgba(20, 22, 62, .72); box-shadow: 0 4px 16px rgba(20, 22, 62, .2); cursor: pointer; transition: background .2s, transform .2s; }
+.asbuilt-carousel__arrow { width: 36px; border-radius: 50%; }
+.asbuilt-carousel__arrow svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.asbuilt-carousel__dots { display: flex; gap: 4px; }
+.asbuilt-carousel__dots button { min-width: 31px; border-radius: 4px; font-size: 10px; font-weight: 700; letter-spacing: .08em; }
+.asbuilt-carousel__dots button[aria-selected="true"] { color: #fff; background: var(--red); }
+.asbuilt-carousel__arrow:hover, .asbuilt-carousel__dots button:hover { color: #fff; background: var(--brand); transform: translateY(-1px); }
+.asbuilt-carousel__dots button[aria-selected="true"]:hover { background: var(--red); }
+.asbuilt-carousel__arrow:focus-visible, .asbuilt-carousel__dots button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.asbuilt-carousel.is-dragging { cursor: grabbing; }
+.asbuilt-carousel.is-dragging * { cursor: grabbing; }
+@media (max-width: 560px) {
+  .asbuilt-carousel__controls { right: 12px; top: 12px; gap: 5px; }
+  .asbuilt-carousel__arrow { width: 33px; min-width: 33px; height: 33px; }
+  .asbuilt-carousel__dots button { min-width: 28px; height: 33px; }
+  .asbuilt-carousel__slide figcaption { right: 13px; bottom: 13px; left: 13px; }
+}
+
 .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 22px; font-size: 13.5px; color: var(--muted); }
 .crumbs a { color: var(--muted); font-weight: 700; }
 .crumbs a:hover { color: var(--brand); }
