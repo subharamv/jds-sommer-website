@@ -429,6 +429,21 @@ em { font-family: var(--font-accent); font-style: italic; font-weight: 400; lett
   border-left: 7px solid transparent; border-right: 7px solid transparent; border-bottom: 11px solid var(--red);
 }
 
+/* ---------- Quality bar (homepage, below the hero; replaced the marquee in client batch 19) ---------- */
+.qbar {
+  color: #fff; padding: 16px 0;
+  background: linear-gradient(90deg, #24265f 0%, #4749af 35%, #5052c0 50%, #4749af 65%, #24265f 100%);
+}
+.qbar__list { display: grid; grid-template-columns: auto auto auto auto; justify-content: space-between; gap: 12px 28px; align-items: center; }
+.qbar li { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: clamp(12px, 1.05vw, 14.5px); line-height: 1.35; letter-spacing: .01em; }
+.qbar svg {
+  flex: none; width: 22px; height: 22px; padding: 4px; border-radius: 50%; background: var(--red);
+  fill: none; stroke: #fff; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round;
+}
+.qbar__sub { display: block; white-space: nowrap; }
+@media (max-width: 1080px) { .qbar__list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .qbar { padding: 14px 0; } .qbar__list { grid-template-columns: 1fr; gap: 10px; } }
+
 /* ---------- Rebuild notice ---------- */
 .rebuild { padding-bottom: clamp(40px, 6vw, 70px); }
 .rebuild__card {
@@ -2325,6 +2340,7 @@ html[lang="de"] .faq__head .h2 em { hyphens: manual; white-space: nowrap; }
    overflow-wrap above still breaks a word that would overflow a phone screen. */
 html[lang="de"] [data-barba-namespace="industries"] :is(h1, h2, h3, .h2) { hyphens: manual; }
 html[lang="de"] [data-barba-namespace="2d"] :is(h1, h2, h3, .h2) { hyphens: manual; }
+html[lang="de"] [data-barba-namespace="home"] :is(h1, h2, .h2) { hyphens: manual; }
 
 /* ---------- Core services on phones/tablets: no scroll effect, the cards simply stack ---------- */
 @media (max-width: 1000px) {
