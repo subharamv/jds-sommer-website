@@ -140,11 +140,11 @@ SERVICES = {
     },
     '3dcad': {
         'en': {'name': '3D CAD modelling and reverse engineering', 'serviceType': '3D CAD modelling and reverse engineering',
-               'description': 'Components, machinery and industrial equipment from scan data, STL meshes and engineering drawings turned into precise, editable 3D CAD models in STEP, IGES and other agreed formats. Objects up to 150 cm are scanned in-house.',
-               'offers': [offer('3D CAD modelling of a machine part', 'machine part up to 40 cm edge length', min_price=250)]},
+               'description': 'Components, assemblies and machines reconstructed from high-resolution 3D scan data, STL meshes and engineering drawings as clean, editable 3D CAD models in STEP, IGES and native CAD formats. Physical parts up to 150 cm edge length are captured in-house with a ZEISS COMET structured-light scanner.',
+               'offers': [offer('3D component modelling', 'component', min_price=250)]},
         'de': {'name': '3D-CAD-Modellierung und Reverse Engineering', 'serviceType': '3D-CAD-Modellierung und Reverse Engineering',
-               'description': 'Bauteile, Maschinen und Industrieanlagen aus Scandaten, STL-Netzen und Konstruktionszeichnungen werden zu präzisen, editierbaren 3D-CAD-Modellen in STEP, IGES und weiteren vereinbarten Formaten. Objekte bis 150 cm scannen wir im eigenen Haus.',
-               'offers': [offer('3D-CAD-Modellierung eines Maschinenteils', 'Maschinenteil bis 40 cm Kantenlänge', min_price=250)]},
+               'description': 'Bauteile, Baugruppen und Maschinen aus hochauflösenden 3D-Scandaten, STL-Netzen und Konstruktionszeichnungen, rekonstruiert zu sauberen, editierbaren 3D-CAD-Modellen in STEP, IGES und nativen CAD-Formaten. Physische Bauteile bis 150 cm Kantenlänge erfassen wir im eigenen Haus per 3D-Streifenlichtscanner (ZEISS COMET).',
+               'offers': [offer('3D-Bauteilmodellierung', 'Bauteil', min_price=250)]},
     },
     '3d': {
         'en': {'name': '3D BIM modelling and Scan-to-BIM', 'serviceType': 'BIM modelling',
