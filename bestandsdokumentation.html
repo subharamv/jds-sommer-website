@@ -742,10 +742,32 @@
         </div>
 
         <div class="hero__visual" data-hero-visual>
-          <figure class="ind-hero__media">
-            <img src="assets/img/services/as-built-cafm-floorplan.webp" width="1400" height="1050" fetchpriority="high" alt="Bürogrundriss mit CAFM-Raumdaten und Raumbuch">
-            <figcaption><span>04</span>Bestands- &amp; Facility-Dokumentation</figcaption>
-          </figure>
+          <section class="asbuilt-carousel" data-asbuilt-carousel aria-roledescription="carousel" aria-label="Projektansichten der Bestandsdokumentation" tabindex="0">
+            <div class="asbuilt-carousel__viewport" data-asbuilt-viewport>
+              <figure class="asbuilt-carousel__slide is-active" id="asbuilt-view-1" data-asbuilt-slide aria-hidden="false">
+                <img src="assets/img/services/menu/building-plans-from-survey-data.webp" width="1400" height="1050" fetchpriority="high" alt="Vermessungsgerät im Einsatz für die Gebäudedokumentation">
+                <figcaption><span>01</span>Aufmaß vor Ort</figcaption>
+              </figure>
+              <figure class="asbuilt-carousel__slide" id="asbuilt-view-2" data-asbuilt-slide aria-hidden="true">
+                <img src="assets/img/services/as-built-cafm-floorplan.webp" width="1400" height="1050" loading="lazy" alt="Bürogrundriss mit CAFM-Raumdaten">
+                <figcaption><span>02</span>CAFM-fähige Pläne</figcaption>
+              </figure>
+              <figure class="asbuilt-carousel__slide" id="asbuilt-view-3" data-asbuilt-slide aria-hidden="true">
+                <img src="assets/img/services/menu/existing-industrial-facility-documentation.webp" width="1400" height="1050" loading="lazy" alt="Industrieanlage, erfasst für die technische Dokumentation">
+                <figcaption><span>03</span>Dokumentation Industrieanlage</figcaption>
+              </figure>
+            </div>
+            <div class="asbuilt-carousel__controls">
+              <button class="asbuilt-carousel__arrow" type="button" data-asbuilt-prev aria-label="Vorherige Ansicht anzeigen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 5-7 7 7 7"/></svg></button>
+              <div class="asbuilt-carousel__dots" role="tablist" aria-label="Ansicht wählen">
+                <button type="button" role="tab" data-asbuilt-dot aria-selected="true" aria-label="Ansicht 1 anzeigen" aria-controls="asbuilt-view-1"><span>01</span></button>
+                <button type="button" role="tab" data-asbuilt-dot aria-selected="false" aria-label="Ansicht 2 anzeigen" aria-controls="asbuilt-view-2"><span>02</span></button>
+                <button type="button" role="tab" data-asbuilt-dot aria-selected="false" aria-label="Ansicht 3 anzeigen" aria-controls="asbuilt-view-3"><span>03</span></button>
+              </div>
+              <button class="asbuilt-carousel__arrow" type="button" data-asbuilt-next aria-label="Nächste Ansicht anzeigen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 5 7 7-7 7"/></svg></button>
+            </div>
+            <p class="sr-only" aria-live="polite" data-asbuilt-status>Ansicht 1 von 3: Aufmaß vor Ort.</p>
+          </section>
         </div>
       </div>
     </section>
