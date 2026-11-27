@@ -1488,7 +1488,7 @@
  "Facility Management Drawings": "Facility-Management-Pläne",
  "Building Plans from Survey Data": "Gebäudepläne aus Vermessungsdaten",
  "Existing Industrial Facility Documentation": "Dokumentation bestehender Industrieanlagen",
- "CAD Updates from Site Measurements": "CAD-Nachführung aus Aufmaßen",
+ "CAD Updates from Site Measurements": "Bestandspläne aus Aufmaßen aktualisieren",
  "As-Built &amp; Facility Documentation": "Bestands- &amp; Facility-Dokumentation",
  "Current plans of existing buildings and plants": "Aktuelle Pläne von Bestandsgebäuden und Anlagen",
  "GIS Digitisation": "GIS-Digitalisierung",
@@ -2317,5 +2317,12 @@
  "Request a fixed-price quote": "Festpreisangebot anfordern",
  "Simply send us a non-binding enquiry with a selection of your originals. We advise you free of charge and prepare an individual fixed-price offer based on complexity and scope. As a first guide: 2D CAD digitalisation starts from €49 per A0 drawing, 3D component modelling from €250 and as-built BIM modelling from €950 (each net, plus VAT).": "Senden Sie uns einfach eine unverbindliche Anfrage mit einer Auswahl Ihrer Vorlagen. Wir beraten Sie kostenfrei und erstellen ein individuelles Festpreisangebot auf Basis von Komplexität und Umfang. Als erste Orientierung: Die 2D-CAD-Digitalisierung beginnt ab 49,- € pro A0-Zeichnung, die 3D-Bauteilmodellierung ab 250,- € und die Bestands-BIM-Modellierung ab 950,- € (jeweils netto zzgl. MwSt.).",
  "Your CAD &amp; BIM partner for <em>digitalization</em>.": "Ihr CAD- &amp; BIM-Partner für <em>Digitalisierung</em>.",
- "For 42 years we have delivered precise CAD, BIM and GIS data for industry, construction and public-sector clients. Benefit from sound engineering expertise, high processing capacity and economical, on-schedule delivery.": "Seit 42 Jahren liefern wir präzise CAD-, BIM- und GIS-Daten für Industrie, Bauwesen und öffentliche Auftraggeber. Profitieren Sie von fundiertem Ingenieur-Know-how, hohen Bearbeitungskapazitäten und einer wirtschaftlichen, termintreuen Umsetzung."
+ "For 42 years we have delivered precise CAD, BIM and GIS data for industry, construction and public-sector clients. Benefit from sound engineering expertise, high processing capacity and economical, on-schedule delivery.": "Seit 42 Jahren liefern wir präzise CAD-, BIM- und GIS-Daten für Industrie, Bauwesen und öffentliche Auftraggeber. Profitieren Sie von fundiertem Ingenieur-Know-how, hohen Bearbeitungskapazitäten und einer wirtschaftlichen, termintreuen Umsetzung.",
+ "Industries: CAD &amp; BIM for Industry, Construction &amp; Infrastructure | JDS Sommer": "Branchen: CAD &amp; BIM für Industrie, Bau &amp; Infrastruktur | JDS Sommer",
+ "years of CAD &amp; BIM experience": "Jahre CAD- &amp; BIM-Erfahrung",
+ "Free sample file": "Kostenlose Musterdatei",
+ "Send us a section of your plan by email or post for a free, no-obligation sample digitalisation. We'll advise you and prepare an individual offer based on the number of your originals.": "Senden Sie uns einen Ausschnitt Ihres Plans per E-Mail oder Post für eine kostenlose und unverbindliche Musterdigitalisierung. Wir beraten Sie und erstellen ein individuelles Angebot auf Basis der Anzahl Ihrer Vorlagen.",
+ "Request a free sample file": "Kostenlose Musterdatei anfordern",
+ "42</span>years of CAD &amp; BIM experience": "42</span>Jahre CAD- &amp; BIM-Erfahrung",
+ "42</span></strong><span>years of CAD &amp; BIM experience": "42</span></strong><span>Jahre CAD- &amp; BIM-Erfahrung"
 }
